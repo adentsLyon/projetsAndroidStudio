@@ -10,4 +10,5 @@
     <string name="title_activity_main_activity2">HomeActivity</string>
     <string name="title_activity_netmap">NetmapActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_maintenance">Maintenance</string>
 </resources>
