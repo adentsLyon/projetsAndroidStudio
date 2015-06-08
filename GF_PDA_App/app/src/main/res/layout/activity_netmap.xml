@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    tools:context="com.example.rartonne.appftur.NetmapActivity">
+
+    <TextView android:text="Welcome into GF Apps"
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:background="#1965a3"
+        android:textColor="#ffffff"
+        android:textSize="25px"
+        android:textStyle="bold"
+        android:paddingLeft="70dp"
+        android:paddingTop="15dp"
+        android:id="@+id/textView" />
+
+    <ImageView
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:id="@+id/imageView"
+        android:contentDescription=""
+        android:src="@mipmap/logo_gf"
+        android:layout_alignParentTop="true"
+        android:onClick="gotoHome" />
+
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:id="@+id/imageCAD"
+        android:layout_below="@+id/textView"
+        android:padding="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/cad_coupler_test" />
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="753911608"
+        android:textSize="20dp"
+        android:textColor="#057db9"
+        android:id="@+id/textArtId"
+        android:layout_alignTop="@+id/imageCAD"
+        android:layout_marginLeft="210px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="12dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ELGEF Plus"
+        android:id="@+id/textGamme"
+        android:layout_below="@+id/textArtId"
+        android:layout_alignLeft="@+id/textArtId"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Coupler"
+        android:id="@+id/textArticle"
+        android:layout_below="@+id/textGamme"
+        android:layout_alignLeft="@+id/textArtId"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="PE100 SDR11"
+        android:id="@+id/textStandard"
+        android:layout_below="@+id/textArticle"
+        android:layout_alignLeft="@+id/textArtId"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="d32"
+        android:id="@+id/textDiametre"
+        android:layout_below="@+id/textStandard"
+        android:layout_alignLeft="@+id/textArtId"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Powered by ADENTS v1.0"
+        android:id="@+id/textDisclaimer"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,449 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.HomeActivity">
+
+
+    <TextView android:text="Username"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:background="#1965a3"
+        android:textColor="#ffffff"
+        android:textSize="12px"
+        android:textStyle="bold"
+        android:paddingLeft="100dp"
+        android:paddingTop="5px"
+        android:id="@+id/textUsername" />
+
+    <TextView android:text="Company name"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:textColor="#ffffff"
+        android:textSize="12px"
+        android:textStyle="bold"
+        android:paddingLeft="150px"
+        android:paddingTop="25px"
+        android:id="@+id/textCompany" />
+
+    <TextView android:text="Last Sync Date"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:textColor="#ffffff"
+        android:textSize="12px"
+        android:textStyle="bold"
+        android:paddingLeft="370px"
+        android:paddingTop="5px"
+        android:id="@+id/textLastUpdate" />
+
+
+    <TextView android:text="05/06/2015 12:15"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:textColor="#ffffff"
+        android:textSize="12px"
+        android:textStyle="bold"
+        android:paddingLeft="350px"
+        android:paddingTop="25px"
+        android:id="@+id/textDate" />
+
+
+    <ImageView
+        android:layout_width="110px"
+        android:layout_height="50px"
+        android:id="@+id/imageView"
+        android:contentDescription=""
+        android:src="@mipmap/logo_gf"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_param1"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_below="@+id/textUsername"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="30px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:onClick=""
+        android:src="@mipmap/icon_net_mapp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Network\nMapping"
+        android:textColor="#1965a3"
+        android:id="@+id/text_1_1"
+        android:gravity="center_vertical|center_horizontal"
+        android:includeFontPadding="false"
+        android:layout_below="@+id/Btn_param1"
+        android:layout_alignLeft="@+id/Btn_netmap"
+        android:paddingLeft="10px"/>
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_param2"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_below="@+id/textUsername"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="30px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:onClick=""
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_net_mapp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Technical \n Docs"
+        android:textColor="#1965a3"
+        android:id="@+id/text_1_2"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/Btn_param2"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="inherit" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_param3"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_below="@+id/textUsername"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="350px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:onClick=""
+        android:src="@mipmap/icon_net_mapp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Accurate \n GPS"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_1_3"
+        android:layout_below="@+id/Btn_param3"
+        android:layout_alignLeft="@+id/Btn_acc_gps"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_netmap"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_below="@+id/textUsername"
+        android:layout_marginTop="180px"
+        android:layout_marginLeft="30px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:onClick="gotoNetmap"
+        android:src="@mipmap/icon_net_mapp"
+
+
+        android:background="#fffff9fc"
+        android:clickable="false" />
+
+
+
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_techdocs"
+        android:layout_alignBottom="@+id/Btn_netmap"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_net_mapp"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_fusion_data"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="50px"
+        android:src="@mipmap/icon_net_mapp"
+        android:layout_alignLeft="@+id/Btn_netmap"
+        android:layout_below="@+id/Btn_netmap"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/Btn_acc_gps"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/icon_net_mapp"
+        android:layout_marginLeft="350px"
+        android:layout_alignTop="@+id/Btn_techdocs"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_oqa"
+        android:src="@mipmap/icon_net_mapp"
+        android:layout_alignBottom="@+id/Btn_fusion_data"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_scan_qr"
+        android:src="@mipmap/icon_net_mapp"
+        android:layout_alignLeft="@+id/Btn_acc_gps"
+        android:layout_alignBottom="@+id/Btn_oqa"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_userguide"
+        android:src="@mipmap/icon_net_mapp"
+        android:layout_marginTop="50px"
+        android:layout_alignLeft="@+id/Btn_netmap"
+        android:layout_below="@+id/Btn_fusion_data"
+        android:background="#ffffffff" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_wm_setting"
+        android:layout_alignLeft="@+id/Btn_techdocs"
+        android:layout_alignBottom="@+id/Btn_userguide"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_net_mapp"
+        android:background="#ffffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Technical \n Docs"
+        android:textColor="#1965a3"
+        android:id="@+id/text_4_2"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/Btn_wm_setting"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="inherit" />
+
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/Btn_user_param"
+        android:layout_alignLeft="@+id/Btn_acc_gps"
+        android:layout_alignBottom="@+id/Btn_userguide"
+        android:src="@mipmap/icon_net_mapp"
+        android:background="#ffffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Accurate \n GPS"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_4_3"
+        android:layout_below="@+id/Btn_user_param"
+        android:layout_alignLeft="@+id/Btn_acc_gps"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Technical \n Docs"
+        android:textColor="#1965a3"
+        android:id="@+id/text_techdocs"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/Btn_techdocs"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="inherit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Network\nMapping"
+        android:textColor="#1965a3"
+        android:id="@+id/text_netmap"
+        android:gravity="center_vertical|center_horizontal"
+        android:includeFontPadding="false"
+        android:layout_below="@+id/Btn_netmap"
+        android:layout_alignLeft="@+id/Btn_netmap"
+        android:paddingLeft="10px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Fusion\nData"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_fusiondata"
+        android:layout_below="@+id/Btn_fusion_data"
+        android:layout_alignLeft="@+id/Btn_fusion_data"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="15px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Quality\nAssurance"
+        android:id="@+id/text_oqa"
+        android:layout_below="@+id/Btn_oqa"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_alignLeft="@+id/Btn_oqa"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="-3px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Accurate \n GPS"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_acc_gps"
+        android:layout_below="@+id/Btn_acc_gps"
+        android:layout_alignLeft="@+id/Btn_acc_gps"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Scan QR"
+        android:id="@+id/text_scan_qr"
+        android:layout_below="@+id/Btn_scan_qr"
+        android:layout_alignLeft="@+id/Btn_scan_qr"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="10px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:id="@+id/text_user_param"
+        android:layout_below="@+id/Btn_user_param"
+        android:layout_alignLeft="@+id/Btn_user_param"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#1965a3"
+        android:layout_marginLeft="-3px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_wm_settings"
+        android:textColor="#1965a3"
+        android:layout_below="@+id/Btn_wm_setting"
+        android:layout_alignLeft="@+id/Btn_wm_setting"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Cancel"
+        android:id="@+id/text_userguide"
+        android:layout_below="@+id/Btn_userguide"
+        android:layout_alignLeft="@+id/Btn_userguide"
+        android:layout_marginLeft="20px"
+        android:textColor="#1965a3"/>
+
+
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="80px"
+        android:layout_alignParentBottom="true"
+        android:background="#1965a3"
+        android:id="@+id/menu_bottom" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonHome"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_alignParentLeft="true"
+        android:onClick="gotoHome"
+        android:background="@drawable/button_bg"
+        android:src="@mipmap/footer_home" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonLogin"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="120px"
+        android:background="#1965a3"
+        android:src="@mipmap/footer_login" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonScan"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="240px"
+        android:background="#1965a3"
+        android:src="@mipmap/footer_scan" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/ButtonSettingsFooter"
+        android:scaleType="centerInside"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="360px"
+        android:background="#003399"
+        android:enabled="false"
+        android:src="@mipmap/footer_settings" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Settings"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/text_footer_settings"
+        android:layout_below="@+id/ButtonSettingsFooter"
+        android:layout_alignLeft="@+id/ButtonSettingsFooter"
+        android:textColor="#ffffff"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="25px"/>
+
+</RelativeLayout>
