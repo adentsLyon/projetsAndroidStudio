@@ -11,4 +11,28 @@
     <string name="title_activity_netmap">NetmapActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_maintenance">Maintenance</string>
+    <string-array name="tables_array">
+        <item>article_catalog</item>
+        <item>article_feature</item>
+        <item>batch_blacklist</item>
+        <item>construction_site</item>
+        <item>customer</item>
+        <item>customer_incident_type</item>
+        <item>customer_supplier</item>
+        <item>installer</item>
+        <item>lang</item>
+        <item>license</item>
+        <item>operator</item>
+        <item>ordernr_sites</item>
+        <item>pdf</item>
+        <item>process_type</item>
+        <item>status_name</item>
+        <item>supplier</item>
+        <item>t_ddd_lab</item>
+        <item>t_ddd_werk</item>
+        <item>translation</item>
+        <item>user</item>
+        <item>user_log</item>
+        <item>wm_serial</item>
+    </string-array>
 </resources>
