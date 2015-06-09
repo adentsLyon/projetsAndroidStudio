@@ -48,6 +48,10 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".ManualLoginActivity"
+            android:label="@string/title_activity_manual_login" >
+        </activity>
     </application>
 
 </manifest>
