@@ -35,4 +35,5 @@
         <item>user_log</item>
         <item>wm_serial</item>
     </string-array>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
