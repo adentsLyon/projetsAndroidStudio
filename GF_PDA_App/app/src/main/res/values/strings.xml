@@ -37,4 +37,5 @@
     </string-array>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_manual_login">ManualLoginActivity</string>
+    <string name="title_activity_ecard">EcardActivity</string>
 </resources>

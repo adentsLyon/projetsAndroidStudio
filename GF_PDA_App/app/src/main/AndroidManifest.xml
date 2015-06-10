@@ -20,10 +20,6 @@
         android:label="AppFtur"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name=".EcardActivity"
-            android:label="MainActivity" >
-        </activity>
-        <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_main_activity2" >
             <intent-filter>
@@ -51,6 +47,10 @@
         <activity
             android:name=".ManualLoginActivity"
             android:label="@string/title_activity_manual_login" >
+        </activity>
+        <activity
+            android:name=".EcardActivity"
+            android:label="@string/title_activity_ecard" >
         </activity>
     </application>
 
