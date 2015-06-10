@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#FC0"
+    android:gravity="center" >
+
+
+<View
+        android:layout_width="fill_parent"
+        android:layout_height="80px"
+        android:layout_marginBottom="0px"
+        android:background="#1965a3"
+        android:id="@+id/menu_bottom" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonHome"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_alignParentLeft="true"
+        android:onClick="gotoHome"
+        android:background="#003399"
+        android:src="@mipmap/footer_home" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonLogin"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="120px"
+        android:onClick="gotoLogin"
+        android:background="#1965a3"
+        android:src="@mipmap/footer_login" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButtonScan"
+        android:onClick="gotoScan"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="240px"
+        android:background="#1965a3"
+
+        android:src="@mipmap/footer_scan" />
+
+    <ImageButton
+        android:layout_width="120px"
+        android:layout_height="80px"
+        android:text="New ToggleButton"
+        android:id="@+id/ButtonSettingsFooter"
+        android:scaleType="centerInside"
+        android:layout_alignTop="@+id/menu_bottom"
+        android:layout_marginLeft="360px"
+        android:background="#1965a3"
+        android:onClick="gotoSettings"
+        android:enabled="false"
+        android:src="@mipmap/footer_settings" />
+
+</RelativeLayout>
