@@ -36,7 +36,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         super(context, DB_NAME, null, 1);
         this.myContext = context;
         //suppression de la base de données
-        myContext.deleteDatabase(DB_NAME);
+        //myContext.deleteDatabase(DB_NAME);
     }
 
     /**
