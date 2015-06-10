@@ -108,6 +108,7 @@ public class MaintenanceActivity extends Activity {
                 new RequestTask().execute();
             }
         });
+
     }
 
         @Override
@@ -195,6 +196,15 @@ public class MaintenanceActivity extends Activity {
                     }
                 });
             }
+
+            //on redescend les données d'ARTICLE_CATALOG
+            /*response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=rartonne&table=T_DDD_LAB");
+            if(response != null && !response.isEmpty()) {
+                String[] requetes = response.split(";");
+                for (String requete : requetes) {
+                    bdd.execSQL(requete);
+                }
+            }*/
 
             return response;
         }
