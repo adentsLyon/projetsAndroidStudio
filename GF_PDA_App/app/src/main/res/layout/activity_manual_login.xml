@@ -58,21 +58,6 @@
         android:layout_alignParentTop="true"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="SCAN\nBARCODE"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_scan_barcode"
-        android:textColor="#000000"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-8px"
-        android:layout_marginLeft="7px"
-        android:layout_below="@+id/Btn_netmap"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
 
     <ImageButton
         android:layout_width="100px"
@@ -83,7 +68,8 @@
         android:src="@mipmap/action_confirm"
         android:layout_marginTop="500px"
         android:layout_marginLeft="30px"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:onClick="checkLogin" />
 
 
 
@@ -147,7 +133,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Please type in your Login"
         android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_fusiondata"
+        android:id="@+id/text_message"
         android:layout_below="@+id/input_login"
 
         android:layout_centerHorizontal="true"

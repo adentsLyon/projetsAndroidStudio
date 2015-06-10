@@ -428,7 +428,8 @@
         android:layout_alignTop="@+id/menu_bottom"
         android:layout_marginLeft="120px"
         android:background="#1965a3"
-        android:src="@mipmap/footer_login" />
+        android:src="@mipmap/footer_login"
+        android:onClick="gotoLogin" />
 
     <ImageButton
         android:layout_width="120px"

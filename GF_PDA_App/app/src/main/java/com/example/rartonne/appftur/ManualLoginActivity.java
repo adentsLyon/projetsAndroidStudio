@@ -1,17 +1,39 @@
 package com.example.rartonne.appftur;
 
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.io.IOException;
 
 
-public class ManualLoginActivity extends ActionBarActivity {
+public class ManualLoginActivity extends Activity {
+    public SQLiteDatabase bdd;
+    public TextView input_login;
+    public TextView text_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
+
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //on lie les view aux variables
+        input_login = (TextView) findViewById(R.id.input_login);
+        text_message = (TextView) findViewById(R.id.text_message);
     }
 
     @Override
@@ -34,5 +56,42 @@ public class ManualLoginActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void checkLogin(View view){
+        Integer count = 0;
+        //on initalise la connexion à la base
+        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
+
+        try {
+            myDbHelper.openDataBase();
+        }catch(SQLException sqle){
+            throw sqle;
+        }
+
+        myDbHelper.close();
+
+        bdd = myDbHelper.getWritableDatabase();
+
+        Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM user WHERE login = '" + input_login.getText() + "'", null);
+
+        curseur.moveToFirst();
+        count = curseur.getInt(0);
+
+        curseur.close();
+
+        if(count == 1){
+            text_message.setTextColor(Color.parseColor("#007a3d"));
+            text_message.setText("Login Successful");
+        }else{
+            text_message.setTextColor(Color.parseColor("#c60f13"));
+            text_message.setText("Wrong login");
+        }
     }
 }

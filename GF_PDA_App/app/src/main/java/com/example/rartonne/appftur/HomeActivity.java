@@ -15,6 +15,7 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
@@ -48,11 +49,18 @@ public class HomeActivity extends Activity {
         startActivity(intent);
 
     }
+
     public void gotoSettings(View view)
     {
         Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
         startActivity(intent);
 
     }
-    
+
+    public void gotoLogin(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        startActivity(intent);
+
+    }
 }

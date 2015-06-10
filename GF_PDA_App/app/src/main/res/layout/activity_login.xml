@@ -95,7 +95,8 @@
         android:src="@mipmap/icon_manual_login"
         android:layout_below="@+id/Btn_netmap"
         android:background="#ffffffff"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:onClick="gotoManualLogin" />
 
     <TextView
         android:layout_width="wrap_content"
