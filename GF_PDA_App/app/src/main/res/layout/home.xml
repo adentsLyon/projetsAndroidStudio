@@ -439,7 +439,9 @@
         android:layout_alignTop="@+id/menu_bottom"
         android:layout_marginLeft="240px"
         android:background="#1965a3"
-        android:src="@mipmap/footer_scan" />
+        android:src="@mipmap/footer_scan"
+        android:onClick="scanQR"
+        android:nestedScrollingEnabled="true" />
 
     <ImageButton
         android:layout_width="120px"
