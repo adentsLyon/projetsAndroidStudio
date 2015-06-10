@@ -1,6 +1,8 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,10 +48,15 @@ public class MaintenanceActivity extends Activity {
     public Integer progress = 0;
     public ProgressBar pgbSteps;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintenance);
+
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         //on lie les views aux variables
         spinTables = (Spinner) findViewById(R.id.spinTables);
