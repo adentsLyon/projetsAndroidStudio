@@ -11,50 +11,50 @@
 
     <TextView android:text="Username"
         android:layout_width="match_parent"
-        android:layout_height="50px"
+        android:layout_height="80px"
         android:background="#1965a3"
         android:textColor="#ffffff"
-        android:textSize="12px"
+        android:textSize="20px"
         android:textStyle="bold"
         android:paddingLeft="100dp"
-        android:paddingTop="5px"
+        android:paddingTop="15px"
         android:id="@+id/textUsername" />
 
     <TextView android:text="Company name"
         android:layout_width="match_parent"
-        android:layout_height="50px"
+        android:layout_height="80px"
         android:textColor="#ffffff"
-        android:textSize="12px"
+        android:textSize="20px"
         android:textStyle="bold"
         android:paddingLeft="150px"
-        android:paddingTop="25px"
+        android:paddingTop="40px"
         android:id="@+id/textCompany" />
 
     <TextView android:text="Last Sync Date"
         android:layout_width="match_parent"
-        android:layout_height="50px"
+        android:layout_height="80px"
         android:textColor="#ffffff"
-        android:textSize="12px"
+        android:textSize="20px"
         android:textStyle="bold"
-        android:paddingLeft="370px"
-        android:paddingTop="5px"
+        android:paddingLeft="335px"
+        android:paddingTop="15px"
         android:id="@+id/textLastUpdate" />
 
 
     <TextView android:text="05/06/2015 12:15"
         android:layout_width="match_parent"
-        android:layout_height="50px"
+        android:layout_height="80px"
         android:textColor="#ffffff"
-        android:textSize="12px"
+        android:textSize="20px"
         android:textStyle="bold"
-        android:paddingLeft="350px"
-        android:paddingTop="25px"
+        android:paddingLeft="310px"
+        android:paddingTop="40px"
         android:id="@+id/textDate" />
 
 
     <ImageView
-        android:layout_width="110px"
-        android:layout_height="50px"
+        android:layout_width="130px"
+        android:layout_height="80px"
         android:id="@+id/imageView"
         android:contentDescription=""
         android:src="@mipmap/logo_gf"

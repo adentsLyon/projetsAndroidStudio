@@ -13,162 +13,104 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="50px"
-        >
-
+        android:layout_marginTop="50px">
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
+        style="@style/icon_style"
         android:id="@+id/Btn_netmap"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
         android:layout_below="@+id/textUsername"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="220px"
         android:layout_marginLeft="30px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
         android:onClick="gotoNetmap"
-        android:src="@mipmap/icon_net_mapp"
-
-
-        android:background="#fffff9fc"
-        android:clickable="false" />
-
-
+        android:src="@mipmap/icon_net_mapp" />
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_techdocs"
         android:layout_alignBottom="@+id/Btn_netmap"
-        android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_wm"
-        android:background="#ffffffff" />
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
+        style="@style/icon_style"
         android:id="@+id/Btn_fusion_data"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="30dp"
         android:src="@mipmap/icon_tech_docs"
         android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_netmap"
-        android:background="#ffffffff" />
+        android:layout_below="@+id/Btn_netmap"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
+        style="@style/icon_style"
         android:id="@+id/Btn_acc_gps"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
         android:src="@mipmap/icon_aps"
         android:layout_marginLeft="350px"
-        android:layout_alignTop="@+id/Btn_techdocs"
-        android:background="#ffffffff" />
+        android:layout_alignBottom="@+id/Btn_netmap"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_oqa"
         android:src="@mipmap/icon_user_guide"
         android:layout_alignBottom="@+id/Btn_fusion_data"
-        android:layout_centerHorizontal="true"
-        android:background="#ffffffff" />
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_scan_qr"
         android:src="@mipmap/icon_oqa"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_oqa"
-        android:background="#ffffff" />
+        android:layout_alignBottom="@+id/Btn_oqa"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_userguide"
         android:src="@mipmap/icon_link_qr"
-        android:layout_marginTop="30dp"
         android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_fusion_data"
-        android:background="#ffffff" />
+        android:layout_below="@+id/Btn_fusion_data"/>
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_wm_setting"
         android:layout_alignLeft="@+id/Btn_techdocs"
         android:layout_alignBottom="@+id/Btn_userguide"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/icon_pictures"
-        android:background="#ffffff" />
+        android:src="@mipmap/icon_pictures"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="ADD PICTURES"
         android:id="@+id/text_pictures"
         android:layout_below="@+id/Btn_wm_setting"
         android:layout_centerHorizontal="true"
-        android:textColor="#000000"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+       />
 
     <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
+        style="@style/icon_style"
         android:id="@+id/Btn_user_param"
         android:layout_alignLeft="@+id/Btn_acc_gps"
         android:layout_alignBottom="@+id/Btn_userguide"
-        android:src="@mipmap/icon_synchro"
-        android:background="#ffffffff" />
+        android:src="@mipmap/icon_synchro"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="SERVER\nUPDATES"
         android:id="@+id/text_server_updates"
         android:layout_below="@+id/Btn_user_param"
-        android:layout_alignLeft="@+id/Btn_user_param"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#000000"
-        android:layout_marginLeft="5px"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        android:layout_alignLeft="@+id/Btn_user_param"/>
 
     <ImageView
-        android:layout_width="110px"
-        android:layout_height="110px"
+        android:layout_width="100px"
+        android:layout_height="100px"
         android:id="@+id/imageView2"
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="30px"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="70px"
         android:scaleType="fitCenter"
         android:src="@mipmap/cad_coupler_test" />
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:layout_marginTop="150px"
+            android:layout_marginTop="200px"
             android:background="#1965a3"/>
 
 
@@ -179,105 +121,53 @@
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="350px"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="70px"
         android:scaleType="fitCenter"
         android:src="@mipmap/sign_work_in_progress" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="WELDING\nMACHINES"
-        android:textColor="#000000"
         android:id="@+id/text_techdocs"
-        android:gravity="center_vertical|center_horizontal"
         android:layout_below="@+id/Btn_techdocs"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="inherit"
-        android:layout_marginLeft="10px"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="TRACKING\nDATA"
-        android:textColor="#000000"
         android:id="@+id/text_netmap"
-        android:gravity="center_vertical|center_horizontal"
-        android:includeFontPadding="false"
         android:layout_below="@+id/Btn_netmap"
-        android:layout_alignLeft="@+id/Btn_netmap"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px" />
+        android:layout_alignLeft="@+id/Btn_netmap"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="TECHNICAL\nDOCS"
-        android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_fusiondata"
         android:layout_below="@+id/Btn_fusion_data"
-        android:layout_alignLeft="@+id/Btn_fusion_data"
-        android:textColor="#000000"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        android:layout_alignLeft="@+id/Btn_fusion_data"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="USER\nGUIDES"
         android:id="@+id/text_oqa"
         android:layout_below="@+id/Btn_oqa"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_centerHorizontal="true"
-        android:textColor="#000000"
-        android:layout_marginLeft="-10px"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="ACCURATE\nGPS"
-        android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_acc_gps"
         android:layout_below="@+id/Btn_acc_gps"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:textColor="#000000"
-        android:layout_marginLeft="-2px"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+       />
 
-    QUALITY ASSURANCE<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+    <TextView
+        style="@style/text_style"
         android:text="QUALITY\nASSURANCE"
         android:id="@+id/text_scan_qr"
         android:layout_below="@+id/Btn_scan_qr"
-        android:layout_alignLeft="@+id/Btn_scan_qr"
-        android:textColor="#000000"
-        android:layout_marginLeft="-5px"
-        android:gravity="center_vertical|center_horizontal"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        android:layout_alignLeft="@+id/Btn_scan_qr"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:id="@+id/text_user_param"
-        android:layout_below="@+id/Btn_user_param"
-        android:layout_alignLeft="@+id/Btn_user_param"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="-3px"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -292,18 +182,12 @@
         android:layout_marginLeft="10dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        style="@style/text_style"
         android:text="LINK QR\nPRODUCTS"
         android:id="@+id/text_userguide"
         android:layout_below="@+id/Btn_userguide"
         android:layout_alignLeft="@+id/Btn_userguide"
-        android:layout_marginLeft="-2px"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#000000"
-        android:paddingBottom="15px"
-        android:lineSpacingExtra="-10px"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"
