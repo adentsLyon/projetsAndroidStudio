@@ -50,8 +50,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text=""
             android:id="@+id/text_user_param"
-            android:layout_below="@+id/Btn_user_param"
-            android:layout_alignLeft="@+id/Btn_user_param"
+            android:layout_below="@+id/Btn_server_updates"
+            android:layout_alignLeft="@+id/Btn_server_updates"
             android:gravity="center_vertical|center_horizontal"
             android:textColor="#1965a3"
             android:layout_marginLeft="-3px"/>

@@ -256,7 +256,7 @@
         android:layout_height="100px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:id="@+id/Btn_user_param"
+        android:id="@+id/Btn_server_updates"
         android:layout_alignLeft="@+id/Btn_acc_gps"
         android:layout_alignBottom="@+id/Btn_comment"
         android:src="@mipmap/icon_net_mapp"
@@ -269,7 +269,7 @@
         android:text="Accurate \n GPS"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_4_3"
-        android:layout_below="@+id/Btn_user_param"
+        android:layout_below="@+id/Btn_server_updates"
         android:layout_alignLeft="@+id/Btn_acc_gps"
         android:textColor="#1965a3"
         android:layout_marginLeft="5dp"/>
@@ -352,8 +352,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
         android:id="@+id/text_user_param"
-        android:layout_below="@+id/Btn_user_param"
-        android:layout_alignLeft="@+id/Btn_user_param"
+        android:layout_below="@+id/Btn_server_updates"
+        android:layout_alignLeft="@+id/Btn_server_updates"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#1965a3"
         android:layout_marginLeft="-3px"/>

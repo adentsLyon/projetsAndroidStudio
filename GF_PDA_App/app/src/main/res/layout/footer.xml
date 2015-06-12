@@ -8,60 +8,136 @@
     android:gravity="center" >
 
 
-<View
+    <View
         android:layout_width="fill_parent"
         android:layout_height="80px"
         android:layout_marginBottom="0px"
         android:background="#1965a3"
         android:id="@+id/menu_bottom" />
 
-    <ImageButton
+    <RelativeLayout
+        android:id="@+id/rel_home"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonHome"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_alignParentLeft="true"
-        android:onClick="gotoHome"
-        android:background="#003399"
-        android:src="@mipmap/footer_home" />
+        android:background="#003399">
 
-    <ImageButton
+        <ImageButton
+            android:layout_width="120px"
+            android:background="#003399"
+            android:layout_height="60px"
+            android:text="New ToggleButton"
+            android:scaleType="centerInside"
+            android:id="@+id/toggleButtonHome"
+            android:layout_centerHorizontal="true"
+            android:layout_alignTop="@+id/menu_bottom"
+            android:layout_alignParentLeft="true"
+            android:onClick="gotoHome"
+            android:src="@mipmap/footer_home" />
+
+        <TextView android:text="HOME"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_below="@id/toggleButtonHome"
+            android:textColor="#ffffff"
+            android:textSize="20px"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/textHome" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_login"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonLogin"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="120px"
-        android:onClick="gotoLogin"
-        android:background="#1965a3"
-        android:src="@mipmap/footer_login" />
+        android:layout_marginLeft="120px">
 
-    <ImageButton
+        <ImageButton
+            android:layout_width="120px"
+            android:layout_height="60px"
+            android:text="New ToggleButton"
+            android:scaleType="centerInside"
+            android:id="@+id/toggleButtonLogin"
+            android:layout_alignTop="@+id/menu_bottom"
+            android:onClick="gotoLogin"
+            android:background="#1965a3"
+            android:src="@mipmap/footer_login" />
+
+        <TextView android:text="LOGIN"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_below="@id/toggleButtonLogin"
+            android:textColor="#ffffff"
+            android:textSize="20px"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/textLogin" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_scan_qr"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonScan"
-        android:onClick="scanQR"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="240px"
-        android:background="#1965a3"
+        android:layout_marginLeft="240px">
 
-        android:src="@mipmap/footer_scan"
-        android:nestedScrollingEnabled="false" />
 
-    <ImageButton
-        android:layout_width="120px"
+        <ImageButton
+            android:layout_width="120px"
+            android:layout_height="60px"
+            android:text="New ToggleButton"
+            android:id="@+id/toggleButtonScan"
+            android:onClick="scanQR"
+            android:scaleType="centerInside"
+            android:layout_alignTop="@+id/menu_bottom"
+            android:background="#1965a3"
+            android:src="@mipmap/footer_scan"
+            android:nestedScrollingEnabled="false" />
+
+        <TextView android:text="LOGIN"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_below="@id/toggleButtonScan"
+            android:textColor="#ffffff"
+            android:textSize="20px"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/textScan" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_settings"
         android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/ButtonSettingsFooter"
-        android:scaleType="centerInside"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="360px"
-        android:background="#1965a3"
-        android:enabled="false"
-        android:src="@mipmap/footer_settings"
-        android:onClick="toActivity"
-        android:tag="SettingsActivity" />
+        android:layout_width="120px"
+        android:layout_marginLeft="360px">
+
+
+        <ImageButton
+            android:layout_width="120px"
+            android:layout_height="60px"
+            android:text="New ToggleButton"
+            android:id="@+id/toggleButtonSettings"
+            android:scaleType="centerInside"
+            android:layout_alignTop="@+id/menu_bottom"
+            android:background="#1965a3"
+            android:enabled="false"
+            android:src="@mipmap/footer_settings"
+            android:onClick="toActivity"
+            android:tag="SettingsActivity" />
+
+        <TextView android:text="LOGIN"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_below="@id/toggleButtonSettings"
+            android:textColor="#ffffff"
+            android:textSize="20px"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/textSetting" />
+    </RelativeLayout>
 
 </RelativeLayout>
