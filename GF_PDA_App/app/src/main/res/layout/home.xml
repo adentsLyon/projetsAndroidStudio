@@ -13,64 +13,64 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="50px">
+        android:layout_marginTop="80px">
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_netmap"
+        android:id="@+id/Btn_job_data"
         android:layout_below="@+id/textUsername"
-        android:layout_marginTop="220px"
+        android:layout_marginTop="190px"
         android:layout_marginLeft="30px"
-        android:onClick="gotoNetmap"
         android:src="@mipmap/icon_net_mapp" />
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_techdocs"
-        android:layout_alignBottom="@+id/Btn_netmap"
-        android:src="@mipmap/icon_wm"
+        android:id="@+id/Btn_netmap"
+        android:layout_alignBottom="@+id/Btn_job_data"
+        android:src="@mipmap/icon_net_mapp"
+        android:onClick="gotoNetmap"
         android:layout_centerHorizontal="true"/>
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_fusion_data"
+        android:id="@+id/Btn_installation_manual"
         android:src="@mipmap/icon_tech_docs"
-        android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_netmap"/>
+        android:layout_alignLeft="@+id/Btn_job_data"
+        android:layout_below="@+id/Btn_job_data"/>
 
     <ImageButton
         style="@style/icon_style"
         android:id="@+id/Btn_acc_gps"
         android:src="@mipmap/icon_aps"
         android:layout_marginLeft="350px"
-        android:layout_alignBottom="@+id/Btn_netmap" />
+        android:layout_alignBottom="@+id/Btn_job_data"/>
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_oqa"
+        android:id="@+id/Btn_welding"
         android:src="@mipmap/icon_user_guide"
-        android:layout_alignBottom="@+id/Btn_fusion_data"
+        android:layout_alignBottom="@+id/Btn_installation_manual"
         android:layout_centerHorizontal="true"/>
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_scan_qr"
+        android:id="@+id/Btn_pictures"
         android:src="@mipmap/icon_oqa"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_oqa"/>
+        android:layout_alignBottom="@+id/Btn_welding"/>
 
     <ImageButton
         style="@style/icon_style"
-        android:id="@+id/Btn_userguide"
+        android:id="@+id/Btn_comment"
         android:src="@mipmap/icon_link_qr"
-        android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_fusion_data"/>
+        android:layout_alignLeft="@+id/Btn_job_data"
+        android:layout_below="@+id/Btn_installation_manual"/>
 
     <ImageButton
         style="@style/icon_style"
         android:id="@+id/Btn_wm_setting"
         android:layout_alignLeft="@+id/Btn_techdocs"
-        android:layout_alignBottom="@+id/Btn_userguide"
+        android:layout_alignBottom="@+id/Btn_comment"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_pictures"/>
 
@@ -86,7 +86,7 @@
         style="@style/icon_style"
         android:id="@+id/Btn_user_param"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_userguide"
+        android:layout_alignBottom="@+id/Btn_comment"
         android:src="@mipmap/icon_synchro"/>
 
     <TextView
@@ -103,14 +103,14 @@
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="30px"
-        android:layout_marginTop="70px"
+        android:layout_marginTop="30px"
         android:scaleType="fitCenter"
-        android:src="@mipmap/cad_coupler_test" />
+        android:src="@drawable/asset_2920" />
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:layout_marginTop="200px"
+            android:layout_marginTop="160px"
             android:background="#1965a3"/>
 
 
@@ -121,36 +121,36 @@
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="350px"
-        android:layout_marginTop="70px"
+        android:layout_marginTop="30px"
         android:scaleType="fitCenter"
         android:src="@mipmap/sign_work_in_progress" />
 
     <TextView
         style="@style/text_style"
-        android:text="WELDING\nMACHINES"
+        android:text="INSTALLATION\nDATA"
         android:id="@+id/text_techdocs"
-        android:layout_below="@+id/Btn_techdocs"
+        android:layout_below="@+id/Btn_netmap"
         android:layout_centerHorizontal="true"/>
 
     <TextView
         style="@style/text_style"
-        android:text="TRACKING\nDATA"
+        android:text="JOB\nDATA"
         android:id="@+id/text_netmap"
-        android:layout_below="@+id/Btn_netmap"
-        android:layout_alignLeft="@+id/Btn_netmap"/>
+        android:layout_below="@+id/Btn_job_data"
+        android:layout_alignLeft="@+id/Btn_job_data"/>
 
     <TextView
         style="@style/text_style"
         android:text="TECHNICAL\nDOCS"
         android:id="@+id/text_fusiondata"
-        android:layout_below="@+id/Btn_fusion_data"
-        android:layout_alignLeft="@+id/Btn_fusion_data"/>
+        android:layout_below="@+id/Btn_installation_manual"
+        android:layout_alignLeft="@+id/Btn_installation_manual"/>
 
     <TextView
         style="@style/text_style"
         android:text="USER\nGUIDES"
         android:id="@+id/text_oqa"
-        android:layout_below="@+id/Btn_oqa"
+        android:layout_below="@+id/Btn_welding"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -165,8 +165,8 @@
         style="@style/text_style"
         android:text="QUALITY\nASSURANCE"
         android:id="@+id/text_scan_qr"
-        android:layout_below="@+id/Btn_scan_qr"
-        android:layout_alignLeft="@+id/Btn_scan_qr"/>
+        android:layout_below="@+id/Btn_pictures"
+        android:layout_alignLeft="@+id/Btn_pictures"/>
 
 
     <TextView
@@ -185,8 +185,8 @@
         style="@style/text_style"
         android:text="LINK QR\nPRODUCTS"
         android:id="@+id/text_userguide"
-        android:layout_below="@+id/Btn_userguide"
-        android:layout_alignLeft="@+id/Btn_userguide"
+        android:layout_below="@+id/Btn_comment"
+        android:layout_alignLeft="@+id/Btn_comment"
         />
 
     <TextView

@@ -82,7 +82,7 @@
         android:gravity="center_vertical|center_horizontal"
         android:includeFontPadding="false"
         android:layout_below="@+id/Btn_param1"
-        android:layout_alignLeft="@+id/Btn_netmap"
+        android:layout_alignLeft="@+id/Btn_job_data"
         android:layout_marginLeft="-10px"/>
 
     <ImageButton
@@ -141,7 +141,7 @@
     <ImageButton
         android:layout_width="100px"
         android:layout_height="100px"
-        android:id="@+id/Btn_netmap"
+        android:id="@+id/Btn_job_data"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:layout_below="@+id/textUsername"
@@ -165,7 +165,7 @@
         android:padding="0dp"
         android:scaleType="fitCenter"
         android:id="@+id/Btn_techdocs"
-        android:layout_alignBottom="@+id/Btn_netmap"
+        android:layout_alignBottom="@+id/Btn_job_data"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp"
         android:background="#ffffffff" />
@@ -173,13 +173,13 @@
     <ImageButton
         android:layout_width="100px"
         android:layout_height="100px"
-        android:id="@+id/Btn_fusion_data"
+        android:id="@+id/Btn_installation_manual"
         android:padding="0dp"
         android:scaleType="fitCenter"
         android:layout_marginTop="50px"
         android:src="@mipmap/icon_net_mapp"
-        android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_netmap"
+        android:layout_alignLeft="@+id/Btn_job_data"
+        android:layout_below="@+id/Btn_job_data"
         android:background="#ffffffff" />
 
     <ImageButton
@@ -198,9 +198,9 @@
         android:layout_height="100px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:id="@+id/Btn_oqa"
+        android:id="@+id/Btn_welding"
         android:src="@mipmap/icon_net_mapp"
-        android:layout_alignBottom="@+id/Btn_fusion_data"
+        android:layout_alignBottom="@+id/Btn_installation_manual"
         android:layout_centerHorizontal="true"
         android:background="#ffffffff" />
 
@@ -209,10 +209,10 @@
         android:layout_height="100px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:id="@+id/Btn_scan_qr"
+        android:id="@+id/Btn_pictures"
         android:src="@mipmap/icon_net_mapp"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_oqa"
+        android:layout_alignBottom="@+id/Btn_welding"
         android:background="#ffffffff" />
 
     <ImageButton
@@ -220,11 +220,11 @@
         android:layout_height="100px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:id="@+id/Btn_userguide"
+        android:id="@+id/Btn_comment"
         android:src="@mipmap/icon_net_mapp"
         android:layout_marginTop="50px"
-        android:layout_alignLeft="@+id/Btn_netmap"
-        android:layout_below="@+id/Btn_fusion_data"
+        android:layout_alignLeft="@+id/Btn_job_data"
+        android:layout_below="@+id/Btn_installation_manual"
         android:background="#ffffffff" />
 
     <ImageButton
@@ -234,7 +234,7 @@
         android:scaleType="fitCenter"
         android:id="@+id/Btn_wm_setting"
         android:layout_alignLeft="@+id/Btn_techdocs"
-        android:layout_alignBottom="@+id/Btn_userguide"
+        android:layout_alignBottom="@+id/Btn_comment"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp"
         android:background="#ffffffff" />
@@ -258,7 +258,7 @@
         android:scaleType="fitCenter"
         android:id="@+id/Btn_user_param"
         android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_userguide"
+        android:layout_alignBottom="@+id/Btn_comment"
         android:src="@mipmap/icon_net_mapp"
         android:background="#ffffffff" />
 
@@ -295,8 +295,8 @@
         android:id="@+id/text_netmap"
         android:gravity="center_vertical|center_horizontal"
         android:includeFontPadding="false"
-        android:layout_below="@+id/Btn_netmap"
-        android:layout_alignLeft="@+id/Btn_netmap"
+        android:layout_below="@+id/Btn_job_data"
+        android:layout_alignLeft="@+id/Btn_job_data"
         android:paddingLeft="10px"/>
 
     <TextView
@@ -306,8 +306,8 @@
         android:text="Fusion\nData"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_fusiondata"
-        android:layout_below="@+id/Btn_fusion_data"
-        android:layout_alignLeft="@+id/Btn_fusion_data"
+        android:layout_below="@+id/Btn_installation_manual"
+        android:layout_alignLeft="@+id/Btn_installation_manual"
         android:textColor="#1965a3"
         android:layout_marginLeft="15px"/>
 
@@ -317,9 +317,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Quality\nAssurance"
         android:id="@+id/text_oqa"
-        android:layout_below="@+id/Btn_oqa"
+        android:layout_below="@+id/Btn_welding"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_alignLeft="@+id/Btn_oqa"
+        android:layout_alignLeft="@+id/Btn_welding"
         android:textColor="#1965a3"
         android:layout_marginLeft="-3px"/>
 
@@ -341,8 +341,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Scan QR"
         android:id="@+id/text_scan_qr"
-        android:layout_below="@+id/Btn_scan_qr"
-        android:layout_alignLeft="@+id/Btn_scan_qr"
+        android:layout_below="@+id/Btn_pictures"
+        android:layout_alignLeft="@+id/Btn_pictures"
         android:textColor="#1965a3"
         android:layout_marginLeft="10px"/>
 
@@ -376,8 +376,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Cancel"
         android:id="@+id/text_userguide"
-        android:layout_below="@+id/Btn_userguide"
-        android:layout_alignLeft="@+id/Btn_userguide"
+        android:layout_below="@+id/Btn_comment"
+        android:layout_alignLeft="@+id/Btn_comment"
         android:layout_marginLeft="20px"
         android:textColor="#1965a3"/>
 
