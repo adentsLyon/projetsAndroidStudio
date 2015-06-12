@@ -2,20 +2,47 @@ package com.example.rartonne.appftur;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.database.Cursor;
 import android.net.Uri;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 /**
- * Created by rartonne on 08/06/2015.
+ * Created by rartonne on 11/06/2015.
  */
-public class Scan extends Activity{
+public class GlobalClass extends Activity {
+
+    private String login = "Username";
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+
+    public String getLogin() {
+
+        return login;
+    }
+
+    public void setLogin(String newLogin) {
+
+        login = newLogin;
+
+    }
+
+    public void toActivity(View view) {
+        String name = view.getTag().toString();
+        String activity = "com.example.rartonne.appftur." + name;
+        Class act;
+        try {
+            act = Class.forName(activity);
+
+            Intent intent = new Intent(getApplicationContext(), act);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (ClassNotFoundException e){
+
+        }
+    }
 
     public void scanQR(View v) {
         try {
@@ -25,7 +52,7 @@ public class Scan extends Activity{
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
             //on catch, show the download dialog
-            showDialog(Scan.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+            //showDialog(this.getClass(), "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 
@@ -50,10 +77,5 @@ public class Scan extends Activity{
             }
         });
         return downloadDialog.show();
-    }
-
-    //on ActivityResult method
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
     }
 }

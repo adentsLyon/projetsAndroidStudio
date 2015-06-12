@@ -33,7 +33,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
-public class MaintenanceActivity extends Activity {
+public class MaintenanceActivity extends GlobalClass {
     public Spinner spinTables;
     public TextView textView2;
     public Button btnRefresh;

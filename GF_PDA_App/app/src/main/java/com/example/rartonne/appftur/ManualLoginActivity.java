@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -18,22 +19,24 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 
-public class ManualLoginActivity extends Activity {
+public class ManualLoginActivity extends GlobalClass {
     public SQLiteDatabase bdd;
     public TextView input_login;
     public TextView text_message;
+    public TextView textUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //this.setRequestedOrientation(
+        //     ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
         text_message = (TextView) findViewById(R.id.text_message);
+        textUsername = (TextView) findViewById(R.id.textUsername);
     }
 
     @Override
@@ -56,6 +59,13 @@ public class ManualLoginActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void gotoLogin(View view)
+    {
+        Intent intent = new Intent(ManualLoginActivity.this, LoginActivity.class);
+        startActivity(intent);
+
     }
 
     public void checkLogin(View view){
@@ -89,6 +99,10 @@ public class ManualLoginActivity extends Activity {
         if(count == 1){
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
+            final GlobalClass globalLogin = (GlobalClass) getApplicationContext();
+            globalLogin.setLogin(input_login.getText().toString());
+            textUsername.setText(input_login.getText());
+
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");

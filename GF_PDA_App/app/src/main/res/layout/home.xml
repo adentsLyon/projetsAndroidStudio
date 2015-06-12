@@ -43,7 +43,7 @@
         android:id="@+id/Btn_acc_gps"
         android:src="@mipmap/icon_aps"
         android:layout_marginLeft="350px"
-        android:layout_alignBottom="@+id/Btn_netmap"/>
+        android:layout_alignBottom="@+id/Btn_netmap" />
 
     <ImageButton
         style="@style/icon_style"
@@ -193,7 +193,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="753911608"
         android:textSize="25px"
         android:textColor="#1965a3"
         android:id="@+id/textArtId"
@@ -208,7 +207,6 @@
         android:layout_height="wrap_content"
         android:textSize="18px"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Coupler"
         android:textColor="#1965a3"
         android:id="@+id/textArticle"
         android:layout_below="@+id/textArtId"
@@ -220,7 +218,6 @@
         android:textSize="18px"
         android:textColor="#1965a3"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="PE100 SDR11"
         android:id="@+id/textStandard"
         android:layout_below="@+id/textArticle"
         android:layout_alignLeft="@+id/textArtId"/>
@@ -231,7 +228,6 @@
         android:textSize="18px"
         android:textColor="#1965a3"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="d32"
         android:id="@+id/textDiametre"
         android:layout_below="@+id/textStandard"
         android:layout_alignLeft="@+id/textArtId"/>

@@ -9,23 +9,32 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
 
-
-public class HomeActivity extends Activity {
+public class HomeActivity extends GlobalClass {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     public TextView textArtId;
     public TextView textArticle;
+    public TextView textStandard;
+    public TextView textDiametre;
+    public ImageView imageView2;
     public SQLiteDatabase bdd;
     public String art_id;
     public String name;
+    public String druck;
+    public String sdr;
+    public String dim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +46,11 @@ public class HomeActivity extends Activity {
 
         textArtId = (TextView) findViewById(R.id.textArtId);
         textArticle = (TextView) findViewById(R.id.textArticle);
+        textStandard = (TextView) findViewById(R.id.textStandard);
+        textDiametre = (TextView) findViewById(R.id.textDiametre);
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
 
-        //on initalise la connexion à la base
+        //on initalise la connexion Ã  la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
         try {
@@ -102,7 +114,7 @@ public class HomeActivity extends Activity {
 
     }
 
-    public void scanQR(View v) {
+    /*public void scanQR(View v) {
         try {
             //start the scanning activity from the com.google.zxing.client.android.SCAN intent
             Intent intent = new Intent(ACTION_SCAN);
@@ -112,10 +124,10 @@ public class HomeActivity extends Activity {
             //on catch, show the download dialog
             showDialog(HomeActivity.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
-    }
+    }*/
 
     //alert dialog for downloadDialog
-    private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
+    /*private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
         AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
         downloadDialog.setTitle(title);
         downloadDialog.setMessage(message);
@@ -135,7 +147,7 @@ public class HomeActivity extends Activity {
             }
         });
         return downloadDialog.show();
-    }
+    }*/
 
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -145,14 +157,19 @@ public class HomeActivity extends Activity {
         art_id = params[0];
 
         //select sur lab
-        Cursor curseur = bdd.rawQuery("SELECT gf_art_name3_ln5 FROM t_ddd_lab WHERE ddd_art_id = '" + art_id + "'", null);
+        Cursor curseur = bdd.rawQuery("SELECT gf_art_name3_ln5, ddd_art_druck, ddd_art_sdr, ddd_art_dim FROM t_ddd_lab WHERE ddd_art_id = '" + art_id + "'", null);
 
         curseur.moveToFirst();
         name = curseur.getString(0);
+        druck = curseur.getString(1);
+        sdr = curseur.getString(2);
+        dim = curseur.getString(3);
 
         curseur.close();
 
         textArtId.setText(art_id);
         textArticle.setText(name);
+        textStandard.setText(druck + " " + sdr);
+        textDiametre.setText(dim);
     }
 }

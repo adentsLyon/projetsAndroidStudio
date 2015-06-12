@@ -42,12 +42,13 @@
         android:layout_height="80px"
         android:text="New ToggleButton"
         android:id="@+id/toggleButtonScan"
-        android:onClick="gotoScan"
+        android:onClick="scanQR"
         android:layout_alignTop="@+id/menu_bottom"
         android:layout_marginLeft="240px"
         android:background="#1965a3"
 
-        android:src="@mipmap/footer_scan" />
+        android:src="@mipmap/footer_scan"
+        android:nestedScrollingEnabled="false" />
 
     <ImageButton
         android:layout_width="120px"
@@ -58,8 +59,9 @@
         android:layout_alignTop="@+id/menu_bottom"
         android:layout_marginLeft="360px"
         android:background="#1965a3"
-        android:onClick="gotoSettings"
         android:enabled="false"
-        android:src="@mipmap/footer_settings" />
+        android:src="@mipmap/footer_settings"
+        android:onClick="toActivity"
+        android:tag="SettingsActivity" />
 
 </RelativeLayout>

@@ -18,7 +18,8 @@
         android:textStyle="bold"
         android:paddingLeft="100dp"
         android:paddingTop="15px"
-        android:id="@+id/textUsername" />
+        android:id="@+id/textUsername"
+        android:freezesText="true" />
 
     <TextView android:text="Company name"
         android:layout_width="match_parent"

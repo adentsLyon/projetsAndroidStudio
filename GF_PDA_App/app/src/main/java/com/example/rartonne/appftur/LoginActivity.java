@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends GlobalClass {
+    public TextView textUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,10 @@ public class LoginActivity extends Activity {
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        final GlobalClass globalLogin = (GlobalClass) getApplicationContext();
+        textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(globalLogin.getLogin());
     }
 
     @Override

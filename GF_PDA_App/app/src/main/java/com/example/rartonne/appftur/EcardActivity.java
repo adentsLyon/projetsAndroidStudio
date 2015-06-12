@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class EcardActivity extends Activity {
+public class EcardActivity extends GlobalClass {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
