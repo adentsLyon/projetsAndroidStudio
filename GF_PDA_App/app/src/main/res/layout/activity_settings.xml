@@ -5,58 +5,16 @@
     tools:context="com.example.rartonne.appftur.HomeActivity">
 
 
-    <TextView android:text="Username"
-        android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:background="#1965a3"
-        android:textColor="#ffffff"
-        android:textSize="12px"
-        android:textStyle="bold"
-        android:paddingLeft="100dp"
-        android:paddingTop="5px"
-        android:id="@+id/textUsername" />
+    <!-- header aligned to bottom -->
 
-    <TextView android:text="Company name"
-        android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:textColor="#ffffff"
-        android:textSize="12px"
-        android:textStyle="bold"
-        android:paddingLeft="150px"
-        android:paddingTop="25px"
-        android:id="@+id/textCompany" />
-
-    <TextView android:text="Last Sync Date"
-        android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:textColor="#ffffff"
-        android:textSize="12px"
-        android:textStyle="bold"
-        android:paddingLeft="370px"
-        android:paddingTop="5px"
-        android:id="@+id/textLastUpdate" />
+    <include layout="@layout/header" />
 
 
-    <TextView android:text="05/06/2015 12:15"
-        android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:textColor="#ffffff"
-        android:textSize="12px"
-        android:textStyle="bold"
-        android:paddingLeft="350px"
-        android:paddingTop="25px"
-        android:id="@+id/textDate" />
-
-
-    <ImageView
-        android:layout_width="110px"
-        android:layout_height="50px"
-        android:id="@+id/imageView"
-        android:contentDescription=""
-        android:src="@mipmap/logo_gf"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"
-        />
+    <RelativeLayout
+        android:id="@+id/rel_settings"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="80px">
 
     <ImageButton
         android:layout_width="100px"
@@ -183,27 +141,6 @@
         android:layout_alignTop="@+id/Btn_techdocs"
         android:background="#ffffffff" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Technical \n Docs"
-        android:textColor="#1965a3"
-        android:id="@+id/text_4_2"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="inherit" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Accurate \n GPS"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_4_3"
-        android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -229,16 +166,7 @@
         android:layout_below="@+id/Btn_job_data"
         android:layout_alignLeft="@+id/Btn_job_data" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Quality\nAssurance"
-        android:id="@+id/text_oqa"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="-3px"
-        android:layout_centerHorizontal="true" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -252,15 +180,7 @@
         android:textColor="#1965a3"
         android:layout_marginLeft="5dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Scan QR"
-        android:id="@+id/text_scan_qr"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="10px"
-        android:layout_alignLeft="@+id/Btn_acc_gps" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -285,80 +205,25 @@
         android:layout_alignLeft="@+id/Btn_techdocs"
         android:layout_centerHorizontal="true" />
 
+        <fragment
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:id="@+id/map"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="42dp"
+            android:layout_above="@+id/menu_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/Btn_job_data" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="80px"
-        android:layout_alignParentBottom="true"
-        android:background="#1965a3"
-        android:id="@+id/menu_bottom" />
+        </RelativeLayout>
+    <!-- Footer aligned to bottom -->
 
-    <ImageButton
-        android:layout_width="120px"
-        android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonHome"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_alignParentLeft="true"
-        android:onClick="gotoHome"
-        android:background="@drawable/button_bg"
-        android:src="@mipmap/footer_home" />
+    <include layout="@layout/footer" />
 
-    <ImageButton
-        android:layout_width="120px"
-        android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonLogin"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="120px"
-        android:background="#1965a3"
-        android:src="@mipmap/footer_login" />
 
-    <ImageButton
-        android:layout_width="120px"
-        android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButtonScan"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="240px"
-        android:background="#1965a3"
-        android:src="@mipmap/footer_scan" />
 
-    <ImageButton
-        android:layout_width="120px"
-        android:layout_height="80px"
-        android:text="New ToggleButton"
-        android:id="@+id/ButtonSettingsFooter"
-        android:scaleType="centerInside"
-        android:layout_alignTop="@+id/menu_bottom"
-        android:layout_marginLeft="360px"
-        android:background="#003399"
-        android:enabled="false"
-        android:src="@mipmap/footer_settings" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Settings"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_footer_settings"
-        android:layout_below="@+id/ButtonSettingsFooter"
-        android:layout_alignLeft="@+id/ButtonSettingsFooter"
-        android:textColor="#ffffff"
-        android:scaleType="fitCenter"
-        android:layout_marginLeft="25px"/>
-
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:id="@+id/map"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp"
-        android:layout_above="@+id/menu_bottom"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/Btn_job_data" />
 
 </RelativeLayout>
