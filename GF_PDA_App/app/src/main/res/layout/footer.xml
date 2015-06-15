@@ -19,7 +19,8 @@
         android:id="@+id/rel_home"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:background="#003399">
+        android:background="#003399"
+        android:layout_alignTop="@+id/menu_bottom">
 
         <ImageButton
             android:layout_width="120px"
@@ -29,7 +30,6 @@
             android:scaleType="centerInside"
             android:id="@+id/toggleButtonHome"
             android:layout_centerHorizontal="true"
-            android:layout_alignTop="@+id/menu_bottom"
             android:layout_alignParentLeft="true"
             android:onClick="gotoHome"
             android:src="@mipmap/footer_home" />
@@ -50,7 +50,8 @@
         android:id="@+id/rel_login"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:layout_marginLeft="120px">
+        android:layout_marginLeft="120px"
+        android:layout_alignTop="@+id/menu_bottom">
 
         <ImageButton
             android:layout_width="120px"
@@ -58,7 +59,6 @@
             android:text="New ToggleButton"
             android:scaleType="centerInside"
             android:id="@+id/toggleButtonLogin"
-            android:layout_alignTop="@+id/menu_bottom"
             android:onClick="gotoLogin"
             android:background="#1965a3"
             android:src="@mipmap/footer_login" />
@@ -80,7 +80,8 @@
         android:id="@+id/rel_scan_qr"
         android:layout_width="120px"
         android:layout_height="80px"
-        android:layout_marginLeft="240px">
+        android:layout_marginLeft="240px"
+        android:layout_alignTop="@+id/menu_bottom">
 
 
         <ImageButton
@@ -90,12 +91,12 @@
             android:id="@+id/toggleButtonScan"
             android:onClick="scanQR"
             android:scaleType="centerInside"
-            android:layout_alignTop="@+id/menu_bottom"
+
             android:background="#1965a3"
             android:src="@mipmap/footer_scan"
             android:nestedScrollingEnabled="false" />
 
-        <TextView android:text="LOGIN"
+        <TextView android:text="SCAN QR"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonScan"
@@ -112,7 +113,8 @@
         android:id="@+id/rel_settings"
         android:layout_height="80px"
         android:layout_width="120px"
-        android:layout_marginLeft="360px">
+        android:layout_marginLeft="360px"
+        android:layout_alignParentBottom="@+id/menu_bottom">
 
 
         <ImageButton
@@ -121,14 +123,13 @@
             android:text="New ToggleButton"
             android:id="@+id/toggleButtonSettings"
             android:scaleType="centerInside"
-            android:layout_alignTop="@+id/menu_bottom"
             android:background="#1965a3"
             android:enabled="false"
             android:src="@mipmap/footer_settings"
             android:onClick="toActivity"
             android:tag="SettingsActivity" />
 
-        <TextView android:text="LOGIN"
+        <TextView android:text="SETTINGS"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonSettings"
