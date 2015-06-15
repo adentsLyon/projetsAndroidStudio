@@ -96,7 +96,7 @@
         android:layout_marginLeft="30px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:onClick=""
+        android:onClick="CopyReadAssets"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp" />
 
@@ -123,8 +123,9 @@
         android:layout_marginLeft="350px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:onClick=""
-        android:src="@mipmap/icon_net_mapp" />
+        android:onClick="toActivity"
+        android:src="@mipmap/icon_net_mapp"
+        android:tag="MapsActivity" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -149,7 +150,7 @@
         android:layout_marginLeft="30px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:onClick="gotoNetmap"
+        android:onClick="photo"
         android:src="@mipmap/icon_net_mapp"
 
 
@@ -168,19 +169,8 @@
         android:layout_alignBottom="@+id/Btn_job_data"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp"
-        android:background="#ffffffff" />
-
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:id="@+id/Btn_installation_manual"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="50px"
-        android:src="@mipmap/icon_net_mapp"
-        android:layout_alignLeft="@+id/Btn_job_data"
-        android:layout_below="@+id/Btn_job_data"
-        android:background="#ffffffff" />
+        android:background="#ffffffff"
+        android:onClick="changePicture" />
 
     <ImageButton
         android:layout_width="100px"
@@ -193,52 +183,6 @@
         android:layout_alignTop="@+id/Btn_techdocs"
         android:background="#ffffffff" />
 
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/Btn_welding"
-        android:src="@mipmap/icon_net_mapp"
-        android:layout_alignBottom="@+id/Btn_installation_manual"
-        android:layout_centerHorizontal="true"
-        android:background="#ffffffff" />
-
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/Btn_pictures"
-        android:src="@mipmap/icon_net_mapp"
-        android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_welding"
-        android:background="#ffffffff" />
-
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/Btn_comment"
-        android:src="@mipmap/icon_net_mapp"
-        android:layout_marginTop="50px"
-        android:layout_alignLeft="@+id/Btn_job_data"
-        android:layout_below="@+id/Btn_installation_manual"
-        android:background="#ffffffff" />
-
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/Btn_wm_setting"
-        android:layout_alignLeft="@+id/Btn_techdocs"
-        android:layout_alignBottom="@+id/Btn_comment"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/icon_net_mapp"
-        android:background="#ffffffff" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -247,20 +191,8 @@
         android:textColor="#1965a3"
         android:id="@+id/text_4_2"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_below="@+id/Btn_wm_setting"
         android:layout_centerHorizontal="true"
         android:textAlignment="inherit" />
-
-    <ImageButton
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:padding="0dp"
-        android:scaleType="fitCenter"
-        android:id="@+id/Btn_server_updates"
-        android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:layout_alignBottom="@+id/Btn_comment"
-        android:src="@mipmap/icon_net_mapp"
-        android:background="#ffffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -269,7 +201,6 @@
         android:text="Accurate \n GPS"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_4_3"
-        android:layout_below="@+id/Btn_server_updates"
         android:layout_alignLeft="@+id/Btn_acc_gps"
         android:textColor="#1965a3"
         android:layout_marginLeft="5dp"/>
@@ -278,7 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Technical \n Docs"
+        android:text="Picture"
         android:textColor="#1965a3"
         android:id="@+id/text_techdocs"
         android:gravity="center_vertical|center_horizontal"
@@ -290,26 +221,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Network\nMapping"
-        android:textColor="#1965a3"
-        android:id="@+id/text_netmap"
-        android:gravity="center_vertical|center_horizontal"
-        android:includeFontPadding="false"
-        android:layout_below="@+id/Btn_job_data"
-        android:layout_alignLeft="@+id/Btn_job_data"
-        android:paddingLeft="10px"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Fusion\nData"
+        android:text="Photo"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_fusiondata"
-        android:layout_below="@+id/Btn_installation_manual"
-        android:layout_alignLeft="@+id/Btn_installation_manual"
         android:textColor="#1965a3"
-        android:layout_marginLeft="15px"/>
+        android:layout_marginLeft="15px"
+        android:layout_below="@+id/Btn_job_data"
+        android:layout_alignLeft="@+id/Btn_job_data" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -317,11 +235,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Quality\nAssurance"
         android:id="@+id/text_oqa"
-        android:layout_below="@+id/Btn_welding"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_alignLeft="@+id/Btn_welding"
         android:textColor="#1965a3"
-        android:layout_marginLeft="-3px"/>
+        android:layout_marginLeft="-3px"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -341,10 +258,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Scan QR"
         android:id="@+id/text_scan_qr"
-        android:layout_below="@+id/Btn_pictures"
-        android:layout_alignLeft="@+id/Btn_pictures"
         android:textColor="#1965a3"
-        android:layout_marginLeft="10px"/>
+        android:layout_marginLeft="10px"
+        android:layout_alignLeft="@+id/Btn_acc_gps" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -352,11 +268,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
         android:id="@+id/text_user_param"
-        android:layout_below="@+id/Btn_server_updates"
-        android:layout_alignLeft="@+id/Btn_server_updates"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#1965a3"
-        android:layout_marginLeft="-3px"/>
+        android:layout_marginLeft="-3px"
+        android:layout_alignLeft="@+id/Btn_acc_gps" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -366,22 +281,9 @@
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_wm_settings"
         android:textColor="#1965a3"
-        android:layout_below="@+id/Btn_wm_setting"
-        android:layout_alignLeft="@+id/Btn_wm_setting"
-        android:layout_marginLeft="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Cancel"
-        android:id="@+id/text_userguide"
-        android:layout_below="@+id/Btn_comment"
-        android:layout_alignLeft="@+id/Btn_comment"
-        android:layout_marginLeft="20px"
-        android:textColor="#1965a3"/>
-
-
+        android:layout_marginLeft="10dp"
+        android:layout_alignLeft="@+id/Btn_techdocs"
+        android:layout_centerHorizontal="true" />
 
 
     <View
@@ -445,5 +347,18 @@
         android:textColor="#ffffff"
         android:scaleType="fitCenter"
         android:layout_marginLeft="25px"/>
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp"
+        android:layout_above="@+id/menu_bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Btn_job_data" />
 
 </RelativeLayout>

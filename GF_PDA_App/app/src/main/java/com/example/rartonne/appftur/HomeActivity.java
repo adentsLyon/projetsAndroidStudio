@@ -93,61 +93,6 @@ public class HomeActivity extends GlobalClass {
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoNetmap(View view)
-    {
-        Intent intent = new Intent(HomeActivity.this, NetmapActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void gotoSettings(View view)
-    {
-        Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void gotoLogin(View view)
-    {
-        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-        startActivity(intent);
-
-    }
-
-    /*public void scanQR(View v) {
-        try {
-            //start the scanning activity from the com.google.zxing.client.android.SCAN intent
-            Intent intent = new Intent(ACTION_SCAN);
-            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-            startActivityForResult(intent, 0);
-        } catch (ActivityNotFoundException anfe) {
-            //on catch, show the download dialog
-            showDialog(HomeActivity.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
-        }
-    }*/
-
-    //alert dialog for downloadDialog
-    /*private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
-        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
-        downloadDialog.setTitle(title);
-        downloadDialog.setMessage(message);
-        downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                try {
-                    act.startActivity(intent);
-                } catch (ActivityNotFoundException anfe) {
-
-                }
-            }
-        });
-        downloadDialog.setNegativeButton(buttonNo, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        return downloadDialog.show();
-    }*/
 
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {

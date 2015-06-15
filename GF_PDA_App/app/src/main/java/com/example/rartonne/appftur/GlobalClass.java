@@ -52,7 +52,8 @@ public class GlobalClass extends Activity {
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
             //on catch, show the download dialog
-            //showDialog(this.getClass(), "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+            HomeActivity act = new HomeActivity();
+            showDialog(act, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 

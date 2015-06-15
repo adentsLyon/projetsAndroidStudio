@@ -124,7 +124,7 @@
             android:layout_marginTop="200px"
             android:background="#1965a3"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
     <!-- Footer aligned to bottom -->
 
     <include layout="@layout/footer" />
