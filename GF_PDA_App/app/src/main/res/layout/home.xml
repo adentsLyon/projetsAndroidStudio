@@ -78,7 +78,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_acc_gps"
-                android:src="@drawable/Icon_APS"
+                android:src="@drawable/icon_aps"
                 />
 
             <TextView
@@ -99,7 +99,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_installation_manual"
-                android:src="@drawable/Icon_User_Guide"
+                android:src="@drawable/icon_user_guide"
                 />
 
             <TextView
@@ -119,7 +119,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_welding"
-                android:src="@drawable/Icon_WM"
+                android:src="@drawable/icon_wm"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
@@ -140,7 +140,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_pictures"
-                android:src="@drawable/Icon_Pictures"/>
+                android:src="@drawable/icon_pictures"/>
 
             <TextView
                 style="@style/text_style"
@@ -181,7 +181,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_server_updates"
-                android:src="@drawable/Icon_Synchro"/>
+                android:src="@drawable/icon_synchro"/>
 
             <TextView
                 style="@style/text_style"
