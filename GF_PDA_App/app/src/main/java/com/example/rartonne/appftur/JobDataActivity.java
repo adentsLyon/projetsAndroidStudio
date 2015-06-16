@@ -6,16 +6,42 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
-public class EcardActivity extends GlobalClass {
+public class JobDataActivity extends GlobalClass {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_job_data);
+
+        final Spinner spin = (Spinner) findViewById(R.id.spin_job);
+        final EditText field_job = (EditText) findViewById(R.id.field_job);
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+// hide selection text
+                ((TextView) view).setText(null);
+
+                String value = spin.getSelectedItem().toString();
+
+                if(value.equals("None")) {
+                    field_job.setText(null);
+                } else {
+                    field_job.setText(value);
+                }
+// if you want you can change background here
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
     }
 
 
@@ -31,6 +57,8 @@ public class EcardActivity extends GlobalClass {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+
+
     }
 
     @Override
@@ -47,4 +75,5 @@ public class EcardActivity extends GlobalClass {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -1,3 +1,4 @@
+
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
@@ -70,7 +71,7 @@ public class ManualLoginActivity extends GlobalClass {
 
     public void checkLogin(View view){
         Integer count = 0;
-        //on initalise la connexion à la base
+        //on initalise la connexion Ã  la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
         try {

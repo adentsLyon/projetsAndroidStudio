@@ -33,7 +33,9 @@
                 style="@style/icon_style"
                 android:id="@+id/Btn_job_data"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/job" />
+                android:src="@drawable/job"
+                android:onClick="toActivity"
+                android:tag="JobDataActivity"/>
 
             <TextView
                 style="@style/text_style"

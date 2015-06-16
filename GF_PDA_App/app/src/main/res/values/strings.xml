@@ -39,4 +39,10 @@
     <string name="title_activity_manual_login">ManualLoginActivity</string>
     <string name="title_activity_ecard">EcardActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string-array name="slct_job">
+        <item>None</item>
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
 </resources>
