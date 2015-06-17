@@ -5,12 +5,7 @@
     tools:context="com.example.rartonne.appftur.HomeActivity">
 
 
-    <!-- header aligned to bottom -->
-
     <include layout="@layout/header" />
-
-
-    <!-- header aligned to bottom -->
 
     <include layout="@layout/article_header" />
 

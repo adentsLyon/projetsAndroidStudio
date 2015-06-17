@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -70,7 +71,7 @@ public class ManualLoginActivity extends GlobalClass {
 
     public void checkLogin(View view){
         Integer count = 0;
-        //on initalise la connexion à la base
+        //on initalise la connexion Ã  la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
         try {
@@ -99,7 +100,7 @@ public class ManualLoginActivity extends GlobalClass {
         if(count == 1){
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
-            final GlobalClass globalLogin = (GlobalClass) getApplicationContext();
+            final GlobalClass globalLogin = (GlobalClass) ManualLoginActivity.this;
             globalLogin.setLogin(input_login.getText().toString());
             textUsername.setText(input_login.getText());
 

@@ -59,9 +59,10 @@
             android:text="New ToggleButton"
             android:scaleType="centerInside"
             android:id="@+id/toggleButtonLogin"
-            android:onClick="gotoLogin"
+            android:onClick="toActivity"
             android:background="#1965a3"
-            android:src="@mipmap/footer_login" />
+            android:src="@mipmap/footer_login"
+            android:tag="LoginActivity" />
 
         <TextView android:text="LOGIN"
             android:layout_width="match_parent"

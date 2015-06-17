@@ -1,5 +1,6 @@
 package com.example.rartonne.appftur;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -22,7 +23,7 @@ public class LoginActivity extends GlobalClass {
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        final GlobalClass globalLogin = (GlobalClass) getApplicationContext();
+        GlobalClass globalLogin = (GlobalClass) LoginActivity.this;
         textUsername = (TextView) findViewById(R.id.textUsername);
         textUsername.setText(globalLogin.getLogin());
     }
