@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 
-public class ManualLoginActivity extends GlobalClass {
+public class ManualLoginActivity extends Activity {
     public SQLiteDatabase bdd;
     public TextView input_login;
     public TextView text_message;
@@ -101,8 +101,8 @@ public class ManualLoginActivity extends GlobalClass {
         if(count == 1){
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
-            final GlobalClass globalLogin = (GlobalClass) ManualLoginActivity.this;
-            globalLogin.setLogin(input_login.getText().toString());
+            //final GlobalClass globalLogin = (GlobalClass) ManualLoginActivity.this;
+            //globalLogin.setLogin(input_login.getText().toString());
             textUsername.setText(input_login.getText());
 
         }else{

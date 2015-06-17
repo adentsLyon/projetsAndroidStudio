@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-public class HomeActivity extends GlobalClass {
+public class HomeActivity extends Activity {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     public TextView textArtId;
     public TextView textArticle;
@@ -35,7 +35,6 @@ public class HomeActivity extends GlobalClass {
     public String druck;
     public String sdr;
     public String dim;
-    final GlobalClass global = (GlobalClass) getApplicationContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,8 @@ public class HomeActivity extends GlobalClass {
         textDiametre = (TextView) findViewById(R.id.textDiametre);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
 
-        final boolean checkJob = this.getCheckJob();
+        final GlobalClass global = (GlobalClass) getApplicationContext();
+        final boolean checkJob = global.getCheckJob();
         if (checkJob == false) {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
             imgView.setVisibility(View.INVISIBLE);
@@ -59,6 +59,7 @@ public class HomeActivity extends GlobalClass {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
             imgView.setVisibility(View.VISIBLE);
         }
+
         //on initalise la connexion à la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 

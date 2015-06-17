@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class NetmapActivity extends GlobalClass {
+public class NetmapActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -35,7 +35,7 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 
 
-public class SettingsActivity extends GlobalClass {
+public class SettingsActivity extends Activity {
     private GoogleMap mMap;
     final Context context = this;
 
@@ -164,7 +164,7 @@ public class SettingsActivity extends GlobalClass {
     }
 
     public void change(View view){
-        this.setCheckJob();
+        /*this.setCheckJob();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
 
@@ -181,6 +181,6 @@ public class SettingsActivity extends GlobalClass {
         AlertDialog alertDialog = alertDialogBuilder.create();
 
         // show it
-        alertDialog.show();
+        alertDialog.show();*/
     }
 }

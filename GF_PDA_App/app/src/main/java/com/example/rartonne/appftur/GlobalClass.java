@@ -13,7 +13,7 @@ import android.view.View;
 /**
  * Created by rartonne on 11/06/2015.
  */
-public class GlobalClass extends Activity {
+public class GlobalClass extends Application {
 
     private String login = "Username";
     private boolean checkJob = true;
@@ -59,11 +59,11 @@ public class GlobalClass extends Activity {
             //start the scanning activity from the com.google.zxing.client.android.SCAN intent
             Intent intent = new Intent(ACTION_SCAN);
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-            startActivityForResult(intent, 0);
+            //startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
             //on catch, show the download dialog
             HomeActivity act = new HomeActivity();
-            showDialog(act, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+            //showDialog(act, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 

@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class LoginActivity extends GlobalClass {
+public class LoginActivity extends Activity {
     public TextView textUsername;
 
     @Override
@@ -23,9 +23,9 @@ public class LoginActivity extends GlobalClass {
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        GlobalClass globalLogin = (GlobalClass) LoginActivity.this;
+        //GlobalClass globalLogin = (GlobalClass) LoginActivity.this;
         textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(globalLogin.getLogin());
+       // textUsername.setText(globalLogin.getLogin());
     }
 
     @Override
