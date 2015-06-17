@@ -39,21 +39,6 @@ public class GlobalClass extends Application {
         }
     }
 
-    public void toActivity(View view) {
-        String name = view.getTag().toString();
-        String activity = "com.example.rartonne.appftur." + name;
-        Class act;
-        try {
-            act = Class.forName(activity);
-
-            Intent intent = new Intent(getApplicationContext(), act);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        } catch (ClassNotFoundException e){
-
-        }
-    }
-
     public void scanQR(View v) {
         try {
             //start the scanning activity from the com.google.zxing.client.android.SCAN intent

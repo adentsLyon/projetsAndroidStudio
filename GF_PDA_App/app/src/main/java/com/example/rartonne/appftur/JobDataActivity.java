@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-public class JobDataActivity extends Activity {
+public class JobDataActivity extends GlobalViews {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

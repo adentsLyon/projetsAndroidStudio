@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 
-public class ManualLoginActivity extends Activity {
+public class ManualLoginActivity extends GlobalViews {
     public SQLiteDatabase bdd;
     public TextView input_login;
     public TextView text_message;

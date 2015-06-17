@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends GlobalViews {
     public TextView textUsername;
 
     @Override

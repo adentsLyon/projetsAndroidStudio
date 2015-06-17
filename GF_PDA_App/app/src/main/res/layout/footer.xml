@@ -129,8 +129,8 @@
             android:background="#1965a3"
             android:enabled="false"
             android:src="@mipmap/footer_settings"
-            android:onClick="toActivity"
-            android:tag="SettingsActivity" />
+            android:tag="SettingsActivity"
+            android:onClick="toActivity" />
 
         <TextView android:text="SETTINGS"
             android:layout_width="match_parent"

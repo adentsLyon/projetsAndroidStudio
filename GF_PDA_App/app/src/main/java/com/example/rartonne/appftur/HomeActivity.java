@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends GlobalViews {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     public TextView textArtId;
     public TextView textArticle;
