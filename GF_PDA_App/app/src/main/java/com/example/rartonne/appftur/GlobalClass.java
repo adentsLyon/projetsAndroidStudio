@@ -16,17 +16,27 @@ import android.view.View;
 public class GlobalClass extends Activity {
 
     private String login = "Username";
+    private boolean checkJob = true;
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
 
     public String getLogin() {
-
         return login;
     }
 
     public void setLogin(String newLogin) {
-
         login = newLogin;
+    }
 
+    public boolean getCheckJob(){
+        return checkJob;
+    }
+
+    public void setCheckJob(){
+        if(checkJob == true){
+            checkJob = false;
+        }else{
+            checkJob = true;
+        }
     }
 
     public void toActivity(View view) {

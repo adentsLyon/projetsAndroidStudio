@@ -1,8 +1,10 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
@@ -17,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.rartonne.test_application.MainActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -34,6 +37,7 @@ import java.net.InetAddress;
 
 public class SettingsActivity extends GlobalClass {
     private GoogleMap mMap;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,4 +163,24 @@ public class SettingsActivity extends GlobalClass {
         startActivity(intent);
     }
 
+    public void change(View view){
+        this.setCheckJob();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle("Your Title");
+
+        // set dialog message
+        String message = String.valueOf(getCheckJob());
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(true);
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
 }

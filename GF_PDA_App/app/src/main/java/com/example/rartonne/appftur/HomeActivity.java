@@ -35,6 +35,7 @@ public class HomeActivity extends GlobalClass {
     public String druck;
     public String sdr;
     public String dim;
+    final GlobalClass global = (GlobalClass) getApplicationContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,14 @@ public class HomeActivity extends GlobalClass {
         textDiametre = (TextView) findViewById(R.id.textDiametre);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
 
+        final boolean checkJob = this.getCheckJob();
+        if (checkJob == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
+            imgView.setVisibility(View.VISIBLE);
+        }
         //on initalise la connexion à la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 

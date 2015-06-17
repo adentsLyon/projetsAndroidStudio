@@ -22,15 +22,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="190px"
-            android:layout_marginLeft="30px">
+            android:layout_marginLeft="20px">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_job_data"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/job"
+                android:src="@drawable/icon_job_data"
                 android:onClick="toActivity"
                 android:tag="JobDataActivity"/>
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_job"/>
 
             <TextView
                 style="@style/text_style"
@@ -53,9 +60,16 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_netmap"
-                android:src="@drawable/icon_net_mapp"
+                android:src="@drawable/icon_installation_data"
                 android:onClick="gotoNetmap"
                 android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_installation"/>
 
             <TextView
                 style="@style/text_style"
@@ -70,13 +84,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="190px"
-            android:layout_marginLeft="350px">
+            android:layout_marginLeft="340px">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_acc_gps"
-                android:src="@drawable/icon_aps"
+                android:src="@drawable/icon_geo_position"
                 />
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_gps"/>
 
             <TextView
                 style="@style/text_style"
@@ -90,14 +111,13 @@
             android:id="@+id/rel_installation_manual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="330px"
+            android:layout_marginTop="470px"
             android:layout_marginLeft="25px">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_installation_manual"
-                android:src="@drawable/icon_user_guide"
-                />
+                android:src="@drawable/icon_installation_manuals" />
 
             <TextView
                 style="@style/text_style"
@@ -111,13 +131,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="330px"
-            android:layout_centerHorizontal="true">
+            android:layout_marginLeft="20px">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_welding"
-                android:src="@drawable/icon_wm"
+                android:src="@drawable/icon_welding"
                 android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_welding"/>
 
             <TextView
                 style="@style/text_style"
@@ -132,12 +159,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="330px"
-            android:layout_marginLeft="350px">
+            android:layout_centerHorizontal="true">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_pictures"
                 android:src="@drawable/icon_pictures"/>
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_picture"/>
 
             <TextView
                 style="@style/text_style"
@@ -152,13 +186,20 @@
             android:id="@+id/rel_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="470px"
-            android:layout_marginLeft="30px">
+            android:layout_marginTop="330px"
+            android:layout_marginLeft="340px">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_comment"
-                android:src="@drawable/note"/>
+                android:src="@drawable/icon_comment"/>
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@drawable/pastille_ok"
+                android:layout_marginLeft="80px"
+                android:id="@+id/pastille_ok_comment"/>
 
             <TextView
                 style="@style/text_style"
@@ -178,7 +219,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_server_updates"
-                android:src="@drawable/icon_synchro"/>
+                android:src="@drawable/icon_server_updates"/>
 
             <TextView
                 style="@style/text_style"

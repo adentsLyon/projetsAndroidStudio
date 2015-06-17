@@ -39,4 +39,9 @@
     <string name="title_activity_manual_login">ManualLoginActivity</string>
     <string name="title_activity_ecard">EcardActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string-array name="slct_job">
+    <item>article_catalog</item>
+    <item>article_feature</item>
+    <item>batch_blacklist</item>
+    </string-array>
 </resources>

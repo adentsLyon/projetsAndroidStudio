@@ -31,8 +31,9 @@
             android:id="@+id/toggleButtonHome"
             android:layout_centerHorizontal="true"
             android:layout_alignParentLeft="true"
-            android:onClick="gotoHome"
-            android:src="@mipmap/footer_home" />
+            android:onClick="toActivity"
+            android:src="@mipmap/footer_home"
+            android:tag="HomeActivity"/>
 
         <TextView android:text="HOME"
             android:layout_width="match_parent"

@@ -139,7 +139,8 @@
         android:src="@mipmap/icon_net_mapp"
         android:layout_marginLeft="350px"
         android:layout_alignTop="@+id/Btn_techdocs"
-        android:background="#ffffffff" />
+        android:background="#ffffffff"
+        android:onClick="change" />
 
 
     <TextView
