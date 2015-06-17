@@ -7,6 +7,11 @@
 
     <include layout="@layout/header" />
 
+    <RelativeLayout
+        android:layout_marginTop="80px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
 
     <ImageButton
         android:layout_width="100px"
@@ -15,13 +20,10 @@
         android:scaleType="fitCenter"
         android:id="@+id/Btn_confirm"
         android:src="@mipmap/action_confirm"
-        android:layout_marginTop="500px"
+        android:layout_marginTop="420px"
         android:layout_marginLeft="30px"
         android:background="#ffffff"
         android:onClick="checkLogin" />
-
-
-
 
     <ImageButton
         android:layout_width="100px"
@@ -30,7 +32,7 @@
         android:scaleType="fitCenter"
         android:id="@+id/Btn_cancel"
         android:src="@mipmap/action_cancel"
-        android:layout_marginTop="500px"
+        android:layout_marginTop="420px"
         android:layout_marginLeft="350px"
         android:background="#ffffff"
         android:onClick="gotoLogin" />
@@ -60,14 +62,7 @@
         android:textColor="#000000"/>
 
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="80px"
-        android:layout_alignParentBottom="true"
-        android:background="#1965a3"
-        android:id="@+id/menu_bottom" />
-
-    <EditText
+        <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -91,5 +86,8 @@
         android:paddingBottom="15px"
         android:lineSpacingExtra="-8px"
         android:layout_marginLeft="7px"/>
+    </RelativeLayout>
+
+    <include layout="@layout/footer" />
 
 </RelativeLayout>
