@@ -10,10 +10,6 @@
 
     <include layout="@layout/header" />
 
-
-    <!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top --><!-- Header aligned to top -->
-
-
     <!-- header aligned to bottom -->
 
     <include layout="@layout/article_header" />
@@ -25,51 +21,176 @@
             android:layout_marginTop="270px"
             >
 
-        <View
-        android:layout_width="400px"
-        android:layout_height="50px"
-            android:background="#1965a3"
-            android:id="@+id/bar_job"/>
-
-        <View
-            android:layout_width="78px"
-            android:layout_height="50px"
-            android:background="#1965a3"
-            android:layout_alignParentRight="true"
-            android:id="@+id/arrow_job"/>
-
-            <Spinner
-                android:layout_width="60px"
-                android:layout_height="40px"
-                android:layout_alignLeft="@id/arrow_job"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="5px"
-                android:drawSelectorOnTop="false"
-                android:background="@drawable/fleche"
-                android:entries="@array/slct_job"
-                android:id="@+id/spin_job" />
-
-            <EditText
-                android:background="@null"
-                android:layout_width="290px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
-                android:layout_marginLeft="100px"
-                android:id="@+id/field_job"
-                android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
-
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rel_welding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Job n° :"
-                android:id="@+id/textView"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10px"
-                android:textSize="25px"
-                android:layout_alignLeft="@+id/bar_job"
-                android:layout_alignTop="@+id/bar_job"/>
+                >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_welding"/>
+
+                        <EditText
+                            android:background="@null"
+                            android:layout_width="190px"
+                            android:layout_height="45px"
+                            android:layout_marginTop="5px"
+                            android:layout_marginLeft="230px"
+                            android:id="@+id/field_welding"
+                            android:textColor="#ffffff"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Welder Certificate :"
+                            android:id="@+id/text_welding"
+                            android:textColor="#ffffff"
+                            android:layout_marginLeft="10px"
+                            android:layout_marginTop="10px"
+                            android:textSize="25px"
+                            android:layout_alignLeft="@+id/bar_welding"
+                            android:layout_alignTop="@+id/bar_welding"/>
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_welding"
+                android:layout_marginTop="2px"
+                >
+
+                <View
+                    android:layout_width="400px"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:id="@+id/bar_job"/>
+
+                <View
+                    android:layout_width="78px"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/arrow_job"/>
+
+                <Spinner
+                    android:layout_width="60px"
+                    android:layout_height="40px"
+                    android:layout_alignLeft="@id/arrow_job"
+                    android:layout_marginLeft="10px"
+                    android:layout_marginTop="5px"
+                    android:drawSelectorOnTop="false"
+                    android:background="@drawable/fleche"
+                    android:entries="@array/slct_job"
+                    android:id="@+id/spin_job" />
+
+                <EditText
+                    android:background="@null"
+                    android:layout_width="290px"
+                    android:layout_height="45px"
+                    android:layout_marginTop="5px"
+                    android:layout_marginLeft="100px"
+                    android:id="@+id/field_job"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job n° :"
+                    android:id="@+id/textView"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="10px"
+                    android:textSize="25px"
+                    android:layout_marginLeft="10px"
+                    android:layout_alignLeft="@+id/bar_job"
+                    android:layout_alignTop="@+id/bar_job"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_site"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_job"
+                android:layout_marginTop="2px"
+                >
+
+                <View
+                    android:layout_width="400px"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:id="@+id/bar_site"/>
+
+                <View
+                    android:layout_width="78px"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/arrow_site"/>
+
+                <Spinner
+                    android:layout_width="60px"
+                    android:layout_height="40px"
+                    android:layout_alignLeft="@id/arrow_site"
+                    android:layout_marginLeft="10px"
+                    android:layout_marginTop="5px"
+                    android:drawSelectorOnTop="false"
+                    android:background="@drawable/fleche"
+                    android:entries="@array/slct_job"
+                    android:id="@+id/spin_site" />
+
+                <EditText
+                    android:background="@null"
+                    android:layout_width="290px"
+                    android:layout_height="45px"
+                    android:layout_marginTop="5px"
+                    android:layout_marginLeft="100px"
+                    android:id="@+id/field_site"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Site name :"
+                    android:id="@+id/text_site"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="10px"
+                    android:textSize="25px"
+                    android:layout_alignLeft="@+id/bar_site"
+                    android:layout_alignTop="@+id/bar_site"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_pictures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270px"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_Scan_Qr"
+                    android:src="@drawable/icon_scan_qr"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="SCAN\nJOB QR"
+                    android:id="@+id/text_scan_qr"
+                    android:layout_below="@+id/Btn_Scan_Qr" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
     <!-- Footer aligned to bottom -->
