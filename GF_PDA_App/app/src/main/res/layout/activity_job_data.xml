@@ -87,7 +87,6 @@
                     android:layout_marginTop="5px"
                     android:drawSelectorOnTop="false"
                     android:background="@drawable/fleche"
-                    android:entries="@array/slct_job"
                     android:id="@+id/spin_job" />
 
                 <EditText
@@ -144,15 +143,14 @@
                     android:layout_marginTop="5px"
                     android:drawSelectorOnTop="false"
                     android:background="@drawable/fleche"
-                    android:entries="@array/slct_job"
                     android:id="@+id/spin_site" />
 
                 <EditText
                     android:background="@null"
-                    android:layout_width="290px"
+                    android:layout_width="250px"
                     android:layout_height="45px"
                     android:layout_marginTop="5px"
-                    android:layout_marginLeft="100px"
+                    android:layout_marginLeft="140px"
                     android:id="@+id/field_site"
                     android:textColor="#ffffff"
                     android:layout_alignParentTop="true"

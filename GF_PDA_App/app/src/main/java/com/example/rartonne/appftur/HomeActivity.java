@@ -35,14 +35,18 @@ public class HomeActivity extends GlobalViews {
     public String druck;
     public String sdr;
     public String dim;
+    public GlobalClass global;
+    public boolean checkJob;
+    public boolean checkInstallation;
+    public boolean checkGeo;
+    public boolean checkWelding;
+    public boolean checkPictures;
+    public boolean checkComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         textArtId = (TextView) findViewById(R.id.textArtId);
         textArticle = (TextView) findViewById(R.id.textArticle);
@@ -50,13 +54,67 @@ public class HomeActivity extends GlobalViews {
         textDiametre = (TextView) findViewById(R.id.textDiametre);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
 
-        final GlobalClass global = (GlobalClass) getApplicationContext();
-        final boolean checkJob = global.getCheckJob();
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
+
+        //on affiche ou non les pastilles
+        checkJob = global.getCheckJob();
+        checkInstallation = global.getCheckInstallation();
+        checkGeo = global.getCheckGeo();
+        checkWelding = global.getCheckWelding();
+        checkPictures = global.getCheckPictures();
+        checkComment = global.getCheckComment();
+
         if (checkJob == false) {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
             imgView.setVisibility(View.INVISIBLE);
         }else{
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
+        if (checkInstallation == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_installation);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_installation);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
+        if (checkGeo == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_gps);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_gps);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
+        if (checkWelding == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_welding);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_welding);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
+        if (checkPictures == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_picture);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_picture);
+            imgView.setVisibility(View.VISIBLE);
+        }
+
+        if (checkComment == false) {
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_comment);
+            imgView.setVisibility(View.INVISIBLE);
+        }else{
+            ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_comment);
             imgView.setVisibility(View.VISIBLE);
         }
 

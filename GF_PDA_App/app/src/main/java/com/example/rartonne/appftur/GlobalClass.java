@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by rartonne on 11/06/2015.
@@ -16,8 +17,15 @@ import android.view.View;
 public class GlobalClass extends Application {
 
     private String login = "Username";
-    private boolean checkJob = true;
-    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+    private String lastUpdate = "";
+    private String welderCertificate = "";
+    private int userId;
+    private boolean checkJob = false;
+    private boolean checkInstallation = false;
+    private boolean checkGeo = false;
+    private boolean checkWelding = false;
+    private boolean checkPictures = false;
+    private boolean checkComment = false;
 
     public String getLogin() {
         return login;
@@ -39,39 +47,38 @@ public class GlobalClass extends Application {
         }
     }
 
-    public void scanQR(View v) {
-        try {
-            //start the scanning activity from the com.google.zxing.client.android.SCAN intent
-            Intent intent = new Intent(ACTION_SCAN);
-            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-            //startActivityForResult(intent, 0);
-        } catch (ActivityNotFoundException anfe) {
-            //on catch, show the download dialog
-            HomeActivity act = new HomeActivity();
-            //showDialog(act, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
-        }
+    public boolean getCheckInstallation(){
+        return checkInstallation;
+    }
+    public boolean getCheckGeo(){
+        return checkGeo;
     }
 
-    //alert dialog for downloadDialog
-    private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
-        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
-        downloadDialog.setTitle(title);
-        downloadDialog.setMessage(message);
-        downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                try {
-                    act.startActivity(intent);
-                } catch (ActivityNotFoundException anfe) {
+    public boolean getCheckWelding(){
+        return checkWelding;
+    }
 
-                }
-            }
-        });
-        downloadDialog.setNegativeButton(buttonNo, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        return downloadDialog.show();
+    public boolean getCheckPictures(){
+        return checkPictures;
+    }
+
+    public boolean getCheckComment(){
+        return checkComment;
+    }
+
+    public String getWelderCertificate(){
+        return welderCertificate;
+    }
+
+    public void setWelderCertificate(String certif){
+        welderCertificate = certif;
+    }
+
+    public int getUserId(){
+        return userId;
+    }
+
+    public void setUserId(int newId){
+        userId = newId;
     }
 }
