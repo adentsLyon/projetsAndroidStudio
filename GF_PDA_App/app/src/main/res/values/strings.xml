@@ -44,4 +44,5 @@
     <item>article_feature</item>
     <item>batch_blacklist</item>
     </string-array>
+    <string name="title_activity_geo_position">GeoPositionActivity</string>
 </resources>

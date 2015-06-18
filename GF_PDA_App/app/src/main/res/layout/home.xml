@@ -90,7 +90,8 @@
                 style="@style/icon_style"
                 android:id="@+id/Btn_acc_gps"
                 android:src="@drawable/icon_geo_position"
-                />
+                android:onClick="toActivity"
+                android:tag="GeoPositionActivity"/>
 
             <ImageView
                 android:layout_width="40px"

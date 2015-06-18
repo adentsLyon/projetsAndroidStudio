@@ -1,0 +1,156 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.HomeActivity">
+
+    <!-- Header aligned to top -->
+
+    <include layout="@layout/header" />
+
+    <!-- header above header -->
+
+    <include layout="@layout/article_header" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="250px">
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="CURRENT PDA GEO POSITION"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:id="@+id/title_position"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px">
+
+            <View
+
+                android:layout_width="237px"
+                android:layout_height="50px"
+                android:background="#66c266"
+                android:id="@+id/view_lat"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lat :"
+                android:id="@+id/text_lat"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="10px"
+                android:textSize="25px"
+                android:layout_alignLeft="@+id/view_lat"
+                android:layout_alignTop="@+id/view_lat"/>
+
+            <EditText
+                android:background="@null"
+                android:layout_width="150px"
+                android:layout_height="45px"
+                android:layout_marginTop="3px"
+                android:layout_marginLeft="70px"
+                android:id="@+id/field_lat"
+                android:textColor="#ffffff"
+                android:layout_alignLeft="@+id/view_lat"
+                android:layout_alignTop="@+id/view_lat"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_lon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:layout_marginLeft="243px">
+            <View
+
+
+                android:layout_width="237px"
+                android:layout_height="50px"
+                android:background="#66c266"
+                android:id="@+id/view_lon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lon :"
+                android:id="@+id/text_lon"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="10px"
+                android:textSize="25px"
+                android:layout_alignLeft="@+id/view_lon"
+                android:layout_alignTop="@+id/view_lon"/>
+
+            <EditText
+                android:background="@null"
+                android:layout_width="150px"
+                android:layout_height="45px"
+                android:layout_marginTop="3px"
+                android:layout_marginLeft="70px"
+                android:id="@+id/field_lon"
+                android:textColor="#ffffff"
+                android:layout_alignLeft="@+id/view_lon"
+                android:layout_alignTop="@+id/view_lon"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_cadre_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90px"
+            android:layout_marginLeft="30px"
+            >
+            <fragment
+                android:layout_width="420px"
+                android:layout_height="200px"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:id="@+id/map"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_above="@+id/menu_bottom"
+                android:layout_below="@+id/Btn_job_data" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_cadre_map"
+            android:layout_marginTop="10px"
+            android:layout_marginLeft="30px">
+
+            <ImageButton
+                style="@style/icon_style"
+                android:id="@+id/Btn_Scan_Qr"
+                android:src="@drawable/icon_refresh_map"/>
+
+            <TextView
+                style="@style/text_style"
+                android:text="REFRESH\nMAP"
+                android:id="@+id/text_scan_qr"
+                android:layout_below="@+id/Btn_Scan_Qr" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom-->
+
+    <include layout="@layout/footer" />
+
+</RelativeLayout>
