@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 
 public class LoginActivity extends GlobalViews {
-    public TextView textUsername;
+    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,10 @@ public class LoginActivity extends GlobalViews {
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //GlobalClass globalLogin = (GlobalClass) LoginActivity.this;
-        textUsername = (TextView) findViewById(R.id.textUsername);
-       // textUsername.setText(globalLogin.getLogin());
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
     }
 
     @Override

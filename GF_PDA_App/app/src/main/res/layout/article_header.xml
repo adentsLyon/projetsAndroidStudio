@@ -16,8 +16,7 @@
         android:padding="0dp"
         android:layout_marginLeft="30px"
         android:layout_marginTop="30px"
-        android:scaleType="fitCenter"
-        android:src="@drawable/asset_2920" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:layout_width="100px"
@@ -28,7 +27,7 @@
         android:layout_marginLeft="350px"
         android:layout_marginTop="30px"
         android:scaleType="fitCenter"
-        android:src="@mipmap/sign_work_in_progress" />
+        android:src="@mipmap/sign_login_expected" />
 
     <TextView
         android:layout_width="wrap_content"

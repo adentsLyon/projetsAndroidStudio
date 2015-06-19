@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class NetmapActivity extends GlobalViews {
+    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,11 @@ public class NetmapActivity extends GlobalViews {
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
     }
 
     @Override

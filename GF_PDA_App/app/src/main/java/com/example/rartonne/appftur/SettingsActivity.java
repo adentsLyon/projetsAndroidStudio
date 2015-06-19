@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.rartonne.test_application.MainActivity;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,6 +39,7 @@ import java.net.InetAddress;
 public class SettingsActivity extends GlobalViews {
     private GoogleMap mMap;
     final Context context = this;
+    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,11 @@ public class SettingsActivity extends GlobalViews {
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
     }
 
     @Override

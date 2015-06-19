@@ -66,8 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Login"
-        android:ems="10"
+            android:ems="10"
         android:id="@+id/input_login"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

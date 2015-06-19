@@ -26,6 +26,7 @@ public class ManualLoginActivity extends GlobalViews {
     public TextView input_login;
     public TextView text_message;
     public TextView textUsername;
+    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +36,14 @@ public class ManualLoginActivity extends GlobalViews {
         //this.setRequestedOrientation(
         //     ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
+
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
         text_message = (TextView) findViewById(R.id.text_message);
-        textUsername = (TextView) findViewById(R.id.textUsername);
     }
 
     @Override
@@ -101,9 +106,18 @@ public class ManualLoginActivity extends GlobalViews {
         if(count == 1){
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
-            //final GlobalClass globalLogin = (GlobalClass) ManualLoginActivity.this;
-            //globalLogin.setLogin(input_login.getText().toString());
+            //GlobalClass globalLogin = (GlobalClass) getApplicationContext();
+            global.setLogin(input_login.getText().toString());
             textUsername.setText(input_login.getText());
+
+            //on récupère le user_id
+            curseur = bdd.rawQuery("SELECT user_id FROM user WHERE login = '" + input_login.getText() + "'", null);
+
+            curseur.moveToFirst();
+            int userId = curseur.getInt(0);
+            global.setUserId(userId);
+
+            curseur.close();
 
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));

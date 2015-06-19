@@ -47,6 +47,7 @@ public class MaintenanceActivity extends GlobalViews {
     public Integer step = 0;
     public Integer progress = 0;
     public ProgressBar pgbSteps;
+    public GlobalClass global;
 
 
     @Override
@@ -57,6 +58,10 @@ public class MaintenanceActivity extends GlobalViews {
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //on remplit le header
+        global = (GlobalClass) getApplicationContext();
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        textUsername.setText(global.getLogin());
 
         //on lie les views aux variables
         spinTables = (Spinner) findViewById(R.id.spinTables);
@@ -164,7 +169,7 @@ public class MaintenanceActivity extends GlobalViews {
                 "INSTALLER",
                 "USER",
                 "TRANSLATION",
-                "T_DDD_LAB",
+                //"T_DDD_LAB",
                 "SUPPLIER",
                 "ordernr_sites",
                 "operator",
@@ -176,7 +181,7 @@ public class MaintenanceActivity extends GlobalViews {
             final Integer total_steps = tables.length;
 
             for(String table : tables) {
-                response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=rartonne&table=" + table);
+                response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=Installer1&table=" + table);
 
                 if(response != null && !response.isEmpty()) {
                     String[] requetes = response.split(";");
