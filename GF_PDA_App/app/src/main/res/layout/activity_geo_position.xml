@@ -18,7 +18,7 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="250px">
+        android:layout_marginTop="240px">
 
 
         <TextView
@@ -136,14 +136,14 @@
 
             <ImageButton
                 style="@style/icon_style"
-                android:id="@+id/Btn_Scan_Qr"
+                android:id="@+id/Btn_refresh"
                 android:src="@drawable/icon_refresh_map"/>
 
             <TextView
                 style="@style/text_style"
                 android:text="REFRESH\nMAP"
                 android:id="@+id/text_scan_qr"
-                android:layout_below="@+id/Btn_Scan_Qr" />
+                android:layout_below="@+id/Btn_refresh" />
 
         </RelativeLayout>
 

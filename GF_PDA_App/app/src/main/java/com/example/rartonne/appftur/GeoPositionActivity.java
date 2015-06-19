@@ -1,17 +1,49 @@
 package com.example.rartonne.appftur;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.location.Location;
+import android.location.LocationManager;
+import android.media.Image;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class GeoPositionActivity extends ActionBarActivity {
+public class GeoPositionActivity extends GlobalViews {
+    private GoogleMap mMap;
+    public EditText field_lat;
+    public EditText field_lon;
+    public ImageButton Btn_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_position);
+        setUpMapIfNeeded();
+
+        Btn_refresh = (ImageButton) findViewById(R.id.Btn_refresh);
+        Btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setUpMap();
+            }
+        });
+
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
@@ -34,5 +66,34 @@ public class GeoPositionActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+                setUpMap();
+
+            }
+        }
+    }
+
+    private void setUpMap() {
+        LocationManager lm = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+        LatLng latlng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        field_lat = (EditText) findViewById(R.id.field_lat);
+        field_lon = (EditText) findViewById(R.id.field_lon);
+        field_lat.setText(String.valueOf(latitude));
+        field_lon.setText(String.valueOf(longitude));
     }
 }

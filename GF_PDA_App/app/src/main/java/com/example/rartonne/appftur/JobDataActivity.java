@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +42,9 @@ public class JobDataActivity extends GlobalViews {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     }
 
