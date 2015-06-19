@@ -67,6 +67,10 @@
             android:name=".GeoPositionActivity"
             android:label="@string/title_activity_geo_position" >
         </activity>
+        <activity
+            android:name=".InstallationDataActivity"
+            android:label="@string/title_activity_installation_data" >
+        </activity>
     </application>
 
 </manifest>
