@@ -16,7 +16,7 @@ import android.widget.TextView;
  */
 public class GlobalClass extends Application {
 
-    private String login = "Username";
+    private String login = "";
     private String lastUpdate = "";
     private String welderCertificate = "";
     private int userId;

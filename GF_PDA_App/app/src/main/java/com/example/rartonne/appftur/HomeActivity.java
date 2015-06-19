@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class HomeActivity extends GlobalViews {
     public String druck;
     public String sdr;
     public String dim;
+    public String login;
     public GlobalClass global;
     public boolean checkJob;
     public boolean checkInstallation;
@@ -42,6 +44,15 @@ public class HomeActivity extends GlobalViews {
     public boolean checkWelding;
     public boolean checkPictures;
     public boolean checkComment;
+    public RelativeLayout rel_job_data;
+    public RelativeLayout rel_installation_data;
+    public RelativeLayout rel_geo_position;
+    public RelativeLayout rel_welding;
+    public RelativeLayout rel_pictures;
+    public RelativeLayout rel_comment;
+    public RelativeLayout rel_installation_manual;
+    public RelativeLayout rel_server_updates;
+    public RelativeLayout rel_scan_qr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +64,16 @@ public class HomeActivity extends GlobalViews {
         textStandard = (TextView) findViewById(R.id.textStandard);
         textDiametre = (TextView) findViewById(R.id.textDiametre);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
+        rel_job_data = (RelativeLayout) findViewById(R.id.rel_job_data);
+        rel_installation_data = (RelativeLayout) findViewById(R.id.rel_installation_data);
+        rel_geo_position = (RelativeLayout) findViewById(R.id.rel_geo_position);
+        rel_welding = (RelativeLayout) findViewById(R.id.rel_welding);
+        rel_pictures = (RelativeLayout) findViewById(R.id.rel_pictures);
+        rel_comment = (RelativeLayout) findViewById(R.id.rel_comment);
+        rel_installation_manual = (RelativeLayout) findViewById(R.id.rel_installation_manual);
+        rel_server_updates = (RelativeLayout) findViewById(R.id.rel_server_updates);
+        rel_scan_qr = (RelativeLayout)findViewById(R.id.rel_scan_qr);
+
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -60,7 +81,8 @@ public class HomeActivity extends GlobalViews {
         //on remplit le header
         global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(global.getLogin());
+        login = global.getLogin();
+        textUsername.setText(login);
 
         //on affiche ou non les pastilles
         checkJob = global.getCheckJob();
@@ -118,6 +140,19 @@ public class HomeActivity extends GlobalViews {
             imgView.setVisibility(View.VISIBLE);
         }
 
+        //on rend les icones visibles ou non
+        if(login.isEmpty()){
+            rel_job_data.setVisibility(View.GONE);
+            rel_installation_data.setVisibility(View.GONE);
+            rel_geo_position.setVisibility(View.GONE);
+            rel_welding.setVisibility(View.GONE);
+            rel_pictures.setVisibility(View.GONE);
+            rel_comment.setVisibility(View.GONE);
+            rel_installation_manual.setVisibility(View.GONE);
+            rel_server_updates.setVisibility(View.GONE);
+            rel_scan_qr.setVisibility(View.GONE);
+        }
+
         //on initalise la connexion à la base
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
@@ -164,25 +199,29 @@ public class HomeActivity extends GlobalViews {
 
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        String contents = intent.getStringExtra("SCAN_RESULT");
-        String[] params = contents.split("ART=");
-        params = params[1].split("&");
-        art_id = params[0];
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            String[] params = contents.split("ART=");
+            params = params[1].split("&");
+            art_id = params[0];
 
-        //select sur lab
-        Cursor curseur = bdd.rawQuery("SELECT gf_art_name3_ln5, ddd_art_druck, ddd_art_sdr, ddd_art_dim FROM t_ddd_lab WHERE ddd_art_id = '" + art_id + "'", null);
+            //select sur lab
+            Cursor curseur = bdd.rawQuery("SELECT gf_art_name3_ln5, ddd_art_druck, ddd_art_sdr, ddd_art_dim FROM t_ddd_lab WHERE ddd_art_id = '" + art_id + "'", null);
 
-        curseur.moveToFirst();
-        name = curseur.getString(0);
-        druck = curseur.getString(1);
-        sdr = curseur.getString(2);
-        dim = curseur.getString(3);
+            curseur.moveToFirst();
+            name = curseur.getString(0);
+            druck = curseur.getString(1);
+            sdr = curseur.getString(2);
+            dim = curseur.getString(3);
 
-        curseur.close();
+            curseur.close();
 
-        textArtId.setText(art_id);
-        textArticle.setText(name);
-        textStandard.setText(druck + " " + sdr);
-        textDiametre.setText(dim);
+            textArtId.setText(art_id);
+            textArticle.setText(name);
+            textStandard.setText(druck + " " + sdr);
+            textDiametre.setText(dim);
+        }catch(NullPointerException e){
+
+        };
     }
 }
