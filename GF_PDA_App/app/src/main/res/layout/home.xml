@@ -137,7 +137,7 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_welding"
-                android:src="@drawable/icon_welding"
+                android:src="@drawable/icon_wm_manual"
                 android:layout_centerHorizontal="true"/>
 
             <ImageView

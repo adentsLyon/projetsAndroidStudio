@@ -1,0 +1,135 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".MainSessionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:text="@string/hello_world"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                style="@style/myStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contrôle"
+                android:id="@+id/button"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnControleClick"/>
+
+            <Button
+                style="@style/myStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manipulation des listes"
+                android:id="@+id/btn_liste"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnListeClick"/>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manipulation des listes2"
+                android:id="@+id/btn_photo"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnPhotoClick"/>
+
+            <Button
+                style="@style/myStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Base de données"
+                android:id="@+id/btn_bdd"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnBddClick"/>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manipulation de fichiers"
+                android:id="@+id/btn_fichier"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnFichiersClick"/>
+            <Button
+                style="@style/myStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Préférences de l'application"
+                android:id="@+id/btn_pref"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnPrefClick"/>
+
+
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prise de photo"
+                android:id="@+id/btn_capturePhoto"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnCapturePhotoClick"/>
+
+            <Button
+                style="@style/myStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acces http"
+                android:id="@+id/btn_accesHttp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnAccesHttpClick"/>
+
+            <Button
+                style="@style/myStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test Layout"
+                android:id="@+id/btn_accesHttp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnTestLayoutClick"/>
+            <Button
+                style="@style/myStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test Bluetooth"
+                android:id="@+id/btn_accesHttp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="btnBluetoothClick"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

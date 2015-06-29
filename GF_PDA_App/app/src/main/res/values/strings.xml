@@ -46,4 +46,5 @@
     </string-array>
     <string name="title_activity_geo_position">GeoPositionActivity</string>
     <string name="title_activity_installation_data">InstallationDataActivity</string>
+    <string name="title_activity_welding">WeldingActivity</string>
 </resources>

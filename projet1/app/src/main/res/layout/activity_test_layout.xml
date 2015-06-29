@@ -1,0 +1,70 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adents.projet1.TestLayoutActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:id="@+id/auth_titre"
+                    android:layout_span="2"
+                    android:textSize="20dp"
+                    android:textColor="#66c266"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Authentification"/>
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp"
+            android:gravity="center">
+                <TextView
+                android:id="@+id/login_titre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"/>
+                <EditText
+                    android:ems="10"/>
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp"
+                android:gravity="center">
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/password_titre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"/>
+                <EditText
+                    android:inputType="textPassword"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+                <Button
+
+                    android:id="@+id/btn_login"
+                    android:text="Login"
+                    android:layout_span="2"/>
+            </TableRow>
+
+        </TableLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
