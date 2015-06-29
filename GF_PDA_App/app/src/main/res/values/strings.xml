@@ -47,4 +47,14 @@
     <string name="title_activity_geo_position">GeoPositionActivity</string>
     <string name="title_activity_installation_data">InstallationDataActivity</string>
     <string name="title_activity_welding">WeldingActivity</string>
+    <string name="tv_weldingCertificate">Welder Certificate</string>
+    <string name="tv_jobNumber">Job no</string>
+    <string name="tv_siteName">Site Name</string>
+    <string name="ib_scanJobQr">SCAN\nJOB QR</string>
+    <string name="ib_scanWmSerial">SCAN\nWM SERIAL</string>
+    <string name="ib_confirmData">CONFIRM\nDATA</string>
+    <string name="ib_resetData">RESET\nDATA</string>
+    <string name="tv_infoWeldingData">ADD THE WELDING DATA FOR THIS PRODUCT</string>
+    <string name="tv_fusionNumber">Fusion no :</string>
+    <string name="tv_wmSerial">WM Serial no :</string>
 </resources>

@@ -47,7 +47,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Welder Certificate :"
+                            android:text="@string/tv_weldingCertificate"
                             android:id="@+id/text_welding"
                             android:textColor="#ffffff"
                             android:layout_marginLeft="10px"
@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Job n° :"
+                    android:text="@string/tv_jobNumber"
                     android:id="@+id/textView"
                     android:textColor="#ffffff"
                     android:layout_marginTop="10px"
@@ -131,7 +131,7 @@
 
                 <EditText
                     android:background="@null"
-                    android:layout_width="250px"
+                    android:layout_width="300px"
                     android:layout_height="45px"
                     android:layout_marginTop="5px"
                     android:layout_marginLeft="140px"
@@ -143,7 +143,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Site name :"
+                    android:text="@string/tv_siteName"
                     android:id="@+id/text_site"
                     android:textColor="#ffffff"
                     android:layout_marginTop="10px"
@@ -188,7 +188,7 @@
 
                 <TextView
                     style="@style/text_style"
-                    android:text="SCAN\nJOB QR"
+                    android:text="@string/ib_scanJobQr"
                     android:id="@+id/text_scan_qr"
                     android:layout_below="@+id/Btn_Scan_Qr" />
 
