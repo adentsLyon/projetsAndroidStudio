@@ -1,22 +1,24 @@
 
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.dao.UserDao;
+import com.example.rartonne.appftur.model.User;
+import com.example.rartonne.appftur.tools.GlobalClass;
+import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.io.IOException;
 
@@ -26,20 +28,21 @@ public class ManualLoginActivity extends GlobalViews {
     public TextView input_login;
     public TextView text_message;
     public TextView textUsername;
-    public GlobalClass global;
+    private UserDao userDao;
+    private User user;
+    private Integer count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
-        //this.setRequestedOrientation(
-        //     ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.setRequestedOrientation(
+             ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(global.getLogin());
+        textUsername.setText(GlobalClass.getLogin());
 
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
@@ -76,49 +79,17 @@ public class ManualLoginActivity extends GlobalViews {
     }
 
     public void checkLogin(View view){
-        Integer count = 0;
-        //on initalise la connexion à la base
-        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        userDao = new UserDao(this);
+        count = userDao.count(input_login.getText().toString());
 
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
-
-        try {
-            myDbHelper.openDataBase();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
-
-        myDbHelper.close();
-
-        bdd = myDbHelper.getWritableDatabase();
-
-        Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM user WHERE login = '" + input_login.getText() + "'", null);
-
-        curseur.moveToFirst();
-        count = curseur.getInt(0);
-
-        curseur.close();
-
-        if(count == 1){
+        if(count == 1) {
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
-            //GlobalClass globalLogin = (GlobalClass) getApplicationContext();
-            global.setLogin(input_login.getText().toString());
+            GlobalClass.setLogin(input_login.getText().toString());
             textUsername.setText(input_login.getText());
 
-            //on récupère le user_id
-            curseur = bdd.rawQuery("SELECT user_id FROM user WHERE login = '" + input_login.getText() + "'", null);
-
-            curseur.moveToFirst();
-            int userId = curseur.getInt(0);
-            global.setUserId(userId);
-
-            curseur.close();
-
+            user = userDao.select(input_login.getText().toString());
+            GlobalClass.setUserId(user.getUser_id());
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");

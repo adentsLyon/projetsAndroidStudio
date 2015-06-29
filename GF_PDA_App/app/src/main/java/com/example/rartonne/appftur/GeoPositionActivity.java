@@ -1,12 +1,9 @@
 package com.example.rartonne.appftur;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.Image;
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,15 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.rartonne.appftur.tools.GlobalViews;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class GeoPositionActivity extends GlobalViews {
+public class GeoPositionActivity extends Activity {
     private GoogleMap mMap;
     public EditText field_lat;
     public EditText field_lon;
