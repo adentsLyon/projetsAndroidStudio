@@ -1,43 +1,37 @@
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.rartonne.appftur.dao.DaoBase;
+import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.dao.FittingDao;
+import com.example.rartonne.appftur.model.Fitting;
+import com.example.rartonne.appftur.tools.GlobalClass;
+import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.io.IOException;
 
 public class HomeActivity extends GlobalViews {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
-    public TextView textArtId;
-    public TextView textArticle;
-    public TextView textStandard;
-    public TextView textDiametre;
-    public ImageView imageView2;
     public SQLiteDatabase bdd;
     public String art_id;
     public String name;
     public String druck;
     public String sdr;
     public String dim;
+    public String catalog;
     public String login;
-    public GlobalClass global;
     public boolean checkJob;
     public boolean checkInstallation;
     public boolean checkGeo;
@@ -53,17 +47,13 @@ public class HomeActivity extends GlobalViews {
     public RelativeLayout rel_installation_manual;
     public RelativeLayout rel_server_updates;
     public RelativeLayout rel_scan_qr;
+    private FittingDao fittingDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        textArtId = (TextView) findViewById(R.id.textArtId);
-        textArticle = (TextView) findViewById(R.id.textArticle);
-        textStandard = (TextView) findViewById(R.id.textStandard);
-        textDiametre = (TextView) findViewById(R.id.textDiametre);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
         rel_job_data = (RelativeLayout) findViewById(R.id.rel_job_data);
         rel_installation_data = (RelativeLayout) findViewById(R.id.rel_installation_data);
         rel_geo_position = (RelativeLayout) findViewById(R.id.rel_geo_position);
@@ -79,18 +69,86 @@ public class HomeActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        login = global.getLogin();
+        login = GlobalClass.getLogin();
         textUsername.setText(login);
 
+        //on remplit le article header
+        art_id = GlobalClass.getArt_id();
+        name = GlobalClass.getDesignation();
+        druck = GlobalClass.getDruck();
+        sdr = GlobalClass.getSdr();
+        dim = GlobalClass.getDim();
+        catalog = GlobalClass.getCatalog();
+        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
+        setIcones();
+        setPastilles();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_activity2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    //on ActivityResult method
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            String[] params = contents.split("ART=");
+            params = params[1].split("&");
+            art_id = params[0];
+
+            //select sur lab
+            fittingDao = new FittingDao(this);
+            Fitting fitting = fittingDao.select(art_id);
+            name = fitting.getDesignation();
+            druck = fitting.getDruck();
+            sdr = fitting.getSdr();
+            dim = fitting.getDim();
+            catalog = fitting.getCatalog();
+
+            //on change les variables globales
+            global.setArt_id(art_id);
+            global.setDesignation(name);
+            global.setDruck(druck);
+            global.setDim(dim);
+            global.setSdr(sdr);
+            global.setCatalog(catalog);
+            global.setStatus("sign_status_ok");
+
+            setArticleHeader(art_id, name, druck, sdr, dim, catalog);
+        }catch(NullPointerException e){
+
+        };
+    }
+
+    public void setPastilles(){
         //on affiche ou non les pastilles
-        checkJob = global.getCheckJob();
-        checkInstallation = global.getCheckInstallation();
-        checkGeo = global.getCheckGeo();
-        checkWelding = global.getCheckWelding();
-        checkPictures = global.getCheckPictures();
-        checkComment = global.getCheckComment();
+        checkJob = GlobalClass.getCheckJob();
+        checkInstallation = GlobalClass.getCheckInstallation();
+        checkGeo = GlobalClass.getCheckGeo();
+        checkWelding = GlobalClass.getCheckWelding();
+        checkPictures = GlobalClass.getCheckPictures();
+        checkComment = GlobalClass.getCheckComment();
 
         if (checkJob == false) {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
@@ -139,7 +197,9 @@ public class HomeActivity extends GlobalViews {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_comment);
             imgView.setVisibility(View.VISIBLE);
         }
+    }
 
+    public void setIcones(){
         //on rend les icones visibles ou non
         if(login.isEmpty()){
             rel_job_data.setVisibility(View.GONE);
@@ -152,76 +212,5 @@ public class HomeActivity extends GlobalViews {
             rel_server_updates.setVisibility(View.GONE);
             rel_scan_qr.setVisibility(View.GONE);
         }
-
-        //on initalise la connexion à la base
-        DataBaseHelper myDbHelper = new DataBaseHelper(this);
-
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
-
-        try {
-            myDbHelper.openDataBase();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
-
-        myDbHelper.close();
-
-        bdd = myDbHelper.getWritableDatabase();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_activity2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    //on ActivityResult method
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        try {
-            String contents = intent.getStringExtra("SCAN_RESULT");
-            String[] params = contents.split("ART=");
-            params = params[1].split("&");
-            art_id = params[0];
-
-            //select sur lab
-            Cursor curseur = bdd.rawQuery("SELECT gf_art_name3_ln5, ddd_art_druck, ddd_art_sdr, ddd_art_dim FROM t_ddd_lab WHERE ddd_art_id = '" + art_id + "'", null);
-
-            curseur.moveToFirst();
-            name = curseur.getString(0);
-            druck = curseur.getString(1);
-            sdr = curseur.getString(2);
-            dim = curseur.getString(3);
-
-            curseur.close();
-
-            textArtId.setText(art_id);
-            textArticle.setText(name);
-            textStandard.setText(druck + " " + sdr);
-            textDiametre.setText(dim);
-        }catch(NullPointerException e){
-
-        };
     }
 }

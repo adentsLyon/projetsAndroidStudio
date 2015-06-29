@@ -1,10 +1,7 @@
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
@@ -12,34 +9,28 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.rartonne.test_application.MainActivity;
+import com.example.rartonne.appftur.tools.GlobalClass;
+import com.example.rartonne.appftur.tools.GlobalViews;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetAddress;
 
 
 public class SettingsActivity extends GlobalViews {
     private GoogleMap mMap;
     final Context context = this;
-    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +42,8 @@ public class SettingsActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(global.getLogin());
+        textUsername.setText(GlobalClass.getLogin());
     }
 
     @Override
@@ -171,8 +161,7 @@ public class SettingsActivity extends GlobalViews {
     }
 
     public void change(View view){
-        final GlobalClass global = (GlobalClass) getApplicationContext();
-        global.setCheckJob();
+        GlobalClass.setCheckJob();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
 
@@ -180,7 +169,7 @@ public class SettingsActivity extends GlobalViews {
         alertDialogBuilder.setTitle("Your Title");
 
         // set dialog message
-        String message = String.valueOf(global.getCheckJob());
+        String message = String.valueOf(GlobalClass.getCheckJob());
         alertDialogBuilder
                 .setMessage(message)
                 .setCancelable(true);

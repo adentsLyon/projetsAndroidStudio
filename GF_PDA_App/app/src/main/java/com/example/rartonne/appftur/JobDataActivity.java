@@ -1,21 +1,22 @@
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.tools.GlobalClass;
+import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,13 +24,18 @@ import java.util.List;
 
 
 public class JobDataActivity extends GlobalViews {
-    public GlobalClass global;
     public Spinner spin_job;
     public Spinner spin_site;
     public EditText field_job;
     public EditText field_site;
     public SQLiteDatabase bdd;
     public String login;
+    public String art_id;
+    public String name;
+    public String sdr;
+    public String druck;
+    public String dim;
+    public String catalog;
     public int userId;
     public EditText fieldWelding;
 
@@ -43,15 +49,23 @@ public class JobDataActivity extends GlobalViews {
         fieldWelding = (EditText) findViewById(R.id.field_welding);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        login = global.getLogin();
+        login = GlobalClass.getLogin();
+        userId = GlobalClass.getUserId();
+        art_id = GlobalClass.getArt_id();
+        name = GlobalClass.getDesignation();
+        druck = GlobalClass.getDruck();
+        sdr = GlobalClass.getSdr();
+        dim = GlobalClass.getDim();
+        catalog = GlobalClass.getCatalog();
         textUsername.setText(login);
-        userId = global.getUserId();
+
+        //on remplit le article header
+        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
 
         //on remplit les spinners
-        //on initalise la connexion à la base
-        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        //on initalise la connexion ï¿½ la base
+        /*DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
         try {
             myDbHelper.createDataBase();
@@ -78,6 +92,8 @@ public class JobDataActivity extends GlobalViews {
         //on remplit le spinner job
         List<String> spinnerArray =  new ArrayList<String>();
         List<String> spinnerArray2 =  new ArrayList<String>();
+        spinnerArray.add("None");
+        spinnerArray2.add("None");
         curseur = bdd.rawQuery("SELECT ordernr, name FROM ordernr_sites LEFT JOIN construction_site AS cs ON cs.site_id = ordernr_sites.site_id", null);
         curseur.moveToFirst();
         do {
@@ -95,7 +111,7 @@ public class JobDataActivity extends GlobalViews {
         spin_job.setAdapter(adapter);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray2);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin_site.setAdapter(adapter2);
+        spin_site.setAdapter(adapter2);*/
 
         //on vide les textes de spinner
         field_job = (EditText) findViewById(R.id.field_job);

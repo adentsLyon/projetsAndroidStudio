@@ -1,13 +1,10 @@
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.tools.GlobalViews;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,7 +47,6 @@ public class MaintenanceActivity extends GlobalViews {
     public Integer step = 0;
     public Integer progress = 0;
     public ProgressBar pgbSteps;
-    public GlobalClass global;
 
 
     @Override
@@ -59,7 +58,6 @@ public class MaintenanceActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
         textUsername.setText(global.getLogin());
 
@@ -78,7 +76,7 @@ public class MaintenanceActivity extends GlobalViews {
         spinTables.setAdapter(adapter);
 
         //on initalise la connexion à la base
-        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        /*DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
         try {
             myDbHelper.createDataBase();
@@ -94,7 +92,7 @@ public class MaintenanceActivity extends GlobalViews {
 
         myDbHelper.close();
 
-        bdd = myDbHelper.getWritableDatabase();
+        bdd = myDbHelper.getWritableDatabase();*/
 
         //on met un listener sur le bouton Refresh
         btnRefresh.setOnClickListener(new View.OnClickListener() {
@@ -141,12 +139,12 @@ public class MaintenanceActivity extends GlobalViews {
     public String displayTable(String table){
         String name = "";
 
-        Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM " + table, null);
+        /*Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM " + table, null);
 
         curseur.moveToFirst();
         name = curseur.getString(0);
 
-        curseur.close();
+        curseur.close();*/
 
         return name;
     }
@@ -186,7 +184,7 @@ public class MaintenanceActivity extends GlobalViews {
                 if(response != null && !response.isEmpty()) {
                     String[] requetes = response.split(";");
                     for (String requete : requetes) {
-                        bdd.execSQL(requete);
+                        //bdd.execSQL(requete);
                     }
                 }
 
@@ -203,13 +201,13 @@ public class MaintenanceActivity extends GlobalViews {
             }
 
             //on redescend les données d'ARTICLE_CATALOG
-            /*response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=rartonne&table=T_DDD_LAB");
+            response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=Installer1&table=T_DDD_LAB");
             if(response != null && !response.isEmpty()) {
                 String[] requetes = response.split(";");
                 for (String requete : requetes) {
-                    bdd.execSQL(requete);
+                    //bdd.execSQL(requete);
                 }
-            }*/
+            }
 
             return response;
         }
@@ -236,7 +234,6 @@ public class MaintenanceActivity extends GlobalViews {
                         bufferedreader.close();
 
                         JSONObject jso = new JSONObject(strinbulder.toString());
-                        //JSONObject jsomain=jso.getJSONObject("pht");
                         response = jso.getString("requete");
                     }
                 } catch (Exception e) {

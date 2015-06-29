@@ -1,30 +1,33 @@
-package com.example.rartonne.appftur;
+package com.example.rartonne.appftur.dao;
 
 import android.content.Context;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+import java.sql.SQLException;
 
 /**
- * Created by rartonne on 26/05/2015.
+ * Created by Mohamed on 23/06/2015.
  */
 public class DataBaseHelper extends SQLiteOpenHelper{
 
     //The Android's default system path of your application database.
-    private static String DB_PATH = "/data/data/com.example.rartonne.appftur/databases/";
+    private static String DB_PATH;
 
-    private static String DB_NAME = "pda_db";
+    public static String DB_NAME = "pda_db";
+    public static int numVersion = 1;
 
     private SQLiteDatabase myDataBase;
 
     private final Context myContext;
+
 
     /**
      * Constructor
@@ -33,16 +36,15 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      */
     public DataBaseHelper(Context context) {
 
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, numVersion);
         this.myContext = context;
-        //suppression de la base de données
-        //myContext.deleteDatabase(DB_NAME);
+        DB_PATH = "/data/data/"+myContext.getPackageName()+"/databases/";
     }
 
     /**
      * Creates a empty database on the system and rewrites it with your own database.
      * */
-    public void createDataBase() throws IOException{
+    public void createDataBase(String fileName) throws IOException{
 
         boolean dbExist = checkDataBase();
 
@@ -55,8 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             this.getReadableDatabase();
 
             try {
-
-                copyDataBase();
+                copyDataBase(fileName);
 
             } catch (IOException e) {
 
@@ -72,23 +73,17 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * @return true if it exists, false if it doesn't
      */
     private boolean checkDataBase(){
-
         SQLiteDatabase checkDB = null;
-
         try{
             String myPath = DB_PATH + DB_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
         }catch(SQLiteException e){
-
             //database does't exist yet.
-
         }
 
         if(checkDB != null){
-
             checkDB.close();
-
         }
 
         return checkDB != null ? true : false;
@@ -99,19 +94,19 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * system folder, from where it can be accessed and handled.
      * This is done by transfering bytestream.
      * */
-    private void copyDataBase() throws IOException{
+    private void copyDataBase(String DbFileName) throws IOException{
 
         //Open your local db as the input stream
-        InputStream myInput = myContext.getAssets().open(DB_NAME);
+        InputStream myInput = new BufferedInputStream(myContext.getAssets().open(DbFileName));
 
         // Path to the just created empty db
         String outFileName = DB_PATH + DB_NAME;
 
         //Open the empty db as the output stream
-        OutputStream myOutput = new FileOutputStream(outFileName);
+        OutputStream myOutput = new BufferedOutputStream(new FileOutputStream(outFileName));
 
         //transfer bytes from the inputfile to the outputfile
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[2048];
         int length;
         while ((length = myInput.read(buffer))>0){
             myOutput.write(buffer, 0, length);
@@ -152,8 +147,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     }
 
-    // Add your public helper methods to access and get content from the database.
-    // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy
-    // to you to create adapters for your views.
+
 
 }

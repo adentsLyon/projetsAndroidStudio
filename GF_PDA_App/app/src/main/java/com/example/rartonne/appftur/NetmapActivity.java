@@ -1,18 +1,18 @@
 package com.example.rartonne.appftur;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.rartonne.appftur.tools.GlobalClass;
+import com.example.rartonne.appftur.tools.GlobalViews;
+
 
 public class NetmapActivity extends GlobalViews {
-    public GlobalClass global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,8 @@ public class NetmapActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        global = (GlobalClass) getApplicationContext();
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(global.getLogin());
+        textUsername.setText(GlobalClass.getLogin());
     }
 
     @Override
