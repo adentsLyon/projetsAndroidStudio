@@ -123,27 +123,11 @@
                 >
 
                 <View
-                    android:layout_width="400px"
+                    android:layout_width="match_parent"
                     android:layout_height="50px"
                     android:background="#1965a3"
                     android:id="@+id/bar_site"/>
 
-                <View
-                    android:layout_width="78px"
-                    android:layout_height="50px"
-                    android:background="#1965a3"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/arrow_site"/>
-
-                <Spinner
-                    android:layout_width="60px"
-                    android:layout_height="40px"
-                    android:layout_alignLeft="@id/arrow_site"
-                    android:layout_marginLeft="10px"
-                    android:layout_marginTop="5px"
-                    android:drawSelectorOnTop="false"
-                    android:background="@drawable/fleche"
-                    android:id="@+id/spin_site" />
 
                 <EditText
                     android:background="@null"
@@ -169,6 +153,26 @@
                     android:layout_alignTop="@+id/bar_site"/>
 
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_scan_trace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270px"
+                android:layout_marginLeft="30px"
+                >
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_scan_trace"
+                    android:src="@drawable/action_cancel"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="RESET\nDATA"
+                    android:id="@+id/text_scan_trace"
+                    android:layout_below="@+id/Btn_scan_trace" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rel_pictures"
@@ -187,6 +191,26 @@
                     android:text="SCAN\nJOB QR"
                     android:id="@+id/text_scan_qr"
                     android:layout_below="@+id/Btn_Scan_Qr" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_scan_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270px"
+                android:layout_marginLeft="350px"
+                >
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_scan_qr"
+                    android:src="@drawable/action_confirm"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="CONFIRM\nJOB DATA"
+                    android:id="@+id/text_confirm_job_data"
+                    android:layout_below="@+id/Btn_scan_qr" />
 
             </RelativeLayout>
 
