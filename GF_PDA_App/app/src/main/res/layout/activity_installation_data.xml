@@ -1,0 +1,178 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.HomeActivity">
+
+    <!-- Header aligned to top -->
+
+    <include layout="@layout/header" />
+
+    <!-- header aligned to bottom -->
+
+    <include layout="@layout/article_header" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="270px"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rel_sketch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:background="#66c266"
+                android:id="@+id/bar_sketch"/>
+
+            <EditText
+                android:background="@null"
+                android:layout_width="320px"
+                android:layout_height="45px"
+                android:layout_marginTop="5px"
+                android:layout_marginLeft="150px"
+                android:id="@+id/field_sketch"
+                android:textColor="#ffffff"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sketch N° :"
+                android:id="@+id/text_sketch"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="10px"
+                android:textSize="25px"
+                android:layout_alignLeft="@+id/bar_welding"
+                android:layout_alignTop="@+id/bar_welding"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_trench"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_sketch"
+            android:layout_marginTop="2px"
+            >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:background="#66c266"
+                android:id="@+id/bar_trench"/>
+
+
+
+            <EditText
+                android:background="@null"
+                android:layout_width="290px"
+                android:layout_height="45px"
+                android:layout_marginTop="5px"
+                android:layout_marginLeft="180px"
+                android:id="@+id/field_trench"
+                android:textColor="#ffffff"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trench depth :"
+                android:id="@+id/text_trench"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10px"
+                android:textSize="25px"
+                android:layout_marginLeft="10px"
+                android:layout_alignLeft="@+id/bar_job"
+                android:layout_alignTop="@+id/bar_job"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="SCAN THE PRODUCT YOU WANT TO LINK"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_below="@+id/rel_trench"
+            android:id="@+id/title_position"/>
+
+        <RelativeLayout
+            android:id="@+id/rel_scan_trace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270px"
+            android:layout_marginLeft="30px"
+            >
+
+            <ImageButton
+                style="@style/icon_style"
+                android:id="@+id/Btn_scan_trace"
+                android:src="@drawable/icon_scan_barcode"/>
+
+            <TextView
+                style="@style/text_style"
+                android:text="SCAN\nTRACE CODE"
+                android:id="@+id/text_scan_trace"
+                android:layout_below="@+id/Btn_scan_trace" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_pictures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270px"
+            android:layout_centerHorizontal="true">
+
+            <ImageButton
+                style="@style/icon_style"
+                android:id="@+id/Btn_reset"
+                android:src="@drawable/action_cancel"/>
+
+            <TextView
+                style="@style/text_style"
+                android:text="RESET\nDATA"
+                android:id="@+id/text_reset"
+                android:layout_below="@+id/Btn_reset" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_scan_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270px"
+            android:layout_marginLeft="350px"
+            >
+
+            <ImageButton
+                style="@style/icon_style"
+                android:id="@+id/Btn_scan_qr"
+                android:src="@drawable/icon_scan_qr"/>
+
+            <TextView
+                style="@style/text_style"
+                android:text="SCAN\nQR CODE"
+                android:id="@+id/text_scan_qr"
+                android:layout_below="@+id/Btn_scan_qr" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!-- Footer aligned to bottom -->
+
+    <include layout="@layout/footer" />
+</RelativeLayout>

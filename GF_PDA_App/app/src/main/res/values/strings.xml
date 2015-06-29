@@ -45,4 +45,5 @@
     <item>batch_blacklist</item>
     </string-array>
     <string name="title_activity_geo_position">GeoPositionActivity</string>
+    <string name="title_activity_installation_data">InstallationDataActivity</string>
 </resources>
