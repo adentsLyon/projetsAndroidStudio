@@ -44,17 +44,34 @@
     <item>article_feature</item>
     <item>batch_blacklist</item>
     </string-array>
+
+    <!--General Buttons-->
+    <string name="ib_confirmData">CONFIRM\nDATA</string>
+    <string name="ib_resetData">RESET\nDATA</string>
+    <string name="ib_cancel">CANCEL</string>
+    <string name="ib_confirm">CONFIRM</string>
+
+
     <string name="title_activity_geo_position">GeoPositionActivity</string>
     <string name="title_activity_installation_data">InstallationDataActivity</string>
     <string name="title_activity_welding">WeldingActivity</string>
+    <!--jobDataACtivity-->
     <string name="tv_weldingCertificate">Welder Certificate</string>
     <string name="tv_jobNumber">Job no</string>
     <string name="tv_siteName">Site Name</string>
     <string name="ib_scanJobQr">SCAN\nJOB QR</string>
+    <!--wmSerialActivity-->
     <string name="ib_scanWmSerial">SCAN\nWM SERIAL</string>
-    <string name="ib_confirmData">CONFIRM\nDATA</string>
-    <string name="ib_resetData">RESET\nDATA</string>
     <string name="tv_infoWeldingData">ADD THE WELDING DATA FOR THIS PRODUCT</string>
     <string name="tv_fusionNumber">Fusion no :</string>
     <string name="tv_wmSerial">WM Serial no :</string>
+    <!--ManualLoginACtivity-->
+    <string name="tv_infoLogin">Please type in your Login</string>
+
+    <!--GeoPositionActivity-->
+    <string name="ib_confirmCoordonate">CONFIRM\nCOORDONATES</string>
+    <string name="tv_lat">Lat :</string>
+    <string name="tv_lon">Lon :</string>
+    <string name="tv_currentGeoPosition">CURRENT PDA GEO POSITION</string>
+
 </resources>
