@@ -41,7 +41,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="JOB DATA"
+                android:text="@string/tv_jobDataTitle"
                 android:id="@+id/text_netmap"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
@@ -74,7 +74,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="INSTALLATION\nDATA"
+                android:text="@string/tv_installationDataTitle"
                 android:id="@+id/text_techdocs"
                 android:layout_below="@+id/Btn_netmap"/>
 
@@ -103,7 +103,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="GEO\nPOSITION"
+                android:text="@string/tv_geoPositionTitle"
                 android:id="@+id/text_acc_gps"
                 android:layout_below="@+id/Btn_acc_gps"
                 />
@@ -123,7 +123,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="INSTALLATION\nMANUAL"
+                android:text="@string/tv_installationManualTitle"
                 android:id="@+id/text_fusiondata"
                 android:layout_below="@+id/Btn_installation_manual"/>
         </RelativeLayout>
@@ -150,7 +150,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="WELDING"
+                android:text="@string/tv_weldingTitle"
                 android:id="@+id/text_welding"
                 android:layout_below="@+id/Btn_welding"
                 android:layout_centerHorizontal="true"/>
@@ -177,7 +177,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="PICTURES"
+                android:text="@string/tv_picturesTitle"
                 android:id="@+id/text_scan_qr"
                 android:layout_below="@+id/Btn_pictures" />
 
@@ -205,7 +205,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="COMMENT"
+                android:text="@string/tv_commentTitle"
                 android:id="@+id/text_userguide"
                 android:layout_below="@+id/Btn_comment"/>
 
@@ -225,7 +225,7 @@
 
             <TextView
                 style="@style/text_style"
-                android:text="SERVER\nUPDATES"
+                android:text="@string/tv_serverUpdatesTitle"
                 android:id="@+id/text_server_updates"
                 android:layout_below="@+id/Btn_server_updates"/>
 

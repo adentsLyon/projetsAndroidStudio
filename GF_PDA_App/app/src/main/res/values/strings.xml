@@ -87,4 +87,15 @@
     <string name="tv_scan">SCAN</string>
     <string name="tv_settings">SETTINGS</string>
 
+    <!-- HOME -->
+
+    <string name="tv_jobDataTitle">JOB DATA</string>
+    <string name="tv_installationDataTitle">INSTALLATION\nDATA</string>
+    <string name="tv_geoPositionTitle">GEO\nPOSITION</string>
+    <string name="tv_weldingTitle">WELDING</string>
+    <string name="tv_picturesTitle">PICTURES</string>
+    <string name="tv_commentTitle">COMMENT</string>
+    <string name="tv_installationManualTitle">INSTALLATION\nMANUAL</string>
+    <string name="tv_serverUpdatesTitle">SERVER\nUPDATES</string>
+
 </resources>
