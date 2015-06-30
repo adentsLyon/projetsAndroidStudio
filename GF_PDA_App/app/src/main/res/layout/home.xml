@@ -61,8 +61,9 @@
                 style="@style/icon_style"
                 android:id="@+id/Btn_netmap"
                 android:src="@drawable/icon_installation_data"
-                android:onClick="gotoNetmap"
-                android:layout_centerHorizontal="true"/>
+                android:onClick="toActivity"
+                android:layout_centerHorizontal="true"
+                android:tag="InstallationDataActivity"/>
 
             <ImageView
                 android:layout_width="40px"
