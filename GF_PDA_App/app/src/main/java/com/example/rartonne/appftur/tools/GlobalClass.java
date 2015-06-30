@@ -20,6 +20,7 @@ import com.example.rartonne.appftur.R;
 public class GlobalClass {
 
     private static String login = "";
+    private static Integer installer_id;
     private static String lastUpdate = "";
     private static String welderCertificate = "";
     private static Integer userId;
@@ -29,6 +30,7 @@ public class GlobalClass {
     private static boolean checkWelding = false;
     private static boolean checkPictures = false;
     private static boolean checkComment = false;
+    private static String gf_sec_id = "";
     private static String art_id = "";
     private static String designation = "";
     private static String druck = "";
@@ -132,5 +134,21 @@ public class GlobalClass {
 
     public static void setStatus(String newStatus){
         status = newStatus;
+    }
+
+    public static String getGf_sec_id() {
+        return gf_sec_id;
+    }
+
+    public static void setGf_sec_id(String gf_sec_id) {
+        GlobalClass.gf_sec_id = gf_sec_id;
+    }
+
+    public static Integer getInstaller_id() {
+        return installer_id;
+    }
+
+    public static void setInstaller_id(Integer installer_id) {
+        GlobalClass.installer_id = installer_id;
     }
 }

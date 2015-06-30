@@ -42,7 +42,8 @@
                             android:id="@+id/field_welding"
                             android:textColor="#ffffff"
                             android:layout_alignParentTop="true"
-                            android:layout_alignParentLeft="true"/>
+                            android:layout_alignParentLeft="true"
+                            android:editable="false" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -138,7 +139,9 @@
                     android:id="@+id/field_site"
                     android:textColor="#ffffff"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"/>
+                    android:layout_alignParentLeft="true"
+                    android:editable="false"
+                    android:text="@string/unrelevant"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,7 +167,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_scan_trace"
-                    android:src="@drawable/action_cancel"/>
+                    android:src="@drawable/action_cancel"
+                    android:onClick="resetData" />
 
                 <TextView
                     style="@style/text_style"
@@ -204,7 +208,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_scan_qr"
-                    android:src="@drawable/action_confirm"/>
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmJob" />
 
                 <TextView
                     style="@style/text_style"

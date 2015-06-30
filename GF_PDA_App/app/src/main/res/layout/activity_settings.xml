@@ -83,13 +83,13 @@
         android:scaleType="fitCenter"
         android:onClick="toActivity"
         android:src="@mipmap/icon_net_mapp"
-        android:tag="MapsActivity" />
+        android:tag="ScanlogActivity" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Accurate \n GPS"
+        android:text="Scan Log"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/text_1_3"
         android:layout_below="@+id/Btn_param3"
@@ -206,20 +206,7 @@
         android:layout_alignLeft="@+id/Btn_techdocs"
         android:layout_centerHorizontal="true" />
 
-        <fragment
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:id="@+id/map"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp"
-            android:layout_above="@+id/menu_bottom"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/Btn_job_data" />
-
-        </RelativeLayout>
+    </RelativeLayout>
     <!-- Footer aligned to bottom -->
 
     <include layout="@layout/footer" />
