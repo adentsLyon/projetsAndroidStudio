@@ -42,13 +42,13 @@
         android:id="@+id/textLastUpdate" />
 
 
-    <TextView android:text="05/06/2015 12:15"
+    <TextView android:text="@string/tv_syncDate"
         android:layout_width="match_parent"
         android:layout_height="80px"
         android:textColor="#ffffff"
         android:textSize="20px"
         android:textStyle="bold"
-        android:paddingLeft="310px"
+        android:paddingLeft="320px"
         android:paddingTop="40px"
         android:id="@+id/textDate" />
 

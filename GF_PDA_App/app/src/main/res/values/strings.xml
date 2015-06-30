@@ -74,4 +74,10 @@
     <string name="tv_lon">Lon :</string>
     <string name="tv_currentGeoPosition">CURRENT PDA GEO POSITION</string>
 
+    <!--Header-->
+    <string name="tv_userName">User Name</string>
+    <string name="tv_compagnyName">Compagny Name</string>
+    <string name="tv_lastSyncDate">Last Sync Date</string>
+    <string name="tv_syncDate">xx/xx/xxxx  24:60</string>
+
 </resources>
