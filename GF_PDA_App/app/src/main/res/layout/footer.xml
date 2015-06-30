@@ -35,7 +35,7 @@
             android:src="@mipmap/footer_home"
             android:tag="HomeActivity"/>
 
-        <TextView android:text="HOME"
+        <TextView android:text="@string/tv_home"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonHome"
@@ -66,7 +66,7 @@
             android:src="@mipmap/footer_login"
             android:tag="LoginActivity" />
 
-        <TextView android:text="LOGIN"
+        <TextView android:text="@string/tv_login"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonLogin"
@@ -99,7 +99,7 @@
             android:src="@mipmap/footer_scan"
             android:nestedScrollingEnabled="false" />
 
-        <TextView android:text="SCAN QR"
+        <TextView android:text="@string/tv_scan"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonScan"
@@ -132,7 +132,7 @@
             android:tag="SettingsActivity"
             android:onClick="toActivity" />
 
-        <TextView android:text="SETTINGS"
+        <TextView android:text="@string/tv_settings"
             android:layout_width="match_parent"
             android:layout_height="20px"
             android:layout_below="@id/toggleButtonSettings"

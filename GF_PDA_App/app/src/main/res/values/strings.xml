@@ -80,4 +80,11 @@
     <string name="tv_lastSyncDate">Last Sync Date</string>
     <string name="tv_syncDate">xx/xx/xxxx  24:60</string>
 
+    <!--Footer-->
+
+    <string name="tv_home">HOME</string>
+    <string name="tv_login">LOGIN</string>
+    <string name="tv_scan">SCAN</string>
+    <string name="tv_settings">SETTINGS</string>
+
 </resources>
