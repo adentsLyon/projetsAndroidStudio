@@ -78,6 +78,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.rartonne.appftur.HomeActivity" />
         </activity>
+        <activity
+            android:name=".InstallationManualActivity"
+            android:label="@string/title_activity_installation_manual" >
+        </activity>
     </application>
 
 </manifest>

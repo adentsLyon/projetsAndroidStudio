@@ -97,5 +97,6 @@
     <string name="tv_commentTitle">COMMENT</string>
     <string name="tv_installationManualTitle">INSTALLATION\nMANUAL</string>
     <string name="tv_serverUpdatesTitle">SERVER\nUPDATES</string>
+    <string name="title_activity_installation_manual">InstallationManualActivity</string>
 
 </resources>
