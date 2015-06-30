@@ -19,11 +19,13 @@ public class UserDao  extends DaoBase<User>{
         try {
             db = this.open();
             User user = null;
-            Cursor cursor =  db.rawQuery("SELECT user_id FROM user WHERE login = ?", new String[]{login});
+            Cursor cursor =  db.rawQuery("SELECT user.user_id, installer_id " +
+                    "FROM user " +
+                    "LEFT JOIN operator ON operator.user_id = user.user_id " +
+                    "WHERE login = ?", new String[]{login});
 
             while(cursor.moveToNext()){
-                new User(cursor.getString(0));
-
+                user = new User(cursor.getInt(0), login, cursor.getInt(1));
                 break;
             }
             cursor.close();

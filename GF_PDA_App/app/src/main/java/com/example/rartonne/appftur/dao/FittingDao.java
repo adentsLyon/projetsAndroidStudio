@@ -26,7 +26,7 @@ public class FittingDao  extends DaoBase<Fitting>{
                     "WHERE ddd_art_id = ?", new String[]{art_id});
 
             while(cursor.moveToNext()){
-                new Fitting(art_id,
+                fitting = new Fitting(art_id,
                         cursor.getString(0),
                         cursor.getString(1),
                         cursor.getString(2),

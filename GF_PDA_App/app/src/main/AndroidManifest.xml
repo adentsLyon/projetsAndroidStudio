@@ -79,6 +79,10 @@
                 android:value="com.example.rartonne.appftur.HomeActivity" />
         </activity>
         <activity
+            android:name=".ScanlogActivity"
+            android:label="@string/title_activity_scanlog" >
+        </activity>
+        <activity
             android:name=".InstallationManualActivity"
             android:label="@string/title_activity_installation_manual" >
         </activity>

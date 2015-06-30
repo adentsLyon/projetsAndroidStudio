@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class ManualLoginActivity extends GlobalViews {
     private UserDao userDao;
     private User user;
     private Integer count;
+    RelativeLayout footer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class ManualLoginActivity extends GlobalViews {
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
         text_message = (TextView) findViewById(R.id.text_message);
+
+        setFooter();
     }
 
     @Override
@@ -90,9 +94,20 @@ public class ManualLoginActivity extends GlobalViews {
 
             user = userDao.select(input_login.getText().toString());
             GlobalClass.setUserId(user.getUser_id());
+            GlobalClass.setInstaller_id(user.getInstaller_id());
+            footer.setVisibility(View.VISIBLE);
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");
+        }
+    }
+
+    public void setFooter(){
+        if(GlobalClass.getLogin().isEmpty()){
+            footer = (RelativeLayout) findViewById(R.id.footer);
+            footer.setVisibility(View.GONE);
+            RelativeLayout cancel = (RelativeLayout) findViewById(R.id.rel_cancel);
+            cancel.setVisibility(View.GONE);
         }
     }
 }

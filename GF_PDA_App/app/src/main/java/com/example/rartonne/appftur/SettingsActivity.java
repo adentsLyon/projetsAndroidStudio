@@ -36,7 +36,6 @@ public class SettingsActivity extends GlobalViews {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        setUpMapIfNeeded();
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -49,7 +48,6 @@ public class SettingsActivity extends GlobalViews {
     @Override
     protected void onResume() {
         super.onResume();
-        setUpMapIfNeeded();
     }
 
     @Override
@@ -85,27 +83,6 @@ public class SettingsActivity extends GlobalViews {
         startActivity(intent);
     }
 
-    private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                setUpMap();
-
-            }
-        }
-    }
-
-    private void setUpMap() {
-        LocationManager lm = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Marker"));
-    }
 
     public void CopyReadAssets(View view)
     {
