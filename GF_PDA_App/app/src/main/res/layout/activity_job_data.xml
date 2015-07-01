@@ -188,7 +188,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_Scan_Qr"
-                    android:src="@drawable/icon_scan_qr"/>
+                    android:src="@drawable/icon_scan_qr"
+                    android:onClick="scanQR" />
 
                 <TextView
                     style="@style/text_style"

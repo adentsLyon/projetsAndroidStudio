@@ -38,6 +38,7 @@ public class GlobalClass {
     private static String dim = "";
     private static String catalog = "";
     private static String status = "sign_login_expected";
+    private static boolean wmModeSingle = true;
 
     public static String getLogin() {
         return login;
@@ -150,5 +151,13 @@ public class GlobalClass {
 
     public static void setInstaller_id(Integer installer_id) {
         GlobalClass.installer_id = installer_id;
+    }
+
+    public static boolean isWmModeSingle() {
+        return wmModeSingle;
+    }
+
+    public static void setWmModeSingle(boolean wmModeSingle) {
+        GlobalClass.wmModeSingle = wmModeSingle;
     }
 }

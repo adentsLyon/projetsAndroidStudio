@@ -123,7 +123,9 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_installation_manual"
-                android:src="@drawable/icon_installation_manuals" />
+                android:src="@drawable/icon_installation_manuals"
+                android:onClick="toActivity"
+                android:tag="InstallationManualActivity" />
 
             <TextView
                 style="@style/text_style"

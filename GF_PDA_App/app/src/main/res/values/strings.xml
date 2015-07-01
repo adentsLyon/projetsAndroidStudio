@@ -11,6 +11,7 @@
     <string name="title_activity_netmap">NetmapActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_maintenance">Maintenance</string>
+    <string name="title_activity_scanlog">ScanlogActivity</string>
     <string-array name="tables_array">
         <item>article_catalog</item>
         <item>article_feature</item>
@@ -98,5 +99,7 @@
     <string name="tv_installationManualTitle">INSTALLATION\nMANUAL</string>
     <string name="tv_serverUpdatesTitle">SERVER\nUPDATES</string>
     <string name="title_activity_installation_manual">InstallationManualActivity</string>
+    <string name="unrelevant">Unrelevant</string>
+    <string name="valid_qr">Please scan a valid QR Code</string>
 
 </resources>

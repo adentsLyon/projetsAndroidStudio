@@ -4,14 +4,39 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.widget.Toast;
+
+import com.example.rartonne.appftur.tools.GlobalViews;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 
-public class InstallationManualActivity extends ActionBarActivity {
+public class InstallationManualActivity extends GlobalViews {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_installation_manual);
+
+        WebView wv_imc = (WebView) findViewById(R.id.wv_installationManual);
+        wv_imc.loadUrl("file:///android_asset/GeorgeFISCHER_manualCouplerTest.html");
+
+        /*try {
+
+            InputStream is = getAssets().open("GeorgeFISCHER_manualCouplerTest.html");
+            Scanner sc = new Scanner(is,"UTF-8").useDelimiter("\\A");
+            String res = sc.hasNext()?sc.next():"";
+            wv_imc.loadData(res,"text/html","utf-8");
+
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(),
+                    "Erreur de fichier",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }*/
     }
 
     @Override

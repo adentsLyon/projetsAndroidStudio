@@ -5,13 +5,20 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rartonne.appftur.HomeActivity;
+import com.example.rartonne.appftur.ManualLoginActivity;
 import com.example.rartonne.appftur.R;
+import com.example.rartonne.appftur.dao.FittingDao;
+import com.example.rartonne.appftur.dao.ScanlogDao;
+import com.example.rartonne.appftur.model.Fitting;
+import com.example.rartonne.appftur.model.Scanlog;
 
 /**
  * Created by rartonne on 17/06/2015.
@@ -77,6 +84,23 @@ public class GlobalViews extends Activity {
         return downloadDialog.show();
     }
 
+    public void setHeader(){
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        TextView textUsername = (TextView) findViewById(R.id.textUsername);
+        String login = GlobalClass.getLogin();
+        Integer userId = GlobalClass.getUserId();
+        String art_id = GlobalClass.getArt_id();
+        String name = GlobalClass.getDesignation();
+        String druck = GlobalClass.getDruck();
+        String sdr = GlobalClass.getSdr();
+        String dim = GlobalClass.getDim();
+        String catalog = GlobalClass.getCatalog();
+        textUsername.setText(login);
+        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
+    }
+
     public void setArticleHeader(String art_id, String name, String druck, String sdr, String dim, String catalog){
         textArtId = (TextView) findViewById(R.id.textArtId);
         textArticle = (TextView) findViewById(R.id.textArticle);
@@ -94,5 +118,53 @@ public class GlobalViews extends Activity {
 
         int id_icone = getResources().getIdentifier(GlobalClass.getStatus(), "drawable", getPackageName());
         imageStatus.setImageResource(id_icone);
+    }
+
+    public void homeQR(String contents){
+        try {
+            //on éclate l'url du QR
+            String[] params = contents.split("\\?");
+            params = params[1].split("&");
+            String gf_sec_id = params[0];
+            params = params[1].split("ART=");
+            String art_id = params[1];
+
+            //select sur lab
+            FittingDao fittingDao = new FittingDao(this);
+            Fitting fitting = fittingDao.select(art_id);
+
+            //on change les variables globales
+            GlobalClass.setArt_id(art_id);
+            GlobalClass.setDesignation(fitting.getDesignation());
+            GlobalClass.setDruck(fitting.getDruck());
+            GlobalClass.setDim(fitting.getDim());
+            GlobalClass.setSdr(fitting.getSdr());
+            GlobalClass.setCatalog(fitting.getCatalog());
+            GlobalClass.setStatus("sign_status_ok");
+            GlobalClass.setGf_sec_id(gf_sec_id);
+
+            //on insert dans scan_log
+            Integer userId = GlobalClass.getUserId();
+            ScanlogDao scanlogDao = new ScanlogDao(this);
+            Scanlog scanlog = new Scanlog(gf_sec_id, userId, art_id);
+            if(scanlogDao.count(gf_sec_id) >= 1){
+                Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
+            }else {
+                scanlogDao.insert(scanlog);
+                Toast.makeText(getApplicationContext(), "Inserted lines : " + scanlogDao.count().toString(), Toast.LENGTH_LONG).show();
+            }
+
+            //on retourne sur la home
+            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(homeIntent);
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.valid_qr), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void redirect(){
+        if(GlobalClass.getLogin().isEmpty()){
+            startActivity(new Intent(getApplicationContext(), ManualLoginActivity.class));
+        }
     }
 }

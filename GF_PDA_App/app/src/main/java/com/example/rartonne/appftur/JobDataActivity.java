@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,48 +41,60 @@ public class JobDataActivity extends GlobalViews {
     public Spinner spin_job;
     public EditText field_job;
     public EditText field_site;
-    public SQLiteDatabase bdd;
-    public String login;
-    public String art_id;
-    public String name;
-    public String sdr;
-    public String druck;
-    public String dim;
-    public String catalog;
-    public int userId;
     public EditText fieldWelding;
     private OperatorDao operatorDao;
     private Operator operator;
     private OrdernrSitesDao ordernrSitesDao;
     private ArrayList<OrdernrSites> ordernrSites;
-    private String gf_sec_id;
-    private FittingDao fittingDao;
     private ArrayAdapter<String> adapter;
     private List<String> spinnerArray;
+    private String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_data);
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        setHeader();
+        fillJobData();
+
+        //spinJob listener
+        spin_job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) view).setText(null);
+
+                changeJobData();
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        //text watcher
+        TextWatcher watcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                field_site.setText("Unrelevant");
+            }
+        };
+        field_job.addTextChangedListener(watcher);
+    }
+
+    private void fillJobData() {
         fieldWelding = (EditText) findViewById(R.id.field_welding);
-
-        //on remplit le header
-        TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        login = GlobalClass.getLogin();
-        userId = GlobalClass.getUserId();
-        art_id = GlobalClass.getArt_id();
-        name = GlobalClass.getDesignation();
-        druck = GlobalClass.getDruck();
-        sdr = GlobalClass.getSdr();
-        dim = GlobalClass.getDim();
-        catalog = GlobalClass.getCatalog();
-        textUsername.setText(login);
-
-        //on remplit le article header
-        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
+        field_job = (EditText) findViewById(R.id.field_job);
+        field_site = (EditText) findViewById(R.id.field_site);
+        spin_job = (Spinner) findViewById(R.id.spin_job);
 
         operatorDao = new OperatorDao(this);
         operator = operatorDao.select(GlobalClass.getUserId());
@@ -96,38 +111,26 @@ public class JobDataActivity extends GlobalViews {
             spinnerArray.add(order.getOrdernr());
         }
 
-        spin_job = (Spinner) findViewById(R.id.spin_job);
-
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin_job.setAdapter(adapter);
+    }
 
-        //on vide les textes de spinner
-        field_job = (EditText) findViewById(R.id.field_job);
-        field_site = (EditText) findViewById(R.id.field_site);
+    private void changeJobData() {
+        String jobValue = spin_job.getSelectedItem().toString();
+        String siteValue = ordernrSitesDao.selectSite(jobValue);
 
-        spin_job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) view).setText(null);
-
-                String value = spin_job.getSelectedItem().toString();
-
-                if(value.equals("None")) {
-                    field_job.setText(null);
-                    field_site.setText("Unrelevant");
-                } else {
-                    field_job.setText(value);
-                    field_site.setText(ordernrSitesDao.selectSite(value));
-                }
-            }
-
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        if(jobValue.equals("None")){
+            field_job.setText(contents);
+            field_site.setText("Unrelevant");
+            contents = null;
+        }else if (siteValue == null) {
+            field_job.setText(jobValue);
+            field_site.setText("Unrelevant");
+        } else {
+            field_job.setText(jobValue);
+            field_site.setText(siteValue);
+        }
     }
 
     @Override
@@ -156,47 +159,25 @@ public class JobDataActivity extends GlobalViews {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            String contents = intent.getStringExtra("SCAN_RESULT");
-            /*String[] params = contents.split("\\?");
-            params = params[1].split("&");
-            gf_sec_id = params[0];
-            params = params[1].split("ART=");
-            art_id = params[1];
+            contents = intent.getStringExtra("SCAN_RESULT");
+            String sub = contents.substring(0, 4);
+            if(sub.equals("HTTP")) {
+                homeQR(contents);
+            }else{
+                int spinnerPostion = adapter.getPosition(contents);
 
-            //select sur lab
-            fittingDao = new FittingDao(this);
-            Fitting fitting = fittingDao.select(art_id);
-            name = fitting.getDesignation();
-            druck = fitting.getDruck();
-            sdr = fitting.getSdr();
-            dim = fitting.getDim();
-            catalog = fitting.getCatalog();
-
-            //on change les variables globales
-            GlobalClass.setArt_id(art_id);
-            GlobalClass.setDesignation(name);
-            GlobalClass.setDruck(druck);
-            GlobalClass.setDim(dim);
-            GlobalClass.setSdr(sdr);
-            GlobalClass.setCatalog(catalog);
-            GlobalClass.setStatus("sign_status_ok");
-
-            //setArticleHeader(art_id, name, druck, sdr, dim, catalog);
-
-            //on insert dans scan_log
-            Integer userId = GlobalClass.getUserId();
-            ScanlogDao scanlogDao = new ScanlogDao(this);
-            Scanlog scanlog = new Scanlog(gf_sec_id, userId, art_id);
-            if(scanlogDao.count(gf_sec_id) >= 1){
-                Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
-            }else {
-                scanlogDao.insert(scanlog);
-                Toast.makeText(getApplicationContext(), "Inserted lines : " + scanlogDao.count().toString(), Toast.LENGTH_LONG).show();
+                if(spinnerPostion == -1){
+                    if(spin_job.getSelectedItemPosition() != 0) {
+                        spin_job.setSelection(0);
+                    }else {
+                        field_job.setText(contents);
+                        contents = null;
+                    }
+                }else {
+                    contents = null;
+                    spin_job.setSelection(spinnerPostion);
+                }
             }
-
-            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(homeIntent);*/
-            
         }catch(NullPointerException e){
 
         };

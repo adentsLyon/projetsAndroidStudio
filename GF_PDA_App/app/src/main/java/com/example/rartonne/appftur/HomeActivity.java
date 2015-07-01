@@ -26,16 +26,7 @@ import com.example.rartonne.appftur.tools.GlobalViews;
 import java.io.IOException;
 
 public class HomeActivity extends GlobalViews {
-    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
-    public SQLiteDatabase bdd;
-    private String gf_sec_id;
-    public String art_id;
     public String name;
-    public String druck;
-    public String sdr;
-    public String dim;
-    public String catalog;
-    public String login;
     public boolean checkJob;
     public boolean checkInstallation;
     public boolean checkGeo;
@@ -51,13 +42,27 @@ public class HomeActivity extends GlobalViews {
     public RelativeLayout rel_installation_manual;
     public RelativeLayout rel_server_updates;
     public RelativeLayout rel_scan_qr;
-    private FittingDao fittingDao;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        redirect();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        redirect();
+        setHeader();
+        fillHome();
+
+        setIcones();
+        setPastilles();
+    }
+
+    private void fillHome() {
         rel_job_data = (RelativeLayout) findViewById(R.id.rel_job_data);
         rel_installation_data = (RelativeLayout) findViewById(R.id.rel_installation_data);
         rel_geo_position = (RelativeLayout) findViewById(R.id.rel_geo_position);
@@ -67,28 +72,6 @@ public class HomeActivity extends GlobalViews {
         rel_installation_manual = (RelativeLayout) findViewById(R.id.rel_installation_manual);
         rel_server_updates = (RelativeLayout) findViewById(R.id.rel_server_updates);
         rel_scan_qr = (RelativeLayout)findViewById(R.id.rel_scan_qr);
-
-
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        //on remplit le header
-        TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        login = GlobalClass.getLogin();
-        textUsername.setText(login);
-
-        //on remplit le article header
-        gf_sec_id = GlobalClass.getGf_sec_id();
-        art_id = GlobalClass.getArt_id();
-        name = GlobalClass.getDesignation();
-        druck = GlobalClass.getDruck();
-        sdr = GlobalClass.getSdr();
-        dim = GlobalClass.getDim();
-        catalog = GlobalClass.getCatalog();
-
-        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
-        setIcones();
-        setPastilles();
     }
 
 
@@ -117,50 +100,8 @@ public class HomeActivity extends GlobalViews {
 
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        try {
-            String contents = intent.getStringExtra("SCAN_RESULT");
-            String[] params = contents.split("\\?");
-            params = params[1].split("&");
-            gf_sec_id = params[0];
-            params = params[1].split("ART=");
-            art_id = params[1];
-
-            //select sur lab
-            fittingDao = new FittingDao(this);
-            Fitting fitting = fittingDao.select(art_id);
-            name = fitting.getDesignation();
-            druck = fitting.getDruck();
-            sdr = fitting.getSdr();
-            dim = fitting.getDim();
-            catalog = fitting.getCatalog();
-
-            //on change les variables globales
-            GlobalClass.setGf_sec_id(gf_sec_id);
-            GlobalClass.setArt_id(art_id);
-            GlobalClass.setDesignation(name);
-            GlobalClass.setDruck(druck);
-            GlobalClass.setDim(dim);
-            GlobalClass.setSdr(sdr);
-            GlobalClass.setCatalog(catalog);
-            GlobalClass.setStatus("sign_status_ok");
-
-            setArticleHeader(art_id, name, druck, sdr, dim, catalog);
-            setIcones();
-
-            //on insert dans scan_log
-            Integer userId = GlobalClass.getUserId();
-            ScanlogDao scanlogDao = new ScanlogDao(this);
-            Scanlog scanlog = new Scanlog(gf_sec_id, userId, art_id);
-            if(scanlogDao.count(gf_sec_id) >= 1){
-                scanlogDao.updateScan(gf_sec_id);
-                Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
-            }else {
-                scanlogDao.insert(scanlog);
-                Toast.makeText(getApplicationContext(), "Inserted lines : " + scanlogDao.count().toString(), Toast.LENGTH_LONG).show();
-            }
-        }catch(NullPointerException e){
-
-        };
+        String contents = intent.getStringExtra("SCAN_RESULT");
+        homeQR(contents);
     }
 
     public void setPastilles(){
@@ -222,13 +163,8 @@ public class HomeActivity extends GlobalViews {
     }
 
     public void setIcones(){
-        if(login.isEmpty()){
-            Intent intent = new Intent(this, ManualLoginActivity.class);
-            startActivity(intent);
-        }
-
         //on rend les icones visibles ou non
-        if(!login.isEmpty() && !gf_sec_id.isEmpty()){
+        if(!GlobalClass.getLogin().isEmpty() && !GlobalClass.getGf_sec_id().isEmpty()){
             rel_job_data.setVisibility(View.VISIBLE);
             rel_installation_data.setVisibility(View.VISIBLE);
             rel_geo_position.setVisibility(View.VISIBLE);

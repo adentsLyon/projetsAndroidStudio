@@ -19,7 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class GeoPositionActivity extends Activity {
+public class GeoPositionActivity extends GlobalViews {
     private GoogleMap mMap;
     public EditText field_lat;
     public EditText field_lon;
@@ -29,6 +29,7 @@ public class GeoPositionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_position);
+        setHeader();
         setUpMapIfNeeded();
 
         Btn_refresh = (ImageButton) findViewById(R.id.Btn_refresh);
