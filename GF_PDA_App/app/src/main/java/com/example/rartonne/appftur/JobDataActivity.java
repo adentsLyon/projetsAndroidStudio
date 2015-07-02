@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,8 @@ import com.example.rartonne.appftur.model.Scanlog;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -42,6 +46,9 @@ public class JobDataActivity extends GlobalViews {
     public EditText field_job;
     public EditText field_site;
     public EditText fieldWelding;
+    public View bar_job;
+    public View bar_site;
+    public View arrow_job;
     private OperatorDao operatorDao;
     private Operator operator;
     private OrdernrSitesDao ordernrSitesDao;
@@ -56,7 +63,12 @@ public class JobDataActivity extends GlobalViews {
         setContentView(R.layout.activity_job_data);
 
         setHeader();
+        setArticleHeader();
         fillJobData();
+        if(!GlobalClass.getJobNumber().isEmpty()){
+            int spinnerPostion = adapter.getPosition(GlobalClass.getJobNumber());
+            spin_job.setSelection(spinnerPostion);
+        }
 
         //spinJob listener
         spin_job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,10 +103,13 @@ public class JobDataActivity extends GlobalViews {
     }
 
     private void fillJobData() {
+        bar_job = findViewById(R.id.bar_job);
+        bar_site = findViewById(R.id.bar_site);
         fieldWelding = (EditText) findViewById(R.id.field_welding);
         field_job = (EditText) findViewById(R.id.field_job);
         field_site = (EditText) findViewById(R.id.field_site);
         spin_job = (Spinner) findViewById(R.id.spin_job);
+        arrow_job = findViewById(R.id.arrow_job);
 
         operatorDao = new OperatorDao(this);
         operator = operatorDao.select(GlobalClass.getUserId());
@@ -124,12 +139,21 @@ public class JobDataActivity extends GlobalViews {
             field_job.setText(contents);
             field_site.setText("Unrelevant");
             contents = null;
+            bar_job.setBackgroundColor(Color.parseColor("#1965a3"));
+            bar_site.setBackgroundColor(Color.parseColor("#1965a3"));
+            arrow_job.setBackgroundColor(Color.parseColor("#1965a3"));
         }else if (siteValue == null) {
             field_job.setText(jobValue);
             field_site.setText("Unrelevant");
+            bar_job.setBackgroundColor(Color.parseColor("#66c266"));
+            bar_site.setBackgroundColor(Color.parseColor("#66c266"));
+            arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
         } else {
             field_job.setText(jobValue);
             field_site.setText(siteValue);
+            bar_job.setBackgroundColor(Color.parseColor("#66c266"));
+            bar_site.setBackgroundColor(Color.parseColor("#66c266"));
+            arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
         }
     }
 
@@ -184,23 +208,23 @@ public class JobDataActivity extends GlobalViews {
     }
 
     public void resetData(View view){
-        field_job.setText(null);
-        field_site.setText("Unrelevant");
+        spin_job.setSelection(0);
     }
 
     public void confirmJob(View view){
         ScanlogDao scanlogDao = new ScanlogDao(this);
         scanlogDao.updateJob(GlobalClass.getGf_sec_id(), field_job.getText().toString());
-        //Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
 
         OrdernrSitesDao ordernrSitesDao = new OrdernrSitesDao(this);
         if(ordernrSitesDao.count(field_job.getText().toString()) == 0) {
             boolean bool = ordernrSitesDao.insert(field_job.getText().toString(), GlobalClass.getInstaller_id());
             spinnerArray.add(field_job.getText().toString());
             adapter.notifyDataSetChanged();
-            //spin_job.setAdapter(adapter);
-            Toast.makeText(getApplicationContext(), "Data updated " + bool, Toast.LENGTH_LONG).show();
         }
+
+        GlobalClass.setJobNumber(field_job.getText().toString());
+        GlobalClass.setCheckJob(true);
+        Toast.makeText(getApplicationContext(), "Data updated ", Toast.LENGTH_LONG).show();
     }
 
 }

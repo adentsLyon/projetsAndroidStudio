@@ -25,14 +25,16 @@ public class ScanlogActivity extends GlobalViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanlog);
 
-        listView = (ListView) findViewById(R.id.listView);
+        /*listView = (ListView) findViewById(R.id.listView);
 
 
         ScanlogDao scanlogDao = new ScanlogDao(this);
         ArrayList<Scanlog> scanlogs = scanlogDao.selectAll();
 
         ArrayAdapter<Scanlog> adapter = new ArrayAdapter<Scanlog>(this, android.R.layout.simple_list_item_1, scanlogs);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
+        
     }
 
     @Override

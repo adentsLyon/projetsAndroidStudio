@@ -7,11 +7,13 @@ public class User {
     private Integer user_id;
     private String login;
     private Integer installer_id;
+    private String installer_name;
 
-    public User(Integer user_id, String login, Integer installer_id) {
+    public User(Integer user_id, String login, Integer installer_id, String installer_name) {
         this.user_id = user_id;
         this.login = login;
         this.installer_id = installer_id;
+        this.installer_name = installer_name;
     }
 
     public String getLogin() {
@@ -36,5 +38,13 @@ public class User {
 
     public void setInstaller_id(Integer installer_id) {
         this.installer_id = installer_id;
+    }
+
+    public String getInstaller_name() {
+        return installer_name;
+    }
+
+    public void setInstaller_name(String installer_name) {
+        this.installer_name = installer_name;
     }
 }

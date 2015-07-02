@@ -21,6 +21,8 @@ public class InstallationManualActivity extends GlobalViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_installation_manual);
 
+        setHeader();
+
         WebView wv_imc = (WebView) findViewById(R.id.wv_installationManual);
         wv_imc.loadUrl("file:///android_asset/GeorgeFISCHER_manualCouplerTest.html");
 

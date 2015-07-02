@@ -96,8 +96,29 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             Date date = new java.util.Date();
 
             db = this.open();
-            db.execSQL("UPDATE scan_log SET customer_order_nr = ? WHERE gf_sec_id = ?",
-                    new Object[]{customer_order_nr, gf_sec_id});
+            db.execSQL("UPDATE scan_log SET customer_order_nr = ?, scan_date = ? WHERE gf_sec_id = ?",
+                    new Object[]{customer_order_nr, date, gf_sec_id});
+
+            this.close();
+
+            return true;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("FittingDao", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateGps(String gf_sec_id, Double gpsLat, Double gpsLong){
+        try {
+            String format = "yy/MM/dd HH:mm:ss";
+
+            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+            Date date = new java.util.Date();
+
+            db = this.open();
+            db.execSQL("UPDATE scan_log SET gps_lat = ?, gps_long = ?, scan_date = ? WHERE gf_sec_id = ?",
+                    new Object[]{gpsLat, gpsLong, date, gf_sec_id});
 
             this.close();
 

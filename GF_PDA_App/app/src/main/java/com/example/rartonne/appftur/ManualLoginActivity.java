@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,26 +30,28 @@ public class ManualLoginActivity extends GlobalViews {
     public TextView input_login;
     public TextView text_message;
     public TextView textUsername;
+    public TextView textCompany;
     private UserDao userDao;
     private User user;
     private Integer count;
-    RelativeLayout footer;
+    public RelativeLayout footer;
+    public ImageView imageStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
-        this.setRequestedOrientation(
-             ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         //on remplit le header
         textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(GlobalClass.getLogin());
+        textCompany = (TextView) findViewById(R.id.textCompany);
 
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
         text_message = (TextView) findViewById(R.id.text_message);
+
+        setHeader();
+        setArticleHeader();
 
         setFooter();
     }
@@ -87,6 +90,9 @@ public class ManualLoginActivity extends GlobalViews {
         count = userDao.count(input_login.getText().toString());
 
         if(count == 1) {
+            if(GlobalClass.getLogin().isEmpty())
+                footer.setVisibility(View.VISIBLE);
+
             text_message.setTextColor(Color.parseColor("#007a3d"));
             text_message.setText("Login Successful");
             GlobalClass.setLogin(input_login.getText().toString());
@@ -95,7 +101,12 @@ public class ManualLoginActivity extends GlobalViews {
             user = userDao.select(input_login.getText().toString());
             GlobalClass.setUserId(user.getUser_id());
             GlobalClass.setInstaller_id(user.getInstaller_id());
-            footer.setVisibility(View.VISIBLE);
+            GlobalClass.setInstallerName(user.getInstaller_name());
+            GlobalClass.setStatus("sign_scan_qr_expected");
+            int id_icone = getResources().getIdentifier(GlobalClass.getStatus(), "drawable", getPackageName());
+            imageStatus = (ImageView) findViewById(R.id.imageStatus);
+            imageStatus.setImageResource(id_icone);
+            textCompany.setText(user.getInstaller_name());
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");

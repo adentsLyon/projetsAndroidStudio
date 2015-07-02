@@ -89,19 +89,19 @@ public class GlobalViews extends Activity {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        String login = GlobalClass.getLogin();
-        Integer userId = GlobalClass.getUserId();
+        TextView textCompany = (TextView) findViewById(R.id.textCompany);
+        textUsername.setText(GlobalClass.getLogin());
+        textCompany.setText(GlobalClass.getInstallerName());
+    }
+
+    public void setArticleHeader(){
         String art_id = GlobalClass.getArt_id();
         String name = GlobalClass.getDesignation();
         String druck = GlobalClass.getDruck();
         String sdr = GlobalClass.getSdr();
         String dim = GlobalClass.getDim();
         String catalog = GlobalClass.getCatalog();
-        textUsername.setText(login);
-        setArticleHeader(art_id, name, druck, sdr, dim, catalog);
-    }
 
-    public void setArticleHeader(String art_id, String name, String druck, String sdr, String dim, String catalog){
         textArtId = (TextView) findViewById(R.id.textArtId);
         textArticle = (TextView) findViewById(R.id.textArticle);
         textStandard = (TextView) findViewById(R.id.textStandard);
@@ -122,7 +122,7 @@ public class GlobalViews extends Activity {
 
     public void homeQR(String contents){
         try {
-            //on éclate l'url du QR
+            //on Ã©clate l'url du QR
             String[] params = contents.split("\\?");
             params = params[1].split("&");
             String gf_sec_id = params[0];

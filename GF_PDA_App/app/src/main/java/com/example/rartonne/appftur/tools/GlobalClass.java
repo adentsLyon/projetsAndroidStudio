@@ -39,110 +39,15 @@ public class GlobalClass {
     private static String catalog = "";
     private static String status = "sign_login_expected";
     private static boolean wmModeSingle = true;
+    private static String jobNumber = "";
+    private static String installerName = "";
 
     public static String getLogin() {
         return login;
     }
 
-    public static void setLogin(String newLogin) {
-        login = newLogin;
-    }
-
-    public static boolean getCheckJob(){
-        return checkJob;
-    }
-
-    public static void setCheckJob(){
-        if(checkJob == true){
-            checkJob = false;
-        }else{
-            checkJob = true;
-        }
-    }
-
-    public static boolean getCheckInstallation(){
-        return checkInstallation;
-    }
-    public static boolean getCheckGeo(){
-        return checkGeo;
-    }
-
-    public static boolean getCheckWelding(){
-        return checkWelding;
-    }
-
-    public static boolean getCheckPictures(){
-        return checkPictures;
-    }
-
-    public static boolean getCheckComment(){
-        return checkComment;
-    }
-
-    public static String getWelderCertificate(){
-        return welderCertificate;
-    }
-
-    public static void setWelderCertificate(String certif){
-        welderCertificate = certif;
-    }
-
-    public static Integer getUserId(){
-        return userId;
-    }
-
-    public static void setUserId(Integer newId){
-        userId = newId;
-    }
-
-    public static String getArt_id(){ return art_id; }
-
-    public static String getDesignation(){ return designation; }
-
-    public static String getDruck(){ return druck; }
-
-    public static String getSdr(){ return sdr; }
-
-    public static String getDim(){ return dim; }
-
-    public static String getCatalog(){ return catalog; }
-
-    public static String getStatus(){ return status; }
-
-    public static void setArt_id(String newArt_id){
-        art_id = newArt_id;
-    }
-
-    public static void setDesignation(String newDesignation){
-        designation = newDesignation;
-    }
-
-    public static void setDruck(String newDruck){
-        druck = newDruck;
-    }
-
-    public static void setSdr(String newSdr){
-        sdr = newSdr;
-    }
-
-    public static void setDim(String newDim){
-        dim = newDim;
-    }
-
-    public static void setCatalog(String newCatalog){
-        catalog = newCatalog;
-    }
-
-    public static void setStatus(String newStatus){
-        status = newStatus;
-    }
-
-    public static String getGf_sec_id() {
-        return gf_sec_id;
-    }
-
-    public static void setGf_sec_id(String gf_sec_id) {
-        GlobalClass.gf_sec_id = gf_sec_id;
+    public static void setLogin(String login) {
+        GlobalClass.login = login;
     }
 
     public static Integer getInstaller_id() {
@@ -153,11 +58,163 @@ public class GlobalClass {
         GlobalClass.installer_id = installer_id;
     }
 
+    public static String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public static void setLastUpdate(String lastUpdate) {
+        GlobalClass.lastUpdate = lastUpdate;
+    }
+
+    public static String getWelderCertificate() {
+        return welderCertificate;
+    }
+
+    public static void setWelderCertificate(String welderCertificate) {
+        GlobalClass.welderCertificate = welderCertificate;
+    }
+
+    public static Integer getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(Integer userId) {
+        GlobalClass.userId = userId;
+    }
+
+    public static boolean isCheckJob() {
+        return checkJob;
+    }
+
+    public static void setCheckJob(boolean checkJob) {
+        GlobalClass.checkJob = checkJob;
+    }
+
+    public static boolean isCheckInstallation() {
+        return checkInstallation;
+    }
+
+    public static void setCheckInstallation(boolean checkInstallation) {
+        GlobalClass.checkInstallation = checkInstallation;
+    }
+
+    public static boolean isCheckGeo() {
+        return checkGeo;
+    }
+
+    public static void setCheckGeo(boolean checkGeo) {
+        GlobalClass.checkGeo = checkGeo;
+    }
+
+    public static boolean isCheckWelding() {
+        return checkWelding;
+    }
+
+    public static void setCheckWelding(boolean checkWelding) {
+        GlobalClass.checkWelding = checkWelding;
+    }
+
+    public static boolean isCheckPictures() {
+        return checkPictures;
+    }
+
+    public static void setCheckPictures(boolean checkPictures) {
+        GlobalClass.checkPictures = checkPictures;
+    }
+
+    public static boolean isCheckComment() {
+        return checkComment;
+    }
+
+    public static void setCheckComment(boolean checkComment) {
+        GlobalClass.checkComment = checkComment;
+    }
+
+    public static String getGf_sec_id() {
+        return gf_sec_id;
+    }
+
+    public static void setGf_sec_id(String gf_sec_id) {
+        GlobalClass.gf_sec_id = gf_sec_id;
+    }
+
+    public static String getArt_id() {
+        return art_id;
+    }
+
+    public static void setArt_id(String art_id) {
+        GlobalClass.art_id = art_id;
+    }
+
+    public static String getDesignation() {
+        return designation;
+    }
+
+    public static void setDesignation(String designation) {
+        GlobalClass.designation = designation;
+    }
+
+    public static String getDruck() {
+        return druck;
+    }
+
+    public static void setDruck(String druck) {
+        GlobalClass.druck = druck;
+    }
+
+    public static String getSdr() {
+        return sdr;
+    }
+
+    public static void setSdr(String sdr) {
+        GlobalClass.sdr = sdr;
+    }
+
+    public static String getDim() {
+        return dim;
+    }
+
+    public static void setDim(String dim) {
+        GlobalClass.dim = dim;
+    }
+
+    public static String getCatalog() {
+        return catalog;
+    }
+
+    public static void setCatalog(String catalog) {
+        GlobalClass.catalog = catalog;
+    }
+
+    public static String getStatus() {
+        return status;
+    }
+
+    public static void setStatus(String status) {
+        GlobalClass.status = status;
+    }
+
     public static boolean isWmModeSingle() {
         return wmModeSingle;
     }
 
     public static void setWmModeSingle(boolean wmModeSingle) {
         GlobalClass.wmModeSingle = wmModeSingle;
+    }
+
+    public static String getJobNumber() {
+        return jobNumber;
+    }
+
+    public static void setJobNumber(String jobNumber) {
+        GlobalClass.jobNumber = jobNumber;
+    }
+
+    public static String getInstallerName() {
+        return installerName;
+    }
+
+    public static void setInstallerName(String installerName) {
+        GlobalClass.installerName = installerName;
     }
 }

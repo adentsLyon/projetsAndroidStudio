@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.rartonne.appftur.dao.ScanlogDao;
+import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,12 +27,15 @@ public class GeoPositionActivity extends GlobalViews {
     public EditText field_lat;
     public EditText field_lon;
     public ImageButton Btn_refresh;
+    double longitude;
+    double latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_position);
         setHeader();
+        setArticleHeader();
         setUpMapIfNeeded();
 
         Btn_refresh = (ImageButton) findViewById(R.id.Btn_refresh);
@@ -83,8 +89,8 @@ public class GeoPositionActivity extends GlobalViews {
     private void setUpMap() {
         LocationManager lm = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        latitude = location.getLatitude();
         LatLng latlng = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
@@ -93,5 +99,15 @@ public class GeoPositionActivity extends GlobalViews {
         field_lon = (EditText) findViewById(R.id.field_lon);
         field_lat.setText(String.valueOf(latitude));
         field_lon.setText(String.valueOf(longitude));
+    }
+
+    public void confirmGps(View view){
+        try {
+            ScanlogDao scanlogDao = new ScanlogDao(this);
+            scanlogDao.updateGps(GlobalClass.getGf_sec_id(), latitude, longitude);
+            Toast.makeText(this, "Data updated", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error updating data", Toast.LENGTH_LONG).show();
+        }
     }
 }
