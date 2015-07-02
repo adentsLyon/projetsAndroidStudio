@@ -158,7 +158,8 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_confirm"
-                android:src="@drawable/action_confirm"/>
+                android:src="@drawable/action_confirm"
+                android:onClick="confirmGps" />
 
             <TextView
                 style="@style/text_style"

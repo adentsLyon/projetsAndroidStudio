@@ -56,6 +56,7 @@ public class HomeActivity extends GlobalViews {
 
         redirect();
         setHeader();
+        setArticleHeader();
         fillHome();
 
         setIcones();
@@ -72,6 +73,12 @@ public class HomeActivity extends GlobalViews {
         rel_installation_manual = (RelativeLayout) findViewById(R.id.rel_installation_manual);
         rel_server_updates = (RelativeLayout) findViewById(R.id.rel_server_updates);
         rel_scan_qr = (RelativeLayout)findViewById(R.id.rel_scan_qr);
+        checkJob = GlobalClass.isCheckJob();
+        checkInstallation = GlobalClass.isCheckInstallation();
+        checkGeo = GlobalClass.isCheckGeo();
+        checkWelding = GlobalClass.isCheckWelding();
+        checkPictures = GlobalClass.isCheckPictures();
+        checkComment = GlobalClass.isCheckComment();
     }
 
 
@@ -106,13 +113,6 @@ public class HomeActivity extends GlobalViews {
 
     public void setPastilles(){
         //on affiche ou non les pastilles
-        checkJob = GlobalClass.getCheckJob();
-        checkInstallation = GlobalClass.getCheckInstallation();
-        checkGeo = GlobalClass.getCheckGeo();
-        checkWelding = GlobalClass.getCheckWelding();
-        checkPictures = GlobalClass.getCheckPictures();
-        checkComment = GlobalClass.getCheckComment();
-
         if (checkJob == false) {
             ImageView imgView = (ImageView) findViewById(R.id.pastille_ok_job);
             imgView.setVisibility(View.INVISIBLE);

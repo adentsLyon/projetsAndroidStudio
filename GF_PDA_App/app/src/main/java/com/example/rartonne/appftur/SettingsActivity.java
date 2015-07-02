@@ -138,7 +138,7 @@ public class SettingsActivity extends GlobalViews {
     }
 
     public void change(View view){
-        GlobalClass.setCheckJob();
+        /*/GlobalClass.setCheckJob();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
 
@@ -155,6 +155,6 @@ public class SettingsActivity extends GlobalViews {
         AlertDialog alertDialog = alertDialogBuilder.create();
 
         // show it
-        alertDialog.show();
+        alertDialog.show();*/
     }
 }
