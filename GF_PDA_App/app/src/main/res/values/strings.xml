@@ -102,4 +102,8 @@
     <string name="unrelevant">Unrelevant</string>
     <string name="valid_qr">Please scan a valid QR Code</string>
 
+    <!-- Installation Data -->
+
+    <string name="ib_linkProduct">LINK\nPRODUCT</string>
+
 </resources>

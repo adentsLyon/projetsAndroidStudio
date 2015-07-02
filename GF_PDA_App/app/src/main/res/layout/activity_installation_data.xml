@@ -18,7 +18,7 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="270px"
+        android:layout_marginTop="250px"
         >
 
         <RelativeLayout
@@ -58,11 +58,13 @@
 
         </RelativeLayout>
 
+
+
         <RelativeLayout
             android:id="@+id/rel_trench"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rel_sketch"
+            android:layout_below="@+id/rel_sketch"
             android:layout_marginTop="2px"
             >
 
@@ -99,77 +101,76 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="fill_parent"
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="SCAN THE PRODUCT YOU WANT TO LINK"
-            android:textColor="#000000"
-            android:textStyle="bold"
             android:layout_below="@+id/rel_trench"
-            android:id="@+id/title_position"/>
-
-        <RelativeLayout
-            android:id="@+id/rel_scan_trace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
+            android:id="@+id/rel_buttonPart2"
             android:layout_marginLeft="30px"
-            >
+            android:layout_marginTop="180px">
 
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_scan_trace"
-                android:src="@drawable/icon_scan_barcode"/>
+            <RelativeLayout
+                android:id="@+id/rel_btn_reset2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/text_style"
-                android:text="SCAN\nTRACE CODE"
-                android:id="@+id/text_scan_trace"
-                android:layout_below="@+id/Btn_scan_trace" />
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_resetPart2"
+                    android:src="@drawable/action_cancel"/>
+                <TextView
+                    style="@style/text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ib_resetData"
+                    android:textColor="#000000"
+                    android:layout_below="@+id/Btn_resetPart2"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_btn_link2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_link2"
+                    android:src="@drawable/icon_link_qr"/>
+                <TextView
+                    style="@style/text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ib_linkProduct"
+                    android:textColor="#000000"
+                    android:layout_below="@+id/Btn_link2"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_btn_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320px">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_submitPart2"
+                    android:src="@drawable/action_confirm"/>
+                <TextView
+                    style="@style/text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ib_confirmData"
+                    android:textColor="#000000"
+                    android:layout_below="@+id/Btn_submitPart2"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rel_pictures"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
-            android:layout_centerHorizontal="true">
-
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_reset"
-                android:src="@drawable/action_cancel"/>
-
-            <TextView
-                style="@style/text_style"
-                android:text="RESET\nDATA"
-                android:id="@+id/text_reset"
-                android:layout_below="@+id/Btn_reset" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rel_scan_qr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
-            android:layout_marginLeft="350px"
-            >
-
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_scan_qr"
-                android:src="@drawable/icon_scan_qr"/>
-
-            <TextView
-                style="@style/text_style"
-                android:text="SCAN\nQR CODE"
-                android:id="@+id/text_scan_qr"
-                android:layout_below="@+id/Btn_scan_qr" />
-
-        </RelativeLayout>
 
     </RelativeLayout>
     <!-- Footer aligned to bottom -->
