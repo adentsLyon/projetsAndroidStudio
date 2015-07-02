@@ -18,161 +18,357 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="270px"
+        android:layout_marginTop="250px"
         >
 
         <RelativeLayout
-            android:id="@+id/rel_sketch"
+            android:id="@+id/rel_fullWelding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             >
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="50px"
-                android:background="#66c266"
-                android:id="@+id/bar_sketch"/>
-
-            <EditText
-                android:background="@null"
-                android:layout_width="320px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
-                android:layout_marginLeft="170px"
-                android:id="@+id/field_sketch"
-                android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
-
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rel_welding1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_wmSerial"
-                android:id="@+id/text_sketch"
-                android:textColor="#ffffff"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="10px"
-                android:textSize="25px"
-                android:layout_alignLeft="@+id/bar_welding"
-                android:layout_alignTop="@+id/bar_welding"/>
+                >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#66c266"
+                    android:id="@+id/bar_welding1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWelding1"
+                    android:layout_alignTop="@+id/bar_welding1"
+                    android:layout_alignLeft="@+id/bar_welding1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="30px"
+                    android:text="#1"/>
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmSerial1"
+                    android:layout_alignTop="@+id/bar_welding1"
+                    android:layout_alignLeft="@+id/bar_welding1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="80px"
+                    android:text="WMSC10002552"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmFusion1"
+                    android:layout_alignTop="@+id/bar_welding1"
+                    android:layout_alignRight="@+id/bar_welding1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginRight="30px"
+                    android:text="251"/>
 
-        <RelativeLayout
-            android:id="@+id/rel_trench"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rel_sketch"
-            android:layout_marginTop="2px"
-            >
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="50px"
-                android:background="#66c266"
-                android:id="@+id/bar_trench"/>
-
-
-
-            <EditText
-                android:background="@null"
-                android:layout_width="290px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
-                android:layout_marginLeft="180px"
-                android:id="@+id/field_trench"
-                android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
-
-            <TextView
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_welding2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_fusionNumber"
-                android:id="@+id/text_trench"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10px"
-                android:textSize="25px"
-                android:layout_marginLeft="10px"
-                android:layout_alignLeft="@+id/bar_job"
-                android:layout_alignTop="@+id/bar_job"/>
+                android:layout_below="@+id/rel_welding1"
+                android:layout_marginTop="2px">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#66c266"
+                    android:id="@+id/bar_welding2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWelding2"
+                    android:layout_alignTop="@+id/bar_welding2"
+                    android:layout_alignLeft="@+id/bar_welding2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="30px"
+                    android:text="#2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmSerial2"
+                    android:layout_alignTop="@+id/bar_welding2"
+                    android:layout_alignLeft="@+id/bar_welding2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="80px"
+                    android:text="WMSC10002552"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmFusion2"
+                    android:layout_alignTop="@+id/bar_welding2"
+                    android:layout_alignRight="@+id/bar_welding2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginRight="30px"
+                    android:text="252"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_welding3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_welding2"
+                android:layout_marginTop="2px">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#66c266"
+                    android:id="@+id/bar_welding3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWelding3"
+                    android:layout_alignTop="@+id/bar_welding3"
+                    android:layout_alignLeft="@+id/bar_welding3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="30px"
+                    android:text="#3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmSerial3"
+                    android:layout_alignTop="@+id/bar_welding3"
+                    android:layout_alignLeft="@+id/bar_welding3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="80px"
+                    android:text="WMSC10002552"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmFusion3"
+                    android:layout_alignTop="@+id/bar_welding3"
+                    android:layout_alignRight="@+id/bar_welding3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginRight="30px"
+                    android:text="253"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_welding4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_welding3"
+                android:layout_marginTop="2px">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#66c266"
+                    android:id="@+id/bar_welding4"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWelding4"
+                    android:layout_alignTop="@+id/bar_welding4"
+                    android:layout_alignLeft="@+id/bar_welding4"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="30px"
+                    android:text="#4"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmSerial4"
+                    android:layout_alignTop="@+id/bar_welding4"
+                    android:layout_alignLeft="@+id/bar_welding4"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="80px"
+                    android:text="WMSC10002552"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_idWmFusion4"
+                    android:layout_alignTop="@+id/bar_welding4"
+                    android:layout_alignRight="@+id/bar_welding4"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30px"
+                    android:layout_marginTop="10px"
+                    android:layout_marginRight="30px"
+                    android:text="254"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/tv_infoWeldingData"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:layout_below="@+id/rel_trench"
-            android:id="@+id/title_position"/>
 
         <RelativeLayout
-            android:id="@+id/rel_scan_trace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
-            android:layout_marginLeft="30px"
-            >
+            android:id="@+id/rel_inputEmpty"
+            android:layout_below="@+id/rel_fullWelding">
 
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_scan_trace"
-                android:src="@drawable/action_cancel"/>
+            <RelativeLayout
+                android:id="@+id/rel_serialInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2px">
 
-            <TextView
-                style="@style/text_style"
-                android:text="@string/ib_resetData"
-                android:id="@+id/text_scan_trace"
-                android:layout_below="@+id/Btn_scan_trace" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:id="@+id/bar_sketch"/>
 
+                <EditText
+                    android:background="@null"
+                    android:layout_width="320px"
+                    android:layout_height="45px"
+                    android:layout_marginTop="5px"
+                    android:layout_marginLeft="170px"
+                    android:id="@+id/field_sketch"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_wmSerial"
+                    android:id="@+id/text_sketch"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="10px"
+                    android:layout_marginTop="10px"
+                    android:textSize="25px"
+                    android:layout_alignLeft="@+id/bar_welding"
+                    android:layout_alignTop="@+id/bar_welding"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_fusionInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_serialInput"
+                android:layout_marginTop="2px" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:id="@+id/bar_trench"/>
+
+
+
+                <EditText
+                    android:background="@null"
+                    android:layout_width="290px"
+                    android:layout_height="45px"
+                    android:layout_marginTop="5px"
+                    android:layout_marginLeft="180px"
+                    android:id="@+id/field_trench"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_fusionNumber"
+                    android:id="@+id/text_trench"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="10px"
+                    android:textSize="25px"
+                    android:layout_marginLeft="10px"
+                    android:layout_alignLeft="@+id/bar_job"
+                    android:layout_alignTop="@+id/bar_job"/>
+
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rel_pictures"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
-            android:layout_centerHorizontal="true">
+            android:id="@+id/rel_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rel_inputEmpty"
+            android:layout_marginTop="2px">
 
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_Scan_Qr"
-                android:src="@drawable/icon_scan_barcode"/>
+            <RelativeLayout
+                android:id="@+id/rel_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px">
 
-            <TextView
-                style="@style/text_style"
-                android:text="@string/ib_scanWmSerial"
-                android:id="@+id/text_scan_qr"
-                android:layout_below="@+id/Btn_Scan_Qr" />
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_cancel"
+                    android:src="@drawable/action_cancel"/>
 
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_resetData"
+                    android:id="@+id/text_scan_trace"
+                    android:layout_below="@+id/Btn_cancel" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_scanFlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_Scan_Qr"
+                    android:src="@drawable/icon_scan_barcode"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_scanWmSerial"
+                    android:id="@+id/text_scan_qr"
+                    android:layout_below="@+id/Btn_Scan_Qr" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350px">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_scanWmSerial"
+                    android:src="@drawable/action_confirm"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_confirmData"
+                    android:id="@+id/text_scanWmSerial"
+                    android:layout_below="@+id/Btn_scanWmSerial" />
+
+            </RelativeLayout>
         </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rel_scanWmSerial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270px"
-            android:layout_marginLeft="350px"
-            >
-
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_scanWmSerial"
-                android:src="@drawable/action_confirm"/>
-
-            <TextView
-                style="@style/text_style"
-                android:text="@string/ib_confirmData"
-                android:id="@+id/text_scanWmSerial"
-                android:layout_below="@+id/Btn_scanWmSerial" />
-
-        </RelativeLayout>
-
     </RelativeLayout>
+
     <!-- Footer aligned to bottom -->
 
     <include layout="@layout/footer" />
+
 </RelativeLayout>

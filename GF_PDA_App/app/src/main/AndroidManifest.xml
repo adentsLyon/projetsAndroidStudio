@@ -71,7 +71,7 @@
             android:label="@string/title_activity_installation_data" >
         </activity>
         <activity
-            android:name="com.example.rartonne.WeldingActivity"
+            android:name=".WeldingActivity"
             android:label="@string/title_activity_welding"
             android:parentActivityName=".HomeActivity" >
             <meta-data

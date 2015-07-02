@@ -1,4 +1,4 @@
-package com.example.rartonne;
+package com.example.rartonne.appftur;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
