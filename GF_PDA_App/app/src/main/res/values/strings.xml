@@ -47,10 +47,10 @@
     </string-array>
 
     <!--General Buttons-->
-    <string name="ib_confirmData">CONFIRM\nDATA</string>
+    <string name="ib_confirmData">SUBMIT\nDATA</string>
     <string name="ib_resetData">RESET\nDATA</string>
     <string name="ib_cancel">CANCEL</string>
-    <string name="ib_confirm">CONFIRM</string>
+    <string name="ib_confirm">SUBMIT</string>
 
 
     <string name="title_activity_geo_position">GeoPositionActivity</string>
@@ -70,7 +70,7 @@
     <string name="tv_infoLogin">Please type in your Login</string>
 
     <!--GeoPositionActivity-->
-    <string name="ib_confirmCoordonate">CONFIRM\nCOORDONATES</string>
+    <string name="ib_confirmCoordonate">SUBMIT\nCOORDONATES</string>
     <string name="tv_lat">Lat :</string>
     <string name="tv_lon">Lon :</string>
     <string name="tv_currentGeoPosition">CURRENT PDA GEO POSITION</string>
