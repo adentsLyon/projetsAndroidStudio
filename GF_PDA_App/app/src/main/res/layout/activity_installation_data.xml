@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sketch N° :"
+                android:text="@string/tv_sketchNr"
                 android:id="@+id/text_sketch"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="10px"
@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trench depth :"
+                android:text="@string/tv_trenchDepth"
                 android:id="@+id/text_trench"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
@@ -102,13 +102,37 @@
         </RelativeLayout>
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_infoInstall"
+            android:layout_below="@+id/rel_trench"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90px"
+            android:text="@string/tv_infoInstall"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_infoInstall2"
+            android:text="@string/tv_infoInstall2"
+            android:textStyle="bold"
+            android:textSize="20px"
+            android:layout_marginTop="10px"
+            android:textColor="#000000"
+            android:layout_below="@+id/et_infoInstall"
+            android:layout_centerHorizontal="true" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_trench"
             android:id="@+id/rel_buttonPart2"
             android:layout_marginLeft="30px"
-            android:layout_marginTop="180px">
+            android:layout_marginTop="190px">
 
             <RelativeLayout
                 android:id="@+id/rel_btn_reset2"
@@ -118,7 +142,7 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_resetPart2"
-                    android:src="@drawable/action_cancel"/>
+                    android:src="@drawable/Icon_Reset"/>
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -138,7 +162,7 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_link2"
-                    android:src="@drawable/icon_link_qr"/>
+                    android:src="@drawable/Icon_Link_Products"/>
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
