@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Maintenance"
+        android:text="Synchro"
         android:textColor="#1965a3"
         android:id="@+id/text_1_1"
         android:gravity="center_vertical|center_horizontal"
@@ -54,7 +54,8 @@
         android:layout_marginLeft="30px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:onClick="CopyReadAssets"
+        android:onClick="toActivity"
+        android:tag="SecIdDataActivity"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp" />
 
@@ -62,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Technical \n Docs"
+        android:text="Sec ID Data"
         android:textColor="#1965a3"
         android:id="@+id/text_1_2"
         android:gravity="center_vertical|center_horizontal"
@@ -113,7 +114,8 @@
 
 
         android:background="#fffff9fc"
-        android:clickable="false" />
+        android:clickable="false"
+        android:visibility="invisible" />
 
 
 
@@ -128,7 +130,8 @@
         android:layout_centerHorizontal="true"
         android:src="@mipmap/icon_net_mapp"
         android:background="#ffffffff"
-        android:onClick="changePicture" />
+        android:onClick="changePicture"
+        android:visibility="invisible" />
 
     <ImageButton
         android:layout_width="100px"
@@ -140,50 +143,11 @@
         android:layout_marginLeft="350px"
         android:layout_alignTop="@+id/Btn_techdocs"
         android:background="#ffffffff"
-        android:onClick="change" />
+        android:onClick="change"
+        android:visibility="invisible" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Picture"
-        android:textColor="#1965a3"
-        android:id="@+id/text_techdocs"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_below="@+id/Btn_techdocs"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="inherit" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Photo"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_fusiondata"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="15px"
-        android:layout_below="@+id/Btn_job_data"
-        android:layout_alignLeft="@+id/Btn_job_data" />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Accurate \n GPS"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/text_acc_gps"
-        android:layout_below="@+id/Btn_acc_gps"
-        android:layout_alignLeft="@+id/Btn_acc_gps"
-        android:textColor="#1965a3"
-        android:layout_marginLeft="5dp"/>
-
-
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"

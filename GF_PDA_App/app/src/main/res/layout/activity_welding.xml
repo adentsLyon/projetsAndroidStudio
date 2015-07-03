@@ -287,7 +287,8 @@
                     android:id="@+id/et_fusion"
                     android:textColor="#ffffff"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"/>
+                    android:layout_alignParentLeft="true"
+                    android:inputType="numberSigned" />
 
                 <TextView
                     android:layout_width="wrap_content"

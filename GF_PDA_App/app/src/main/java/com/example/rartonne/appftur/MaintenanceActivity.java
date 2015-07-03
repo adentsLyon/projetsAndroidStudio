@@ -1,5 +1,6 @@
 package com.example.rartonne.appftur;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -176,7 +177,7 @@ public class MaintenanceActivity extends GlobalViews {
 
         @Override
         protected String doInBackground(String... urls) {
-            final Integer total_steps = tables.length;
+            final Integer total_steps = tables.length + 1;
 
             for(String table : tables) {
                 response = pdaInsert("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=Installer1&table=" + table);
@@ -208,6 +209,17 @@ public class MaintenanceActivity extends GlobalViews {
                     bdd.execSQL(requete);
                 }
             }
+
+            step += 1;
+            progress += 5;
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    txtProgress.setText(step.toString() + "/" + total_steps.toString());
+                    pgbSteps.setProgress(progress);
+                }
+            });
 
             return response;
         }
@@ -247,5 +259,14 @@ public class MaintenanceActivity extends GlobalViews {
             textView2.setText("Synchronisation effectuée avec succès");
         }
 
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            homeQR(contents);
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+        }
     }
 }

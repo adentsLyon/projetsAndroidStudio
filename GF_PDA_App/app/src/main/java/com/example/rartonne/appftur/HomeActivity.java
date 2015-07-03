@@ -111,6 +111,7 @@ public class HomeActivity extends GlobalViews {
             String contents = intent.getStringExtra("SCAN_RESULT");
             homeQR(contents);
         } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
         }
     }
 

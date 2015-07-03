@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.location.LocationManager;
@@ -109,6 +110,15 @@ public class GeoPositionActivity extends GlobalViews {
             Toast.makeText(this, "Data updated", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(this, "Error updating data", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            homeQR(contents);
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
         }
     }
 }

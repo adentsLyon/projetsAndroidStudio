@@ -36,12 +36,14 @@ public class ManualLoginActivity extends GlobalViews {
     private Integer count;
     public RelativeLayout footer;
     public ImageView imageStatus;
+    private String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
+        //si la base est vide on va a l'écran de syncro
         UserDao userDao = new UserDao(this);
         Integer count = userDao.countAll();
         if(count == null || count == 0){
@@ -49,16 +51,10 @@ public class ManualLoginActivity extends GlobalViews {
             startActivity(new Intent(this, MaintenanceActivity.class));
         }
 
-        //on remplit le header
-        textUsername = (TextView) findViewById(R.id.textUsername);
-        textCompany = (TextView) findViewById(R.id.textCompany);
-
-        //on lie les view aux variables
-        input_login = (TextView) findViewById(R.id.input_login);
-        text_message = (TextView) findViewById(R.id.text_message);
-
         setHeader();
         setArticleHeader();
+
+        fillLogin();
 
         setFooter();
     }
@@ -127,5 +123,33 @@ public class ManualLoginActivity extends GlobalViews {
             RelativeLayout cancel = (RelativeLayout) findViewById(R.id.rel_cancel);
             cancel.setVisibility(View.GONE);
         }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            contents = intent.getStringExtra("SCAN_RESULT");
+            String sub = contents.substring(0, 4);
+            if(sub.equals("HTTP")) {
+                homeQR(contents);
+            }else{
+                input_login.setText(contents);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void fillLogin(){
+        //IMPORTANT
+        //on remplit le header
+        textUsername = (TextView) findViewById(R.id.textUsername);
+        textCompany = (TextView) findViewById(R.id.textCompany);
+
+        //on lie les view aux variables
+        input_login = (TextView) findViewById(R.id.input_login);
+        text_message = (TextView) findViewById(R.id.text_message);
+
+        Intent recupIntent = getIntent();
+        input_login.setText(recupIntent.getStringExtra("login"));
     }
 }

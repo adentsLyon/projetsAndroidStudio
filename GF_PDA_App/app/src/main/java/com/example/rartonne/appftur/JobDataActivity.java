@@ -203,7 +203,7 @@ public class JobDataActivity extends GlobalViews {
                 }
             }
         }catch(NullPointerException e){
-
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
         };
     }
 

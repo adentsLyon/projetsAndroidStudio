@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
@@ -48,9 +49,13 @@ public class NetmapActivity extends GlobalViews {
 
         return super.onOptionsItemSelected(item);
     }
-    public void gotoHome(View view)
-    {
-        Intent intent = new Intent(NetmapActivity.this, HomeActivity.class);
-        startActivity(intent);
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            homeQR(contents);
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+        }
     }
 }

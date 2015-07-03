@@ -148,31 +148,36 @@ public class GlobalViews extends Activity {
             ScanlogDao scanlogDao = new ScanlogDao(this);
             Scanlog scanlog = new Scanlog(gf_sec_id, userId, art_id);
             if(scanlogDao.count(gf_sec_id) >= 1){
+                scanlogDao.updateScan(gf_sec_id);
                 Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
             }else {
                 scanlogDao.insert(scanlog);
-                Toast.makeText(getApplicationContext(), "Inserted lines : " + scanlogDao.count().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Data inserted", Toast.LENGTH_LONG).show();
             }
 
+            //si les données sont saisies on change les variables check
             scanlog = scanlogDao.select(gf_sec_id);
-                if(!scanlog.getCustomer_order_nr().isEmpty()) {
+                //Job Number
+                if(scanlog.getCustomer_order_nr() != null) {
                     GlobalClass.setJobNumber(scanlog.getCustomer_order_nr());
                     GlobalClass.setCheckJob(true);
                 }
 
+                //GPS
                 if(scanlog.getGps_lat() != 0){
                     GlobalClass.setCheckGeo(true);
                 }
 
-                if(!scanlog.getSerial_wm_nr().isEmpty() || scanlog.getFusion_nr() != null){
+                //Serial WM et Fusion Nr
+               if(scanlog.getSerial_wm_nr() != null || scanlog.getFusion_nr() != 0){
                     GlobalClass.setCheckWelding(true);
-                }
+               }
 
             //on retourne sur la home
             Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(homeIntent);
         } catch (Exception e) {
-            Toast.makeText(this, getString(R.string.valid_qr), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
