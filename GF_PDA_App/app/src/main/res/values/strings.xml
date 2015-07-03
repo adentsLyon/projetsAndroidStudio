@@ -123,5 +123,11 @@
     <string name="tv_l3">L3 =</string>
     <string name="tv_l4">L4 =</string>
 
+    <!--CommentActivity-->
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="ib_addPicture">ADD\nPICTURE</string>
+    <string name="ib_sendEmail">SEND\nBY EMAIL</string>
+
+
 
 </resources>

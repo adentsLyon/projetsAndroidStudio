@@ -94,6 +94,10 @@
             android:name=".InstallationData2Activity"
             android:label="@string/title_activity_installation_data2" >
         </activity>
+        <activity
+            android:name="com.example.rartonne.CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
     </application>
 
 </manifest>
