@@ -56,6 +56,16 @@
                 android:layout_alignLeft="@+id/bar_product1"
                 android:layout_alignTop="@+id/bar_product1"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_l1"
+                android:id="@+id/tv_l1"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10px"
+                android:textSize="30px"
+                android:layout_marginLeft="200px"/>
+
         </RelativeLayout>
 
 
@@ -78,10 +88,10 @@
 
             <EditText
                 android:background="@null"
-                android:layout_width="320px"
+                android:layout_width="150px"
                 android:layout_height="45px"
                 android:layout_marginTop="5px"
-                android:layout_marginLeft="150px"
+                android:layout_marginLeft="300px"
                 android:id="@+id/et_product2"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
@@ -98,6 +108,16 @@
                 android:layout_marginLeft="30px"
                 android:layout_alignLeft="@+id/bar_product2"
                 android:layout_alignTop="@+id/bar_product2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_l2"
+                android:id="@+id/tv_l2"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10px"
+                android:textSize="30px"
+                android:layout_marginLeft="200px"/>
 
         </RelativeLayout>
         <RelativeLayout
@@ -116,10 +136,10 @@
 
             <EditText
                 android:background="@null"
-                android:layout_width="320px"
+                android:layout_width="150px"
                 android:layout_height="45px"
                 android:layout_marginTop="5px"
-                android:layout_marginLeft="150px"
+                android:layout_marginLeft="300px"
                 android:id="@+id/et_product3"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
@@ -136,6 +156,16 @@
                 android:textSize="30px"
                 android:layout_alignLeft="@+id/bar_product3"
                 android:layout_alignTop="@+id/bar_product3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_l3"
+                android:id="@+id/tv_l3"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10px"
+                android:textSize="30px"
+                android:layout_marginLeft="200px"/>
 
         </RelativeLayout>
 
@@ -159,14 +189,26 @@
 
             <EditText
                 android:background="@null"
-                android:layout_width="320px"
+                android:layout_width="150px"
                 android:layout_height="45px"
                 android:layout_marginTop="5px"
-                android:layout_marginLeft="150px"
+                android:layout_marginLeft="300px"
                 android:id="@+id/et_product4"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_l4"
+                android:id="@+id/tv_l4"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10px"
+                android:textSize="30px"
+                android:layout_marginLeft="200px"
+                android:layout_alignLeft="@+id/bar_product4"
+                android:layout_alignTop="@+id/bar_product4"/>
 
             <TextView
                 android:layout_width="wrap_content"

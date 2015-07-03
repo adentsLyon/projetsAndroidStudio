@@ -116,6 +116,10 @@
     <string name="title_activity_installation_data2">InstallationData2Activity</string>
     <string name="tv_infoInstall3">PLEASE SCAN A TRACEABILITY BARCODE\nOR CLICK ON SCAN QR CODE</string>
     <string name="tv_infoInstall4">SUBMIT WHEN DONE</string>
+    <string name="tv_l1">L1 =</string>
+    <string name="tv_l2">L2 =</string>
+    <string name="tv_l3">L3 =</string>
+    <string name="tv_l4">L4 =</string>
 
 
 </resources>
