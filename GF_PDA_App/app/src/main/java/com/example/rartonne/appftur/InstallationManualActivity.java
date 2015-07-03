@@ -1,5 +1,6 @@
 package com.example.rartonne.appftur;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -61,5 +62,14 @@ public class InstallationManualActivity extends GlobalViews {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            homeQR(contents);
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+        }
     }
 }

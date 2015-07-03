@@ -8,24 +8,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 
 public class LoginActivity extends GlobalViews {
+    private String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.setRequestedOrientation(
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        //on remplit le header
-        TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(GlobalClass.getLogin());
+        setHeader();
     }
 
     @Override
@@ -50,10 +47,19 @@ public class LoginActivity extends GlobalViews {
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoManualLogin(View view)
-    {
-        Intent intent = new Intent(LoginActivity.this, ManualLoginActivity.class);
-        startActivity(intent);
-
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            contents = intent.getStringExtra("SCAN_RESULT");
+            String sub = contents.substring(0, 4);
+            if(sub.equals("HTTP")) {
+                homeQR(contents);
+            }else{
+                Intent intent1 = new Intent(getApplicationContext(), ManualLoginActivity.class);
+                intent1.putExtra("login", contents);
+                startActivity(intent1);
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+        }
     }
 }

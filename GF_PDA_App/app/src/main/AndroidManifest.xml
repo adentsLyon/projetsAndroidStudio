@@ -87,6 +87,10 @@
             android:label="@string/title_activity_installation_manual" >
         </activity>
         <activity
+            android:name=".SecIdDataActivity"
+            android:label="@string/title_activity_sec_id_data" >
+        </activity>
+        <activity
             android:name=".InstallationData2Activity"
             android:label="@string/title_activity_installation_data2" >
         </activity>

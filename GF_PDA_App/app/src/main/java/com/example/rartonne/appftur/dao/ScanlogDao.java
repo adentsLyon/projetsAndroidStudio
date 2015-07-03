@@ -89,6 +89,27 @@ public class ScanlogDao extends DaoBase<Scanlog> {
         }
     }
 
+    public boolean updateInstallation(String gf_sec_id, String sketch_number){
+        try {
+            String format = "yy/MM/dd HH:mm:ss";
+
+            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+            Date date = new java.util.Date();
+
+            db = this.open();
+            db.execSQL("UPDATE scan_log SET welding_sketch_nr = ?, scan_date = ? WHERE gf_sec_id = ?",
+                    new Object[]{sketch_number, date, gf_sec_id});
+
+            this.close();
+
+            return true;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("ScanlogDao", e.getMessage());
+            return false;
+        }
+    }
+
     public boolean updateScan(String gf_sec_id){
         try {
             String format = "yy/MM/dd HH:mm:ss";

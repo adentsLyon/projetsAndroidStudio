@@ -108,7 +108,9 @@
 
     <!-- Installation Data -->
 
-    <string name="ib_linkProduct">LINK\nPRODUCTS</string>
+    <string name="ib_linkProduct">LINK\nPRODUCT</string>
+    <string name="title_activity_sec_id_data">SecIdDataActivity</string>
+    <string name="invalid_scan">Invalid scan, please try again</string>
     <string name="tv_infoInstall">CLICK ON SUBMIT TO SAVE DATA</string>
     <string name="tv_infoInstall2">CLICK ON LINK PRODUCTS\nFOR ADDITIONAL DATA</string>
     <string name="tv_sketchNr">Sketch no:</string>

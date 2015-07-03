@@ -21,7 +21,9 @@
         android:layout_below="@+id/Btn_job_data"
         android:background="#ffffff"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="toActivity"
+        android:tag="ManualLoginActivity" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
         android:layout_below="@+id/Btn_job_data"
         android:background="#ffffffff"
         android:layout_centerVertical="true"
-        android:onClick="gotoManualLogin" />
+        android:onClick="toActivity"
+        android:tag="ManualLoginActivity" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +78,8 @@
         android:src="@mipmap/icon_scan_qr"
         android:layout_below="@+id/Btn_job_data"
         android:background="#ffffffff"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:onClick="scanQR" />
 
     <TextView
         android:layout_width="wrap_content"

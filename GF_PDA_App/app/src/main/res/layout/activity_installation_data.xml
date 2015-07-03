@@ -142,7 +142,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_resetPart2"
-                    android:src="@drawable/Icon_Reset"/>
+                    android:src="@drawable/icon_reset"
+                    android:onClick="resetInstallation" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -162,7 +163,7 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_link2"
-                    android:src="@drawable/Icon_Link_Products"/>
+                    android:src="@drawable/icon_link_products"/>
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -182,7 +183,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_submitPart2"
-                    android:src="@drawable/action_confirm"/>
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmInstallation" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
