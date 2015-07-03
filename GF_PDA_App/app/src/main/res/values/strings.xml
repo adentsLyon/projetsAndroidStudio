@@ -53,6 +53,7 @@
     <string name="ib_resetData">RESET\nDATA</string>
     <string name="ib_cancel">CANCEL</string>
     <string name="ib_confirm">SUBMIT</string>
+    <string name="ib_scanQr">SCAN\nQR CODE</string>
 
 
     <string name="title_activity_geo_position">GeoPositionActivity</string>
@@ -90,6 +91,7 @@
     <string name="tv_scan">SCAN</string>
     <string name="tv_settings">SETTINGS</string>
 
+
     <!-- HOME -->
 
     <string name="tv_jobDataTitle">JOB DATA</string>
@@ -111,5 +113,9 @@
     <string name="tv_infoInstall2">CLICK ON LINK PRODUCTS\nFOR ADDITIONAL DATA</string>
     <string name="tv_sketchNr">Sketch no:</string>
     <string name="tv_trenchDepth">Trench depth:</string>
+    <string name="title_activity_installation_data2">InstallationData2Activity</string>
+    <string name="tv_infoInstall3">PLEASE SCAN A TRACEABILITY BARCODE\nOR CLICK ON SCAN QR CODE</string>
+    <string name="tv_infoInstall4">SUBMIT WHEN DONE</string>
+
 
 </resources>

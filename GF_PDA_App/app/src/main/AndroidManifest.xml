@@ -86,6 +86,10 @@
             android:name=".InstallationManualActivity"
             android:label="@string/title_activity_installation_manual" >
         </activity>
+        <activity
+            android:name=".InstallationData2Activity"
+            android:label="@string/title_activity_installation_data2" >
+        </activity>
     </application>
 
 </manifest>
