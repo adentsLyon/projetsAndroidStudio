@@ -25,6 +25,8 @@
         <item>license</item>
         <item>operator</item>
         <item>ordernr_sites</item>
+        <item>pda_data_type</item>
+        <item>pda_sec_id_data</item>
         <item>pdf</item>
         <item>process_type</item>
         <item>status_name</item>

@@ -146,7 +146,9 @@
                 style="@style/icon_style"
                 android:id="@+id/Btn_welding"
                 android:src="@drawable/icon_welding"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:onClick="toActivity"
+                android:tag="WeldingActivity" />
 
             <ImageView
                 android:layout_width="40px"

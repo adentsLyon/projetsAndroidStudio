@@ -154,6 +154,20 @@ public class GlobalViews extends Activity {
                 Toast.makeText(getApplicationContext(), "Inserted lines : " + scanlogDao.count().toString(), Toast.LENGTH_LONG).show();
             }
 
+            scanlog = scanlogDao.select(gf_sec_id);
+                if(!scanlog.getCustomer_order_nr().isEmpty()) {
+                    GlobalClass.setJobNumber(scanlog.getCustomer_order_nr());
+                    GlobalClass.setCheckJob(true);
+                }
+
+                if(scanlog.getGps_lat() != 0){
+                    GlobalClass.setCheckGeo(true);
+                }
+
+                if(!scanlog.getSerial_wm_nr().isEmpty() || scanlog.getFusion_nr() != null){
+                    GlobalClass.setCheckWelding(true);
+                }
+
             //on retourne sur la home
             Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(homeIntent);

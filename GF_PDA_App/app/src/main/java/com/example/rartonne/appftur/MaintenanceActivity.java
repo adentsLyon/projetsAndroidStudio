@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.dao.UserDao;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 import org.apache.http.HttpEntity;
@@ -76,23 +77,21 @@ public class MaintenanceActivity extends GlobalViews {
         spinTables.setAdapter(adapter);
 
         //on initalise la connexion à la base
-        /*DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+
 
         try {
             myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        try {
-            myDbHelper.openDataBase();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        myDbHelper.openDataBase();
 
-        myDbHelper.close();
 
-        bdd = myDbHelper.getWritableDatabase();*/
+        //myDbHelper.close();
+
+        bdd = myDbHelper.getWritableDatabase();
 
         //on met un listener sur le bouton Refresh
         btnRefresh.setOnClickListener(new View.OnClickListener() {
@@ -139,12 +138,12 @@ public class MaintenanceActivity extends GlobalViews {
     public String displayTable(String table){
         String name = "";
 
-        /*Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM " + table, null);
+        Cursor curseur = bdd.rawQuery("SELECT COUNT(*) FROM " + table, null);
 
         curseur.moveToFirst();
         name = curseur.getString(0);
 
-        curseur.close();*/
+        curseur.close();
 
         return name;
     }
@@ -153,6 +152,7 @@ public class MaintenanceActivity extends GlobalViews {
         private String response = "";
         private String[] tables = {//"ARTICLE_CATALOG",
                 //"ARTICLE_FEATURE",
+                "pda_data_type",
                 "LANG",
                 "PDF",
                 "STATUS_NAME",
@@ -166,7 +166,7 @@ public class MaintenanceActivity extends GlobalViews {
                 "CUSTOMER_SUPPLIER",
                 "INSTALLER",
                 "USER",
-                "TRANSLATION",
+                //"TRANSLATION",
                 //"T_DDD_LAB",
                 "SUPPLIER",
                 "ordernr_sites",
@@ -184,7 +184,7 @@ public class MaintenanceActivity extends GlobalViews {
                 if(response != null && !response.isEmpty()) {
                     String[] requetes = response.split(";");
                     for (String requete : requetes) {
-                        //bdd.execSQL(requete);
+                        bdd.execSQL(requete);
                     }
                 }
 
@@ -205,7 +205,7 @@ public class MaintenanceActivity extends GlobalViews {
             if(response != null && !response.isEmpty()) {
                 String[] requetes = response.split(";");
                 for (String requete : requetes) {
-                    //bdd.execSQL(requete);
+                    bdd.execSQL(requete);
                 }
             }
 

@@ -35,7 +35,7 @@ public class UserDao  extends DaoBase<User>{
             return user;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("UserDao", e.getMessage());
             return null;
         }
     }
@@ -52,7 +52,24 @@ public class UserDao  extends DaoBase<User>{
             return count;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("UserDao", e.getMessage());
+            return null;
+        }
+    }
+
+    public Integer countAll(){
+        try{
+            db = this.open();
+
+            Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM user", null);
+
+            cursor.moveToFirst();
+            Integer count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("UserDao", e.getMessage());
             return null;
         }
     }

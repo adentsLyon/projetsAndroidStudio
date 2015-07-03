@@ -107,8 +107,11 @@ public class HomeActivity extends GlobalViews {
 
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        String contents = intent.getStringExtra("SCAN_RESULT");
-        homeQR(contents);
+        try {
+            String contents = intent.getStringExtra("SCAN_RESULT");
+            homeQR(contents);
+        } catch (Exception e) {
+        }
     }
 
     public void setPastilles(){
