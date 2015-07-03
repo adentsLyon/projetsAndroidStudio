@@ -21,6 +21,28 @@ public class ScanlogDao extends DaoBase<Scanlog> {
         super(context);
     }
 
+    public Scanlog select(String gf_sec_id){
+        try {
+            db = this.open();
+            Scanlog scanlog = null;
+            Cursor cursor =  db.rawQuery("SELECT * FROM scan_log WHERE gf_sec_id = ?", new String[]{gf_sec_id});
+
+            while(cursor.moveToNext()){
+                scanlog = new Scanlog(gf_sec_id, cursor.getDouble(1), cursor.getDouble(2), new Date(cursor.getString(3)), cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                        cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getInt(10), cursor.getString(11));
+                break;
+            }
+            cursor.close();
+
+            this.close();
+            return scanlog;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("UserDao", e.getMessage());
+            return null;
+        }
+    }
+
     public ArrayList<Scanlog> selectAll() {
         try {
             db = this.open();
@@ -42,7 +64,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return scanlogs;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("UserDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return null;
         }
     }
@@ -62,7 +84,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return false;
         }
     }
@@ -83,7 +105,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return false;
         }
     }
@@ -104,7 +126,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return false;
         }
     }
@@ -125,7 +147,28 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateWelding(String gf_sec_id, String wm, String fusion){
+        try {
+            String format = "yy/MM/dd HH:mm:ss";
+
+            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+            Date date = new java.util.Date();
+
+            db = this.open();
+            db.execSQL("UPDATE scan_log SET serial_wm_nr = ?, fusion_nr = ?, scan_date = ? WHERE gf_sec_id = ?",
+                    new Object[]{wm, fusion, date, gf_sec_id});
+
+            this.close();
+
+            return true;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("ScanlogDao", e.getMessage());
             return false;
         }
     }
@@ -143,7 +186,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return count;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return null;
         }
     }
@@ -161,7 +204,7 @@ public class ScanlogDao extends DaoBase<Scanlog> {
             return count;
         }catch(Exception e){
             //TODO Logs dans un fichier
-            Log.e("FittingDao", e.getMessage());
+            Log.e("ScanlogDao", e.getMessage());
             return null;
         }
     }

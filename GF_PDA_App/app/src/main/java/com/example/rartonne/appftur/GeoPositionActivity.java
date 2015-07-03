@@ -105,6 +105,7 @@ public class GeoPositionActivity extends GlobalViews {
         try {
             ScanlogDao scanlogDao = new ScanlogDao(this);
             scanlogDao.updateGps(GlobalClass.getGf_sec_id(), latitude, longitude);
+            GlobalClass.setCheckGeo(true);
             Toast.makeText(this, "Data updated", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(this, "Error updating data", Toast.LENGTH_LONG).show();

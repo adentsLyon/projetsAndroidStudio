@@ -31,7 +31,7 @@
                 android:id="@+id/rel_welding1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
+                android:visibility="gone">
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="50px"
@@ -59,7 +59,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginLeft="80px"
-                    android:text="WMSC10002552"/>
+                    android:text=""/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginRight="30px"
-                    android:text="251"/>
+                    android:text=""/>
 
             </RelativeLayout>
             <RelativeLayout
@@ -78,7 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rel_welding1"
-                android:layout_marginTop="2px">
+                android:layout_marginTop="2px"
+                android:visibility="gone">
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="50px"
@@ -106,7 +107,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginLeft="80px"
-                    android:text="WMSC10002552"/>
+                    android:text=""/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,7 +118,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginRight="30px"
-                    android:text="252"/>
+                    android:text=""/>
 
             </RelativeLayout>
             <RelativeLayout
@@ -125,7 +126,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rel_welding2"
-                android:layout_marginTop="2px">
+                android:layout_marginTop="2px"
+                android:visibility="gone">
 
                 <View
                     android:layout_width="fill_parent"
@@ -154,7 +156,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginLeft="80px"
-                    android:text="WMSC10002552"/>
+                    android:text=""/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,7 +167,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginRight="30px"
-                    android:text="253"/>
+                    android:text=""/>
 
             </RelativeLayout>
             <RelativeLayout
@@ -173,7 +175,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rel_welding3"
-                android:layout_marginTop="2px">
+                android:layout_marginTop="2px"
+                android:visibility="gone">
 
                 <View
                     android:layout_width="fill_parent"
@@ -201,7 +204,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginLeft="80px"
-                    android:text="WMSC10002552"/>
+                    android:text=""/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -212,7 +215,7 @@
                     android:textSize="30px"
                     android:layout_marginTop="10px"
                     android:layout_marginRight="30px"
-                    android:text="254"/>
+                    android:text=""/>
 
             </RelativeLayout>
 
@@ -242,7 +245,7 @@
                     android:layout_height="45px"
                     android:layout_marginTop="5px"
                     android:layout_marginLeft="170px"
-                    android:id="@+id/field_sketch"
+                    android:id="@+id/et_wm"
                     android:textColor="#ffffff"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"/>
@@ -281,7 +284,7 @@
                     android:layout_height="45px"
                     android:layout_marginTop="5px"
                     android:layout_marginLeft="180px"
-                    android:id="@+id/field_trench"
+                    android:id="@+id/et_fusion"
                     android:textColor="#ffffff"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"/>
@@ -355,7 +358,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_scanWmSerial"
-                    android:src="@drawable/action_confirm"/>
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmWelding" />
 
                 <TextView
                     style="@style/text_style"
