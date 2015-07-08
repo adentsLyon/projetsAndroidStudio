@@ -40,7 +40,7 @@
                 android:layout_marginTop="10px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:id="@+id/et_length1"
+                android:id="@+id/et_comment"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
@@ -79,7 +79,8 @@
 
             <ImageView
                 android:layout_width="150px"
-                android:layout_height="120px" />
+                android:layout_height="120px"
+                android:id="@+id/imgComment" />
 
             </RelativeLayout>
 
@@ -99,7 +100,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_resetPart2"
-                    android:src="@drawable/icon_pictures"/>
+                    android:src="@drawable/icon_pictures"
+                    android:onClick="addPicture" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -121,7 +123,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_submitPart2"
-                    android:src="@drawable/icon_email"/>
+                    android:src="@drawable/icon_email"
+                    android:onClick="confirmComment" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"

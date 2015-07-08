@@ -1,0 +1,132 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.PicturesActivity">
+
+    <!-- Header aligned to top -->
+
+    <include layout="@layout/header" />
+
+    <!-- header aligned to bottom -->
+
+    <include layout="@layout/article_header" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="250px"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_pictures"
+            android:layout_marginLeft="30px">
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="210px"
+                android:id="@+id/scroll_pict" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Btn_1"
+                        android:onClick="zoom"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Btn_2"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/Btn_1"
+                        android:layout_toEndOf="@+id/Btn_1"
+                        android:layout_marginLeft="39dp"
+                        android:layout_marginStart="39dp"
+                        android:onClick="zoom"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Btn_3"
+                        android:layout_marginTop="230px"
+                        android:onClick="zoom"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Btn_4"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/Btn_1"
+                        android:layout_toEndOf="@+id/Btn_1"
+                        android:layout_marginLeft="39dp"
+                        android:layout_marginStart="39dp"
+                        android:layout_marginTop="230px"
+                        android:onClick="zoom"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Btn_5"
+                        android:layout_marginTop="460px"
+                        android:onClick="zoom"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_reset"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="230px">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Btn_reset"
+                android:src="@drawable/icon_reset"
+                style="@style/icon_style"
+                android:onClick="deletePicture" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_add"
+            android:layout_marginTop="230px"
+            android:layout_marginRight="30px">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Btn_add"
+                android:src="@drawable/icon_pictures"
+                style="@style/icon_style"
+                android:onClick="addPicture"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!-- Footer aligned to bottom -->
+
+    <include layout="@layout/footer" />
+</RelativeLayout>

@@ -22,18 +22,34 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
     public ArrayList<SecIdData> selectAll() {
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new SimpleDateFormat(format);
-            Date date = new Date();
-
             db = this.open();
             ArrayList<SecIdData> secIdDatas = new ArrayList<>();
 
-            Cursor cursor =  db.rawQuery("SELECT type, value FROM pda_sec_id_data",null);
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon FROM pda_sec_id_data",null);
 
             while(cursor.moveToNext()){
-                secIdDatas.add(new SecIdData(cursor.getString(0), cursor.getString(1), date, date));
+                secIdDatas.add(new SecIdData(cursor.getString(0), cursor.getString(1),  new Date(cursor.getString(2)), new Date(cursor.getString(3))));
+            }
+            cursor.close();
+
+            this.close();
+            return secIdDatas;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("ScanlogDao", e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<SecIdData> selectAllComments() {
+        try {
+            db = this.open();
+            ArrayList<SecIdData> secIdDatas = new ArrayList<>();
+
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon FROM pda_sec_id_data WHERE type = 'comment'",null);
+
+            while(cursor.moveToNext()){
+                secIdDatas.add(new SecIdData(cursor.getString(0), cursor.getString(1), new Date(cursor.getString(2)), new Date(cursor.getString(3))));
             }
             cursor.close();
 
@@ -65,6 +81,25 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
             this.close();
             return secIdData;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("SecIdDataDao", e.getMessage());
+            return null;
+        }
+    }
+
+    public Integer max(){
+        try {
+            db = this.open();
+            SecIdData secIdData = null;
+            Cursor cursor =  db.rawQuery("SELECT MAX(data_id) FROM pda_sec_id_data", null);
+
+            cursor.moveToFirst();
+            Integer max = cursor.getInt(0);
+            cursor.close();
+
+            this.close();
+            return max;
         }catch(Exception e){
             //TODO Logs dans un fichier
             Log.e("SecIdDataDao", e.getMessage());
@@ -123,6 +158,21 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
             this.close();
 
+            return true;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("SecIdDataDao", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean delete(String gf_sec_id, String type){
+        try{
+            db = this.open();
+            db.execSQL("DELETE FROM pda_sec_id_data WHERE gf_sec_id = ? AND type = ?",
+                    new Object[]{gf_sec_id, type});
+
+            this.close();
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier

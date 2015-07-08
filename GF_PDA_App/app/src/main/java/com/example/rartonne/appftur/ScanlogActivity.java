@@ -51,11 +51,11 @@ public class ScanlogActivity extends GlobalViews {
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
 
         // Add header row
-        /*TableRow rowHeader = new TableRow(this);
+        TableRow rowHeader = new TableRow(this);
         rowHeader.setBackgroundColor(Color.parseColor("#c0c0c0"));
         rowHeader.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT));
-        String[] headerText={"SEC ID","ART ID","WM", "FUSION"};
+        String[] headerText={"SEC ID","ART ID","DATE","WM", "FUSION", "JOB", "SKETCH"};
         for(String c:headerText) {
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -67,7 +67,7 @@ public class ScanlogActivity extends GlobalViews {
             tv.setText(c);
             rowHeader.addView(tv);
         }
-        tableLayout.addView(rowHeader);*/
+        tableLayout.addView(rowHeader);
 
         ScanlogDao scanlogDao = new ScanlogDao(this);
         ArrayList<Scanlog> scanlogs = scanlogDao.selectAll();
@@ -75,7 +75,13 @@ public class ScanlogActivity extends GlobalViews {
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-            String[] colText = {scanlog.getGf_sec_id(), scanlog.getArt_id(), scanlog.getSerial_wm_nr(), scanlog.getFusion_nr().toString()};
+            String[] colText = {scanlog.getGf_sec_id(),
+                    scanlog.getArt_id(),
+                    scanlog.getScan_date().toString(),
+                    scanlog.getSerial_wm_nr(),
+                    scanlog.getFusion_nr().toString(),
+                    scanlog.getCustomer_order_nr(),
+                    scanlog.getWelding_sketch_nr()};
             for (String text : colText) {
                 TextView tv = new TextView(this);
                 tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));

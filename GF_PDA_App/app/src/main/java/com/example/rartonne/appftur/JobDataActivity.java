@@ -56,6 +56,7 @@ public class JobDataActivity extends GlobalViews {
     private ArrayAdapter<String> adapter;
     private List<String> spinnerArray;
     private String contents;
+    private ScanlogDao scanlogDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,8 @@ public class JobDataActivity extends GlobalViews {
         spin_job = (Spinner) findViewById(R.id.spin_job);
         arrow_job = findViewById(R.id.arrow_job);
 
+        scanlogDao = new ScanlogDao(this);
+
         operatorDao = new OperatorDao(this);
         operator = operatorDao.select(GlobalClass.getUserId());
         fieldWelding.setText(operator.getOperator_id());
@@ -141,19 +144,19 @@ public class JobDataActivity extends GlobalViews {
             contents = null;
             bar_job.setBackgroundColor(Color.parseColor("#1965a3"));
             bar_site.setBackgroundColor(Color.parseColor("#1965a3"));
-            arrow_job.setBackgroundColor(Color.parseColor("#1965a3"));
+            //arrow_job.setBackgroundColor(Color.parseColor("#1965a3"));
         }else if (siteValue == null) {
             field_job.setText(jobValue);
             field_site.setText("Unrelevant");
             bar_job.setBackgroundColor(Color.parseColor("#66c266"));
             bar_site.setBackgroundColor(Color.parseColor("#66c266"));
-            arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
+            //arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
         } else {
             field_job.setText(jobValue);
             field_site.setText(siteValue);
             bar_job.setBackgroundColor(Color.parseColor("#66c266"));
             bar_site.setBackgroundColor(Color.parseColor("#66c266"));
-            arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
+            //arrow_job.setBackgroundColor(Color.parseColor("#66c266"));
         }
     }
 
@@ -209,10 +212,13 @@ public class JobDataActivity extends GlobalViews {
 
     public void resetData(View view){
         spin_job.setSelection(0);
+        scanlogDao.updateJob(GlobalClass.getGf_sec_id(), "");
+        GlobalClass.setJobNumber("");
+        GlobalClass.setCheckJob(false);
+        Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
 
     public void confirmJob(View view){
-        ScanlogDao scanlogDao = new ScanlogDao(this);
         scanlogDao.updateJob(GlobalClass.getGf_sec_id(), field_job.getText().toString());
 
         OrdernrSitesDao ordernrSitesDao = new OrdernrSitesDao(this);

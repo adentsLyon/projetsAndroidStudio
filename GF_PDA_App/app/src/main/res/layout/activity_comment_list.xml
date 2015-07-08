@@ -1,0 +1,43 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.CommentActivity">
+
+    <!-- Header aligned to top -->
+
+    <include layout="@layout/header" />
+
+    <!-- header aligned to bottom -->
+
+    <include layout="@layout/article_header" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="245px"
+        >
+
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="260px"
+            android:id="@+id/listComments" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Btn_add"
+            android:src="@drawable/icon_comment"
+            android:layout_marginTop="280px"
+            style="@style/icon_style"
+            android:onClick="toActivity"
+            android:tag="CommentActivity" />
+    </RelativeLayout>
+    <!-- Footer aligned to bottom -->
+
+    <include layout="@layout/footer" />
+</RelativeLayout>

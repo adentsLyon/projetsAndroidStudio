@@ -163,7 +163,9 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_link2"
-                    android:src="@drawable/icon_link_products"/>
+                    android:src="@drawable/icon_link_products"
+                    android:onClick="toActivity"
+                    android:tag="InstallationData2Activity" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"

@@ -26,6 +26,8 @@ public class WeldingActivity extends GlobalViews {
     private RelativeLayout rel_welding2;
     private RelativeLayout rel_welding3;
     private RelativeLayout rel_welding4;
+    private RelativeLayout rel_scanFlash;
+    private RelativeLayout rel_confirm;
     private TextView tv_idWmSerial1;
     private TextView tv_idWmSerial2;
     private TextView tv_idWmSerial3;
@@ -39,6 +41,7 @@ public class WeldingActivity extends GlobalViews {
     private ScanlogDao scanlogDao;
     private SecIdDataDao secIdDataDao;
     private SecIdData secIdData;
+    private String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,8 @@ public class WeldingActivity extends GlobalViews {
         rel_welding2 = (RelativeLayout) findViewById(R.id.rel_welding2);
         rel_welding3 = (RelativeLayout) findViewById(R.id.rel_welding3);
         rel_welding4 = (RelativeLayout) findViewById(R.id.rel_welding4);
+        rel_scanFlash = (RelativeLayout) findViewById(R.id.rel_scanFlash);
+        rel_confirm = (RelativeLayout) findViewById(R.id.rel_confirm);
         tv_idWmSerial1 = (TextView) findViewById(R.id.tv_idWmSerial1);
         tv_idWmSerial2 = (TextView) findViewById(R.id.tv_idWmSerial2);
         tv_idWmSerial3 = (TextView) findViewById(R.id.tv_idWmSerial3);
@@ -123,7 +128,8 @@ public class WeldingActivity extends GlobalViews {
             tv_idWmSerial4.setText(secIdData.getValue());
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "fu4");
             tv_idWmFusion4.setText(secIdData.getValue());
-            rel_buttons.setVisibility(View.INVISIBLE);
+            rel_scanFlash.setVisibility(View.INVISIBLE);
+            rel_confirm.setVisibility(View.INVISIBLE);
             rel_inputEmpty.setVisibility(View.INVISIBLE);
         }
     }
@@ -164,7 +170,8 @@ public class WeldingActivity extends GlobalViews {
                         tv_idWmFusion4.setText(et_fusion.getText());
                         updateSecIdData("wm4");
                         updateSecIdData("fu4");
-                        rel_buttons.setVisibility(View.INVISIBLE);
+                        rel_scanFlash.setVisibility(View.INVISIBLE);
+                        rel_confirm.setVisibility(View.INVISIBLE);
                         rel_inputEmpty.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -194,10 +201,42 @@ public class WeldingActivity extends GlobalViews {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            String contents = intent.getStringExtra("SCAN_RESULT");
-            homeQR(contents);
-        } catch (Exception e) {
+            contents = intent.getStringExtra("SCAN_RESULT");
+            String sub = contents.substring(0, 4);
+            if(sub.equals("HTTP")) { 
+                homeQR(contents);
+            }else{
+                et_wm.setText(contents);
+            }
+        }catch(NullPointerException e){
             Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
-        }
+        };
+    }
+
+    public void resetWelding(View view){
+        et_wm.setText("");
+        et_fusion.setText("");
+
+        rel_welding1.setVisibility(View.GONE);
+        rel_welding2.setVisibility(View.GONE);
+        rel_welding3.setVisibility(View.GONE);
+        rel_welding4.setVisibility(View.GONE);
+        rel_inputEmpty.setVisibility(View.VISIBLE);
+        rel_scanFlash.setVisibility(View.VISIBLE);
+        rel_confirm.setVisibility(View.VISIBLE);
+
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "wm1");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "wm2");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "wm3");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "wm4");
+
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "fu1");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "fu2");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "fu3");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "fu4");
+
+        scanlogDao.updateWelding(GlobalClass.getGf_sec_id(), "", "");
+        GlobalClass.setCheckWelding(false);
+        Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
 }

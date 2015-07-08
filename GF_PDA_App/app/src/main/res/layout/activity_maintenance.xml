@@ -72,13 +72,13 @@
         android:layout_marginTop="41dp" />
 
     <TextView
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="New Text"
     android:id="@+id/textView2"
         android:layout_below="@+id/txtProgress"
-        android:layout_alignRight="@+id/btnRefresh"
-        android:layout_alignEnd="@+id/btnRefresh"
-        android:layout_marginTop="66dp" />
+        android:layout_marginTop="66dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

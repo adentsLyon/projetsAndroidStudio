@@ -1,24 +1,36 @@
-package com.example.rartonne;
+package com.example.rartonne.appftur;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
-import com.example.rartonne.appftur.R;
+import com.example.rartonne.appftur.tools.GlobalViews;
 
-public class CommentActivity extends ActionBarActivity {
+
+public class ZoomActivity extends GlobalViews {
+    ImageView imgZoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comment);
+        setContentView(R.layout.activity_zoom);
+
+        imgZoom = (ImageView) findViewById(R.id.imgZoom);
+
+        Intent myIntent = getIntent();
+        Bitmap bmp1 = BitmapFactory.decodeFile(myIntent.getStringExtra("filepath"));
+        imgZoom.setImageBitmap(bmp1);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_comment, menu);
+        getMenuInflater().inflate(R.menu.menu_zoom, menu);
         return true;
     }
 

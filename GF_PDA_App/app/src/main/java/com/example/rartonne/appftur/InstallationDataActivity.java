@@ -67,14 +67,16 @@ public class InstallationDataActivity extends GlobalViews {
         bar_sketch = findViewById(R.id.bar_sketch);
         bar_trench = findViewById(R.id.bar_trench);
 
-        //si les données sont en bases, on remplit les champs
+        //si les donnees sont en bases, on remplit les champs
         scanlogDao = new ScanlogDao(this);
         secIdDataDao = new SecIdDataDao((this));
 
         if(scanlogDao.count(GlobalClass.getGf_sec_id()) > 0) {
             scanlog = scanlogDao.select(GlobalClass.getGf_sec_id());
-            field_sketch.setText(scanlog.getWelding_sketch_nr());
-            bar_sketch.setBackgroundColor(Color.parseColor("#66c266"));
+            if(scanlog.getWelding_sketch_nr() != null && !scanlog.getWelding_sketch_nr().isEmpty()){
+                field_sketch.setText(scanlog.getWelding_sketch_nr());
+                bar_sketch.setBackgroundColor(Color.parseColor("#66c266"));
+            }
         }
 
         if (secIdDataDao.count(GlobalClass.getGf_sec_id(), "td") > 0) {
@@ -85,18 +87,25 @@ public class InstallationDataActivity extends GlobalViews {
     }
 
     public void confirmInstallation(View view){
-        scanlogDao.updateInstallation(GlobalClass.getGf_sec_id(), field_sketch.getText().toString());
-
-        if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "td") > 0) {
-            secIdDataDao.update(GlobalClass.getGf_sec_id(), "td", field_trench.getText().toString());
-            Toast.makeText(this, "Data updated", Toast.LENGTH_LONG).show();
-        }else{
-            secIdDataDao.insert(GlobalClass.getGf_sec_id(), "td", field_trench.getText().toString());
-            Toast.makeText(this, "Data inserted", Toast.LENGTH_LONG).show();
+        if(!field_sketch.getText().toString().isEmpty()) {
+            scanlogDao.updateInstallation(GlobalClass.getGf_sec_id(), field_sketch.getText().toString());
+            bar_sketch.setBackgroundColor(Color.parseColor("#66c266"));
         }
 
-        bar_sketch.setBackgroundColor(Color.parseColor("#66c266"));
-        bar_trench.setBackgroundColor(Color.parseColor("#66c266"));
+        if(!field_trench.getText().toString().isEmpty()) {
+            if (secIdDataDao.count(GlobalClass.getGf_sec_id(), "td") > 0) {
+                secIdDataDao.update(GlobalClass.getGf_sec_id(), "td", field_trench.getText().toString());
+                Toast.makeText(this, "Data updated", Toast.LENGTH_LONG).show();
+            } else {
+                secIdDataDao.insert(GlobalClass.getGf_sec_id(), "td", field_trench.getText().toString());
+                Toast.makeText(this, "Data inserted", Toast.LENGTH_LONG).show();
+            }
+
+            bar_trench.setBackgroundColor(Color.parseColor("#66c266"));
+        }
+
+        if(!field_sketch.getText().toString().isEmpty() && !field_trench.getText().toString().isEmpty())
+            GlobalClass.setCheckInstallation(true);
     }
 
     public void resetInstallation(View view){
@@ -104,5 +113,10 @@ public class InstallationDataActivity extends GlobalViews {
         field_trench.setText("");
         bar_sketch.setBackgroundColor(Color.parseColor("#1965a3"));
         bar_trench.setBackgroundColor(Color.parseColor("#1965a3"));
+
+        scanlogDao.updateInstallation(GlobalClass.getGf_sec_id(), "");
+        secIdDataDao.delete(GlobalClass.getGf_sec_id(), "td");
+        GlobalClass.setCheckInstallation(false);
+        Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
 }

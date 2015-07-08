@@ -95,8 +95,24 @@
             android:label="@string/title_activity_installation_data2" >
         </activity>
         <activity
-            android:name="com.example.rartonne.CommentActivity"
+            android:name=".CommentActivity"
             android:label="@string/title_activity_comment" >
+        </activity>
+        <activity
+            android:name=".PicturesActivity"
+            android:label="@string/title_activity_pictures" >
+        </activity>
+        <activity
+            android:name=".ZoomActivity"
+            android:label="@string/title_activity_zoom" >
+        </activity>
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
+        <activity
+            android:name=".CommentListActivity"
+            android:label="@string/title_activity_comment_list" >
         </activity>
     </application>
 

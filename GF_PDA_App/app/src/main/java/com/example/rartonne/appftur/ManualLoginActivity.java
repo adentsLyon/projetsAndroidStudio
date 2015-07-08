@@ -43,7 +43,7 @@ public class ManualLoginActivity extends GlobalViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
-        //si la base est vide on va a l'écran de syncro
+        //si la base est vide on va a l'Ã©cran de syncro
         UserDao userDao = new UserDao(this);
         Integer count = userDao.countAll();
         if(count == null || count == 0){
@@ -105,11 +105,14 @@ public class ManualLoginActivity extends GlobalViews {
             GlobalClass.setUserId(user.getUser_id());
             GlobalClass.setInstaller_id(user.getInstaller_id());
             GlobalClass.setInstallerName(user.getInstaller_name());
+            GlobalClass.setCustomer_id(user.getCustomer_id());
             GlobalClass.setStatus("sign_scan_qr_expected");
             int id_icone = getResources().getIdentifier(GlobalClass.getStatus(), "drawable", getPackageName());
             imageStatus = (ImageView) findViewById(R.id.imageStatus);
             imageStatus.setImageResource(id_icone);
             textCompany.setText(user.getInstaller_name());
+
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");

@@ -22,10 +22,10 @@
         android:freezesText="true" />
 
     <TextView android:text="Company name"
-        android:layout_width="match_parent"
+        android:layout_width="310px"
         android:layout_height="80px"
         android:textColor="#ffffff"
-        android:textSize="20px"
+        android:textSize="15px"
         android:textStyle="bold"
         android:paddingLeft="150px"
         android:paddingTop="40px"

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,25 +28,35 @@ public class GeoPositionActivity extends GlobalViews {
     private GoogleMap mMap;
     public EditText field_lat;
     public EditText field_lon;
-    public ImageButton Btn_refresh;
     double longitude;
     double latitude;
+    LocationManager lm;
+    LocationListener locationListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_position);
+
+        field_lat = (EditText) findViewById(R.id.field_lat);
+        field_lon = (EditText) findViewById(R.id.field_lon);
+
         setHeader();
         setArticleHeader();
-        setUpMapIfNeeded();
 
-        Btn_refresh = (ImageButton) findViewById(R.id.Btn_refresh);
-        Btn_refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setUpMap();
+        lm = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
+
+        locationListener = new LocationListener() {
+            public void onLocationChanged(Location location) {
+                //setUpMapIfNeeded();
             }
-        });
+
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+            public void onProviderEnabled(String provider) {}
+            public void onProviderDisabled(String provider) {}
+        };
+
+        setUpMapIfNeeded();
 
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -74,30 +85,34 @@ public class GeoPositionActivity extends GlobalViews {
     }
 
     private void setUpMapIfNeeded() {
+        if(mMap != null)
+            mMap.clear();
+        field_lat.setText("");
+        field_lon.setText("");
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
+        //if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
+            //mMap = null;
             mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                     .getMap();
             // Check if we were successful in obtaining the map.
-            if (mMap != null) {
+            //if (mMap != null) {
                 setUpMap();
 
-            }
-        }
+            //}
+        //}
     }
 
     private void setUpMap() {
-        LocationManager lm = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        //Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         longitude = location.getLongitude();
         latitude = location.getLatitude();
         LatLng latlng = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        field_lat = (EditText) findViewById(R.id.field_lat);
-        field_lon = (EditText) findViewById(R.id.field_lon);
         field_lat.setText(String.valueOf(latitude));
         field_lon.setText(String.valueOf(longitude));
     }
@@ -120,5 +135,9 @@ public class GeoPositionActivity extends GlobalViews {
         } catch (Exception e) {
             Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void refreshGps(View view) {
+        setUpMapIfNeeded();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.rartonne.appftur;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -28,6 +29,25 @@ public class SecIdDataActivity extends GlobalViews {
         setContentView(R.layout.activity_sec_id_data);
 
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+
+        // Add header row
+        TableRow rowHeader = new TableRow(this);
+        rowHeader.setBackgroundColor(Color.parseColor("#c0c0c0"));
+        rowHeader.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT));
+        String[] headerText={"SEC ID","TYPE","VALUE"};
+        for(String c:headerText) {
+            TextView tv = new TextView(this);
+            tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                    TableRow.LayoutParams.WRAP_CONTENT));
+            tv.setGravity(Gravity.CENTER);
+            tv.setTextSize(18);
+            tv.setPadding(5, 5, 5, 5);
+            tv.setTextColor(Color.BLACK);
+            tv.setText(c);
+            rowHeader.addView(tv);
+        }
+        tableLayout.addView(rowHeader);
 
         SecIdDataDao secIdDataDao = new SecIdDataDao(this);
         ArrayList<SecIdData> secIdDatas = secIdDataDao.selectAll();

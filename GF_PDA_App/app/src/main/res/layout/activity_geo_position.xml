@@ -137,7 +137,8 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_refresh"
-                android:src="@drawable/icon_refresh_map"/>
+                android:src="@drawable/icon_refresh_map"
+                android:onClick="refreshGps" />
 
             <TextView
                 style="@style/text_style"

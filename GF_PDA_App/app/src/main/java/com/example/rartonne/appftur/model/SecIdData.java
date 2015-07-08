@@ -58,4 +58,9 @@ public class SecIdData {
     public void setModifiedon(Date modifiedon) {
         this.modifiedon = modifiedon;
     }
+
+    @Override
+    public String toString() {
+        return this.createdon.toString();
+    }
 }

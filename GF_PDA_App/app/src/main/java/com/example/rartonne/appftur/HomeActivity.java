@@ -5,7 +5,9 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +25,11 @@ import com.example.rartonne.appftur.model.Scanlog;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class HomeActivity extends GlobalViews {
     public String name;
@@ -42,6 +48,7 @@ public class HomeActivity extends GlobalViews {
     public RelativeLayout rel_installation_manual;
     public RelativeLayout rel_server_updates;
     public RelativeLayout rel_scan_qr;
+    private String contents;
 
     @Override
     protected void onResume() {
@@ -108,11 +115,16 @@ public class HomeActivity extends GlobalViews {
     //on ActivityResult method
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
-            String contents = intent.getStringExtra("SCAN_RESULT");
-            homeQR(contents);
-        } catch (Exception e) {
+            contents = intent.getStringExtra("SCAN_RESULT");
+            String sub = contents.substring(0, 4);
+            if(sub.equals("HTTP")) {
+                homeQR(contents);
+            }else{
+                Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
+            }
+        }catch(NullPointerException e){
             Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
-        }
+        };
     }
 
     public void setPastilles(){

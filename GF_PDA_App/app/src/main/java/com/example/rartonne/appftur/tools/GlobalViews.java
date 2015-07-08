@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +18,13 @@ import com.example.rartonne.appftur.ManualLoginActivity;
 import com.example.rartonne.appftur.R;
 import com.example.rartonne.appftur.dao.FittingDao;
 import com.example.rartonne.appftur.dao.ScanlogDao;
+import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.model.Fitting;
 import com.example.rartonne.appftur.model.Scanlog;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by rartonne on 17/06/2015.
@@ -45,6 +51,19 @@ public class GlobalViews extends Activity {
             startActivity(intent);
         } catch (ClassNotFoundException e){
 
+        }
+    }
+
+    public void scanBar(View v) {
+        try {
+            //start the scanning activity from the com.google.zxing.client.android.SCAN intent
+            Intent intent = new Intent(ACTION_SCAN);
+            intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+            startActivityForResult(intent, 0);
+        } catch (ActivityNotFoundException anfe) {
+            //on catch, show the download dialog
+            HomeActivity act = new HomeActivity();
+            showDialog(act, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 
@@ -161,17 +180,30 @@ public class GlobalViews extends Activity {
                 if(scanlog.getCustomer_order_nr() != null) {
                     GlobalClass.setJobNumber(scanlog.getCustomer_order_nr());
                     GlobalClass.setCheckJob(true);
+                }else{
+                    GlobalClass.setCheckJob(false);
                 }
 
                 //GPS
                 if(scanlog.getGps_lat() != 0){
                     GlobalClass.setCheckGeo(true);
+                }else{
+                    GlobalClass.setCheckGeo(false);
                 }
 
                 //Serial WM et Fusion Nr
-               if(scanlog.getSerial_wm_nr() != null || scanlog.getFusion_nr() != 0){
+               if(scanlog.getSerial_wm_nr() != null && !scanlog.getSerial_wm_nr().isEmpty() && scanlog.getFusion_nr() != 0){
                     GlobalClass.setCheckWelding(true);
+               }else{
+                   GlobalClass.setCheckWelding(false);
                }
+
+            //Installation
+            SecIdDataDao secIdDataDao = new SecIdDataDao(this);
+            if(secIdDataDao.select(GlobalClass.getGf_sec_id(), "td") != null && !scanlogDao.select(GlobalClass.getGf_sec_id()).getWelding_sketch_nr().isEmpty())
+                GlobalClass.setCheckInstallation(true);
+            else
+                GlobalClass.setCheckInstallation(false);
 
             //on retourne sur la home
             Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -185,5 +217,44 @@ public class GlobalViews extends Activity {
         if(GlobalClass.getLogin().isEmpty()){
             startActivity(new Intent(getApplicationContext(), ManualLoginActivity.class));
         }
+    }
+
+    public void addPicture(View view){
+        Intent myIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(myIntent.resolveActivity(getPackageManager())!=null){
+            startActivityForResult(myIntent, 1);
+        }
+    }
+
+    public static boolean copyFile(File source, File dest){
+        try{
+            // Declaration et ouverture des flux
+            java.io.FileInputStream sourceFile = new java.io.FileInputStream(source);
+
+            try{
+                java.io.FileOutputStream destinationFile = null;
+
+                try{
+                    destinationFile = new FileOutputStream(dest);
+
+                    // Lecture par segment de 0.5Mo
+                    byte buffer[] = new byte[512 * 1024];
+                    int nbLecture;
+
+                    while ((nbLecture = sourceFile.read(buffer)) != -1){
+                        destinationFile.write(buffer, 0, nbLecture);
+                    }
+                } finally {
+                    destinationFile.close();
+                }
+            } finally {
+                sourceFile.close();
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+            return false; // Erreur
+        }
+
+        return true; // Résultat OK
     }
 }

@@ -321,7 +321,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_cancel"
-                    android:src="@drawable/action_cancel"/>
+                    android:src="@drawable/action_cancel"
+                    android:onClick="resetWelding" />
 
                 <TextView
                     style="@style/text_style"
@@ -340,7 +341,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_Scan_Qr"
-                    android:src="@drawable/icon_scan_barcode"/>
+                    android:src="@drawable/icon_scan_barcode"
+                    android:onClick="scanBar" />
 
                 <TextView
                     style="@style/text_style"

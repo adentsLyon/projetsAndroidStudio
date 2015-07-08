@@ -25,7 +25,7 @@
             android:id="@+id/rel_product1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:visibility="visible">
 
             <View
                 android:layout_width="fill_parent"
@@ -44,17 +44,17 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
-                android:text="?"
                 android:id="@+id/tvproduct1"
-                android:textColor="#ffffff"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="10px"
+                android:visibility="visible"
                 android:textSize="30px"
-                android:layout_alignLeft="@+id/bar_product1"
-                android:layout_alignTop="@+id/bar_product1"/>
+                android:textColor="#ffffff"
+                android:layout_marginLeft="25px"
+                android:layout_marginTop="10px"
+                android:layout_alignBottom="@+id/tv_l1"
+                android:background="@null" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_product1"
             android:layout_marginTop="2px"
-            >
+            android:visibility="gone">
 
             <View
                 android:layout_width="fill_parent"
@@ -97,17 +97,17 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
-                android:text="?"
                 android:id="@+id/tv_product2"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10px"
+                android:background="@null"
                 android:textSize="30px"
-                android:layout_marginLeft="30px"
-                android:layout_alignLeft="@+id/bar_product2"
-                android:layout_alignTop="@+id/bar_product2"/>
+                android:textColor="#ffffff"
+                android:layout_marginLeft="25px"
+                android:layout_marginTop="10px"
+                android:layout_alignBottom="@+id/tv_l2"
+                android:visibility="visible" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rel_product2"
-            >
+            android:visibility="gone">
 
             <View
                 android:layout_width="fill_parent"
@@ -143,19 +143,20 @@
                 android:id="@+id/et_product3"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:visibility="visible" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
-                android:text="?"
                 android:id="@+id/tv_product3"
-                android:textColor="#ffffff"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="10px"
+                android:visibility="visible"
+                android:background="@null"
                 android:textSize="30px"
-                android:layout_alignLeft="@+id/bar_product3"
-                android:layout_alignTop="@+id/bar_product3"/>
+                android:textColor="#ffffff"
+                android:layout_marginLeft="25px"
+                android:layout_marginTop="10px"
+                android:layout_alignBottom="@+id/tv_l3" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -177,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_products3"
             android:layout_marginTop="2px"
-            >
+            android:visibility="gone">
 
             <View
                 android:layout_width="fill_parent"
@@ -198,6 +199,19 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
 
+            <EditText
+                android:layout_width="180px"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_product4"
+                android:visibility="visible"
+                android:background="@null"
+                android:textSize="30px"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="25px"
+                android:layout_marginTop="10px"
+                android:autoText="false"
+                android:layout_alignBottom="@+id/tv_l4" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -208,20 +222,11 @@
                 android:textSize="30px"
                 android:layout_marginLeft="200px"
                 android:layout_alignLeft="@+id/bar_product4"
-                android:layout_alignTop="@+id/bar_product4"/>
+                android:layout_alignTop="@+id/bar_product4"/><![CDATA[
+                android:layout_alignParentLeft="true"
+                android:visibility="visible" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="?"
-                android:id="@+id/tv_product4"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10px"
-                android:textSize="30px"
-                android:layout_marginLeft="30px"
-                android:layout_alignLeft="@+id/bar_product4"
-                android:layout_alignTop="@+id/bar_product4"/>
-
+            ]]>
         </RelativeLayout>
 
         <TextView
@@ -265,7 +270,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_resetPart2"
-                    android:src="@drawable/Icon_Reset"/>
+                    android:src="@drawable/icon_reset"
+                    android:onClick="deleteInstallation2" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -285,7 +291,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_link2"
-                    android:src="@drawable/icon_scan_qr"/>
+                    android:src="@drawable/icon_scan_qr"
+                    android:onClick="scanQR" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"
@@ -305,7 +312,8 @@
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_submitPart2"
-                    android:src="@drawable/action_confirm"/>
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmInstallation2" />
                 <TextView
                     style="@style/text_style"
                     android:layout_width="wrap_content"

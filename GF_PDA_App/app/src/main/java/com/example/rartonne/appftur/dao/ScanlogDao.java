@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.example.rartonne.appftur.model.OrdernrSites;
 import com.example.rartonne.appftur.model.Scanlog;
 import com.example.rartonne.appftur.model.User;
+import com.example.rartonne.appftur.tools.GlobalClass;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -102,6 +103,8 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
             this.close();
 
+            GlobalClass.setStatus("sign_work_in_progress");
+
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
@@ -122,6 +125,8 @@ public class ScanlogDao extends DaoBase<Scanlog> {
                     new Object[]{date, gf_sec_id});
 
             this.close();
+
+            GlobalClass.setStatus("sign_work_in_progress");
 
             return true;
         }catch(Exception e){
@@ -144,6 +149,8 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
             this.close();
 
+            GlobalClass.setStatus("sign_work_in_progress");
+
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
@@ -165,6 +172,8 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
             this.close();
 
+            GlobalClass.setStatus("sign_work_in_progress");
+
             return true;
         }catch(Exception e){
             //TODO Logs dans un fichier
@@ -185,6 +194,8 @@ public class ScanlogDao extends DaoBase<Scanlog> {
                     new Object[]{wm, fusion, date, gf_sec_id});
 
             this.close();
+
+            GlobalClass.setStatus("sign_work_in_progress");
 
             return true;
         }catch(Exception e){

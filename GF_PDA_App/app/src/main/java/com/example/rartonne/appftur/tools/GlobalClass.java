@@ -21,6 +21,7 @@ public class GlobalClass {
 
     private static String login = "";
     private static Integer installer_id;
+    private static Integer customer_id;
     private static String lastUpdate = "";
     private static String welderCertificate = "";
     private static Integer userId;
@@ -41,6 +42,14 @@ public class GlobalClass {
     private static boolean wmModeSingle = true;
     private static String jobNumber = "";
     private static String installerName = "";
+    private static String e1 = "";
+    private static String e2 = "";
+    private static String e3 = "";
+    private static String e4 = "";
+    private static String l1 = "";
+    private static String l2 = "";
+    private static String l3 = "";
+    private static String l4 = "";
 
     public static String getLogin() {
         return login;
@@ -216,5 +225,77 @@ public class GlobalClass {
 
     public static void setInstallerName(String installerName) {
         GlobalClass.installerName = installerName;
+    }
+
+    public static String getE1() {
+        return e1;
+    }
+
+    public static void setE1(String e1) {
+        GlobalClass.e1 = e1;
+    }
+
+    public static String getE2() {
+        return e2;
+    }
+
+    public static void setE2(String e2) {
+        GlobalClass.e2 = e2;
+    }
+
+    public static String getE3() {
+        return e3;
+    }
+
+    public static void setE3(String e3) {
+        GlobalClass.e3 = e3;
+    }
+
+    public static String getE4() {
+        return e4;
+    }
+
+    public static void setE4(String e4) {
+        GlobalClass.e4 = e4;
+    }
+
+    public static String getL1() {
+        return l1;
+    }
+
+    public static void setL1(String l1) {
+        GlobalClass.l1 = l1;
+    }
+
+    public static String getL2() {
+        return l2;
+    }
+
+    public static void setL2(String l2) {
+        GlobalClass.l2 = l2;
+    }
+
+    public static String getL3() {
+        return l3;
+    }
+
+    public static void setL3(String l3) {
+        GlobalClass.l3 = l3;
+    }
+
+    public static String getL4() {
+        return l4;
+    }
+
+    public static void setL4(String l4) {
+        GlobalClass.l4 = l4;
+    }
+
+    public static Integer getCustomer_id() {
+        return customer_id;
+    }
+
+    public static void setCustomer_id(Integer customer_id) {
+        GlobalClass.customer_id = customer_id;
     }
 }

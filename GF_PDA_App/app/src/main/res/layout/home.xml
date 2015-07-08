@@ -176,7 +176,9 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_pictures"
-                android:src="@drawable/icon_pictures"/>
+                android:src="@drawable/icon_pictures"
+                android:onClick="toActivity"
+                android:tag="PicturesActivity" />
 
             <ImageView
                 android:layout_width="40px"
@@ -205,7 +207,9 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_comment"
-                android:src="@drawable/icon_comment"/>
+                android:src="@drawable/icon_comment"
+                android:onClick="toActivity"
+                android:tag="CommentListActivity" />
 
             <ImageView
                 android:layout_width="40px"

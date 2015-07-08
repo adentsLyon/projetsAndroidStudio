@@ -127,7 +127,11 @@
     <string name="title_activity_comment">CommentActivity</string>
     <string name="ib_addPicture">ADD\nPICTURE</string>
     <string name="ib_sendEmail">SEND\nBY EMAIL</string>
-
+    <string name="title_activity_pictures">PicturesActivity</string>
+    <string name="title_activity_zoom">ZoomActivity</string>
+    <string name="file_deleted">File deleted</string>
+    <string name="inserted">Inserted</string>
+    <string name="title_activity_comment_list">CommentList</string>
 
 
 </resources>
