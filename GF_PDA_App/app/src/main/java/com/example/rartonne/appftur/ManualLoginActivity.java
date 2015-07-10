@@ -48,7 +48,7 @@ public class ManualLoginActivity extends GlobalViews {
         Integer count = userDao.countAll();
         if(count == null || count == 0){
             this.deleteDatabase("pda_db");
-            startActivity(new Intent(this, MaintenanceActivity.class));
+            startActivity(new Intent(this, InitActivity.class));
         }
 
         setHeader();

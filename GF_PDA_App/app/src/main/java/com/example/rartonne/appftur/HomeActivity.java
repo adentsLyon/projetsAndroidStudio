@@ -1,5 +1,7 @@
 package com.example.rartonne.appftur;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -86,6 +88,12 @@ public class HomeActivity extends GlobalViews {
         checkWelding = GlobalClass.isCheckWelding();
         checkPictures = GlobalClass.isCheckPictures();
         checkComment = GlobalClass.isCheckComment();
+
+        Intent intent = getIntent();
+        String checkBlacklisted = intent.getStringExtra("checkBlacklisted");
+
+        if(GlobalClass.isBlacklisted() && intent.getStringExtra("checkBlacklisted") != null)
+            dialogBlacklist();
     }
 
 
@@ -190,5 +198,26 @@ public class HomeActivity extends GlobalViews {
             rel_installation_manual.setVisibility(View.VISIBLE);
             rel_server_updates.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void dialogBlacklist(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("This product is involved in an incident, are you sure you want to continue using it ?")
+                .setTitle("ALERT");
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                scanOk();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                scanBlacklisted();
+            }
+        });
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

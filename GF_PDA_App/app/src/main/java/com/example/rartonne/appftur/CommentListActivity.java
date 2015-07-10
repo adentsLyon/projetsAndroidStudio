@@ -1,11 +1,13 @@
 package com.example.rartonne.appftur;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.rartonne.appftur.adapters.CommentAdapter;
 import com.example.rartonne.appftur.dao.SecIdDataDao;
@@ -13,7 +15,6 @@ import com.example.rartonne.appftur.model.SecIdData;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class CommentListActivity extends GlobalViews {
@@ -64,5 +65,14 @@ public class CommentListActivity extends GlobalViews {
         CommentAdapter commentAdapter = new CommentAdapter(this, items);
 
         listComments.setAdapter(commentAdapter);
+
+        listComments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ReadCommentActivity.class);
+                intent.putExtra("data_id", view.getTag().toString());
+                startActivity(intent);
+            }
+        });
     }
 }

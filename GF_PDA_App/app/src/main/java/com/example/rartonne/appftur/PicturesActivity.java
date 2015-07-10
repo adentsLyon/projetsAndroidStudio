@@ -139,7 +139,7 @@ public class PicturesActivity extends GlobalViews {
                 }
             }else{
                 Bundle extras = intent.getExtras();
-                //ici, on récupère l'image
+                //ici, on rÃ©cupÃ¨re l'image
                 Bitmap imgBitmap = (Bitmap) extras.get("data");
 
                 Integer nbFiles = file3.listFiles().length;
@@ -194,14 +194,6 @@ public class PicturesActivity extends GlobalViews {
         }catch(NullPointerException e){
             Toast.makeText(this, getString(R.string.invalid_scan), Toast.LENGTH_LONG).show();
         };
-    }
-
-    public void zoom(View view){
-        Intent myIntent = new Intent(this, ZoomActivity.class);
-
-        //on peut paser des paramètres : Extra
-        myIntent.putExtra("filepath", view.getTag().toString());
-        startActivity(myIntent);
     }
 
     public void deletePicture(View view){

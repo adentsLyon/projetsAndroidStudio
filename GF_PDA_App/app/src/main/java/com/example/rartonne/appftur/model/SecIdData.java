@@ -12,7 +12,8 @@ public class SecIdData {
     private Date createdon;
     private Date modifiedon;
 
-    public SecIdData(String type, String value, Date createdon, Date modifiedon) {
+    public SecIdData(Integer data_id, String type, String value, Date createdon, Date modifiedon) {
+        this.data_id = data_id;
         this.type = type;
         this.value = value;
         this.createdon = createdon;

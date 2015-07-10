@@ -38,6 +38,8 @@ public class GlobalClass {
     private static String sdr = "";
     private static String dim = "";
     private static String catalog = "";
+    private static String batch_nr = "";
+    private static boolean isBlacklisted;
     private static String status = "sign_login_expected";
     private static boolean wmModeSingle = true;
     private static String jobNumber = "";
@@ -297,5 +299,21 @@ public class GlobalClass {
 
     public static void setCustomer_id(Integer customer_id) {
         GlobalClass.customer_id = customer_id;
+    }
+
+    public static String getBatch_nr() {
+        return batch_nr;
+    }
+
+    public static void setBatch_nr(String batch_nr) {
+        GlobalClass.batch_nr = batch_nr;
+    }
+
+    public static boolean isBlacklisted() {
+        return isBlacklisted;
+    }
+
+    public static void setIsBlacklisted(boolean isBlacklisted) {
+        GlobalClass.isBlacklisted = isBlacklisted;
     }
 }

@@ -14,11 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rartonne.appftur.HomeActivity;
+import com.example.rartonne.appftur.InitActivity;
 import com.example.rartonne.appftur.ManualLoginActivity;
 import com.example.rartonne.appftur.R;
+import com.example.rartonne.appftur.ZoomActivity;
+import com.example.rartonne.appftur.dao.BatchBlacklistDao;
 import com.example.rartonne.appftur.dao.FittingDao;
 import com.example.rartonne.appftur.dao.ScanlogDao;
 import com.example.rartonne.appftur.dao.SecIdDataDao;
+import com.example.rartonne.appftur.model.BatchBlacklist;
 import com.example.rartonne.appftur.model.Fitting;
 import com.example.rartonne.appftur.model.Scanlog;
 
@@ -144,70 +148,26 @@ public class GlobalViews extends Activity {
             //on éclate l'url du QR
             String[] params = contents.split("\\?");
             params = params[1].split("&");
-            String gf_sec_id = params[0];
-            params = params[1].split("ART=");
-            String art_id = params[1];
+            GlobalClass.setGf_sec_id(params[0]);
 
-            //select sur lab
-            FittingDao fittingDao = new FittingDao(this);
-            Fitting fitting = fittingDao.select(art_id);
+            String[] params2 = params[1].split("ART=");
+            GlobalClass.setArt_id(params2[1]);
 
-            //on change les variables globales
-            GlobalClass.setArt_id(art_id);
-            GlobalClass.setDesignation(fitting.getDesignation());
-            GlobalClass.setDruck(fitting.getDruck());
-            GlobalClass.setDim(fitting.getDim());
-            GlobalClass.setSdr(fitting.getSdr());
-            GlobalClass.setCatalog(fitting.getCatalog());
-            GlobalClass.setStatus("sign_status_ok");
-            GlobalClass.setGf_sec_id(gf_sec_id);
+            String[] params3 = params[4].split("BAT=");
+            GlobalClass.setBatch_nr(params3[1]);
 
-            //on insert dans scan_log
-            Integer userId = GlobalClass.getUserId();
-            ScanlogDao scanlogDao = new ScanlogDao(this);
-            Scanlog scanlog = new Scanlog(gf_sec_id, userId, art_id);
-            if(scanlogDao.count(gf_sec_id) >= 1){
-                scanlogDao.updateScan(gf_sec_id);
-                Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
+            //on vérifie si le produit est blacklisté
+            Intent intent = new Intent(this, HomeActivity.class);
+            BatchBlacklistDao batchBlacklistDao = new BatchBlacklistDao(this);
+            if(!batchBlacklistDao.isBlacklisted(GlobalClass.getBatch_nr(), GlobalClass.getArt_id())) {
+                GlobalClass.setIsBlacklisted(true);
+                intent.putExtra("checkBlacklisted", "true");
             }else {
-                scanlogDao.insert(scanlog);
-                Toast.makeText(getApplicationContext(), "Data inserted", Toast.LENGTH_LONG).show();
+                GlobalClass.setIsBlacklisted(false);
+                intent.putExtra("checkBlacklisted", "false");
             }
 
-            //si les données sont saisies on change les variables check
-            scanlog = scanlogDao.select(gf_sec_id);
-                //Job Number
-                if(scanlog.getCustomer_order_nr() != null) {
-                    GlobalClass.setJobNumber(scanlog.getCustomer_order_nr());
-                    GlobalClass.setCheckJob(true);
-                }else{
-                    GlobalClass.setCheckJob(false);
-                }
-
-                //GPS
-                if(scanlog.getGps_lat() != 0){
-                    GlobalClass.setCheckGeo(true);
-                }else{
-                    GlobalClass.setCheckGeo(false);
-                }
-
-                //Serial WM et Fusion Nr
-               if(scanlog.getSerial_wm_nr() != null && !scanlog.getSerial_wm_nr().isEmpty() && scanlog.getFusion_nr() != 0){
-                    GlobalClass.setCheckWelding(true);
-               }else{
-                   GlobalClass.setCheckWelding(false);
-               }
-
-            //Installation
-            SecIdDataDao secIdDataDao = new SecIdDataDao(this);
-            if(secIdDataDao.select(GlobalClass.getGf_sec_id(), "td") != null && !scanlogDao.select(GlobalClass.getGf_sec_id()).getWelding_sketch_nr().isEmpty())
-                GlobalClass.setCheckInstallation(true);
-            else
-                GlobalClass.setCheckInstallation(false);
-
-            //on retourne sur la home
-            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(homeIntent);
+            startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
@@ -226,35 +186,94 @@ public class GlobalViews extends Activity {
         }
     }
 
-    public static boolean copyFile(File source, File dest){
-        try{
-            // Declaration et ouverture des flux
-            java.io.FileInputStream sourceFile = new java.io.FileInputStream(source);
+    public void zoom(View view){
+        Intent myIntent = new Intent(this, ZoomActivity.class);
 
-            try{
-                java.io.FileOutputStream destinationFile = null;
+        //on peut paser des paramètres : Extra
+        myIntent.putExtra("filepath", view.getTag().toString());
+        startActivity(myIntent);
+    }
 
-                try{
-                    destinationFile = new FileOutputStream(dest);
+    public void scanOk(){
+        //select sur lab
+        FittingDao fittingDao = new FittingDao(this);
+        Fitting fitting = fittingDao.select(GlobalClass.getArt_id());
 
-                    // Lecture par segment de 0.5Mo
-                    byte buffer[] = new byte[512 * 1024];
-                    int nbLecture;
+        //on change les variables globales
+        GlobalClass.setArt_id(GlobalClass.getArt_id());
+        GlobalClass.setDesignation(fitting.getDesignation());
+        GlobalClass.setDruck(fitting.getDruck());
+        GlobalClass.setDim(fitting.getDim());
+        GlobalClass.setSdr(fitting.getSdr());
+        GlobalClass.setCatalog(fitting.getCatalog());
+        if(GlobalClass.isBlacklisted()) {
+            GlobalClass.setStatus("sign_stop");
 
-                    while ((nbLecture = sourceFile.read(buffer)) != -1){
-                        destinationFile.write(buffer, 0, nbLecture);
-                    }
-                } finally {
-                    destinationFile.close();
-                }
-            } finally {
-                sourceFile.close();
-            }
-        } catch (IOException e){
-            e.printStackTrace();
-            return false; // Erreur
+        }else {
+            GlobalClass.setStatus("sign_status_ok");
+        }
+        GlobalClass.setGf_sec_id(GlobalClass.getGf_sec_id());
+        GlobalClass.setBatch_nr(GlobalClass.getBatch_nr());
+
+        //on insert dans scan_log
+        Integer userId = GlobalClass.getUserId();
+        ScanlogDao scanlogDao = new ScanlogDao(this);
+        Scanlog scanlog = new Scanlog(GlobalClass.getGf_sec_id(), userId, GlobalClass.getArt_id());
+        if(scanlogDao.count(GlobalClass.getGf_sec_id()) >= 1){
+            scanlogDao.updateScan(GlobalClass.getGf_sec_id());
+            Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
+        }else {
+            scanlogDao.insert(scanlog);
+            Toast.makeText(getApplicationContext(), "Data inserted", Toast.LENGTH_LONG).show();
         }
 
-        return true; // Résultat OK
+        //si les données sont saisies on change les variables check
+        scanlog = scanlogDao.select(GlobalClass.getGf_sec_id());
+        //Job Number
+        if(scanlog.getCustomer_order_nr() != null) {
+            GlobalClass.setJobNumber(scanlog.getCustomer_order_nr());
+            GlobalClass.setCheckJob(true);
+        }else{
+            GlobalClass.setCheckJob(false);
+        }
+
+        //GPS
+        if(scanlog.getGps_lat() != 0){
+            GlobalClass.setCheckGeo(true);
+        }else{
+            GlobalClass.setCheckGeo(false);
+        }
+
+        //Serial WM et Fusion Nr
+        if(scanlog.getSerial_wm_nr() != null && !scanlog.getSerial_wm_nr().isEmpty() && scanlog.getFusion_nr() != 0){
+            GlobalClass.setCheckWelding(true);
+        }else{
+            GlobalClass.setCheckWelding(false);
+        }
+
+        //Installation
+        SecIdDataDao secIdDataDao = new SecIdDataDao(this);
+        if(secIdDataDao.select(GlobalClass.getGf_sec_id(), "td") != null && !scanlogDao.select(GlobalClass.getGf_sec_id()).getWelding_sketch_nr().isEmpty())
+            GlobalClass.setCheckInstallation(true);
+        else
+            GlobalClass.setCheckInstallation(false);
+
+        //on retourne sur la home
+        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeIntent);
+    }
+
+    public void scanBlacklisted(){
+        GlobalClass.setGf_sec_id("");
+        GlobalClass.setArt_id("");
+        GlobalClass.setBatch_nr("");
+        GlobalClass.setDesignation("");
+        GlobalClass.setDruck("");
+        GlobalClass.setDim("");
+        GlobalClass.setSdr("");
+        GlobalClass.setCatalog("");
+        GlobalClass.setStatus("sign_scan_qr_expected");
+
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

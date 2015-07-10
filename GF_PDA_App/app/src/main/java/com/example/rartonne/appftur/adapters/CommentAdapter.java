@@ -71,6 +71,7 @@ public class CommentAdapter extends BaseAdapter  {
         tv.setGravity(Gravity.CENTER);
         tv.setTextSize(20);
         tv.setId(position);
+        tv.setTag(secIdDatas.get(position).getData_id().toString());
 
         return tv;
     }

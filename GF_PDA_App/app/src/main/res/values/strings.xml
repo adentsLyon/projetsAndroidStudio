@@ -132,6 +132,9 @@
     <string name="file_deleted">File deleted</string>
     <string name="inserted">Inserted</string>
     <string name="title_activity_comment_list">CommentList</string>
+    <string name="title_activity_read_comment">ReadComment</string>
+    <string name="back">BACK</string>
+    <string name="title_activity_init">InitActivity</string>
 
 
 </resources>

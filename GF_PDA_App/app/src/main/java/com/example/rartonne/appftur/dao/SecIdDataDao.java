@@ -25,10 +25,10 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
             db = this.open();
             ArrayList<SecIdData> secIdDatas = new ArrayList<>();
 
-            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon FROM pda_sec_id_data",null);
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon, data_id FROM pda_sec_id_data",null);
 
             while(cursor.moveToNext()){
-                secIdDatas.add(new SecIdData(cursor.getString(0), cursor.getString(1),  new Date(cursor.getString(2)), new Date(cursor.getString(3))));
+                secIdDatas.add(new SecIdData(cursor.getInt(4), cursor.getString(0), cursor.getString(1),  new Date(cursor.getString(2)), new Date(cursor.getString(3))));
             }
             cursor.close();
 
@@ -46,10 +46,10 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
             db = this.open();
             ArrayList<SecIdData> secIdDatas = new ArrayList<>();
 
-            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon FROM pda_sec_id_data WHERE type = 'comment'",null);
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon, data_id FROM pda_sec_id_data WHERE type = 'comment'",null);
 
             while(cursor.moveToNext()){
-                secIdDatas.add(new SecIdData(cursor.getString(0), cursor.getString(1), new Date(cursor.getString(2)), new Date(cursor.getString(3))));
+                secIdDatas.add(new SecIdData(cursor.getInt(4), cursor.getString(0), cursor.getString(1), new Date(cursor.getString(2)), new Date(cursor.getString(3))));
             }
             cursor.close();
 
@@ -64,19 +64,33 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
     public SecIdData select(String gf_sec_id, String type){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new SimpleDateFormat(format);
-            Date date = new Date();
-
             db = this.open();
             SecIdData secIdData = null;
-            Cursor cursor =  db.rawQuery("SELECT value FROM pda_sec_id_data WHERE gf_sec_id = ?AND type = ?", new String[]{gf_sec_id, type});
+            Cursor cursor =  db.rawQuery("SELECT value, createdon, modifiedon, data_id FROM pda_sec_id_data WHERE gf_sec_id = ?AND type = ?", new String[]{gf_sec_id, type});
 
             while(cursor.moveToNext()){
-                secIdData = new SecIdData(type, cursor.getString(0), date, date);
+                secIdData = new SecIdData(cursor.getInt(3), type, cursor.getString(0), new Date(cursor.getString(1)), new Date(cursor.getString(2)));
                 break;
             }
+            cursor.close();
+
+            this.close();
+            return secIdData;
+        }catch(Exception e){
+            //TODO Logs dans un fichier
+            Log.e("SecIdDataDao", e.getMessage());
+            return null;
+        }
+    }
+
+    public SecIdData select(String data_id){
+        try {
+            db = this.open();
+            SecIdData secIdData = null;
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon FROM pda_sec_id_data WHERE data_id = ?", new String[]{data_id});
+
+            cursor.moveToFirst();
+            secIdData = new SecIdData(Integer.parseInt(data_id), cursor.getString(0), cursor.getString(1), new Date(cursor.getString(2)), new Date(cursor.getString(3)));
             cursor.close();
 
             this.close();

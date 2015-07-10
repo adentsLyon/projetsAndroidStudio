@@ -76,6 +76,7 @@ public class CommentActivity extends GlobalViews {
         boolean inserted = secIdDataDao.insert(GlobalClass.getGf_sec_id(), "comment", et_comment.getText().toString());
         if(inserted)
             Toast.makeText(this, getString(R.string.inserted), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, CommentListActivity.class));
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -90,7 +91,7 @@ public class CommentActivity extends GlobalViews {
                 }
             }else{
                 Bundle extras = intent.getExtras();
-                //ici, on récupère l'image
+                //ici, on rÃ©cupÃ¨re l'image
                 Bitmap imgBitmap = (Bitmap) extras.get("data");
 
                     try {

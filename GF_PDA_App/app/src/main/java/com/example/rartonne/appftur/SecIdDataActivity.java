@@ -35,7 +35,7 @@ public class SecIdDataActivity extends GlobalViews {
         rowHeader.setBackgroundColor(Color.parseColor("#c0c0c0"));
         rowHeader.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT));
-        String[] headerText={"SEC ID","TYPE","VALUE"};
+        String[] headerText={"ID", "SEC ID","TYPE","VALUE"};
         for(String c:headerText) {
             TextView tv = new TextView(this);
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -55,7 +55,7 @@ public class SecIdDataActivity extends GlobalViews {
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-            String[] colText = {GlobalClass.getGf_sec_id(), secIdData.getType(), secIdData.getValue()};
+            String[] colText = {secIdData.getData_id().toString(), GlobalClass.getGf_sec_id(), secIdData.getType(), secIdData.getValue()};
             for (String text : colText) {
                 TextView tv = new TextView(this);
                 tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
