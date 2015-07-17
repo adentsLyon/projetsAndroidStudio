@@ -115,59 +115,59 @@
             android:layout_marginLeft="30px"
             >
             <fragment
-                android:layout_width="420px"
+                android:layout_width="425px"
                 android:layout_height="200px"
                 android:name="com.google.android.gms.maps.MapFragment"
                 android:id="@+id/map"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-
                 android:layout_above="@+id/menu_bottom"
                 android:layout_below="@+id/Btn_job_data" />
 
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/rel_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rel_cadre_map"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="30px">
+            android:id="@+id/rel_buttonPart2"
+            style="@style/bottom_button_style">
+            <RelativeLayout
+                android:id="@+id/rel_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_refresh"
-                android:src="@drawable/icon_refresh_map"
-                android:onClick="refreshGps" />
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_refresh"
+                    android:src="@drawable/icon_refresh_map"
+                    android:onClick="refreshGps" />
 
-            <TextView
-                style="@style/text_style"
-                android:text="REFRESH\nMAP"
-                android:id="@+id/text_scan_qr"
-                android:layout_below="@+id/Btn_refresh" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_refreshMap"
+                    android:id="@+id/text_scan_qr"
+                    android:layout_below="@+id/Btn_refresh" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rel_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rel_cadre_map"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="350px">
+            <RelativeLayout
+                android:id="@+id/rel_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320px">
 
-            <ImageButton
-                style="@style/icon_style"
-                android:id="@+id/Btn_confirm"
-                android:src="@drawable/action_confirm"
-                android:onClick="confirmGps" />
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_confirm"
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmGps" />
 
-            <TextView
-                style="@style/text_style"
-                android:text="@string/ib_confirmCoordonate"
-                android:id="@+id/tv_confirm"
-                android:layout_below="@+id/Btn_confirm" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_confirmCoordonate"
+                    android:id="@+id/tv_confirm"
+                    android:layout_below="@+id/Btn_confirm" />
 
+            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>

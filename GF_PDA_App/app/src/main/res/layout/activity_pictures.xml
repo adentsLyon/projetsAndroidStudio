@@ -88,41 +88,50 @@
             </ScrollView>
 
         </RelativeLayout>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rel_reset"
-            android:layout_marginLeft="30px"
-            android:layout_marginTop="230px">
+            android:id="@+id/rel_buttonPart2"
+            style="@style/bottom_button_style">
 
-            <ImageButton
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Btn_reset"
-                android:src="@drawable/icon_reset"
-                style="@style/icon_style"
-                android:onClick="deletePicture" />
+                android:id="@+id/rel_reset">
 
-        </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/Btn_reset"
+                    android:src="@drawable/icon_reset"
+                    style="@style/icon_style"
+                    android:onClick="deletePicture" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ib_cancel"
+                    android:layout_below="@+id/Btn_reset"
+                    style="@style/text_style"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rel_add"
-            android:layout_marginTop="230px"
-            android:layout_marginRight="30px">
+            </RelativeLayout>
 
-            <ImageButton
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Btn_add"
-                android:src="@drawable/icon_pictures"
-                style="@style/icon_style"
-                android:onClick="addPicture"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginRight="30px"
+                android:id="@+id/rel_add"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:id="@+id/Btn_add"
+                    android:src="@drawable/icon_pictures"
+                    style="@style/icon_style"
+                    android:onClick="addPicture" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ib_addPicture"
+                    android:layout_below="@+id/Btn_add"
+                    style="@style/text_style"/>
+            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>

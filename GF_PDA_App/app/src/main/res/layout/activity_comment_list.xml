@@ -21,21 +21,36 @@
         android:layout_marginTop="245px"
         >
 
-
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="260px"
             android:id="@+id/listComments" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Btn_add"
-            android:src="@drawable/icon_comment"
-            android:layout_marginTop="280px"
-            style="@style/icon_style"
-            android:onClick="toActivity"
-            android:tag="CommentActivity" />
+            android:id="@+id/rel_buttonPart2"
+            style="@style/bottom_button_style">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rel_addComment"
+                android:layout_centerHorizontal="true">
+            <ImageButton
+                android:layout_centerHorizontal="true"
+                android:id="@+id/Btn_add"
+                android:src="@drawable/icon_comment"
+                style="@style/icon_style"
+                android:onClick="toActivity"
+                android:tag="CommentActivity"/>
+            <TextView
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Btn_add"
+                android:text="@string/ib_addComment"/>
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
     <!-- Footer aligned to bottom -->
 

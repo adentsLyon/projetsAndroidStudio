@@ -36,23 +36,21 @@
             <EditText
                 android:background="@null"
                 android:layout_width="150px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
+                android:layout_height="40px"
                 android:layout_marginLeft="300px"
                 android:id="@+id/et_length1"
                 android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_centerVertical="true"/>
 
             <EditText
                 android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvproduct1"
                 android:visibility="visible"
-                android:textSize="30px"
+                android:textSize="40px"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
-                android:layout_marginTop="10px"
+                android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l1"
                 android:background="@null" />
 
@@ -62,7 +60,7 @@
                 android:text="@string/tv_l1"
                 android:id="@+id/tv_l1"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10px"
+                android:layout_centerVertical="true"
                 android:textSize="30px"
                 android:layout_marginLeft="200px"/>
 
@@ -257,10 +255,8 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_infoInstall2"
             android:id="@+id/rel_buttonPart2"
-            android:layout_marginTop="5px"
-            android:layout_marginLeft="30px">
+            style="@style/bottom_button_style">
 
             <RelativeLayout
                 android:id="@+id/rel_btn_reset2"

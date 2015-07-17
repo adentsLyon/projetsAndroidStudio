@@ -18,7 +18,7 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="250px"
+        android:layout_below="@+id/article_header"
         >
 
         <RelativeLayout
@@ -29,16 +29,17 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_height="50px"
+                style="@style/input_style"
                 android:background="#1965a3"
                 android:id="@+id/bar_sketch"/>
 
             <EditText
                 android:background="@null"
                 android:layout_width="320px"
-                android:layout_height="45px"
+                android:layout_height="50px"
                 android:layout_marginTop="5px"
                 android:layout_marginLeft="150px"
+                style="@style/content_style"
                 android:id="@+id/field_sketch"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
@@ -49,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_sketchNr"
                 android:id="@+id/text_sketch"
+                style="@style/content_style"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="10px"
                 android:layout_marginTop="10px"
@@ -70,7 +72,7 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_height="50px"
+                style="@style/input_style"
                 android:background="#1965a3"
                 android:id="@+id/bar_trench"/>
 
@@ -79,23 +81,18 @@
             <EditText
                 android:background="@null"
                 android:layout_width="290px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
+                android:layout_height="50px"
                 android:layout_marginLeft="180px"
                 android:id="@+id/field_trench"
-                android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                style="@style/content_style"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_trenchDepth"
                 android:id="@+id/text_trench"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10px"
-                android:textSize="25px"
-                android:layout_marginLeft="10px"
+                style="@style/content_style"
                 android:layout_alignLeft="@+id/bar_job"
                 android:layout_alignTop="@+id/bar_job"/>
 
@@ -108,7 +105,7 @@
             android:id="@+id/et_infoInstall"
             android:layout_below="@+id/rel_trench"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="90px"
+            android:layout_marginTop="10px"
             android:text="@string/tv_infoInstall"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -129,10 +126,8 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rel_trench"
             android:id="@+id/rel_buttonPart2"
-            android:layout_marginLeft="30px"
-            android:layout_marginTop="190px">
+            style="@style/bottom_button_style">
 
             <RelativeLayout
                 android:id="@+id/rel_btn_reset2"

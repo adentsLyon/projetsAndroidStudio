@@ -234,20 +234,35 @@
                 android:layout_marginTop="2px">
 
                 <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="50px"
+                    android:layout_width="400px"
+                    android:layout_height="80px"
                     android:background="#1965a3"
                     android:id="@+id/bar_sketch"/>
+                <View
+                    android:layout_width="78px"
+                    android:layout_height="80px"
+                    android:background="#1965a3"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/arrow_job"/>
+                <Spinner
+                    android:layout_width="60px"
+                    android:layout_height="40px"
+                    android:layout_alignLeft="@id/arrow_job"
+                    android:layout_marginLeft="10px"
+                    android:layout_marginTop="5px"
+                    android:layout_centerVertical="true"
+                    android:drawSelectorOnTop="false"
+                    android:background="@drawable/fleche"
+                    android:id="@+id/spin_wm" />
 
                 <EditText
                     android:background="@null"
-                    android:layout_width="320px"
+                    android:layout_width="220px"
                     android:layout_height="45px"
-                    android:layout_marginTop="5px"
                     android:layout_marginLeft="170px"
+                    android:layout_centerVertical="true"
                     android:id="@+id/et_wm"
                     android:textColor="#ffffff"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"/>
 
                 <TextView
@@ -257,7 +272,7 @@
                     android:id="@+id/text_sketch"
                     android:textColor="#ffffff"
                     android:layout_marginLeft="10px"
-                    android:layout_marginTop="10px"
+                    android:layout_centerVertical="true"
                     android:textSize="25px"
                     android:layout_alignLeft="@+id/bar_welding"
                     android:layout_alignTop="@+id/bar_welding"/>
@@ -272,7 +287,7 @@
 
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="50px"
+                    android:layout_height="80px"
                     android:background="#1965a3"
                     android:id="@+id/bar_trench"/>
 
@@ -282,11 +297,10 @@
                     android:background="@null"
                     android:layout_width="290px"
                     android:layout_height="45px"
-                    android:layout_marginTop="5px"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="180px"
                     android:id="@+id/et_fusion"
                     android:textColor="#ffffff"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:inputType="numberSigned" />
 
@@ -296,7 +310,7 @@
                     android:text="@string/tv_fusionNumber"
                     android:id="@+id/text_trench"
                     android:textColor="#ffffff"
-                    android:layout_marginTop="10px"
+                    android:layout_centerVertical="true"
                     android:textSize="25px"
                     android:layout_marginLeft="10px"
                     android:layout_alignLeft="@+id/bar_job"
@@ -306,17 +320,15 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rel_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rel_inputEmpty"
-            android:layout_marginTop="2px">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_buttonPart2"
+            style="@style/bottom_button_style">
 
             <RelativeLayout
                 android:id="@+id/rel_cancel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px">
+                android:layout_height="wrap_content">
 
                 <ImageButton
                     style="@style/icon_style"
@@ -356,7 +368,7 @@
                 android:id="@+id/rel_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="350px">
+                android:layout_marginLeft="320px">
 
                 <ImageButton
                     style="@style/icon_style"

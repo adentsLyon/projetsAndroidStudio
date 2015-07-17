@@ -94,7 +94,7 @@ public class WeldingActivity extends GlobalViews {
         tv_idWmFusion3 = (TextView) findViewById(R.id.tv_idWmFusion3);
         tv_idWmFusion4 = (TextView) findViewById(R.id.tv_idWmFusion4);
         rel_inputEmpty = (RelativeLayout) findViewById(R.id.rel_inputEmpty);
-        rel_buttons = (RelativeLayout) findViewById(R.id.rel_buttons);
+        rel_buttons = (RelativeLayout) findViewById(R.id.rel_buttonPart2);
 
         scanlogDao = new ScanlogDao(this);
         secIdDataDao = new SecIdDataDao(this);

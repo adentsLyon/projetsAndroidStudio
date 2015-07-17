@@ -50,8 +50,8 @@
 
     <!--General Buttons-->
     <string name="ib_confirmData">SUBMIT\nDATA</string>
-    <string name="ib_resetData">RESET\nDATA</string>
-    <string name="ib_cancel">CANCEL</string>
+    <string name="ib_resetData">DELETE</string>
+    <string name="ib_cancel">DELETE</string>
     <string name="ib_confirm">SUBMIT</string>
     <string name="ib_scanQr">SCAN\nQR CODE</string>
 
@@ -77,6 +77,7 @@
     <string name="tv_lat">Lat :</string>
     <string name="tv_lon">Lon :</string>
     <string name="tv_currentGeoPosition">CURRENT PDA GEO POSITION</string>
+    <string name="ib_refreshMap">REFRESH\nMAP</string>
 
     <!--Header-->
     <string name="tv_userName">User Name</string>
@@ -136,5 +137,7 @@
     <string name="back">BACK</string>
     <string name="title_activity_init">InitActivity</string>
 
+    <!-- CommentListActivity -->
+    <string name="ib_addComment">ADD\nCOMMENT</string>
 
 </resources>

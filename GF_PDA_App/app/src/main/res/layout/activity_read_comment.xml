@@ -85,14 +85,13 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rel_ivComment"
-            android:id="@+id/rel_buttonPart2"
-            android:layout_marginTop="5px"
-            android:layout_marginLeft="30px">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rel_buttonPart2"
+                android:layout_marginRight="30px"
+                style="@style/bottom_button_style">
             <RelativeLayout
                 android:id="@+id/rel_btn_return"
                 android:layout_width="wrap_content"
@@ -113,11 +112,7 @@
                     android:layout_below="@+id/Btn_resetPart2"/>
 
             </RelativeLayout>
-
-
         </RelativeLayout>
-
-
     </RelativeLayout>
     <!-- Footer aligned to bottom -->
 
