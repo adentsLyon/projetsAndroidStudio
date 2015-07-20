@@ -237,7 +237,8 @@
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_server_updates"
-                android:src="@drawable/icon_server_updates"/>
+                android:src="@drawable/icon_server_updates"
+                android:onClick="sync" />
 
             <TextView
                 style="@style/text_style"

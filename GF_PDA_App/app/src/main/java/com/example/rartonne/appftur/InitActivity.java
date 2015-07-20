@@ -88,7 +88,7 @@ public class InitActivity extends GlobalViews {
         String login = input_login.getText().toString();
         progressBar = new ProgressDialog(view.getContext());
         progressBar.setCancelable(false);
-        progressBar.setMessage("Donwload in progress ...");
+        progressBar.setMessage("Download in progress ...");
         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressBar.setMax(tables.length);
         progressBar.show();

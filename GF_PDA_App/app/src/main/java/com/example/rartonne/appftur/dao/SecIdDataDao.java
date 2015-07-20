@@ -144,7 +144,7 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
             String format = "yy/MM/dd HH:mm:ss";
 
             SimpleDateFormat formater = new SimpleDateFormat(format);
-            Date date = new Date();
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("INSERT INTO pda_sec_id_data (type, value, createdon, modifiedon, gf_sec_id) VALUES(?,?,?,?,?)",

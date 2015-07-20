@@ -34,6 +34,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Mohamed on 25/06/2015.
@@ -91,7 +93,11 @@ public class HttpAsyncTask extends AsyncTask<String,Integer,String> {
             GlobalClass.setInstaller_id(user.getInstaller_id());
             GlobalClass.setInstallerName(user.getInstaller_name());
             GlobalClass.setCustomer_id(user.getCustomer_id());
+            String format = "yy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat( format );
+            String date = formater.format(new Date());
             GlobalClass.setStatus("sign_scan_qr_expected");
+            GlobalClass.setLastUpdate(date);
             activity.startActivity(new Intent(context, HomeActivity.class));
         }
     }
