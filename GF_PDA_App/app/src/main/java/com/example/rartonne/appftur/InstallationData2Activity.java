@@ -156,6 +156,7 @@ public class InstallationData2Activity extends GlobalViews {
             rel_product2.setVisibility(View.VISIBLE);
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "e1");
             tvproduct1.setText(secIdData.getValue());
+            tvproduct1.setEnabled(false);
             GlobalClass.setE1(secIdData.getValue());
         }
 
