@@ -24,14 +24,24 @@ import com.example.rartonne.appftur.dao.FittingDao;
 import com.example.rartonne.appftur.dao.ScanlogDao;
 import com.example.rartonne.appftur.model.Fitting;
 import com.example.rartonne.appftur.model.Scanlog;
+import com.example.rartonne.appftur.model.User;
+import com.example.rartonne.appftur.tasks.HttpAsyncTaskPost;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.w3c.dom.Text;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class HomeActivity extends GlobalViews {
     public String name;
@@ -90,7 +100,6 @@ public class HomeActivity extends GlobalViews {
         checkComment = GlobalClass.isCheckComment();
 
         Intent intent = getIntent();
-        String checkBlacklisted = intent.getStringExtra("checkBlacklisted");
 
         if(GlobalClass.isBlacklisted() && intent.getStringExtra("checkBlacklisted") != null)
             dialogBlacklist();
@@ -219,5 +228,90 @@ public class HomeActivity extends GlobalViews {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void sync(View view){
+        String[] tables = {
+                "pda_sec_id_data",
+                //"batch_nr_checking",
+                //"customer_incident",
+                //"process_log",
+                "\"SCAN_LOG\""
+        };
+
+        for (String table : tables) {
+            try {
+                //on initalise la connexion à la base
+                SQLiteDatabase bdd;
+                DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
+                String format = "yy/MM/dd HH:mm:ss";
+                SimpleDateFormat formater = new SimpleDateFormat(format);
+                String date = formater.format(new Date());
+
+                try {
+                    myDbHelper.createDataBase();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                myDbHelper.openDataBase();
+
+                bdd = myDbHelper.getWritableDatabase();
+
+                Cursor cursor;
+                if (table == "\"SCAN_LOG\"") {
+                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > ?", new String[]{GlobalClass.getLastUpdate()});
+                }else{
+                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE createdon > ?", new String[]{GlobalClass.getLastUpdate()});
+                }
+                while (cursor.moveToNext()) {
+                    String fields = "";
+                    String values = "";
+                    String urlPost = "http://admin.qr-ut.com/webservice/pdaws.php?action=syncDwh";
+                    switch(table) {
+                        case "pda_sec_id_data":
+                            fields = "type, value, createdon, modifiedon, gf_sec_id";
+                            values = "'" + cursor.getString(1) + "', '" + cursor.getString(2) + "', '" + cursor.getString(3) + "', '" + cursor.getString(4) + "', '" + cursor.getString(5) + "'";
+                            break;
+
+                        case "batch_nr_checking":
+                            fields = "createdon, modifiedon, gps_lat, gps_long, createdby, modifiedby, status_code, isonline, checking_source, last_update_batch, last_synchro_blacklist, gf_sec_id, batch_nr_checking_id, batch_nr, article_id";
+                            values = "";
+                            break;
+
+                        case "customer_incident":
+                            fields = "";
+                            values = "";
+                            break;
+
+                        case "process_log":
+                            fields = "";
+                            values = "";
+                            break;
+
+                        case "\"SCAN_LOG\"":
+                            fields = "gf_sec_id, gps_lat, gps_long, scan_date, user_id, status_code, art_id, customer_order_nr, welding_sketch_nr, serial_wm_nr, fusion_nr, source";
+                            values = "'" + cursor.getString(0) + "', " + cursor.getDouble(1) + ", " + cursor.getDouble(2) + ", '" + cursor.getString(3) + "', " + cursor.getInt(4) + ", " +
+                                    cursor.getInt(5) + ", '" + cursor.getString(6) + "', '" + cursor.getString(7) + "', '" + cursor.getString(8) + "', '" + cursor.getString(9) + "', " +
+                                    cursor.getInt(10) + ", '" + cursor.getString(11) + "'";
+                            break;
+                    }
+                    String paramValue1 = "INSERT INTO " + table + " (" + fields + ") VALUES (" + values + ");";
+                    List<NameValuePair> data = new ArrayList<>();
+                    data.add(new BasicNameValuePair("data", paramValue1));
+
+                    new HttpAsyncTaskPost(this, data).execute(urlPost);
+                    break;
+                }
+                cursor.close();
+
+                bdd.close();
+
+                GlobalClass.setLastUpdate(date);
+                            startActivity(new Intent(this, HomeActivity.class));
+        } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

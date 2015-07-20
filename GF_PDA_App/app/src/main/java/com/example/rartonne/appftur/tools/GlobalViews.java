@@ -113,8 +113,10 @@ public class GlobalViews extends Activity {
 
         TextView textUsername = (TextView) findViewById(R.id.textUsername);
         TextView textCompany = (TextView) findViewById(R.id.textCompany);
+        TextView textDate = (TextView) findViewById(R.id.textDate);
         textUsername.setText(GlobalClass.getLogin());
         textCompany.setText(GlobalClass.getInstallerName());
+        textDate.setText(GlobalClass.getLastUpdate());
     }
 
     public void setArticleHeader(){
@@ -160,11 +162,12 @@ public class GlobalViews extends Activity {
             Intent intent = new Intent(this, HomeActivity.class);
             BatchBlacklistDao batchBlacklistDao = new BatchBlacklistDao(this);
             if(!batchBlacklistDao.isBlacklisted(GlobalClass.getBatch_nr(), GlobalClass.getArt_id())) {
-                GlobalClass.setIsBlacklisted(true);
-                intent.putExtra("checkBlacklisted", "true");
-            }else {
                 GlobalClass.setIsBlacklisted(false);
                 intent.putExtra("checkBlacklisted", "false");
+                scanOk();
+            }else {
+                GlobalClass.setIsBlacklisted(true);
+                intent.putExtra("checkBlacklisted", "true");
             }
 
             startActivity(intent);
@@ -259,8 +262,8 @@ public class GlobalViews extends Activity {
             GlobalClass.setCheckInstallation(false);
 
         //on retourne sur la home
-        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(homeIntent);
+        //Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        //startActivity(homeIntent);
     }
 
     public void scanBlacklisted(){
