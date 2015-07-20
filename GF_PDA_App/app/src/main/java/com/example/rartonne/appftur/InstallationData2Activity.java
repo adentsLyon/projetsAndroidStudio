@@ -164,6 +164,7 @@ public class InstallationData2Activity extends GlobalViews {
             rel_product3.setVisibility(View.VISIBLE);
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "e2");
             tvproduct2.setText(secIdData.getValue());
+            tvproduct2.setEnabled(false);
             GlobalClass.setE2(secIdData.getValue());
         }
 
@@ -171,18 +172,21 @@ public class InstallationData2Activity extends GlobalViews {
             rel_product4.setVisibility(View.VISIBLE);
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "e3");
             tvproduct3.setText(secIdData.getValue());
+            tvproduct3.setEnabled(false);
             GlobalClass.setE3(secIdData.getValue());
         }
 
         if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "e4") > 0) {
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "e4");
             tvproduct4.setText(secIdData.getValue());
+            tvproduct4.setEnabled(false);
             GlobalClass.setE4(secIdData.getValue());
         }
 
         if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "l1") > 0) {
             bar_product1.setBackgroundColor(Color.parseColor("#66c266"));
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "l1");
+            et_length1.setEnabled(false);
             et_length1.setText(secIdData.getValue());
         }
 
@@ -190,18 +194,22 @@ public class InstallationData2Activity extends GlobalViews {
             bar_product2.setBackgroundColor(Color.parseColor("#66c266"));
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "l2");
             et_length2.setText(secIdData.getValue());
+            et_length2.setEnabled(false);
+
         }
 
         if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "l3") > 0) {
             bar_product3.setBackgroundColor(Color.parseColor("#66c266"));
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "l3");
             et_length3.setText(secIdData.getValue());
+            et_length3.setEnabled(false);
         }
 
         if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "l4") > 0) {
             bar_product4.setBackgroundColor(Color.parseColor("#66c266"));
             secIdData = secIdDataDao.select(GlobalClass.getGf_sec_id(), "l4");
             et_length4.setText(secIdData.getValue());
+            et_length4.setEnabled(false);
             rel_btn_link2.setVisibility(View.GONE);
             rel_btn_confirm.setVisibility(View.GONE);
         }
@@ -243,9 +251,12 @@ public class InstallationData2Activity extends GlobalViews {
     public void confirmInstallation2(View view) {
         if (!et_length1.getText().toString().isEmpty()) {
             if (!tvproduct1.getText().toString().isEmpty()) {
+                tvproduct1.setEnabled(false);
+                et_length1.setEnabled(false);
                 GlobalClass.setE1(tvproduct1.getText().toString());
                 if (secIdDataDao.count(GlobalClass.getGf_sec_id(), "e1") == 0) {
                     secIdDataDao.insert(GlobalClass.getGf_sec_id(), "e1", tvproduct1.getText().toString());
+
                 } else {
                     secIdDataDao.update(GlobalClass.getGf_sec_id(), "e1", tvproduct1.getText().toString());
                 }
@@ -253,6 +264,7 @@ public class InstallationData2Activity extends GlobalViews {
 
             if (secIdDataDao.count(GlobalClass.getGf_sec_id(), "l1") == 0) {
                 secIdDataDao.insert(GlobalClass.getGf_sec_id(), "l1", et_length1.getText().toString());
+                et_length1.setEnabled(false);
             } else {
                 secIdDataDao.update(GlobalClass.getGf_sec_id(), "l1", et_length1.getText().toString());
             }
@@ -262,6 +274,8 @@ public class InstallationData2Activity extends GlobalViews {
         }
 
         if (!et_length2.getText().toString().isEmpty()){
+            tvproduct2.setEnabled(false);
+            et_length2.setEnabled(false);
             if (!tvproduct2.getText().toString().isEmpty()) {
                 GlobalClass.setE2(tvproduct2.getText().toString());
                 if (secIdDataDao.count(GlobalClass.getGf_sec_id(), "e2") == 0) {

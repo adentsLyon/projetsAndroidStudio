@@ -38,37 +38,25 @@
                     android:background="#66c266"
                     android:id="@+id/bar_welding1"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWelding1"
-                    android:layout_alignTop="@+id/bar_welding1"
-                    android:layout_alignLeft="@+id/bar_welding1"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="30px"
-                    android:text="#1"/>
+                    android:text="#1  |"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWmSerial1"
-                    android:layout_alignTop="@+id/bar_welding1"
-                    android:layout_alignLeft="@+id/bar_welding1"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="80px"
                     android:text=""/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_separator"
+                    style="@style/fixed_inputContent_style"
+                    android:layout_marginLeft="320px"
+                    android:text=" | "/>
+                <TextView
                     android:id="@+id/tv_idWmFusion1"
-                    android:layout_alignTop="@+id/bar_welding1"
                     android:layout_alignRight="@+id/bar_welding1"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginRight="30px"
                     android:text=""/>
 
@@ -87,36 +75,24 @@
                     android:id="@+id/bar_welding2"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWelding2"
-                    android:layout_alignTop="@+id/bar_welding2"
-                    android:layout_alignLeft="@+id/bar_welding2"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="30px"
-                    android:text="#2"/>
+                    android:text="#2  |"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWmSerial2"
-                    android:layout_alignTop="@+id/bar_welding2"
-                    android:layout_alignLeft="@+id/bar_welding2"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="80px"
                     android:text=""/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_separator2"
+                    style="@style/fixed_inputContent_style"
+                    android:layout_marginLeft="320px"
+                    android:text=" | "/>
+                <TextView
                     android:id="@+id/tv_idWmFusion2"
-                    android:layout_alignTop="@+id/bar_welding2"
                     android:layout_alignRight="@+id/bar_welding2"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginRight="30px"
                     android:text=""/>
 
@@ -136,36 +112,24 @@
                     android:id="@+id/bar_welding3"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/fixed_inputContent_style"
                     android:id="@+id/tv_idWelding3"
-                    android:layout_alignTop="@+id/bar_welding3"
-                    android:layout_alignLeft="@+id/bar_welding3"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
                     android:layout_marginLeft="30px"
-                    android:text="#3"/>
+                    android:text="#3  |"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWmSerial3"
-                    android:layout_alignTop="@+id/bar_welding3"
-                    android:layout_alignLeft="@+id/bar_welding3"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="80px"
                     android:text=""/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_separator3"
+                    style="@style/fixed_inputContent_style"
+                    android:layout_marginLeft="320px"
+                    android:text=" | "/>
+                <TextView
                     android:id="@+id/tv_idWmFusion3"
-                    android:layout_alignTop="@+id/bar_welding3"
                     android:layout_alignRight="@+id/bar_welding3"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginRight="30px"
                     android:text=""/>
 
@@ -184,39 +148,26 @@
                     android:background="#66c266"
                     android:id="@+id/bar_welding4"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWelding4"
-                    android:layout_alignTop="@+id/bar_welding4"
-                    android:layout_alignLeft="@+id/bar_welding4"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginLeft="30px"
-                    android:text="#4"/>
+                    android:text="#4  | "/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_idWmSerial4"
-                    android:layout_alignTop="@+id/bar_welding4"
-                    android:layout_alignLeft="@+id/bar_welding4"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
-                    android:layout_marginLeft="80px"
+                    style="@style/fixed_inputContent_style"
+                    android:layout_marginLeft="100px"
                     android:text=""/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_separator4"
+                    style="@style/fixed_inputContent_style"
+                    android:layout_marginLeft="320px"
+                    android:text=" | "/>
+                <TextView
                     android:id="@+id/tv_idWmFusion4"
-                    android:layout_alignTop="@+id/bar_welding4"
                     android:layout_alignRight="@+id/bar_welding4"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30px"
-                    android:layout_marginTop="10px"
+                    style="@style/fixed_inputContent_style"
                     android:layout_marginRight="30px"
                     android:text=""/>
-
             </RelativeLayout>
 
         </RelativeLayout>
@@ -257,9 +208,9 @@
 
                 <EditText
                     android:background="@null"
-                    android:layout_width="220px"
+                    android:layout_width="200px"
                     android:layout_height="45px"
-                    android:layout_marginLeft="170px"
+                    android:layout_marginLeft="190px"
                     android:layout_centerVertical="true"
                     android:id="@+id/et_wm"
                     android:textColor="#ffffff"
@@ -271,7 +222,7 @@
                     android:text="@string/tv_wmSerial"
                     android:id="@+id/text_sketch"
                     android:textColor="#ffffff"
-                    android:layout_marginLeft="10px"
+                    android:layout_marginLeft="30px"
                     android:layout_centerVertical="true"
                     android:textSize="25px"
                     android:layout_alignLeft="@+id/bar_welding"
@@ -312,7 +263,7 @@
                     android:textColor="#ffffff"
                     android:layout_centerVertical="true"
                     android:textSize="25px"
-                    android:layout_marginLeft="10px"
+                    android:layout_marginLeft="30px"
                     android:layout_alignLeft="@+id/bar_job"
                     android:layout_alignTop="@+id/bar_job"/>
 

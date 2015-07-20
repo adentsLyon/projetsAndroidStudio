@@ -40,14 +40,14 @@
                 android:layout_marginLeft="300px"
                 android:id="@+id/et_length1"
                 android:textColor="#ffffff"
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true"
+                />
 
             <EditText
                 android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvproduct1"
                 android:visibility="visible"
-                android:textSize="40px"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
                 android:layout_centerVertical="true"
@@ -100,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product2"
                 android:background="@null"
-                android:textSize="30px"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
@@ -150,7 +149,6 @@
                 android:id="@+id/tv_product3"
                 android:visibility="visible"
                 android:background="@null"
-                android:textSize="30px"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
@@ -163,7 +161,6 @@
                 android:id="@+id/tv_l3"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
-                android:textSize="30px"
                 android:layout_marginLeft="200px"/>
 
         </RelativeLayout>
@@ -203,7 +200,6 @@
                 android:id="@+id/tv_product4"
                 android:visibility="visible"
                 android:background="@null"
-                android:textSize="30px"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"

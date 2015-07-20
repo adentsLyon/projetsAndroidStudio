@@ -241,7 +241,7 @@ public class HomeActivity extends GlobalViews {
 
         for (String table : tables) {
             try {
-                //on initalise la connexion à la base
+                //on initalise la connexion Ã  la base
                 SQLiteDatabase bdd;
                 DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
                 String format = "yy/MM/dd HH:mm:ss";
