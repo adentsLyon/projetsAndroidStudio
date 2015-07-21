@@ -26,11 +26,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rel_pictures"
-            android:layout_marginLeft="30px">
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px">
 
             <ScrollView
                 android:layout_width="fill_parent"
-                android:layout_height="210px"
+                android:layout_height="250px"
                 android:id="@+id/scroll_pict" >
 
                 <RelativeLayout
@@ -42,6 +43,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/Btn_1"
                         android:onClick="zoom"
+                        android:background="#FFFFFF"
                         android:visibility="gone" />
 
                     <ImageButton
@@ -53,6 +55,7 @@
                         android:layout_toEndOf="@+id/Btn_1"
                         android:layout_marginLeft="39dp"
                         android:layout_marginStart="39dp"
+                        android:background="#FFFFFF"
                         android:onClick="zoom"
                         android:visibility="gone" />
 
@@ -61,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/Btn_3"
                         android:layout_marginTop="230px"
+                        android:background="#FFFFFF"
                         android:onClick="zoom"
                         android:visibility="gone" />
 
@@ -73,6 +77,7 @@
                         android:layout_toEndOf="@+id/Btn_1"
                         android:layout_marginLeft="39dp"
                         android:layout_marginStart="39dp"
+                        android:background="#FFFFFF"
                         android:layout_marginTop="230px"
                         android:onClick="zoom"
                         android:visibility="gone" />
@@ -81,6 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/Btn_5"
+                        android:background="#FFFFFF"
                         android:layout_marginTop="460px"
                         android:onClick="zoom"
                         android:visibility="gone" />

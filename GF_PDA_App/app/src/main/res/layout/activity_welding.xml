@@ -46,7 +46,7 @@
                 <TextView
                     android:id="@+id/tv_idWmSerial1"
                     style="@style/fixed_inputContent_style"
-                    android:layout_marginLeft="80px"
+                    android:layout_marginLeft="100px"
                     android:text=""/>
                 <TextView
                     android:id="@+id/tv_separator"
@@ -82,7 +82,7 @@
                 <TextView
                     android:id="@+id/tv_idWmSerial2"
                     style="@style/fixed_inputContent_style"
-                    android:layout_marginLeft="80px"
+                    android:layout_marginLeft="100px"
                     android:text=""/>
                 <TextView
                     android:id="@+id/tv_separator2"
@@ -119,7 +119,7 @@
                 <TextView
                     android:id="@+id/tv_idWmSerial3"
                     style="@style/fixed_inputContent_style"
-                    android:layout_marginLeft="80px"
+                    android:layout_marginLeft="100px"
                     android:text=""/>
                 <TextView
                     android:id="@+id/tv_separator3"
