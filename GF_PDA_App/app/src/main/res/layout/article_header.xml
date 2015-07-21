@@ -4,8 +4,8 @@
     android:id="@+id/article_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
     android:layout_marginTop="80px"
+    android:background="#ffffff"
     android:gravity="center">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="30px"
-        android:layout_marginTop="30px"
+        android:layout_marginTop="10px"
         android:scaleType="fitCenter" />
 
     <ImageView
@@ -25,7 +25,7 @@
         android:layout_below="@+id/textUsername"
         android:padding="0dp"
         android:layout_marginLeft="350px"
-        android:layout_marginTop="30px"
+        android:layout_marginTop="10px"
         android:scaleType="fitCenter"
         android:src="@mipmap/sign_login_expected" />
 
@@ -73,7 +73,7 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:layout_marginTop="160px"
+        android:layout_marginTop="120px"
         android:background="#1965a3"/>
 
 </RelativeLayout>

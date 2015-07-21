@@ -18,7 +18,8 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="250px"
+        android:layout_below="@+id/article_header"
+        android:layout_marginTop="2px"
         >
 
         <RelativeLayout
@@ -182,16 +183,16 @@
                 android:id="@+id/rel_serialInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2px">
+                android:layout_marginTop="5px">
 
                 <View
                     android:layout_width="400px"
-                    android:layout_height="80px"
+                    android:layout_height="75px"
                     android:background="#1965a3"
                     android:id="@+id/bar_sketch"/>
                 <View
                     android:layout_width="78px"
-                    android:layout_height="80px"
+                    android:layout_height="75px"
                     android:background="#1965a3"
                     android:layout_alignParentRight="true"
                     android:id="@+id/arrow_job"/>
@@ -238,7 +239,7 @@
 
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="80px"
+                    android:layout_height="75px"
                     android:background="#1965a3"
                     android:id="@+id/bar_trench"/>
 
