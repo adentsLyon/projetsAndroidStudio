@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.rartonne.appftur.tools.GlobalViews;
 
@@ -26,6 +28,7 @@ public class InstallationManualActivity extends GlobalViews {
 
         WebView wv_imc = (WebView) findViewById(R.id.wv_installationManual);
         wv_imc.loadUrl("file:///android_asset/GeorgeFISCHER_manualCouplerTest.html");
+
 
         /*try {
 

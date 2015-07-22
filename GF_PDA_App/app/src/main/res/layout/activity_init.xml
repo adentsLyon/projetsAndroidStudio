@@ -12,38 +12,9 @@
     <RelativeLayout
         android:layout_below="@+id/article_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff">
-
-        <RelativeLayout
-            android:id="@+id/rel_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="300px"
-            android:layout_marginLeft="350px">
-
-            <ImageButton
-                android:layout_width="100px"
-                android:layout_height="100px"
-                android:padding="0dp"
-                android:scaleType="fitCenter"
-                android:id="@+id/Btn_confirm"
-                android:src="@drawable/action_confirm"
-                android:background="#ffffff"
-                android:onClick="AccesHttpClick" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/ib_confirm"
-                android:gravity="center_vertical|center_horizontal"
-                android:id="@+id/text_confirm"
-                android:layout_below="@+id/Btn_confirm"
-                android:layout_alignLeft="@+id/Btn_confirm"
-                android:layout_marginLeft="5px"
-                android:textColor="#000000"/>
-        </RelativeLayout>
+        android:layout_height="400px"
+        android:background="#ffffff"
+        android:layout_marginTop="2px">
 
 
         <EditText
@@ -60,15 +31,39 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/tv_infoLogin"
-            android:gravity="center_vertical|center_horizontal"
             android:id="@+id/text_message"
             android:layout_below="@+id/input_login"
-
             android:layout_centerHorizontal="true"
-            android:textColor="#000000"
-            android:paddingBottom="15px"
-            android:lineSpacingExtra="-8px"
-            android:layout_marginLeft="7px"/>
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bottom_button_style"
+        android:layout_marginLeft="350px">
+
+        <ImageButton
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:id="@+id/Btn_confirm"
+            android:src="@drawable/action_confirm"
+            android:background="#ffffff"
+            android:onClick="AccesHttpClick" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/ib_confirm"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/text_confirm"
+            android:layout_below="@+id/Btn_confirm"
+            android:layout_alignLeft="@+id/Btn_confirm"
+            android:layout_marginLeft="5px"
+            android:textColor="#000000"/>
     </RelativeLayout>
 
 </RelativeLayout>

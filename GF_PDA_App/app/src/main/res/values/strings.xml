@@ -139,5 +139,6 @@
 
     <!-- CommentListActivity -->
     <string name="ib_addComment">ADD\nCOMMENT</string>
+    <string name="title_activity_video_view">VideoViewActivity</string>
 
 </resources>

@@ -18,7 +18,8 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="240px">
+        android:layout_below="@+id/article_header"
+        android:layout_marginTop="2px">
 
 
         <TextView

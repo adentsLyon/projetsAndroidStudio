@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.example.rartonne.appftur.InstallationManualActivity">
+    tools:context="com.example.rartonne.appftur.VideoViewActivity">
 
 
     <include layout="@layout/header" />
@@ -13,31 +13,34 @@
         android:layout_height="fill_parent"
         android:layout_marginTop="70px">
 
-        <WebView
+        <VideoView
             android:layout_width="match_parent"
-            android:layout_height="500px"
-            android:id="@+id/wv_installationManual">
-
-        </WebView>
+            android:layout_height="400px"
+            android:layout_below="@id/wv_installationManual"
+            android:layout_marginTop="50px"
+            android:id="@+id/vv_installationManual"/>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rel_buttonPart2"
-            android:layout_centerHorizontal="true"
             style="@style/bottom_button_style">
             <RelativeLayout
                 android:id="@+id/rel_refresh"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageButton
                     style="@style/icon_style"
                     android:id="@+id/Btn_refresh"
-                    android:src="@drawable/icon_video"
+                    android:src="@drawable/icon_back"
                     android:onClick="toActivity"
-                    android:tag="VideoViewActivity"
-                    />
+                    android:tag="InstallationManualActivity"/>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/back"
+                    android:id="@+id/text_scan_qr"
+                    android:layout_below="@+id/Btn_refresh" />
 
             </RelativeLayout>
 
