@@ -27,6 +27,7 @@
         <item>ordernr_sites</item>
         <item>pda_data_type</item>
         <item>pda_sec_id_data</item>
+        <item>pda_settings</item>
         <item>pdf</item>
         <item>process_type</item>
         <item>status_name</item>
@@ -139,6 +140,7 @@
 
     <!-- CommentListActivity -->
     <string name="ib_addComment">ADD\nCOMMENT</string>
+    <string name="no_network">No network available</string>
     <string name="title_activity_video_view">VideoViewActivity</string>
 
 </resources>

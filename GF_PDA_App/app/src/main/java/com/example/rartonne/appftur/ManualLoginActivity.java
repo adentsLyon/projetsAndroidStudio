@@ -43,14 +43,6 @@ public class ManualLoginActivity extends GlobalViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_login);
 
-        //si la base est vide on va a l'écran de syncro
-        UserDao userDao = new UserDao(this);
-        Integer count = userDao.countAll();
-        if(count == null || count == 0){
-            this.deleteDatabase("pda_db");
-            startActivity(new Intent(this, InitActivity.class));
-        }
-
         setHeader();
         setArticleHeader();
 

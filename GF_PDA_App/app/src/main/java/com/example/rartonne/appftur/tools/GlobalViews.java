@@ -15,15 +15,18 @@ import android.widget.Toast;
 
 import com.example.rartonne.appftur.HomeActivity;
 import com.example.rartonne.appftur.InitActivity;
+import com.example.rartonne.appftur.LoginActivity;
 import com.example.rartonne.appftur.ManualLoginActivity;
 import com.example.rartonne.appftur.R;
 import com.example.rartonne.appftur.ZoomActivity;
 import com.example.rartonne.appftur.dao.BatchBlacklistDao;
 import com.example.rartonne.appftur.dao.FittingDao;
+import com.example.rartonne.appftur.dao.OperatorDao;
 import com.example.rartonne.appftur.dao.ScanlogDao;
 import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.model.BatchBlacklist;
 import com.example.rartonne.appftur.model.Fitting;
+import com.example.rartonne.appftur.model.Operator;
 import com.example.rartonne.appftur.model.Scanlog;
 
 import java.io.File;
@@ -178,7 +181,7 @@ public class GlobalViews extends Activity {
 
     public void redirect(){
         if(GlobalClass.getLogin().isEmpty()){
-            startActivity(new Intent(getApplicationContext(), ManualLoginActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         }
     }
 
@@ -199,6 +202,7 @@ public class GlobalViews extends Activity {
 
     public void scanOk(){
         //select sur lab
+        SecIdDataDao secIdDataDao = new SecIdDataDao(this);
         FittingDao fittingDao = new FittingDao(this);
         Fitting fitting = fittingDao.select(GlobalClass.getArt_id());
 
@@ -227,6 +231,9 @@ public class GlobalViews extends Activity {
             Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_LONG).show();
         }else {
             scanlogDao.insert(scanlog);
+            OperatorDao operatorDao = new OperatorDao(this);
+            Operator operator = operatorDao.select(GlobalClass.getUserId());
+            secIdDataDao.insert(GlobalClass.getGf_sec_id(), "WCERT", operator.getOperator_id());
             Toast.makeText(getApplicationContext(), "Data inserted", Toast.LENGTH_LONG).show();
         }
 
@@ -255,7 +262,6 @@ public class GlobalViews extends Activity {
         }
 
         //Installation
-        SecIdDataDao secIdDataDao = new SecIdDataDao(this);
         if(secIdDataDao.select(GlobalClass.getGf_sec_id(), "td") != null && !scanlogDao.select(GlobalClass.getGf_sec_id()).getWelding_sketch_nr().isEmpty())
             GlobalClass.setCheckInstallation(true);
         else
@@ -276,6 +282,7 @@ public class GlobalViews extends Activity {
         GlobalClass.setSdr("");
         GlobalClass.setCatalog("");
         GlobalClass.setStatus("sign_scan_qr_expected");
+
 
         startActivity(new Intent(this, HomeActivity.class));
     }

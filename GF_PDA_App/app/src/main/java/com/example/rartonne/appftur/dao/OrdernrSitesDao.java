@@ -78,9 +78,12 @@ public class OrdernrSitesDao extends DaoBase<OrdernrSites> {
 
     public boolean insert(String ordernr, Integer installer_id){
         try {
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
             db = this.open();
-            db.execSQL("INSERT INTO ordernr_sites (ordernr, site_id, installer_id) VALUES(?, 0, ?)",
-                    new Object[]{ordernr, installer_id});
+            db.execSQL("INSERT INTO ordernr_sites (ordernr, site_id, installer_id, modified_on) VALUES(?, 0, ?, ?)",
+                    new Object[]{ordernr, installer_id,date});
 
             this.close();
             return true;

@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.rartonne.appftur.dao.UserDao;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
@@ -22,7 +24,21 @@ public class LoginActivity extends GlobalViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //si la base est vide on va a l'écran de syncro
+        UserDao userDao = new UserDao(this);
+        Integer count = userDao.countAll();
+        if(count == null || count == 0){
+            this.deleteDatabase("pda_db");
+            startActivity(new Intent(this, InitActivity.class));
+        }
+
         setHeader();
+
+        //si on n'est pas loggué on n'affiche pas le footer
+        if(GlobalClass.getLogin().isEmpty()) {
+            RelativeLayout footer = (RelativeLayout) findViewById(R.id.footer);
+            footer.setVisibility(View.GONE);
+        }
     }
 
     @Override

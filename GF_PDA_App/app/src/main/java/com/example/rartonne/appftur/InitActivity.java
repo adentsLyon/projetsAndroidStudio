@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.rartonne.appftur.dao.DaoBase;
 import com.example.rartonne.appftur.dao.DataBaseHelper;
 import com.example.rartonne.appftur.tasks.HttpAsyncTask;
+import com.example.rartonne.appftur.tools.Connectivity;
+import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 import org.apache.http.NameValuePair;
@@ -31,6 +33,7 @@ public class InitActivity extends GlobalViews {
     public static EditText input_login;
     public static String[] tables = {//"ARTICLE_CATALOG",
             //"ARTICLE_FEATURE",
+            "USER",
             "pda_data_type",
             "LANG",
             "PDF",
@@ -44,7 +47,6 @@ public class InitActivity extends GlobalViews {
             "CONSTRUCTION_SITE",
             "CUSTOMER_SUPPLIER",
             "INSTALLER",
-            "USER",
             //"TRANSLATION",
             "T_DDD_LAB",
             "SUPPLIER",
@@ -85,20 +87,30 @@ public class InitActivity extends GlobalViews {
     }
 
     public void AccesHttpClick(View view){
-        String login = input_login.getText().toString();
-        progressBar = new ProgressDialog(view.getContext());
-        progressBar.setCancelable(false);
-        progressBar.setMessage("Download in progress ...");
-        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressBar.setMax(tables.length);
-        progressBar.show();
+        if(Connectivity.isConnected(getApplicationContext())) {
+            String login = input_login.getText().toString();
+            progressBar = new ProgressDialog(view.getContext());
+            progressBar.setCancelable(false);
+            progressBar.setMessage("Download in progress ...");
+            progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressBar.setMax(tables.length);
+            progressBar.show();
 
-        try {
-            for (String table : tables) {
-                new HttpAsyncTask(this, getApplicationContext()).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=" + login + "&table=" + table);
+            try {
+                for (String table : tables) {
+                    new HttpAsyncTask(this, getApplicationContext()).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=" + login + "&table=" + table);
+                }
+            } catch (Exception ex) {
+                Log.e("ERROR", ex.getMessage());
             }
-        }catch(Exception ex){
-            Log.e("ERROR", ex.getMessage());
+
+            try {
+                new HttpAsyncTask(this, getApplicationContext()).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=pdaSettings&pda_id=" + GlobalClass.getSerialNumber());
+            } catch (Exception ex) {
+                Log.e("ERROR", ex.getMessage());
+            }
+        }else{
+            Toast.makeText(getApplicationContext(), getString(R.string.no_network), Toast.LENGTH_SHORT).show();
         }
     }
 

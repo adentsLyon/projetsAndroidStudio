@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.example.rartonne.appftur.R;
  */
 public class GlobalClass {
 
+    private static String serialNumber = Build.SERIAL;
     private static String login = "";
     private static Integer installer_id;
     private static Integer customer_id;
@@ -315,5 +317,13 @@ public class GlobalClass {
 
     public static void setIsBlacklisted(boolean isBlacklisted) {
         GlobalClass.isBlacklisted = isBlacklisted;
+    }
+
+    public static String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public static void setSerialNumber(String serialNumber) {
+        GlobalClass.serialNumber = serialNumber;
     }
 }

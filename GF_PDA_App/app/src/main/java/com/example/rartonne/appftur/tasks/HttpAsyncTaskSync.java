@@ -1,38 +1,23 @@
 package com.example.rartonne.appftur.tasks;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.rartonne.appftur.HomeActivity;
 import com.example.rartonne.appftur.InitActivity;
-import com.example.rartonne.appftur.ManualLoginActivity;
-import com.example.rartonne.appftur.R;
 import com.example.rartonne.appftur.dao.DataBaseHelper;
 import com.example.rartonne.appftur.dao.PdaSettingsDao;
 import com.example.rartonne.appftur.dao.UserDao;
 import com.example.rartonne.appftur.model.User;
 import com.example.rartonne.appftur.tools.GlobalClass;
-import com.example.rartonne.appftur.tools.GlobalViews;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -42,16 +27,20 @@ import java.util.Date;
  * Created by Mohamed on 25/06/2015.
  * 1 tâche asynchrone = 1 thread
  */
-public class HttpAsyncTask extends AsyncTask<String,Integer,String> {
+public class HttpAsyncTaskSync extends AsyncTask<String,Integer,String> {
     private SQLiteDatabase bdd;
     private Activity activity;
     private Context context;
     private UserDao userDao;
     private User user;
+    private String operationType;
+    private String table;
 
-    public HttpAsyncTask(Activity activity, Context context){
+    public HttpAsyncTaskSync(Activity activity, Context context, String operationType, String table){
         this.context = context;
         this.activity = activity;
+        this.operationType = operationType;
+        this.table = table;
     }
 
     @Override
@@ -72,6 +61,9 @@ public class HttpAsyncTask extends AsyncTask<String,Integer,String> {
         //myDbHelper.close();
 
         bdd = myDbHelper.getWritableDatabase();
+
+        if(this.operationType.equals("insert_all"))
+            bdd.delete(this.table, null, null);
     }
 
     @Override
@@ -82,27 +74,13 @@ public class HttpAsyncTask extends AsyncTask<String,Integer,String> {
     //Manipulation après traitement
     @Override
     protected void onPostExecute(String result) {
-        //InitActivity.progressBar.incrementProgressBy(1);
-        InitActivity.progress++;
-        InitActivity.progressBar.setProgress(InitActivity.progress);
-        if(InitActivity.progress == InitActivity.tables.length) {
-            InitActivity.progressBar.dismiss();
-            UserDao userDao = new UserDao(context);
-            user = userDao.select(InitActivity.input_login.getText().toString());
-            GlobalClass.setLogin(InitActivity.input_login.getText().toString());
-            GlobalClass.setUserId(user.getUser_id());
-            GlobalClass.setInstaller_id(user.getInstaller_id());
-            GlobalClass.setInstallerName(user.getInstaller_name());
-            GlobalClass.setCustomer_id(user.getCustomer_id());
             String format = "yyyy/MM/dd HH:mm:ss";
             SimpleDateFormat formater = new SimpleDateFormat( format );
             String date = formater.format(new Date());
-            GlobalClass.setStatus("sign_scan_qr_expected");
             GlobalClass.setLastUpdate(date);
             PdaSettingsDao pdaSettingsDao = new PdaSettingsDao(context);
             pdaSettingsDao.update(GlobalClass.getLastUpdate());
-            activity.startActivity(new Intent(context, HomeActivity.class));
-        }
+            //activity.startActivity(new Intent(context, HomeActivity.class));
     }
 
     //Traitement de la tâche de fond

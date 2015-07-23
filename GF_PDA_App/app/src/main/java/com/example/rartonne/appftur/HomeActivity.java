@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +23,16 @@ import android.widget.Toast;
 import com.example.rartonne.appftur.dao.DaoBase;
 import com.example.rartonne.appftur.dao.DataBaseHelper;
 import com.example.rartonne.appftur.dao.FittingDao;
+import com.example.rartonne.appftur.dao.PdaSettingsDao;
 import com.example.rartonne.appftur.dao.ScanlogDao;
+import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.model.Fitting;
+import com.example.rartonne.appftur.model.PdaSettings;
 import com.example.rartonne.appftur.model.Scanlog;
 import com.example.rartonne.appftur.model.User;
+import com.example.rartonne.appftur.tasks.HttpAsyncTask;
 import com.example.rartonne.appftur.tasks.HttpAsyncTaskPost;
+import com.example.rartonne.appftur.tasks.HttpAsyncTaskSync;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
@@ -216,6 +223,8 @@ public class HomeActivity extends GlobalViews {
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                SecIdDataDao secIdDataDao = new SecIdDataDao(getApplicationContext());
+                secIdDataDao.insert(GlobalClass.getGf_sec_id(), "forced", GlobalClass.getLogin());
                 scanOk();
             }
         });
@@ -231,20 +240,31 @@ public class HomeActivity extends GlobalViews {
     }
 
     public void sync(View view){
+        syncDwh();
+        syncPdaInsert();
+    }
+
+    public void syncDwh(){
         String[] tables = {
-                "pda_sec_id_data",
+                //"pda_sec_id_data",
                 //"batch_nr_checking",
                 //"customer_incident",
-                //"process_log",
-                "\"SCAN_LOG\""
+                //"PROCESS_LOG",
+                //"\"SCAN_LOG\"",
+                "ordernr_sites",
         };
 
         for (String table : tables) {
             try {
-                //on initalise la connexion à la base
+                String fields = "";
+                String values = "";
+                String urlPost = "http://admin.qr-ut.com/webservice/pdaws.php?action=syncDwh";
+                List<NameValuePair> data = new ArrayList<>();
+                String param = "";
+                //on initalise la connexion Ã  la base
                 SQLiteDatabase bdd;
                 DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
-                String format = "yy/MM/dd HH:mm:ss";
+                String format = "yyyy/MM/dd HH:mm:ss";
                 SimpleDateFormat formater = new SimpleDateFormat(format);
                 String date = formater.format(new Date());
 
@@ -259,15 +279,16 @@ public class HomeActivity extends GlobalViews {
                 bdd = myDbHelper.getWritableDatabase();
 
                 Cursor cursor;
+
                 if (table == "\"SCAN_LOG\"") {
                     cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > ?", new String[]{GlobalClass.getLastUpdate()});
+                }else if(table == "ordernr_sites"){
+                    cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > ?", new String[]{GlobalClass.getLastUpdate()});
                 }else{
                     cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE createdon > ?", new String[]{GlobalClass.getLastUpdate()});
                 }
+
                 while (cursor.moveToNext()) {
-                    String fields = "";
-                    String values = "";
-                    String urlPost = "http://admin.qr-ut.com/webservice/pdaws.php?action=syncDwh";
                     switch(table) {
                         case "pda_sec_id_data":
                             fields = "type, value, createdon, modifiedon, gf_sec_id";
@@ -284,9 +305,9 @@ public class HomeActivity extends GlobalViews {
                             values = "";
                             break;
 
-                        case "process_log":
-                            fields = "";
-                            values = "";
+                        case "PROCESS_LOG":
+                            fields = "process_type, process_date, comment, object_name, status_code, interface_type, action";
+                            values = "'" + cursor.getString(0) + "', '" + cursor.getString(1) + "', '" + cursor.getString(2) + "', '" + cursor.getString(3) + "', " + cursor.getInt(4) + ", '" + cursor.getString(5) + "', '" + cursor.getString(6) + "'";
                             break;
 
                         case "\"SCAN_LOG\"":
@@ -295,14 +316,24 @@ public class HomeActivity extends GlobalViews {
                                     cursor.getInt(5) + ", '" + cursor.getString(6) + "', '" + cursor.getString(7) + "', '" + cursor.getString(8) + "', '" + cursor.getString(9) + "', " +
                                     cursor.getInt(10) + ", '" + cursor.getString(11) + "'";
                             break;
-                    }
-                    String paramValue1 = "INSERT INTO " + table + " (" + fields + ") VALUES (" + values + ");";
-                    List<NameValuePair> data = new ArrayList<>();
-                    data.add(new BasicNameValuePair("data", paramValue1));
 
-                    new HttpAsyncTaskPost(this, data).execute(urlPost);
-                    break;
+                        case "ordernr_sites":
+                            fields = "ordernr, status_code, modified_by, modified_on, installer_id";
+                            values = "'" + cursor.getString(0) + "', " + cursor.getInt(1) + ", " + cursor.getInt(2) + ", '" + cursor.getString(3) + "', " + cursor.getInt(4);
+
+                    }
+                    param += "INSERT INTO " + table + " (" + fields + ") VALUES (" + values + ");";
+                    //break;
                 }
+                data.add(new BasicNameValuePair("data", param));
+
+                //on envoie les INSERT
+                new HttpAsyncTaskPost(this, data).execute(urlPost);
+
+                //puis on envoie l'UPDATE de pda_settings
+                data.add(new BasicNameValuePair("data", "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'"));
+                new HttpAsyncTaskPost(this, data).execute(urlPost);
+
                 cursor.close();
 
                 bdd.close();
@@ -313,5 +344,59 @@ public class HomeActivity extends GlobalViews {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void syncPdaInsert(){
+        String[] tables_insert = {"pda_data_type",
+                "LANG",
+                "PDF",
+                "STATUS_NAME",
+                "T_DDD_WERK",
+                "PROCESS_TYPE",
+                "batch_blacklist",
+                "customer_incident_type",
+                "LICENSE",
+                "CUSTOMER",
+                "CONSTRUCTION_SITE",
+                "CUSTOMER_SUPPLIER",
+                "INSTALLER",
+                "USER",
+                //"TRANSLATION",
+                //"T_DDD_LAB",
+                "SUPPLIER",
+                "ordernr_sites",
+                "operator",
+                "wm_serial",
+                "USER_LOG"};
+
+        /*progressBar = new ProgressDialog(this);
+        progressBar.setCancelable(false);
+        progressBar.setMessage("Download in progress ...");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressBar.setMax(tables_insert.length);
+        progressBar.show();*/
+
+        //on redescend entièrement toutes les tables du tableau
+        try {
+            for (String table : tables_insert) {
+                new HttpAsyncTaskSync(this, getApplicationContext(), "insert_all", table).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insert_all&login=" + GlobalClass.getLogin() + "&table=" + table);
+            }
+        }catch(Exception ex){
+            Log.e("ERROR", ex.getMessage());
+        }
+
+        //on redescend les nouveaux produits de LAB
+        try {
+            new HttpAsyncTaskSync(this, getApplicationContext(), "insert", "T_DDD_LAB").execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insertPdal&table=T_DDD_LAB&last_update=" + GlobalClass.getLastUpdate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //on redescend les nouveaux ordernr
+        /*try {
+            new HttpAsyncTask(this, getApplicationContext()).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insertPdal&table=ordernr_sites&last_update=" + GlobalClass.getLastUpdate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 }

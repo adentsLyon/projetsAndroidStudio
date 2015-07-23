@@ -72,10 +72,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean insert(Scanlog scanlog){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new SimpleDateFormat( format );
-            Date date = new Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("INSERT INTO scan_log (gf_sec_id, user_id, art_id, status_code, scan_date, source) VALUES(?,?,?, 200, ?, 'PDA')",
@@ -92,10 +91,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean updateInstallation(String gf_sec_id, String sketch_number){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-            Date date = new java.util.Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("UPDATE scan_log SET welding_sketch_nr = ?, scan_date = ? WHERE gf_sec_id = ?",
@@ -115,10 +113,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean updateScan(String gf_sec_id){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-            Date date = new java.util.Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("UPDATE scan_log SET scan_date = ? WHERE gf_sec_id = ?",
@@ -138,10 +135,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean updateJob(String gf_sec_id, String customer_order_nr){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-            Date date = new java.util.Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("UPDATE scan_log SET customer_order_nr = ?, scan_date = ? WHERE gf_sec_id = ?",
@@ -161,10 +157,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean updateGps(String gf_sec_id, Double gpsLat, Double gpsLong){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-            Date date = new java.util.Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("UPDATE scan_log SET gps_lat = ?, gps_long = ?, scan_date = ? WHERE gf_sec_id = ?",
@@ -184,10 +179,9 @@ public class ScanlogDao extends DaoBase<Scanlog> {
 
     public boolean updateWelding(String gf_sec_id, String wm, String fusion){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
-
-            SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-            Date date = new java.util.Date();
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date());
 
             db = this.open();
             db.execSQL("UPDATE scan_log SET serial_wm_nr = ?, fusion_nr = ?, scan_date = ? WHERE gf_sec_id = ?",

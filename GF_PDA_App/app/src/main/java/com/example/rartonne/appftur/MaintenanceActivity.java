@@ -60,8 +60,7 @@ public class MaintenanceActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(global.getLogin());
+        setHeader();
 
         //on lie les views aux variables
         spinTables = (Spinner) findViewById(R.id.spinTables);

@@ -42,8 +42,7 @@ public class SettingsActivity extends GlobalViews {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //on remplit le header
-        TextView textUsername = (TextView) findViewById(R.id.textUsername);
-        textUsername.setText(GlobalClass.getLogin());
+        setHeader();
     }
 
     @Override
