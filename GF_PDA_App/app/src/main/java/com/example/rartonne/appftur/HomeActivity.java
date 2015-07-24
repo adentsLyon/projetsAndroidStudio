@@ -346,11 +346,10 @@ public class HomeActivity extends GlobalViews {
                 Cursor cursor;
 
                 if (table == "\"SCAN_LOG\"") {
-                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > ?", new String[]{"'" + GlobalClass.getLastUpdate() + "'"});
+                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > '" + GlobalClass.getLastUpdate() + "'", null);
                 }else if(table == "ordernr_sites"){
-                    cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > ?", new String[]{"'" + GlobalClass.getLastUpdate() + "'"});
+                    cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > '" + GlobalClass.getLastUpdate() + "'", null);
                 }else{
-                    Toast.makeText(this, "SELECT * FROM " + table + " WHERE createdon > " + "'" + GlobalClass.getLastUpdate() + "'", Toast.LENGTH_SHORT).show();
                     cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE createdon > " + "'" + GlobalClass.getLastUpdate() + "'", null);
                 }
 
