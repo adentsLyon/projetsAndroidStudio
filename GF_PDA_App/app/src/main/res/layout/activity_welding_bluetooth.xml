@@ -1,0 +1,433 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.rartonne.appftur.WeldingBluetoothActivity">
+
+    <!-- Header aligned to top -->
+
+    <include layout="@layout/header" />
+
+    <!-- header aligned to bottom -->
+
+    <include layout="@layout/article_header" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/article_header"
+        android:layout_marginTop="2px">
+
+        <!-- Section Protocoles saisis -->
+
+        <RelativeLayout
+            android:id="@+id/rel_fullWelding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!-- Section Premiere ligne -->
+            <RelativeLayout
+                android:id="@+id/rel_Welding1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <RelativeLayout
+                    android:id="@+id/rel_welding1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_welding1"/>
+                    <TextView
+                        android:id="@+id/tv_idWelding1"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text="#1  |"/>
+                    <TextView
+                        android:id="@+id/tv_statusFusion"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_protocol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_protocol"/>
+                    <TextView
+                        android:id="@+id/tv_protocol"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/tv_protocolStatus"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Section Deuxieme ligne -->
+
+            <RelativeLayout
+                android:id="@+id/rel_Welding2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_Welding1"
+                android:layout_marginTop="2px"
+                android:visibility="gone">
+                <RelativeLayout
+                    android:id="@+id/rel_welding2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_welding2"/>
+                    <TextView
+                        android:id="@+id/tv_idWelding2"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text="#2  |"/>
+                    <TextView
+                        android:id="@+id/tv_statusFusion2"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_protocol2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_protocol2"/>
+                    <TextView
+                        android:id="@+id/tv_protocol2"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/tv_protocolStatus2"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Section Troisieme ligne -->
+
+            <RelativeLayout
+                android:id="@+id/rel_Welding3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_Welding2"
+                android:layout_marginTop="2px"
+                android:visibility="gone">
+                <RelativeLayout
+                    android:id="@+id/rel_welding3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_welding3"/>
+                    <TextView
+                        android:id="@+id/tv_idWelding3"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text="#3  |"/>
+                    <TextView
+                        android:id="@+id/tv_statusFusion3"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_protocol3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_protocol3"/>
+                    <TextView
+                        android:id="@+id/tv_protocol3"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/tv_protocolStatus3"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Section Quatrième ligne -->
+
+            <RelativeLayout
+                android:id="@+id/rel_Welding4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_Welding3"
+                android:layout_marginTop="2px"
+                android:visibility="gone">
+                <RelativeLayout
+                    android:id="@+id/rel_welding4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_welding4"/>
+                    <TextView
+                        android:id="@+id/tv_idWelding4"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text="#4  |"/>
+                    <TextView
+                        android:id="@+id/tv_statusFusion4"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_protocol4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:visibility="visible">
+                    <View
+                        android:layout_width="238px"
+                        android:layout_height="50px"
+                        android:background="#66c266"
+                        android:id="@+id/bar_protocol4"/>
+                    <TextView
+                        android:id="@+id/tv_protocol4"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="30px"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/tv_protocolStatus4"
+                        style="@style/fixed_inputContent_style"
+                        android:layout_marginLeft="100px"
+                        android:text=""/>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- Section Vue Fusion Code -->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_inputEmpty"
+            android:layout_below="@+id/rel_fullWelding">
+
+            <RelativeLayout
+                android:id="@+id/rel_fusionInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_serialInput"
+                android:layout_marginTop="2px" >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="50px"
+                    android:background="#1965a3"
+                    android:id="@+id/bar_trench"/>
+                <EditText
+                    android:background="@null"
+                    android:layout_width="290px"
+                    android:layout_height="40px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="180px"
+                    android:id="@+id/tv_fusion"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentLeft="true"
+                    android:inputType="numberSigned" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_fusionCode"
+                    android:id="@+id/text_trench"
+                    android:textColor="#ffffff"
+                    android:layout_centerVertical="true"
+                    android:textSize="25px"
+                    android:layout_marginLeft="30px"
+                    android:layout_alignLeft="@+id/bar_job"
+                    android:layout_alignTop="@+id/bar_job"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    <!-- PARTIE MESSAGE INFOS -->
+
+        <!-- Message de debut de process -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_processDone"
+            android:text="@string/tv_processDone"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18px"
+            android:layout_above="@id/rel_buttonPart2"
+            android:layout_marginBottom="10px"/>
+
+    <!-- Partie Boutons -->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel_buttonPart2"
+            style="@style/bottom_button_style">
+
+        <!-- BOUTON CANCEL -->
+
+            <RelativeLayout
+                android:id="@+id/rel_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_cancel"
+                    android:src="@drawable/action_cancel"
+                    android:onClick="resetWelding" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_cancelProtocol"
+                    android:id="@+id/text_scan_trace"
+                    android:layout_below="@+id/Btn_cancel" />
+            </RelativeLayout>
+
+            <!-- BOUTON BLUETOOTH SETTINGS -->
+
+            <RelativeLayout
+                android:id="@+id/rel_btSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_btSettings"
+                    android:src="@drawable/icon_bt_settings"
+                    android:onClick="resetWelding" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_bluetoothSettings"
+                    android:id="@+id/text_btSettings"
+                    android:layout_below="@+id/Btn_btSettings" />
+            </RelativeLayout>
+
+            <!-- BOUTON START FUSION -->
+
+            <RelativeLayout
+                android:id="@+id/rel_startFusion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320px"
+                android:visibility="visible">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_startFusion"
+                    android:src="@drawable/action_start"
+                    android:onClick="startFusionClick" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_startFusion"
+                    android:id="@+id/text_startFusion"
+                    android:layout_below="@+id/Btn_startFusion" />
+            </RelativeLayout>
+
+            <!-- BOUTON SCAN FUSION BARCODE -->
+
+            <RelativeLayout
+                android:id="@+id/rel_scanFlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_Scan_Qr"
+                    android:src="@drawable/icon_scan_barcode"
+                    android:onClick="scanBar" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_scanWmSerial"
+                    android:id="@+id/text_scan_qr"
+                    android:layout_below="@+id/Btn_Scan_Qr" />
+            </RelativeLayout>
+
+            <!-- BOUTON RECEIVE PROTOCOLE -->
+
+            <RelativeLayout
+                android:id="@+id/rel_receiveProtocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320px"
+                android:visibility="invisible">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_receiveProtocol"
+                    android:src="@drawable/icon_wm_pda"
+                    android:onClick="confirmWelding"/>
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_confirmData"
+                    android:id="@+id/text_receiveProtocol"
+                    android:layout_below="@+id/Btn_receiveProtocol" />
+            </RelativeLayout>
+
+            <!-- BOUTON CONFIRM -->
+
+            <RelativeLayout
+                android:id="@+id/rel_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320px"
+                android:visibility="invisible">
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_scanWmSerial"
+                    android:src="@drawable/action_confirm"
+                    android:onClick="confirmWelding" />
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_confirmData"
+                    android:id="@+id/text_scanWmSerial"
+                    android:layout_below="@+id/Btn_scanWmSerial" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom -->
+
+    <include layout="@layout/footer" />
+
+</RelativeLayout>

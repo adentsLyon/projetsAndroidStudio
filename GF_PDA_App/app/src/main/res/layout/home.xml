@@ -148,7 +148,7 @@
                 android:src="@drawable/icon_welding"
                 android:layout_centerHorizontal="true"
                 android:onClick="toActivity"
-                android:tag="WeldingActivity" />
+                android:tag="WeldingBluetoothActivity" />
 
             <ImageView
                 android:layout_width="40px"

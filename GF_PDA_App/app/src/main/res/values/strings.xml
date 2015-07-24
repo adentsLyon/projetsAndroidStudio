@@ -60,11 +60,13 @@
     <string name="title_activity_geo_position">GeoPositionActivity</string>
     <string name="title_activity_installation_data">InstallationDataActivity</string>
     <string name="title_activity_welding">WeldingActivity</string>
+    
     <!--jobDataACtivity-->
     <string name="tv_weldingCertificate">Welder Certificate</string>
     <string name="tv_jobNumber">Job no</string>
     <string name="tv_siteName">Site Name</string>
     <string name="ib_scanJobQr">SCAN\nJOB QR</string>
+    
     <!--wmSerialActivity-->
     <string name="ib_scanWmSerial">SCAN\nWM SERIAL</string>
     <string name="tv_infoWeldingData">ADD THE WELDING DATA FOR THIS PRODUCT</string>
@@ -142,5 +144,25 @@
     <string name="ib_addComment">ADD\nCOMMENT</string>
     <string name="no_network">No network available</string>
     <string name="title_activity_video_view">VideoViewActivity</string>
+    <string name="title_activity_welding_bluetooth">WeldingBluetoothActivity</string>
+    
+    <!-- WeldingActivity / WeldingBluetooth Activity -->
+    <string name="ib_bluetoothSettings">BLUETOOTH\nSETTINGS</string>
+    <string name="ib_scanFusion">SCAN\nFUSION</string>
+    <string name="ib_startFusion">START\nFUSION</string>
+    <string name="ib_confirmDone">CONFIRM\nDONE</string>
+    <string name="ib_cancelProtocol">CANCEL\nPROTOCOL</string>
+    <string name="ib_receiveProtocol">RECEIVE\nPROTOCOL</string>
+    <string name="ib_addNewWelding">ADD NEW\nWELDING</string>
+    <string name="tv_setFusionParam1">CLICK ON SCAN BUTTON ON THE SIDE OF THE DEVICE\nTO SET UP NEW FUSION PARAMETERS</string>
+    <string name="tv_fusionCode">Fusion Code</string>
+    <string name="tv_startFusion">CLICK ON START FUSION\nTO BEGIN WELDING PROCESS</string>
+    <string name="tv_receiveProtocole">CLICK ON RECEIVE PROTOCOL\nIF MANDATORY OR ON CANCEL IF NOT</string>
+    <string name="tv_dataSent">DATA SENT</string>
+    <string name="tv_protocolOk">PROTOCOL OK</string>
+    <string name="tv_protocolWait">PROTOCOL ?</string>
+    <string name="tv_noProtocol">NO PROTOCOL</string>
+    <string name="tv_confirmWeldings">CONFIRM ALL WELDINGS DONE OR\nCLICK ON ADD NEW WELDING</string>
+    <string name="tv_processDone">CURRENT WELDING PROCESS\nIS NOW DONE AND SAVED</string>
 
 </resources>

@@ -266,8 +266,8 @@ public class HomeActivity extends GlobalViews {
 
     public void sync(View view){
         syncDwh();
-        //syncPictures();
-        //syncPdaInsert();
+        syncPictures();
+        syncPdaInsert();
     }
 
     public void syncPictures(){
@@ -311,11 +311,11 @@ public class HomeActivity extends GlobalViews {
     public void syncDwh(){
         String[] tables = {
                 "pda_sec_id_data",
-                //"batch_nr_checking",
-                //"customer_incident",
-                //"PROCESS_LOG",
-                //"\"SCAN_LOG\"",
-                //"ordernr_sites",
+                "batch_nr_checking",
+                "customer_incident",
+                "PROCESS_LOG",
+                "\"SCAN_LOG\"",
+                "ordernr_sites",
         };
 
         for (String table : tables) {
@@ -394,18 +394,14 @@ public class HomeActivity extends GlobalViews {
                     param += "INSERT INTO " + table + " (" + fields + ") VALUES (" + values + ");";
                     //break;
                 }
+
+                param += updateScanlog;
+                param += "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'";
+
                 data.add(new BasicNameValuePair("data", param));
 
                 //on envoie les INSERT
                 new HttpAsyncTaskPost(this, data).execute(urlPost);
-
-                //puis on envoie l'UPDATE de pda_settings
-                /*data.add(new BasicNameValuePair("data", "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'"));
-                new HttpAsyncTaskPost(this, data).execute(urlPost);*/
-
-                //puis on envoie l'UPDATE de scanlog
-                /*data.add(new BasicNameValuePair("data", updateScanlog));
-                new HttpAsyncTaskPost(this, data).execute(urlPost);*/
 
                 cursor.close();
 

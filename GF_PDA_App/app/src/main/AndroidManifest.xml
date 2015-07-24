@@ -122,6 +122,10 @@
             android:name=".VideoViewActivity"
             android:label="@string/title_activity_video_view" >
         </activity>
+        <activity
+            android:name=".WeldingBluetoothActivity"
+            android:label="@string/title_activity_welding_bluetooth" >
+        </activity>
     </application>
 
 </manifest>
