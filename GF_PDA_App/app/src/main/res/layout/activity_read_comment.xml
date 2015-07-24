@@ -81,7 +81,8 @@
                 android:layout_width="150px"
                 android:layout_height="120px"
                 android:id="@+id/imgComment"
-                android:onClick="zoom" />
+                android:onClick="zoom"
+                android:visibility="gone" />
 
         </RelativeLayout>
 

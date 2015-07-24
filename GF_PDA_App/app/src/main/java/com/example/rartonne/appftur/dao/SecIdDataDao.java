@@ -41,12 +41,12 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
         }
     }
 
-    public ArrayList<SecIdData> selectAllComments() {
+    public ArrayList<SecIdData> selectAllComments(String gf_sec_id) {
         try {
             db = this.open();
             ArrayList<SecIdData> secIdDatas = new ArrayList<>();
 
-            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon, data_id FROM pda_sec_id_data WHERE type = 'comment'",null);
+            Cursor cursor =  db.rawQuery("SELECT type, value, createdon, modifiedon, data_id FROM pda_sec_id_data WHERE type = 'comment' AND gf_sec_id = ?", new String[]{gf_sec_id});
 
             while(cursor.moveToNext()){
                 secIdDatas.add(new SecIdData(cursor.getInt(4), cursor.getString(0), cursor.getString(1), new Date(cursor.getString(2)), new Date(cursor.getString(3))));
@@ -141,7 +141,7 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
     public boolean insert(String gf_sec_id, String type, String value){
         try{
-            String format = "yy/MM/dd HH:mm:ss";
+            String format = "yyyy/MM/dd HH:mm:ss";
 
             SimpleDateFormat formater = new SimpleDateFormat(format);
             String date = formater.format(new Date());
@@ -161,7 +161,7 @@ public class SecIdDataDao extends DaoBase<Scanlog> {
 
     public boolean update(String gf_sec_id, String type, String value){
         try {
-            String format = "yy/MM/dd HH:mm:ss";
+            String format = "yyyy/MM/dd HH:mm:ss";
 
             SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
             Date date = new java.util.Date();

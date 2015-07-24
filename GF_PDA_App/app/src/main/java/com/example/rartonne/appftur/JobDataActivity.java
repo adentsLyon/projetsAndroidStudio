@@ -219,18 +219,22 @@ public class JobDataActivity extends GlobalViews {
     }
 
     public void confirmJob(View view){
-        scanlogDao.updateJob(GlobalClass.getGf_sec_id(), field_job.getText().toString());
+        if(field_job.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter a job number", Toast.LENGTH_LONG).show();
+        }else {
+            scanlogDao.updateJob(GlobalClass.getGf_sec_id(), field_job.getText().toString());
 
-        OrdernrSitesDao ordernrSitesDao = new OrdernrSitesDao(this);
-        if(ordernrSitesDao.count(field_job.getText().toString()) == 0) {
-            boolean bool = ordernrSitesDao.insert(field_job.getText().toString(), GlobalClass.getInstaller_id());
-            spinnerArray.add(field_job.getText().toString());
-            adapter.notifyDataSetChanged();
+            OrdernrSitesDao ordernrSitesDao = new OrdernrSitesDao(this);
+            if (ordernrSitesDao.count(field_job.getText().toString()) == 0) {
+                boolean bool = ordernrSitesDao.insert(field_job.getText().toString(), GlobalClass.getInstaller_id());
+                spinnerArray.add(field_job.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+
+            GlobalClass.setJobNumber(field_job.getText().toString());
+            GlobalClass.setCheckJob(true);
+            Toast.makeText(getApplicationContext(), "Data updated ", Toast.LENGTH_LONG).show();
         }
-
-        GlobalClass.setJobNumber(field_job.getText().toString());
-        GlobalClass.setCheckJob(true);
-        Toast.makeText(getApplicationContext(), "Data updated ", Toast.LENGTH_LONG).show();
     }
 
 }

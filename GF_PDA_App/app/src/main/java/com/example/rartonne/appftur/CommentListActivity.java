@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.rartonne.appftur.adapters.CommentAdapter;
 import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.model.SecIdData;
+import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class CommentListActivity extends GlobalViews {
     public void fillListComment(){
         secIdDataDao = new SecIdDataDao(this);
         listComments = (ListView) findViewById(R.id.listComments);
-        ArrayList<SecIdData> items = secIdDataDao.selectAllComments();
+        ArrayList<SecIdData> items = secIdDataDao.selectAllComments(GlobalClass.getGf_sec_id());
 
         /*ArrayAdapter<SecIdData> adapter = new ArrayAdapter<SecIdData>(
                 this,

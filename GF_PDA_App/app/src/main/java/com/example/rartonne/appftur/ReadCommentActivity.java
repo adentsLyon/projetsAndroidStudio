@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.model.SecIdData;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
+
+import java.io.File;
 
 
 public class ReadCommentActivity extends GlobalViews {
@@ -66,7 +69,11 @@ public class ReadCommentActivity extends GlobalViews {
         secIdData = secIdDataDao.select(data_id);
         tv_comment.setText(secIdData.getValue());
         Bitmap bmp = BitmapFactory.decodeFile(filepath);
-        imgComment.setImageBitmap(bmp);
-        imgComment.setTag(filepath);
+        File file = new File(filepath);
+        if(file.exists()) {
+            imgComment.setImageBitmap(bmp);
+            imgComment.setTag(filepath);
+            imgComment.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -41,10 +41,15 @@ import org.apache.http.message.BasicNameValuePair;
 import org.w3c.dom.Text;
 
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,6 +73,9 @@ public class HomeActivity extends GlobalViews {
     public RelativeLayout rel_server_updates;
     public RelativeLayout rel_scan_qr;
     private String contents;
+    int serverResponseCode = 0;
+    String upLoadServerUri = "";
+    private String uploadFilePath;
 
     @Override
     protected void onResume() {
@@ -87,6 +95,7 @@ public class HomeActivity extends GlobalViews {
 
         setIcones();
         setPastilles();
+        createFiles();
     }
 
     private void fillHome() {
@@ -216,6 +225,22 @@ public class HomeActivity extends GlobalViews {
         }
     }
 
+    public void createFiles(){
+        if(!GlobalClass.getGf_sec_id().isEmpty()) {
+            String dir1 = "/sdcard/" + GlobalClass.getCustomer_id().toString();
+            String dir2 = dir1 + "/netmap";
+            String dir3 = dir2 + "/" + GlobalClass.getGf_sec_id();
+
+            File file1 = new File(dir1);
+            File file2 = new File(dir2);
+            File file3 = new File(dir3);
+
+            file1.mkdir();
+            file2.mkdir();
+            file3.mkdir();
+        }
+    }
+
     public void dialogBlacklist(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("This product is involved in an incident, are you sure you want to continue using it ?")
@@ -241,17 +266,56 @@ public class HomeActivity extends GlobalViews {
 
     public void sync(View view){
         syncDwh();
-        syncPdaInsert();
+        //syncPictures();
+        //syncPdaInsert();
+    }
+
+    public void syncPictures(){
+        new Thread(new Runnable() {
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        //messageText.setText("uploading started.....");
+                    }
+                });
+
+                uploadFilePath = "/sdcard/" + GlobalClass.getCustomer_id().toString() + "/Netmap/" + GlobalClass.getGf_sec_id() + "/";
+                upLoadServerUri = "http://admin.qr-ut.com/webservice/UploadToServer.php?customer_id=" + GlobalClass.getCustomer_id().toString() + "&gf_sec_id=" + GlobalClass.getGf_sec_id() + "&type=netmap";
+
+                File yourDir = new File(uploadFilePath);
+                for (File f : yourDir.listFiles()) {
+                    if (f.isFile()) {
+                        String filename = f.getName();
+                        Date date = new Date(f.lastModified());
+                        if(date.after(new Date(GlobalClass.getLastUpdate())))
+                            uploadFile(uploadFilePath + "" + filename);
+                    }
+                }
+
+                uploadFilePath = "/sdcard/" + GlobalClass.getCustomer_id().toString() + "/";
+                upLoadServerUri = "http://admin.qr-ut.com/webservice/UploadToServer.php?customer_id=" + GlobalClass.getCustomer_id().toString() + "&gf_sec_id=" + GlobalClass.getGf_sec_id() + "&type=comment";
+
+                yourDir = new File(uploadFilePath);
+                for (File f : yourDir.listFiles()) {
+                    if (f.isFile()) {
+                        String filename = f.getName();
+                        Date date = new Date(f.lastModified());
+                        if(date.after(new Date(GlobalClass.getLastUpdate())))
+                            uploadFile(uploadFilePath + "" + filename);
+                    }
+                }
+            }
+        }).start();
     }
 
     public void syncDwh(){
         String[] tables = {
-                //"pda_sec_id_data",
+                "pda_sec_id_data",
                 //"batch_nr_checking",
                 //"customer_incident",
                 //"PROCESS_LOG",
                 //"\"SCAN_LOG\"",
-                "ordernr_sites",
+                //"ordernr_sites",
         };
 
         for (String table : tables) {
@@ -261,6 +325,7 @@ public class HomeActivity extends GlobalViews {
                 String urlPost = "http://admin.qr-ut.com/webservice/pdaws.php?action=syncDwh";
                 List<NameValuePair> data = new ArrayList<>();
                 String param = "";
+                String updateScanlog = "";
                 //on initalise la connexion Ã  la base
                 SQLiteDatabase bdd;
                 DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
@@ -281,11 +346,12 @@ public class HomeActivity extends GlobalViews {
                 Cursor cursor;
 
                 if (table == "\"SCAN_LOG\"") {
-                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > ?", new String[]{GlobalClass.getLastUpdate()});
+                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > ?", new String[]{"'" + GlobalClass.getLastUpdate() + "'"});
                 }else if(table == "ordernr_sites"){
-                    cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > ?", new String[]{GlobalClass.getLastUpdate()});
+                    cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > ?", new String[]{"'" + GlobalClass.getLastUpdate() + "'"});
                 }else{
-                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE createdon > ?", new String[]{GlobalClass.getLastUpdate()});
+                    Toast.makeText(this, "SELECT * FROM " + table + " WHERE createdon > " + "'" + GlobalClass.getLastUpdate() + "'", Toast.LENGTH_SHORT).show();
+                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE createdon > " + "'" + GlobalClass.getLastUpdate() + "'", null);
                 }
 
                 while (cursor.moveToNext()) {
@@ -315,12 +381,16 @@ public class HomeActivity extends GlobalViews {
                             values = "'" + cursor.getString(0) + "', " + cursor.getDouble(1) + ", " + cursor.getDouble(2) + ", '" + cursor.getString(3) + "', " + cursor.getInt(4) + ", " +
                                     cursor.getInt(5) + ", '" + cursor.getString(6) + "', '" + cursor.getString(7) + "', '" + cursor.getString(8) + "', '" + cursor.getString(9) + "', " +
                                     cursor.getInt(10) + ", '" + cursor.getString(11) + "'";
+                            updateScanlog += "UPDATE \"SCAN_LOG\" SET gps_lat = " + cursor.getDouble(1) + ", gps_long = " + cursor.getDouble(2) + ", scan_date = '" + cursor.getString(3) + "'" +
+                                    ", user_id = " + cursor.getInt(4) + ", status_code = " + cursor.getInt(5) + ", art_id = '" + cursor.getString(6) + "', customer_order_nr = '" + cursor.getString(7) + "'" +
+                                    ", welding_sketch_nr = '" + cursor.getString(8) + "', serial_wm_nr = '" + cursor.getString(9) + "', fusion_nr = " + cursor.getInt(10) +
+                                    " WHERE gf_sec_id = '" + cursor.getString(0) + "' AND source = 'PDA';";
                             break;
 
                         case "ordernr_sites":
                             fields = "ordernr, status_code, modified_by, modified_on, installer_id";
                             values = "'" + cursor.getString(0) + "', " + cursor.getInt(1) + ", " + cursor.getInt(2) + ", '" + cursor.getString(3) + "', " + cursor.getInt(4);
-
+                            break;
                     }
                     param += "INSERT INTO " + table + " (" + fields + ") VALUES (" + values + ");";
                     //break;
@@ -331,8 +401,12 @@ public class HomeActivity extends GlobalViews {
                 new HttpAsyncTaskPost(this, data).execute(urlPost);
 
                 //puis on envoie l'UPDATE de pda_settings
-                data.add(new BasicNameValuePair("data", "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'"));
-                new HttpAsyncTaskPost(this, data).execute(urlPost);
+                /*data.add(new BasicNameValuePair("data", "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'"));
+                new HttpAsyncTaskPost(this, data).execute(urlPost);*/
+
+                //puis on envoie l'UPDATE de scanlog
+                /*data.add(new BasicNameValuePair("data", updateScanlog));
+                new HttpAsyncTaskPost(this, data).execute(urlPost);*/
 
                 cursor.close();
 
@@ -392,11 +466,145 @@ public class HomeActivity extends GlobalViews {
             e.printStackTrace();
         }
 
-        //on redescend les nouveaux ordernr
-        /*try {
-            new HttpAsyncTask(this, getApplicationContext()).execute("http://admin.qr-ut.com/webservice/pdaws.php?action=insertPdal&table=ordernr_sites&last_update=" + GlobalClass.getLastUpdate());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+    }
+
+    public int uploadFile(String sourceFileUri) {
+
+
+        String fileName = sourceFileUri;
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File sourceFile = new File(sourceFileUri);
+
+        if (!sourceFile.isFile()) {
+
+            //dialog.dismiss();
+
+            Log.e("uploadFile", "Source File not exist");
+
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    //messageText.setText("Source File not exist :"+uploadFilePath + "" + uploadFileName);
+                }
+            });
+
+            return 0;
+
+        }
+        else
+        {
+            try {
+
+                // open a URL connection to the Servlet
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                URL url = new URL(upLoadServerUri);
+
+                // Open a HTTP  connection to  the URL
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setDoInput(true); // Allow Inputs
+                conn.setDoOutput(true); // Allow Outputs
+                conn.setUseCaches(false); // Don't use a Cached Copy
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Connection", "Keep-Alive");
+                conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+                conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+                conn.setRequestProperty("uploaded_file", fileName);
+
+                dos = new DataOutputStream(conn.getOutputStream());
+
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""+ fileName + "\"" + lineEnd);
+
+                dos.writeBytes(lineEnd);
+
+                // create a buffer of  maximum size
+                bytesAvailable = fileInputStream.available();
+
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                }
+
+                // send multipart form data necesssary after file data...
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                // Responses from the server (code and message)
+                serverResponseCode = conn.getResponseCode();
+                String serverResponseMessage = conn.getResponseMessage();
+
+                Log.i("uploadFile", "HTTP Response is : "
+                        + serverResponseMessage + ": " + serverResponseCode);
+
+                if(serverResponseCode == 200){
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            /*String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
+                                    +" http://www.androidexample.com/media/uploads/"
+                                    +uploadFileName;*/
+
+                            //messageText.setText(msg);
+                            /*Toast.makeText(getApplicationContext(), "File Upload Complete.",
+                                    Toast.LENGTH_SHORT).show();*/
+                        }
+                    });
+                }
+
+                //close the streams //
+                fileInputStream.close();
+                dos.flush();
+                dos.close();
+
+            } catch (MalformedURLException ex) {
+
+                //dialog.dismiss();
+                ex.printStackTrace();
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        //messageText.setText("MalformedURLException Exception : check script url.");
+                        /*Toast.makeText(getApplicationContext(), "MalformedURLException",
+                                Toast.LENGTH_SHORT).show();*/
+                    }
+                });
+
+                Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+            } catch (Exception e) {
+
+                //dialog.dismiss();
+                e.printStackTrace();
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        //messageText.setText("Got Exception : see logcat ");
+                        /*Toast.makeText(getApplicationContext(), "Got Exception : see logcat ",
+                                Toast.LENGTH_SHORT).show();*/
+                    }
+                });
+                Log.e("Upload file to server", "Exception : " + e.getMessage(), e);
+            }
+           // dialog.dismiss();
+            return serverResponseCode;
+
+        } // End else block
     }
 }

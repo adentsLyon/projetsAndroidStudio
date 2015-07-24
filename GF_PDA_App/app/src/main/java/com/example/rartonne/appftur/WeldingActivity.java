@@ -294,6 +294,8 @@ public class WeldingActivity extends GlobalViews {
             rel_welding1.setVisibility(View.GONE);
             secIdDataDao.delete(GlobalClass.getGf_sec_id(), "wm1");
             secIdDataDao.delete(GlobalClass.getGf_sec_id(), "fu1");
+            scanlogDao.updateWelding(GlobalClass.getGf_sec_id(), "", "");
+            GlobalClass.setCheckWelding(false);
         }
 
 
@@ -303,8 +305,6 @@ public class WeldingActivity extends GlobalViews {
         rel_scanFlash.setVisibility(View.VISIBLE);
         rel_confirm.setVisibility(View.VISIBLE);
 
-        scanlogDao.updateWelding(GlobalClass.getGf_sec_id(), "", "");
-        GlobalClass.setCheckWelding(false);
         Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
 

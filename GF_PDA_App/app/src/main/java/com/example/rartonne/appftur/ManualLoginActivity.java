@@ -17,20 +17,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rartonne.appftur.dao.DataBaseHelper;
+import com.example.rartonne.appftur.dao.PdaSettingsDao;
+import com.example.rartonne.appftur.dao.SecIdDataDao;
 import com.example.rartonne.appftur.dao.UserDao;
+import com.example.rartonne.appftur.model.PdaSettings;
 import com.example.rartonne.appftur.model.User;
 import com.example.rartonne.appftur.tools.GlobalClass;
 import com.example.rartonne.appftur.tools.GlobalViews;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class ManualLoginActivity extends GlobalViews {
-    public SQLiteDatabase bdd;
     public TextView input_login;
     public TextView text_message;
     public TextView textUsername;
     public TextView textCompany;
+    private TextView textDate;
     private UserDao userDao;
     private User user;
     private Integer count;
@@ -104,6 +109,15 @@ public class ManualLoginActivity extends GlobalViews {
             imageStatus.setImageResource(id_icone);
             textCompany.setText(user.getInstaller_name());
 
+            //on récupère la date de dernière synchro
+            PdaSettingsDao pdaSettingsDao  = new PdaSettingsDao(this);
+            PdaSettings pdaSettings = pdaSettingsDao.select(GlobalClass.getSerialNumber());
+            String format = "yyyy/MM/dd HH:mm:ss";
+            SimpleDateFormat formater = new SimpleDateFormat(format);
+            String date = formater.format(new Date(pdaSettings.getLast_update().toString()));
+            GlobalClass.setLastUpdate(date);
+            textDate.setText(date);
+
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
@@ -139,6 +153,7 @@ public class ManualLoginActivity extends GlobalViews {
         //on remplit le header
         textUsername = (TextView) findViewById(R.id.textUsername);
         textCompany = (TextView) findViewById(R.id.textCompany);
+        textDate = (TextView) findViewById(R.id.textDate);
 
         //on lie les view aux variables
         input_login = (TextView) findViewById(R.id.input_login);
