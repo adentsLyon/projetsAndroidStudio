@@ -1,6 +1,7 @@
 package com.example.rartonne.appftur;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,10 @@ import java.util.Scanner;
 
 public class WeldingBluetoothActivity extends GlobalViews {
     TextView tv_fusionCode;
+    private RelativeLayout rel_Welding1;
+    private RelativeLayout rel_Welding2;
+    private RelativeLayout rel_Welding3;
+    private RelativeLayout rel_Welding4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,10 @@ public class WeldingBluetoothActivity extends GlobalViews {
         setContentView(R.layout.activity_welding_bluetooth);
 
         tv_fusionCode = (TextView) findViewById(R.id.tv_fusion);
+        rel_Welding1 = (RelativeLayout) findViewById(R.id.rel_Welding1);
+        rel_Welding2 = (RelativeLayout) findViewById(R.id.rel_Welding2);
+        rel_Welding3 = (RelativeLayout) findViewById(R.id.rel_Welding3);
+        rel_Welding4 = (RelativeLayout) findViewById(R.id.rel_Welding4);
     }
 
     @Override
@@ -93,5 +103,20 @@ public class WeldingBluetoothActivity extends GlobalViews {
         if(tv_fusionCode.getText().toString() != null && !tv_fusionCode.getText().toString().isEmpty())
             protocol += "\nCurrent Fusion Data : " + tv_fusionCode.getText().toString();
         Toast.makeText(this, protocol,Toast.LENGTH_LONG).show();
+        if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "fu1") > 0)
+            rel_Welding1.setVisibility(View.VISIBLE);
+        if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "fu2") > 0)
+            rel_Welding2.setVisibility(View.VISIBLE);
+        if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "fu3") > 0)
+            rel_Welding3.setVisibility(View.VISIBLE);
+        if(secIdDataDao.count(GlobalClass.getGf_sec_id(), "fu4") > 0)
+            rel_Welding4.setVisibility(View.VISIBLE);
+
+    }
+    private void fillFusionCode() {
+        if (tv_fusionCode.getText().toString() != null && !tv_fusionCode.getText().toString().isEmpty()) {
+            tv_fusionCode.setBackgroundColor(Color.parseColor("#66c266"));
+            tv_fusionCode.setEnabled(false);
+        }
     }
 }
