@@ -215,7 +215,9 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/et_wm"
                     android:textColor="#ffffff"
-                    android:layout_alignParentLeft="true"/>
+                    android:layout_alignParentLeft="true"
+                    android:inputType="text"
+                    android:imeOptions="actionNext" />
 
                 <TextView
                     android:layout_width="wrap_content"
