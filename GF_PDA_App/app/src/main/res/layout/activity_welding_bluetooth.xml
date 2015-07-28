@@ -362,7 +362,7 @@
 
             <!-- BOUTON SCAN FUSION BARCODE -->
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:id="@+id/rel_scanFlash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -377,7 +377,7 @@
                     android:text="@string/ib_scanWmSerial"
                     android:id="@+id/text_scan_qr"
                     android:layout_below="@+id/Btn_Scan_Qr" />
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <!-- BOUTON RECEIVE PROTOCOLE -->
 
