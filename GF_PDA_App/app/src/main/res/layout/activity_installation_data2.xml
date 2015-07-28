@@ -53,7 +53,8 @@
                 android:layout_marginLeft="25px"
                 android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l1"
-                android:background="@null" />
+                android:background="@null"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +64,8 @@
                 android:textColor="#ffffff"
                 android:layout_centerVertical="true"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"/>
+                android:layout_marginLeft="200px"
+                android:visibility="invisible"/>
 
         </RelativeLayout>
 
@@ -106,7 +108,8 @@
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
                 android:layout_alignBottom="@+id/tv_l2"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,7 +119,8 @@
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"/>
+                android:layout_marginLeft="200px"
+                android:visibility="invisible"/>
 
         </RelativeLayout>
         <RelativeLayout
@@ -155,7 +159,8 @@
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
-                android:layout_alignBottom="@+id/tv_l3" />
+                android:layout_alignBottom="@+id/tv_l3"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -164,7 +169,8 @@
                 android:id="@+id/tv_l3"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
-                android:layout_marginLeft="200px"/>
+                android:layout_marginLeft="200px"
+                android:visibility="invisible"/>
 
         </RelativeLayout>
 
@@ -208,7 +214,8 @@
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
                 android:autoText="false"
-                android:layout_alignBottom="@+id/tv_l4" />
+                android:layout_alignBottom="@+id/tv_l4"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -220,7 +227,10 @@
                 android:textSize="30px"
                 android:layout_marginLeft="200px"
                 android:layout_alignLeft="@+id/bar_product4"
-                android:layout_alignTop="@+id/bar_product4"/><![CDATA[
+                android:layout_alignTop="@+id/bar_product4"
+                android:visibility="invisible"/>
+
+            <![CDATA[
                 android:layout_alignParentLeft="true"
                 android:visibility="visible" />
 
