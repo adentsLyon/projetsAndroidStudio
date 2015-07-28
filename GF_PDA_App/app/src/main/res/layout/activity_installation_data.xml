@@ -85,7 +85,8 @@
                 android:layout_marginLeft="180px"
                 android:id="@+id/field_trench"
                 style="@style/content_style"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:inputType="number" />
 
             <TextView
                 android:layout_width="wrap_content"

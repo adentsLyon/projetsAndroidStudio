@@ -111,10 +111,11 @@ public class ManualLoginActivity extends GlobalViews {
 
             //on récupère la date de dernière synchro
             PdaSettingsDao pdaSettingsDao  = new PdaSettingsDao(this);
-            PdaSettings pdaSettings = pdaSettingsDao.select(GlobalClass.getSerialNumber());
+            //PdaSettings pdaSettings = pdaSettingsDao.select(GlobalClass.getSerialNumber());
             String format = "yyyy/MM/dd HH:mm:ss";
             SimpleDateFormat formater = new SimpleDateFormat(format);
-            String date = formater.format(new Date(pdaSettings.getLast_update().toString()));
+            String date = formater.format(new Date());
+            pdaSettingsDao.update(date);
             GlobalClass.setLastUpdate(date);
             textDate.setText(date);
 

@@ -7,12 +7,16 @@ import android.view.MenuItem;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-public class VideoViewActivity extends Activity {
+import com.example.rartonne.appftur.tools.GlobalViews;
+
+public class VideoViewActivity extends GlobalViews {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_view);
+
+        setHeader();
 
         VideoView videoView = (VideoView)findViewById(R.id.vv_installationManual);
         videoView.setMediaController(new MediaController(VideoViewActivity.this));

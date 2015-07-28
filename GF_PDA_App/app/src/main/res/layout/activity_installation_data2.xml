@@ -18,7 +18,7 @@
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="245px"
+        android:layout_below="@id/article_header"
         >
 
         <RelativeLayout
@@ -41,6 +41,7 @@
                 android:id="@+id/et_length1"
                 android:textColor="#ffffff"
                 android:layout_centerVertical="true"
+                android:inputType="number"
                 />
 
             <EditText
@@ -93,7 +94,8 @@
                 android:id="@+id/et_product2"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:inputType="number" />
 
             <EditText
                 android:layout_width="180px"
@@ -141,7 +143,8 @@
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:inputType="number" />
 
             <EditText
                 android:layout_width="180px"
@@ -192,7 +195,8 @@
                 android:id="@+id/et_product4"
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:inputType="number" />
 
             <EditText
                 android:layout_width="180px"

@@ -164,5 +164,6 @@
     <string name="tv_noProtocol">NO PROTOCOL</string>
     <string name="tv_confirmWeldings">CONFIRM ALL WELDINGS DONE OR\nCLICK ON ADD NEW WELDING</string>
     <string name="tv_processDone">CURRENT WELDING PROCESS\nIS NOW DONE AND SAVED</string>
+    <string name="data_synchronized">Data synchronized</string>
 
 </resources>

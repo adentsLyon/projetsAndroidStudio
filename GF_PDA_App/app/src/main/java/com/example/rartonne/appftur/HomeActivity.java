@@ -76,6 +76,7 @@ public class HomeActivity extends GlobalViews {
     int serverResponseCode = 0;
     String upLoadServerUri = "";
     private String uploadFilePath;
+    private SecIdDataDao secIdDataDao;
 
     @Override
     protected void onResume() {
@@ -89,9 +90,9 @@ public class HomeActivity extends GlobalViews {
         setContentView(R.layout.home);
 
         redirect();
+        fillHome();
         setHeader();
         setArticleHeader();
-        fillHome();
 
         setIcones();
         setPastilles();
@@ -114,11 +115,16 @@ public class HomeActivity extends GlobalViews {
         checkWelding = GlobalClass.isCheckWelding();
         checkPictures = GlobalClass.isCheckPictures();
         checkComment = GlobalClass.isCheckComment();
+        secIdDataDao = new SecIdDataDao(this);
 
         Intent intent = getIntent();
 
-        if(GlobalClass.isBlacklisted() && intent.getStringExtra("checkBlacklisted") != null)
+        if(GlobalClass.isBlacklisted() && intent.getStringExtra("checkBlacklisted") != null && secIdDataDao.count(GlobalClass.getGf_sec_id(), "forced") == 0) {
             dialogBlacklist();
+        }else if (!GlobalClass.getArt_id().isEmpty()){
+            scanOk();
+            setArticleHeader();
+        }
     }
 
 
@@ -251,6 +257,7 @@ public class HomeActivity extends GlobalViews {
                 SecIdDataDao secIdDataDao = new SecIdDataDao(getApplicationContext());
                 secIdDataDao.insert(GlobalClass.getGf_sec_id(), "forced", GlobalClass.getLogin());
                 scanOk();
+                setArticleHeader();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -265,9 +272,10 @@ public class HomeActivity extends GlobalViews {
     }
 
     public void sync(View view){
-        syncDwh();
+        //syncDwh();
         syncPictures();
-        syncPdaInsert();
+        //syncPdaInsert();
+        Toast.makeText(this, getString(R.string.data_synchronized), Toast.LENGTH_SHORT).show();
     }
 
     public void syncPictures(){
@@ -279,7 +287,7 @@ public class HomeActivity extends GlobalViews {
                     }
                 });
 
-                uploadFilePath = "/sdcard/" + GlobalClass.getCustomer_id().toString() + "/Netmap/" + GlobalClass.getGf_sec_id() + "/";
+                uploadFilePath = "/sdcard/" + GlobalClass.getCustomer_id().toString() + "/netmap/" + GlobalClass.getGf_sec_id() + "/";
                 upLoadServerUri = "http://admin.qr-ut.com/webservice/UploadToServer.php?customer_id=" + GlobalClass.getCustomer_id().toString() + "&gf_sec_id=" + GlobalClass.getGf_sec_id() + "&type=netmap";
 
                 File yourDir = new File(uploadFilePath);
@@ -311,11 +319,11 @@ public class HomeActivity extends GlobalViews {
     public void syncDwh(){
         String[] tables = {
                 "pda_sec_id_data",
-                "batch_nr_checking",
-                "customer_incident",
-                "PROCESS_LOG",
+                //"batch_nr_checking",
+                //"customer_incident",
+                //"PROCESS_LOG",
                 "\"SCAN_LOG\"",
-                "ordernr_sites",
+                "ordernr_sites"
         };
 
         for (String table : tables) {
@@ -326,6 +334,7 @@ public class HomeActivity extends GlobalViews {
                 List<NameValuePair> data = new ArrayList<>();
                 String param = "";
                 String updateScanlog = "";
+                String updatePdaSecIdData = "";
                 //on initalise la connexion Ã  la base
                 SQLiteDatabase bdd;
                 DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
@@ -346,7 +355,7 @@ public class HomeActivity extends GlobalViews {
                 Cursor cursor;
 
                 if (table == "\"SCAN_LOG\"") {
-                    cursor = bdd.rawQuery("SELECT * FROM " + table + " WHERE scan_date > '" + GlobalClass.getLastUpdate() + "'", null);
+                    cursor = bdd.rawQuery("SELECT * FROM " + table, null);
                 }else if(table == "ordernr_sites"){
                     cursor = bdd.rawQuery("SELECT ordernr, status_code, modified_by, modified_on, installer_id FROM " + table + " WHERE modified_on > '" + GlobalClass.getLastUpdate() + "'", null);
                 }else{
@@ -358,6 +367,7 @@ public class HomeActivity extends GlobalViews {
                         case "pda_sec_id_data":
                             fields = "type, value, createdon, modifiedon, gf_sec_id";
                             values = "'" + cursor.getString(1) + "', '" + cursor.getString(2) + "', '" + cursor.getString(3) + "', '" + cursor.getString(4) + "', '" + cursor.getString(5) + "'";
+                            updatePdaSecIdData = "UPDATE pda_sec_id_data SET value = '" + cursor.getString(2) + "', modifiedon = '" + cursor.getString(4) + "' WHERE gf_sec_id = '" + cursor.getString(5) + "' AND type = '" + cursor.getString(1) + "';";
                             break;
 
                         case "batch_nr_checking":
@@ -395,9 +405,9 @@ public class HomeActivity extends GlobalViews {
                     //break;
                 }
 
+                param += updatePdaSecIdData;
                 param += updateScanlog;
                 param += "UPDATE pda_settings SET last_update = '" + GlobalClass.getLastUpdate() + "' WHERE pda_id = '" + GlobalClass.getSerialNumber() +"'";
-
                 data.add(new BasicNameValuePair("data", param));
 
                 //on envoie les INSERT

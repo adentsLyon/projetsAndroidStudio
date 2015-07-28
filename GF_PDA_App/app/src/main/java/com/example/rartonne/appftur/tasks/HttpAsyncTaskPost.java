@@ -31,22 +31,22 @@ public class HttpAsyncTaskPost extends AsyncTask<String,Integer,String> {
     public HttpAsyncTaskPost(Activity activity, List<NameValuePair> postData){
         this.activity = activity;
         this.postData = postData;
-        dialog = new ProgressDialog(activity);
-        dialog.setMax(100);
+        //dialog = new ProgressDialog(activity);
+        //dialog.setMax(100);
     }
 
     @Override
     protected void onPreExecute() {
-        dialog.setMessage("Envoi en cours ....");
-        dialog.setProgress(10);
-        dialog.show();
+        //dialog.setMessage("Sync in progress");
+        //dialog.setProgress(10);
+        //dialog.show();
     }
 
     //Manipulation après traitement
     @Override
     protected void onPostExecute(String result) {
-        if(dialog.isShowing())
-            dialog.dismiss();
+        //if(dialog.isShowing())
+            //dialog.dismiss();
 
         //((HomeActivity)activity).updateDisplayPostSent(result);
     }

@@ -46,13 +46,13 @@
                     <TextView
                         android:id="@+id/tv_idWelding1"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="30px"
-                        android:text="#1  |"/>
+                        android:layout_marginLeft="10px"
+                        android:text="#1 |"/>
                     <TextView
                         android:id="@+id/tv_statusFusion"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
-                        android:text=""/>
+                        android:layout_marginLeft="70px"
+                        android:text="" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/rel_protocol"
@@ -66,14 +66,9 @@
                         android:background="#66c266"
                         android:id="@+id/bar_protocol"/>
                     <TextView
-                        android:id="@+id/tv_protocol"
-                        style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="30px"
-                        android:text=""/>
-                    <TextView
                         android:id="@+id/tv_protocolStatus"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="30px"
                         android:text=""/>
                 </RelativeLayout>
             </RelativeLayout>
@@ -100,12 +95,12 @@
                     <TextView
                         android:id="@+id/tv_idWelding2"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="30px"
-                        android:text="#2  |"/>
+                        android:layout_marginLeft="10px"
+                        android:text="#2 |"/>
                     <TextView
                         android:id="@+id/tv_statusFusion2"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="70px"
                         android:text=""/>
                 </RelativeLayout>
                 <RelativeLayout
@@ -127,7 +122,7 @@
                     <TextView
                         android:id="@+id/tv_protocolStatus2"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="30px"
                         android:text=""/>
                 </RelativeLayout>
             </RelativeLayout>
@@ -154,12 +149,12 @@
                     <TextView
                         android:id="@+id/tv_idWelding3"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="30px"
-                        android:text="#3  |"/>
+                        android:layout_marginLeft="10px"
+                        android:text="#3 |"/>
                     <TextView
                         android:id="@+id/tv_statusFusion3"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="70px"
                         android:text=""/>
                 </RelativeLayout>
                 <RelativeLayout
@@ -181,7 +176,7 @@
                     <TextView
                         android:id="@+id/tv_protocolStatus3"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="30px"
                         android:text=""/>
                 </RelativeLayout>
             </RelativeLayout>
@@ -208,12 +203,12 @@
                     <TextView
                         android:id="@+id/tv_idWelding4"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="30px"
-                        android:text="#4  |"/>
+                        android:layout_marginLeft="10px"
+                        android:text="#4 |"/>
                     <TextView
                         android:id="@+id/tv_statusFusion4"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="70px"
                         android:text=""/>
                 </RelativeLayout>
                 <RelativeLayout
@@ -235,7 +230,7 @@
                     <TextView
                         android:id="@+id/tv_protocolStatus4"
                         style="@style/fixed_inputContent_style"
-                        android:layout_marginLeft="100px"
+                        android:layout_marginLeft="30px"
                         android:text=""/>
                 </RelativeLayout>
             </RelativeLayout>

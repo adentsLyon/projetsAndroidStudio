@@ -110,6 +110,7 @@ public class GlobalViews extends Activity {
         return downloadDialog.show();
     }
 
+    //fonction qui remplit le header
     public void setHeader(){
         this.setRequestedOrientation(
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -122,6 +123,7 @@ public class GlobalViews extends Activity {
         textDate.setText(GlobalClass.getLastUpdate());
     }
 
+    //fonction qui remplit le article header
     public void setArticleHeader(){
         String art_id = GlobalClass.getArt_id();
         String name = GlobalClass.getDesignation();
@@ -207,18 +209,18 @@ public class GlobalViews extends Activity {
         Fitting fitting = fittingDao.select(GlobalClass.getArt_id());
 
         //on change les variables globales
-        GlobalClass.setArt_id(GlobalClass.getArt_id());
+        GlobalClass.setArt_id(fitting.getArt_id());
         GlobalClass.setDesignation(fitting.getDesignation());
         GlobalClass.setDruck(fitting.getDruck());
         GlobalClass.setDim(fitting.getDim());
         GlobalClass.setSdr(fitting.getSdr());
         GlobalClass.setCatalog(fitting.getCatalog());
-        if(GlobalClass.isBlacklisted()) {
-            GlobalClass.setStatus("sign_stop");
+        //if(GlobalClass.isBlacklisted()) {
+        //    GlobalClass.setStatus("sign_stop");
 
-        }else {
+        //}else {
             GlobalClass.setStatus("sign_status_ok");
-        }
+        //}
         GlobalClass.setGf_sec_id(GlobalClass.getGf_sec_id());
         GlobalClass.setBatch_nr(GlobalClass.getBatch_nr());
 
