@@ -231,7 +231,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="470px"
-            android:layout_marginLeft="350px"
+            android:layout_centerHorizontal="true"
             android:visibility="gone">
 
             <ImageButton
@@ -245,6 +245,28 @@
                 android:text="@string/tv_serverUpdatesTitle"
                 android:id="@+id/text_server_updates"
                 android:layout_below="@+id/Btn_server_updates"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="470px"
+            android:layout_marginLeft="350px"
+            android:visibility="gone">
+
+            <ImageButton
+                style="@style/icon_style"
+                android:id="@+id/Btn_exit"
+                android:src="@drawable/icon_exit"
+                android:onClick="sync" />
+
+            <TextView
+                style="@style/text_style"
+                android:text="@string/tv_serverUpdatesTitle"
+                android:id="@+id/text_exit"
+                android:layout_below="@+id/Btn_exit"/>
 
         </RelativeLayout>
 

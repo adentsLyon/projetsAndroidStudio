@@ -102,7 +102,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:inputType="text"
-                    android:imeOptions="actionNext"/>
+                    android:imeOptions="actionDone"/>
 
                 <TextView
                     android:layout_width="wrap_content"
