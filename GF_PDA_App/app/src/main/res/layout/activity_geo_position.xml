@@ -151,6 +151,26 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rel_switchMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    style="@style/icon_style"
+                    android:id="@+id/Btn_switchMode"
+                    android:src="@drawable/icon_net_mapp"
+                    android:onClick="refreshGps" />
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/ib_switchMode"
+                    android:id="@+id/text_switchMode"
+                    android:layout_below="@+id/Btn_switchMode" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/rel_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

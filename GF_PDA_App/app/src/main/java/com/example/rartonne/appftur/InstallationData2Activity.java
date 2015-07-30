@@ -1,5 +1,7 @@
 package com.example.rartonne.appftur;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -339,5 +341,19 @@ public class InstallationData2Activity extends GlobalViews {
         }
 
         Toast.makeText(this, "Data updated", Toast.LENGTH_SHORT).show();
+    }
+
+    public void dialogExplanation(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("-\tScan a QR by using the button on the app\n" +
+                "-\tScan a barecode by using the side button of the device\n" +
+                "-\tInput manually the barecode\n")
+                .setTitle("WHAT TO DO NOW?");
+
+        builder.setPositiveButton("OK, Thanks", null);
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

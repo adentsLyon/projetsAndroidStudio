@@ -41,7 +41,7 @@
                 android:id="@+id/tvproduct1"
                 android:visibility="visible"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="25px"
+                android:layout_marginLeft="15px"
                 android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l1"
                 android:background="@null"
@@ -55,7 +55,7 @@
                 android:textColor="#ffffff"
                 android:layout_centerVertical="true"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"
+                android:layout_marginLeft="220px"
                 android:visibility="invisible"/>
 
             <EditText
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_product1"
             android:layout_marginTop="2px"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <View
                 android:layout_width="fill_parent"
@@ -94,8 +94,8 @@
                 android:id="@+id/tv_product2"
                 android:background="@null"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="25px"
-                android:layout_marginTop="10px"
+                android:layout_marginLeft="15px"
+                android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l2"
                 android:visibility="visible"
                 android:enabled="false"/>
@@ -106,21 +106,19 @@
                 android:text="@string/tv_l2"
                 android:id="@+id/tv_l2"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10px"
+                android:layout_centerVertical="true"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"
+                android:layout_marginLeft="220px"
                 android:visibility="invisible"/>
 
             <EditText
                 android:background="@null"
                 android:layout_width="150px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="300px"
                 android:id="@+id/et_product2"
                 android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:inputType="number" />
 
         </RelativeLayout>
@@ -129,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rel_product2"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <View
                 android:layout_width="fill_parent"
@@ -147,8 +145,8 @@
                 android:visibility="visible"
                 android:background="@null"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="25px"
-                android:layout_marginTop="10px"
+                android:layout_marginLeft="15px"
+                android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l3"
                 android:enabled="false"/>
 
@@ -158,20 +156,19 @@
                 android:text="@string/tv_l3"
                 android:id="@+id/tv_l3"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10px"
-                android:layout_marginLeft="200px"
+                android:layout_centerVertical="true"
+                android:textSize="30px"
+                android:layout_marginLeft="220px"
                 android:visibility="invisible"/>
 
             <EditText
                 android:background="@null"
                 android:layout_width="150px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="300px"
                 android:id="@+id/et_product3"
                 android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:visibility="visible"
                 android:inputType="number" />
 
@@ -185,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_products3"
             android:layout_marginTop="2px"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <View
                 android:layout_width="fill_parent"
@@ -204,8 +201,8 @@
                 android:visibility="visible"
                 android:background="@null"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="25px"
-                android:layout_marginTop="10px"
+                android:layout_marginLeft="15px"
+                android:layout_centerVertical="true"
                 android:autoText="false"
                 android:layout_alignBottom="@+id/tv_l4"
                 android:enabled="false"/>
@@ -216,9 +213,9 @@
                 android:text="@string/tv_l4"
                 android:id="@+id/tv_l4"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10px"
+                android:layout_centerVertical="true"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"
+                android:layout_marginLeft="220px"
                 android:layout_alignLeft="@+id/bar_product4"
                 android:layout_alignTop="@+id/bar_product4"
                 android:visibility="invisible"/>
@@ -226,13 +223,11 @@
             <EditText
                 android:background="@null"
                 android:layout_width="150px"
-                android:layout_height="45px"
-                android:layout_marginTop="5px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="300px"
                 android:id="@+id/et_product4"
                 android:textColor="#ffffff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:inputType="number" />
 
             <![CDATA[

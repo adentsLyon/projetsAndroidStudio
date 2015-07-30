@@ -81,6 +81,7 @@
     <string name="tv_lon">Lon :</string>
     <string name="tv_currentGeoPosition">CURRENT PDA GEO POSITION</string>
     <string name="ib_refreshMap">REFRESH\nMAP</string>
+    <string name="ib_switchMode">SWITCH\nMODE</string>
 
     <!--Header-->
     <string name="tv_userName">User Name</string>
