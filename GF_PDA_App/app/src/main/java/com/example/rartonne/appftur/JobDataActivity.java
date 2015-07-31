@@ -228,6 +228,7 @@ public class JobDataActivity extends GlobalViews {
             if (ordernrSitesDao.count(field_job.getText().toString()) == 0) {
                 boolean bool = ordernrSitesDao.insert(field_job.getText().toString(), GlobalClass.getInstaller_id());
                 spinnerArray.add(field_job.getText().toString());
+                spin_job.setSelection(spin_job.getCount());
                 adapter.notifyDataSetChanged();
             }
 

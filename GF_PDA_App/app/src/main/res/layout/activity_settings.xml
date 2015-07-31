@@ -27,7 +27,8 @@
         android:layout_marginLeft="30px"
         android:padding="0dp"
         android:scaleType="fitCenter"
-        android:onClick="gotoMaintenance"
+        android:onClick="toActivity"
+        android:tag="MaintenanceActivity"
         android:src="@mipmap/icon_net_mapp" />
 
     <TextView

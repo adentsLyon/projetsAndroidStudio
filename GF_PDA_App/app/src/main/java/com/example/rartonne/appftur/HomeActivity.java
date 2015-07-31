@@ -11,11 +11,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.IntentCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +79,7 @@ public class HomeActivity extends GlobalViews {
     String upLoadServerUri = "";
     private String uploadFilePath;
     private SecIdDataDao secIdDataDao;
+    private ProgressDialog progressBar;
 
     @Override
     protected void onResume() {
@@ -272,9 +275,9 @@ public class HomeActivity extends GlobalViews {
     }
 
     public void sync(View view){
-        //syncDwh();
+        syncDwh();
         syncPictures();
-        //syncPdaInsert();
+        syncPdaInsert();
         Toast.makeText(this, getString(R.string.data_synchronized), Toast.LENGTH_SHORT).show();
     }
 
@@ -418,7 +421,7 @@ public class HomeActivity extends GlobalViews {
                 bdd.close();
 
                 GlobalClass.setLastUpdate(date);
-                            startActivity(new Intent(this, HomeActivity.class));
+                            startActivity(new Intent(this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
         } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -440,7 +443,7 @@ public class HomeActivity extends GlobalViews {
                 "CUSTOMER_SUPPLIER",
                 "INSTALLER",
                 "USER",
-                //"TRANSLATION",
+                "TRANSLATION",
                 //"T_DDD_LAB",
                 "SUPPLIER",
                 "ordernr_sites",
@@ -448,12 +451,12 @@ public class HomeActivity extends GlobalViews {
                 "wm_serial",
                 "USER_LOG"};
 
-        /*progressBar = new ProgressDialog(this);
+        progressBar = new ProgressDialog(this);
         progressBar.setCancelable(false);
         progressBar.setMessage("Download in progress ...");
         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressBar.setMax(tables_insert.length);
-        progressBar.show();*/
+        progressBar.show();
 
         //on redescend entièrement toutes les tables du tableau
         try {

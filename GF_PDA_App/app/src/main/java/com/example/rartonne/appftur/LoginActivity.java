@@ -4,6 +4,7 @@ package com.example.rartonne.appftur;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v4.content.IntentCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +30,7 @@ public class LoginActivity extends GlobalViews {
         Integer count = userDao.countAll();
         if(count == null || count == 0){
             this.deleteDatabase("pda_db");
-            startActivity(new Intent(this, InitActivity.class));
+            startActivity(new Intent(this, InitActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
         }
 
         setHeader();
@@ -72,6 +73,7 @@ public class LoginActivity extends GlobalViews {
             }else{
                 Intent intent1 = new Intent(getApplicationContext(), ManualLoginActivity.class);
                 intent1.putExtra("login", contents);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent1);
             }
         } catch (Exception e) {

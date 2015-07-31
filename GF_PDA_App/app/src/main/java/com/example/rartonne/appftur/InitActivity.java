@@ -47,7 +47,7 @@ public class InitActivity extends GlobalViews {
             "CONSTRUCTION_SITE",
             "CUSTOMER_SUPPLIER",
             "INSTALLER",
-            //"TRANSLATION",
+            "TRANSLATION",
             "T_DDD_LAB",
             "SUPPLIER",
             "ordernr_sites",

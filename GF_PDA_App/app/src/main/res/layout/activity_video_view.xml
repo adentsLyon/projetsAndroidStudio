@@ -16,7 +16,6 @@
         <VideoView
             android:layout_width="match_parent"
             android:layout_height="400px"
-            android:layout_below="@id/wv_installationManual"
             android:layout_marginTop="50px"
             android:id="@+id/vv_installationManual"/>
         <RelativeLayout

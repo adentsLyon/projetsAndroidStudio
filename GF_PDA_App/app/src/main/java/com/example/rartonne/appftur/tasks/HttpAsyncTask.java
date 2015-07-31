@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.support.v4.content.IntentCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -101,7 +102,7 @@ public class HttpAsyncTask extends AsyncTask<String,Integer,String> {
             GlobalClass.setLastUpdate(date);
             PdaSettingsDao pdaSettingsDao = new PdaSettingsDao(context);
             pdaSettingsDao.update(GlobalClass.getLastUpdate());
-            activity.startActivity(new Intent(context, HomeActivity.class));
+            activity.startActivity(new Intent(context, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
         }
     }
 

@@ -118,9 +118,20 @@ public class HttpAsyncTaskSync extends AsyncTask<String,Integer,String> {
                 in.close();
                 result = sb.toString();
 
+                result = result.replace("<p>", "");
+                result = result.replace("</p>", "");
+                result = result.replace("&le;", "");
+                result = result.replace(" &#8804;", "");
+                result = result.replace("<b>", "");
+                result = result.replace("</b>", "");
+                result = result.replace("<li>", "");
+                result = result.replace("</li>", "");
+                result = result.replace("<br />", "");
                 String[] requetes = result.split(";");
                 for (String requete : requetes) {
                     bdd.execSQL(requete);
+                    if(table.equals("TRANSLATION"))
+                        System.out.println(requete);
                 }
             }
 

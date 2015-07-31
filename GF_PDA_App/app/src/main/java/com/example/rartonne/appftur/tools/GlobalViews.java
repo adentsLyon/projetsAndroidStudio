@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.content.IntentCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class GlobalViews extends Activity {
     public GlobalClass global;
 
     public void toActivity(View view) {
+
         String name = view.getTag().toString();
         String activity = "com.example.rartonne.appftur." + name;
         Class act;
@@ -54,7 +56,7 @@ public class GlobalViews extends Activity {
             act = Class.forName(activity);
 
             Intent intent = new Intent(getApplicationContext(), act);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } catch (ClassNotFoundException e){
 
@@ -163,6 +165,8 @@ public class GlobalViews extends Activity {
             String[] params3 = params[4].split("BAT=");
             GlobalClass.setBatch_nr(params3[1]);
 
+
+
             //on vérifie si le produit est blacklisté
             Intent intent = new Intent(this, HomeActivity.class);
             BatchBlacklistDao batchBlacklistDao = new BatchBlacklistDao(this);
@@ -175,6 +179,7 @@ public class GlobalViews extends Activity {
                 intent.putExtra("checkBlacklisted", "true");
             }
 
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -183,7 +188,7 @@ public class GlobalViews extends Activity {
 
     public void redirect(){
         if(GlobalClass.getLogin().isEmpty()){
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
         }
     }
 
@@ -286,6 +291,13 @@ public class GlobalViews extends Activity {
         GlobalClass.setStatus("sign_scan_qr_expected");
 
 
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
+    }
+
+    public void exit(View view){
+        //HomeActivity homeActivity = new HomeActivity();
+        //homeActivity.finish();
+        System.exit(0);
+        //android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

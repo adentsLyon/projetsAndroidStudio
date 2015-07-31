@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,9 @@ import com.example.rartonne.appftur.tools.GlobalViews;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -110,9 +113,20 @@ public class GeoPositionActivity extends GlobalViews {
         longitude = location.getLongitude();
         latitude = location.getLatitude();
         LatLng latlng = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
+
+        //Définition du marker
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latlng);
+        markerOptions.title(GlobalClass.getArt_id());
+
+        //Définitiond des settings
+        UiSettings uiSettings = mMap.getUiSettings();
+        uiSettings.setMapToolbarEnabled(false);
+
+        mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         field_lat.setText(String.valueOf(latitude));
         field_lon.setText(String.valueOf(longitude));
     }
@@ -139,5 +153,12 @@ public class GeoPositionActivity extends GlobalViews {
 
     public void refreshGps(View view) {
         setUpMapIfNeeded();
+    }
+
+    public void changeType(View view){
+        if(mMap.getMapType() == GoogleMap.MAP_TYPE_SATELLITE)
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        else
+            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
     }
 }

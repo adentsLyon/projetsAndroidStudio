@@ -3,6 +3,7 @@ package com.example.rartonne.appftur;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -76,7 +77,7 @@ public class CommentActivity extends GlobalViews {
         boolean inserted = secIdDataDao.insert(GlobalClass.getGf_sec_id(), "comment", et_comment.getText().toString());
         if(inserted)
             Toast.makeText(this, getString(R.string.inserted), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, CommentListActivity.class));
+        startActivity(new Intent(this, CommentListActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {

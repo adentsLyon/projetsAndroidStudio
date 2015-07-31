@@ -45,7 +45,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignBottom="@+id/tv_l1"
                 android:background="@null"
-                android:enabled="false"/>
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,8 +56,7 @@
                 android:textColor="#ffffff"
                 android:layout_centerVertical="true"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"
-                android:visibility="invisible"/>
+                android:layout_marginLeft="200px"/>
 
             <EditText
                 android:background="@null"
@@ -66,7 +66,7 @@
                 android:id="@+id/et_length1"
                 android:textColor="#ffffff"
                 android:layout_centerVertical="true"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 />
 
         </RelativeLayout>
@@ -98,7 +98,9 @@
                 android:layout_marginTop="10px"
                 android:layout_alignBottom="@+id/tv_l2"
                 android:visibility="visible"
-                android:enabled="false"/>
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@+id/et_product2"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -108,8 +110,7 @@
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
                 android:textSize="30px"
-                android:layout_marginLeft="200px"
-                android:visibility="invisible"/>
+                android:layout_marginLeft="200px"/>
 
             <EditText
                 android:background="@null"
@@ -121,7 +122,8 @@
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:inputType="number" />
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"/>
 
         </RelativeLayout>
         <RelativeLayout
@@ -150,7 +152,9 @@
                 android:layout_marginLeft="25px"
                 android:layout_marginTop="10px"
                 android:layout_alignBottom="@+id/tv_l3"
-                android:enabled="false"/>
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@+id/et_product3"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -159,8 +163,7 @@
                 android:id="@+id/tv_l3"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10px"
-                android:layout_marginLeft="200px"
-                android:visibility="invisible"/>
+                android:layout_marginLeft="200px"/>
 
             <EditText
                 android:background="@null"
@@ -173,7 +176,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:visibility="visible"
-                android:inputType="number" />
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"/>
 
         </RelativeLayout>
 
@@ -208,7 +212,9 @@
                 android:layout_marginTop="10px"
                 android:autoText="false"
                 android:layout_alignBottom="@+id/tv_l4"
-                android:enabled="false"/>
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@+id/et_product4" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -220,8 +226,7 @@
                 android:textSize="30px"
                 android:layout_marginLeft="200px"
                 android:layout_alignLeft="@+id/bar_product4"
-                android:layout_alignTop="@+id/bar_product4"
-                android:visibility="invisible"/>
+                android:layout_alignTop="@+id/bar_product4"/>
 
             <EditText
                 android:background="@null"
@@ -233,7 +238,8 @@
                 android:textColor="#ffffff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:inputType="number" />
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"/>
 
             <![CDATA[
                 android:layout_alignParentLeft="true"

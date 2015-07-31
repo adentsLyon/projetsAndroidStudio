@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.IntentCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,6 +82,7 @@ public class ManualLoginActivity extends GlobalViews {
     public void gotoLogin(View view)
     {
         Intent intent = new Intent(ManualLoginActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
     }
@@ -119,7 +121,7 @@ public class ManualLoginActivity extends GlobalViews {
             GlobalClass.setLastUpdate(date);
             textDate.setText(date);
 
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK));
         }else{
             text_message.setTextColor(Color.parseColor("#c60f13"));
             text_message.setText("Wrong login");
@@ -161,6 +163,7 @@ public class ManualLoginActivity extends GlobalViews {
         text_message = (TextView) findViewById(R.id.text_message);
 
         Intent recupIntent = getIntent();
-        input_login.setText(recupIntent.getStringExtra("login"));
+        if(recupIntent.getStringExtra("login") != null)
+            input_login.setText(recupIntent.getStringExtra("login"));
     }
 }

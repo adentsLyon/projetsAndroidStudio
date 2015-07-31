@@ -92,7 +92,8 @@
         </activity>
         <activity
             android:name=".InstallationData2Activity"
-            android:label="@string/title_activity_installation_data2" >
+            android:label="@string/title_activity_installation_data2"
+            android:windowSoftInputMode="stateVisible">
         </activity>
         <activity
             android:name=".CommentActivity"

@@ -13,12 +13,22 @@
         android:layout_height="fill_parent"
         android:layout_marginTop="70px">
 
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="500px"
-            android:id="@+id/wv_installationManual">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/sv_manual"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="20px"
+            android:layout_above="@+id/rel_buttonPart2" >
 
-        </WebView>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ll_manual"></LinearLayout>
+        </ScrollView>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

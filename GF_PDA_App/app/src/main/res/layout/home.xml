@@ -254,17 +254,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="470px"
             android:layout_marginLeft="350px"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <ImageButton
                 style="@style/icon_style"
                 android:id="@+id/Btn_exit"
                 android:src="@drawable/icon_exit"
-                android:onClick="sync" />
+                android:onClick="exit" />
 
             <TextView
                 style="@style/text_style"
-                android:text="@string/tv_serverUpdatesTitle"
+                android:text="@string/exit"
                 android:id="@+id/text_exit"
                 android:layout_below="@+id/Btn_exit"/>
 
