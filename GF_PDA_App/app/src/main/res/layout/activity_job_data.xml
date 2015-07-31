@@ -99,8 +99,6 @@
                     android:layout_marginLeft="100px"
                     android:id="@+id/field_job"
                     android:textColor="#ffffff"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
                     android:inputType="text"
                     android:imeOptions="actionDone"/>
 

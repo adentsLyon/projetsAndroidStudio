@@ -245,7 +245,17 @@
                     android:background="#1965a3"
                     android:id="@+id/bar_trench"/>
 
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_fusionNumber"
+                    android:id="@+id/text_trench"
+                    android:textColor="#ffffff"
+                    android:layout_centerVertical="true"
+                    android:textSize="25px"
+                    android:layout_marginLeft="30px"
+                    android:layout_alignLeft="@+id/bar_job"
+                    android:layout_alignTop="@+id/bar_job"/>
 
                 <EditText
                     android:background="@null"
@@ -258,17 +268,7 @@
                     android:layout_alignParentLeft="true"
                     android:inputType="numberSigned" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_fusionNumber"
-                    android:id="@+id/text_trench"
-                    android:textColor="#ffffff"
-                    android:layout_centerVertical="true"
-                    android:textSize="25px"
-                    android:layout_marginLeft="30px"
-                    android:layout_alignLeft="@+id/bar_job"
-                    android:layout_alignTop="@+id/bar_job"/>
+
 
             </RelativeLayout>
         </RelativeLayout>
